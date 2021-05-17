@@ -1,0 +1,25 @@
+@mixin container {
+  width: 100%;
+  max-width: $width_container;
+
+  @media (max-width: 1360px) {
+    max-width: calc(100vw - 8rem);
+  }
+
+  @include --tablet {
+    max-width: $width_container_tablet;
+  }
+
+  @include --mobile {
+    max-width: $width_container_mobile;
+  }
+}
+
+@mixin containerInnerSmall {
+  width: 100%;
+  max-width: $width_container_small;
+
+  @media (max-width: 1320px) {
+    max-width: calc(#{$width_container_small} - 10rem);
+  }
+}

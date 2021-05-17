@@ -1,0 +1,6 @@
+@mixin card($width: 100%) {
+  width: $width;
+  padding: 3.2rem;
+  overflow: hidden;
+  background-color: $color_grey_smoke;
+}

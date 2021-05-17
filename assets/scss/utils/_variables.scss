@@ -1,0 +1,44 @@
+// --
+// This file contains all application-wide Sass variables.
+// ==
+
+// regular font family
+$font-inter: 'Inter', sans-serif !default;
+
+// colors
+$color_black: #000;
+$color_white: #ffffff;
+$color_blue: #3761E1;
+$color_green: #3CD0B4;
+$color_grey: #828385;
+$color_lightgrey: #F7F7F7;
+$color_border: #EBEFFC;
+$color_red: #f50000;
+
+// container
+$width_container: 128rem;
+$width_container_tablet: calc(100% - 8rem);
+$width_container_mobile: calc(100% - 4rem);
+
+$width_container_small: 84.7rem;
+
+// section
+$margin_section_desktop: 13rem;
+$margin_section_tablet: 8rem;
+
+$margin_section_small_desktop: 6.4rem;
+$margin_section_small_tablet: 5.2rem;
+
+$margin_section_head_desktop: 5.6rem;
+$margin_section_head_large: 6.4rem;
+$margin_section_head_tablet: 3.2rem;
+
+// main
+$padding_main_desktop: 5.2rem;
+$padding_main_tablet: 5.2rem;
+
+// gutters
+$width_gutter: 1.6rem;
+
+//transitions
+$transition_theme: 400ms ease;

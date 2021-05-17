@@ -1,0 +1,15 @@
+// Simple row and cols with fixed gutters
+// how to use:
+// @include row(1rem);
+@mixin row($gutter: 2rem) {
+  display: flex;
+  flex-wrap: wrap;
+  margin: $gutter / -2;
+}
+
+@mixin col($cols: 4, $gutter: 2rem) {
+  width: calc(#{100% / $cols} - #{$gutter});
+  margin: $gutter / 2;
+
+  @content;
+}

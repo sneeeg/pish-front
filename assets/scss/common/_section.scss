@@ -1,0 +1,80 @@
+@import '../utils/mixins/container';
+
+.section {
+  width: 100%;
+  margin-bottom: $margin_section_desktop;
+
+  @include --tablet {
+    margin-bottom: $margin_section_tablet;
+  }
+
+  &._small {
+    margin-bottom: $margin_section_small_desktop;
+
+    @include --tablet {
+      margin-bottom: $margin_section_small_tablet;
+    }
+  }
+
+  &._noMargin {
+    margin-bottom: 0;
+
+    @include --tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &._background {
+    color: #fff;
+    background-color: $color_blue;
+  }
+
+  &__inner {
+    @include container;
+    display: block;
+    margin: 0 auto;
+
+    ._background & {
+      @include padding-section;
+    }
+  }
+}
+
+.section-head {
+  margin-bottom: $margin_section_head_desktop;
+  color: $color_black;
+
+  @include --from-tablet {
+    display: flex;
+    align-items: center;
+  }
+
+  &._headerMarginSmall {
+    margin-bottom: $margin_section_head_tablet;
+  }
+
+  &._headerMarginLarge {
+    margin-bottom: $margin_section_head_large;
+  }
+
+  ._background & {
+    color: #fff;
+  }
+
+  &__title {
+    max-width: 66.25%;
+    margin: 0;
+  }
+
+  &__content {
+    margin-left: 6.4rem;
+
+    @include --tablet {
+      margin: 3.2rem 0 0;
+    }
+  }
+
+  @include --tablet {
+    margin-bottom: $margin_section_head_tablet;
+  }
+}

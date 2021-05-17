@@ -1,0 +1,56 @@
+/* Variables */
+$marginBetweenElements: 4rem;
+$listPadding: 3.6rem;
+
+/* Mixins */
+@mixin withDot() {
+  position: relative;
+
+  .dot {
+    position: absolute;
+    top: 2px;
+    left: -$listPadding;
+    color: $color_green;
+  }
+}
+
+.html-content {
+  @include containerInnerSmall;
+  color: $color_black;
+
+  p,
+  h1,
+  h2,
+  h4,
+  ol,
+  ul {
+    margin: 0;
+  }
+
+  > * {
+    &:not(:last-child) {
+      margin-bottom: $marginBetweenElements;
+    }
+  }
+
+  strong {
+    color: $color_blue;
+  }
+
+  /* Lists */
+  ul, ol {
+    padding-left: $listPadding;
+
+    li {
+      &:not(:last-child) {
+        margin-bottom: $marginBetweenElements;
+      }
+    }
+  }
+
+  ul {
+    li {
+      @include withDot;
+    }
+  }
+}

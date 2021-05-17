@@ -1,0 +1,12 @@
+._pointer {
+  cursor: pointer;
+}
+
+._disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+._hidden {
+  visibility: hidden;
+}

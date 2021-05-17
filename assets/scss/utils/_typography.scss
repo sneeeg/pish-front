@@ -1,0 +1,116 @@
+// --
+// headings
+// ==
+
+@mixin h1 {
+  font-size: 5.6rem;
+  line-height: 7.3rem;
+
+  @include --mobile {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+}
+
+@mixin h2 {
+  font-size: 4.1rem;
+  line-height: 5.3rem;
+
+  @include --mobile {
+    font-size: 3.6rem;
+    line-height: 3.6rem;
+  }
+}
+
+@mixin h3 {
+  font-size: 3.2rem;
+  line-height: 4.2rem;
+
+  @include --mobile {
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+  }
+}
+
+@mixin h4 {
+  font-size: 2rem;
+  line-height: 2.9rem;
+
+  @include --mobile {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+  }
+}
+
+@mixin lead {
+  font-size: 3.2rem;
+  line-height: 4.2rem;
+
+  @include --mobile {
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+  }
+}
+
+@mixin p {
+  font-size: 1.6rem;
+  line-height: 2.7rem;
+
+  //@include --mobile {
+  //  font-size: 1.4rem;
+  //  line-height: 2.2rem;
+  //}
+}
+
+@mixin text-small {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+
+  @include --mobile {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+}
+
+@mixin text-btn {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+@mixin text-btn-small {
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+@mixin text-body-2 {
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2.6rem;
+
+  @include --mobile {
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+  }
+}
+
+@mixin text-control {
+  font-size: 1.6rem;
+  line-height: 2.3rem;
+
+  @include --mobile {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+}
+
+@mixin text-control-small {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+
+  @include --mobile {
+    font-size: 1rem;
+    line-height: 1.3rem;
+  }
+}

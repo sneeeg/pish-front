@@ -1,0 +1,5 @@
+@mixin sliderViewportVisible {
+  .flickity-viewport {
+    overflow: visible;
+  }
+}
