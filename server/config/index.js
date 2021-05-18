@@ -3,6 +3,8 @@ import settings from '~/server/config/modules/settings'
 
 /* Menus */
 import socials from '~/server/config/modules/menus/socials'
+import header from '~/server/config/modules/menus/header'
+import share from '~/server/config/modules/menus/share'
 
 // автоматический импорт всех json файлов в ./lang/
 const langs = require.context('~/server/config/modules/lang', true, /\.json$/)
@@ -31,5 +33,7 @@ export default {
   lang,
   menus: {
     socials,
+    header,
+    share,
   },
 }
