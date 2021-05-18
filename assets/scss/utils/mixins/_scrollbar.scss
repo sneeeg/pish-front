@@ -1,6 +1,7 @@
 @mixin scrollbar {
   &::-webkit-scrollbar {
     width: 5px;               /* width of the entire scrollbar */
+    height: 5px;
   }
 
   &::-webkit-scrollbar-track {

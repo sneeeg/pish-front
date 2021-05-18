@@ -10,11 +10,18 @@
       animi assumenda consequuntur, debitis magni maiores minima minus odio
       odit, officia quae qui quis ratione rem rerum sequi! Blanditiis, possimus.
     </Section>
+    <TextBlock title="text-content"></TextBlock>
   </div>
 </template>
 
 <script>
-export default {}
+import TextBlock from '~/components/TextBlock'
+
+export default {
+  components: {
+    TextBlock,
+  },
+}
 </script>
 
 <style></style>
