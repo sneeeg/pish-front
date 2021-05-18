@@ -1,1 +1,238 @@
+/* Variables */
+$marginBetweenElements: 4.8rem;
+$marginMobileBetweenElements: 3.6rem;
+$listPadding: 2rem;
 
+.html-content {
+  @include containerInnerSmall;
+  color: $color_black;
+
+  p,
+  h1,
+  h2,
+  h4,
+  ol,
+  ul {
+    margin: 0;
+  }
+
+  p {
+    @include p;
+    margin: 0;
+  }
+
+  > * {
+    &:not(:last-child) {
+      margin-bottom: $marginBetweenElements;
+
+      @include --mobile {
+        margin-bottom: $marginMobileBetweenElements;
+      }
+    }
+  }
+
+  /* Lists */
+  h5 + ul:not([class]) {
+    margin-top: -#{$marginBetweenElements - 1.5rem};
+  }
+
+  ul:not([class]), ol:not([class]) {
+    padding-left: $listPadding;
+
+    li {
+      &:not(:last-child) {
+        margin-bottom: 1em;
+      }
+    }
+  }
+
+  ul:not([class]) {
+    li {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        top: 1rem;
+        left: -$listPadding;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: $color_red;
+        content: '';
+
+        @include --mobile {
+          top: 5px;
+        }
+      }
+    }
+  }
+
+  ol:not([class]) {
+    padding-left: $listPadding;
+    counter-reset: item;
+
+    > li {
+      display: block;
+      margin-left: 0;
+      padding-left: 0;
+
+      &::before {
+        @include text-small;
+        display: inline-block;
+        width: $listPadding;
+        margin-left: -$listPadding;
+        color: $color_red;
+        content: counter(item) '.';
+        counter-increment: item;
+      }
+    }
+  }
+
+  hr {
+    height: 1px;
+    margin: 2rem 0 !important; // stylelint-disable-line
+    border: none;
+    color: $color_grey_text;
+    background-color: $color_grey_text;
+  }
+
+  .attention {
+    @include h5;
+    position: relative;
+    padding-left: 3.2rem;
+
+    @include --mobile {
+      padding-left: 2rem;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background-color: $color_red;
+      content: '';
+
+      @include --mobile {
+        width: 4px;
+      }
+    }
+  }
+
+  .table-scroll-wrap {
+    margin: $marginBetweenElements 0;
+    overflow: scroll visible;
+
+    @include --mobile {
+      margin: $marginMobileBetweenElements 0;
+    }
+
+    table:not([class]) {
+      margin: 0;
+    }
+  }
+
+  table:not([class]) {
+    width: 100%;
+    margin: $marginBetweenElements 0;
+    border-collapse: collapse;
+
+    @include --mobile {
+      margin: $marginMobileBetweenElements 0;
+    }
+
+    thead {
+      border-bottom: 1px solid $color_dark_grey;
+      font-weight: 700;
+      background-color: $color_light_grey;
+
+      td,
+      th {
+        padding: 2.5rem 2.1rem;
+
+        @include --tablet {
+          padding: 2rem;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid $color_dark_grey;
+      }
+
+      td {
+        padding: 3rem 2.1rem 3rem 2.1rem;
+
+        @include --tablet {
+          padding: 2rem;
+        }
+      }
+    }
+
+    td,
+    th {
+      text-align: left;
+      vertical-align: text-top;
+
+      &:not(:last-child) {
+        border-right: 1px solid $color_dark_grey;
+      }
+    }
+  }
+
+  blockquote:not([class]) {
+    position: relative;
+    margin: 0 0 $marginBetweenElements 0;
+    padding: 3.4rem 0 0 10.1rem;
+
+    @include --tablet {
+      padding: 0;
+    }
+
+    @include --mobile {
+      margin: 0 0 $marginBetweenElements 0;
+      padding: 0;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 11.7rem;
+      height: 8.9rem;
+      background: url('static/qoute.svg') no-repeat center / auto;
+      content: '';
+
+      @include --tablet {
+        top: -1rem;
+        left: -5rem;
+      }
+    }
+
+    p {
+      @include text;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 1em;
+
+      @include --from-mobile {
+        line-height: 2.7rem;
+      }
+    }
+
+    footer {
+      display: block;
+      margin: 2.4rem 0 0 0;
+      color: $color_grey_text;
+      font-size: 1.5rem;
+      line-height: 2rem;
+
+      span {
+        color: $color_red;
+      }
+    }
+  }
+}
