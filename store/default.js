@@ -26,10 +26,7 @@ export const mutations = {
 
 export const actions = {
   async getConfig({ state, commit }, locale) {
-    commit(
-      'setSiteId',
-      window.siteId[locale];
-    )
+    commit('setSiteId', window.siteId[locale])
     this.$axios.defaults.headers.common['X-Bitrix-Site-Id'] = state.siteId
 
     const data = await this.$api.config.get()
