@@ -1,27 +1,15 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">priority2030-promo</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div>
+    <Section title="test">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
+      animi assumenda consequuntur, debitis magni maiores minima minus odio
+      odit, officia quae qui quis ratione rem rerum sequi! Blanditiis, possimus.
+    </Section>
+    <Section title="test" background>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
+      animi assumenda consequuntur, debitis magni maiores minima minus odio
+      odit, officia quae qui quis ratione rem rerum sequi! Blanditiis, possimus.
+    </Section>
   </div>
 </template>
 

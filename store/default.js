@@ -33,6 +33,5 @@ export const actions = {
     commit('setSettings', data.settings)
     commit('setLang', data.lang)
     commit('setMenus', data.menus)
-    console.log(data)
   },
 }

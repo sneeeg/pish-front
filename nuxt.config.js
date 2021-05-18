@@ -1,3 +1,5 @@
+/* eslint-disable nuxt/no-cjs-in-config */
+
 /* Imports */
 const head = require('./nuxt-config/head')
 
@@ -27,6 +29,7 @@ export default {
     '~/plugins/injections.js',
     '~/plugins/server.js',
     '~/plugins/config.js',
+    '~/plugins/router-processing.js',
     '~/plugins/responsive.js',
     '~/plugins/scroll.js',
   ],

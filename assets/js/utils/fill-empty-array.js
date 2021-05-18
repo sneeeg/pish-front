@@ -1,10 +1,10 @@
 const fillEmptyArray = (value, length) => {
-  const arr = [];
+  const arr = []
   for (let i = 0; i < length; i++) {
-    arr.push(value);
+    arr.push(value)
   }
 
-  return arr;
-};
+  return arr
+}
 
-export default fillEmptyArray;
+export default fillEmptyArray

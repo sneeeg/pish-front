@@ -1,3 +1,3 @@
-const isObjectEmpty = (obj) => Object.entries(obj).length === 0;
+const isObjectEmpty = (obj) => Object.entries(obj).length === 0
 
-export default isObjectEmpty;
+export default isObjectEmpty

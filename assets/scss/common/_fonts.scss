@@ -12,13 +12,16 @@
  @mixin font($fontFamily: '', $fontFolderName: '', $fontWeight: 400, $fontStyle: normal, $fontDisplay: swap) {
   @font-face {
     font-family: $fontFamily;
-    src: url('../fonts/#{$fontFolderName}/#{$fontWeight}.woff2') format('woff2'),
-    url('../fonts/#{$fontFolderName}/#{$fontWeight}.woff') format('woff');
+    src: url('~/assets/fonts/#{$fontFolderName}/#{$fontWeight}.woff2') format('woff2'),
+    url('~/assets/fonts/#{$fontFolderName}/#{$fontWeight}.woff') format('woff');
     font-style: $fontStyle;
     font-weight: $fontWeight;
     font-display: $fontDisplay;
   }
 }
 
-// @include font('Montserrat', 'montserrat', 600);
+@include font('Gerbera', 'Gerbera', 300);
+@include font('Gerbera', 'Gerbera', 400);
+@include font('Gerbera', 'Gerbera', 500);
+@include font('Gerbera', 'Gerbera', 700);
 /* stylelint-enable */
