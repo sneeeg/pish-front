@@ -13,9 +13,9 @@ import isInViewport from '~/assets/js/utils/is-in-viewport'
 import isObjectEmpty from '~/assets/js/utils/is-object-empty'
 
 /* API */
-import config from '~/assets/js/api/config'
+import api from '~/assets/js/api/index'
 
-export default (context, inject) => {
+export default ({ $axios }, inject) => {
   inject('constants', constants)
   inject('composables', {})
   inject('utils', {
@@ -27,7 +27,5 @@ export default (context, inject) => {
     isInViewport,
     isObjectEmpty,
   })
-  inject('api', {
-    config,
-  })
+  inject('api', api($axios))
 }

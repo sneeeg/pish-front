@@ -26,6 +26,7 @@ export default {
   plugins: [
     '~/plugins/injections.js',
     '~/plugins/server.js',
+    '~/plugins/config.js',
     '~/plugins/responsive.js',
     '~/plugins/scroll.js',
   ],
@@ -52,10 +53,25 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
+    [
+      'nuxt-i18n',
+      {
+        locales: [
+          {
+            code: 'ru',
+            iso: 'ru',
+          },
+          {
+            code: 'en',
+            iso: 'en',
+          },
+        ],
+        defaultLocale: 'ru',
+      },
+    ],
     '@nuxtjs/axios',
     '@nuxtjs/svg-sprite',
     '@nuxtjs/dayjs',
-    'nuxt-lazy-load',
   ],
 
   svgSprite: {
