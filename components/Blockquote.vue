@@ -4,7 +4,7 @@
     <p class="blockquote__text">{{ text }}</p>
     <footer>
       <div class="blockquote__photo">
-        <img :src="author.photo" alt="Портрет автора" />
+        <img :src="author.image" />
       </div>
       <div class="blockquote__author-block">
         <cite class="blockquote__name">{{ author.name }}</cite>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+// import HTMLContent from '~/components/utils/HTMLContent'
+
 export default {
   name: 'Blockquote',
   components: {},
@@ -88,9 +90,9 @@ export default {
     @include text-big;
     position: relative;
     z-index: 2;
-    margin: 0 0 7.2rem;
     width: 100%;
     max-width: 100rem;
+    margin: 0 0 7.2rem;
 
     @include --tablet {
       margin-bottom: 4.8rem;
@@ -149,9 +151,9 @@ export default {
 
   &__name {
     display: block;
-    font-style: normal;
-    font-weight: bold;
     margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-style: normal;
   }
 }
 </style>
