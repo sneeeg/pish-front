@@ -5,3 +5,45 @@
     opacity: 0.7;
   }
 }
+
+@mixin hover-underline {
+  span {
+    @include hover-item;
+  }
+
+  @include hover {
+    span {
+      @include hover-changed-link;
+    }
+  }
+}
+
+@mixin hover-item {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 0 1px;
+  transition: background-size .3s ease, color .3s ease;
+}
+
+@mixin hover-changed-link {
+  background-position: 0 100%;
+  background-size: 100% 1px;
+}
+
+@mixin hover-color-accent {
+  transition: color 0.3s ease;
+
+  @include hover {
+    color: $color_accent;
+  }
+}
+
+@mixin hover-accent-light {
+  transition: color 0.3s ease;
+
+  @include hover {
+    color: $color_accent_light;
+  }
+}

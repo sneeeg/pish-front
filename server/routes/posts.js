@@ -10,7 +10,11 @@ import { getResponse } from '~/server/utils'
 export default (pretender) => {
   // Get posts
   pretender.get('/api/posts', () => {
-    return [200, { 'Content-Type': 'application/json' }, getResponse(posts)]
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse({ posts, pagination: { current: 1, total: 5 } }),
+    ]
   })
 
   // Get university posts

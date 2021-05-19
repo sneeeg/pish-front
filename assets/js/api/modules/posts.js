@@ -1,7 +1,7 @@
 export default ($axios) => ({
   /* Getting posts */
-  get(page = 1, count = 4) {
-    return $axios.$get('/api/posts', { params: { page, count } })
+  get(categoryId, page = 1, count = 4) {
+    return $axios.$get('/api/posts', { params: { categoryId, page, count } })
   },
 
   /* Getting university categories  */
