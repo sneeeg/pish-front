@@ -1,5 +1,5 @@
 <template>
-  <ul class="soc">
+  <ul class="soc" :class="mod">
     <li v-for="({ text, href, icon }, index) in menus.socials" :key="index">
       <a :href="href" target="_blank" rel="nofollow noopener" :title="text"
         ><svg-icon :class="`_icon-${icon}`" :name="icon"></svg-icon
@@ -12,6 +12,12 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'SocIcons',
+  props: {
+    mod: {
+      type: String,
+      default: '',
+    },
+  },
   computed: {
     ...mapState('default', ['menus']),
   },
@@ -21,6 +27,33 @@ export default {
 .soc {
   display: flex;
   color: $color_dark_grey;
+
+  &._header {
+    color: $color_red;
+
+    a {
+      width: 1.6rem;
+      height: 1.6rem;
+
+      svg {
+        width: 1.6rem;
+        height: 1.6rem;
+
+        &._icon-in {
+          width: 1.3rem;
+          height: 1.3rem;
+        }
+      }
+    }
+
+    > :not(:last-child) {
+      margin-right: 2rem;
+
+      @include --mobile {
+        margin-right: 1.2rem;
+      }
+    }
+  }
 
   a {
     @include box(4.1rem);
@@ -41,7 +74,7 @@ export default {
     }
   }
 
-  > :not(last-child) {
+  > :not(:last-child) {
     margin-right: 1.7rem;
   }
 }
