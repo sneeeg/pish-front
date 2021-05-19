@@ -3,7 +3,7 @@
   max-width: $width_container;
 
   @media (max-width: 1360px) {
-    max-width: calc(100vw - 8rem);
+    max-width: calc(100vw - 10rem);
   }
 
   @include --tablet {

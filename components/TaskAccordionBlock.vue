@@ -1,12 +1,10 @@
 <template>
-  <Section :title="title" background>
-    <div class="task-accordion-block">
-      <TaskAccordion :tasks="tasks" />
-      <div class="task-accordion-block__image-wrapper">
-        <img :src="img" alt="Тематическое изображение" />
-      </div>
+  <div class="task-accordion-block">
+    <TaskAccordion :tasks="tasks" />
+    <div class="task-accordion-block__image-wrapper">
+      <img :src="img" alt="Тематическое изображение" />
     </div>
-  </Section>
+  </div>
 </template>
 
 <script>
