@@ -1,21 +1,21 @@
 <template>
-  <div class="task-accordion">
+  <div class="accordion">
     <div
-      v-for="{ id, label, content } in tasks"
-      :key="id"
-      class="task-accordion__item"
+      v-for="{ title, model3d, content } in tasks"
+      :key="title"
+      class="accordion__item"
     >
       <button
         type="button"
-        class="task-accordion__label _visually-h5"
-        :class="{ _active: expanded.includes(id) }"
-        @click="expandToggle(id)"
+        class="accordion__label _visually-h5"
+        :class="{ _active: expanded.includes(title) }"
+        @click="taskChange(title, model3d)"
       >
-        {{ label }}
+        {{ title }}
       </button>
 
       <TransitionExpand>
-        <div v-if="expanded.includes(id)" class="task-accordion__content">
+        <div v-if="expanded.includes(title)" class="accordion__content">
           <HTMLContent :html="content" />
         </div>
       </TransitionExpand>
@@ -27,7 +27,7 @@ import TransitionExpand from '~/assets/js/utils/TransitionExpand'
 import HTMLContent from '~/components/Utils/HTMLContent'
 
 export default {
-  name: 'TaskAccordion',
+  name: 'Accordion',
   components: {
     TransitionExpand,
     HTMLContent,
@@ -48,17 +48,19 @@ export default {
         const index = this.expanded.indexOf(id)
         this.expanded.splice(index, 1)
       } else {
+        this.expanded.splice(0, this.expanded.length)
         this.expanded.push(id)
       }
     },
-    closeAll() {
-      this.expanded.splice(0, this.expanded.length)
+    taskChange(title, model3d) {
+      this.expandToggle(title)
+      this.$emit('task-switch', model3d)
     },
   },
 }
 </script>
 <style lang="scss">
-.task-accordion {
+.accordion {
   &__item {
     border-bottom: 1px solid $color_grey_border;
   }
