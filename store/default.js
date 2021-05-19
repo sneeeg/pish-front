@@ -3,7 +3,7 @@ export const state = () => ({
   sessid: '',
   settings: {},
   lang: {},
-  menus: [],
+  menus: {},
 })
 
 export const mutations = {
