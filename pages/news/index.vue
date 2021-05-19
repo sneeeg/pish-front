@@ -3,7 +3,9 @@
     <Section :title="page.mainNewsTitle">
       <Posts />
     </Section>
-    <Section background :title="page.reviewsTitle"> </Section>
+    <Section background :title="page.reviewsTitle">
+      <Reviews />
+    </Section>
   </div>
 </template>
 
@@ -13,10 +15,11 @@ import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import Posts from '~/components/Posts'
+import Reviews from '~/components/Reviews'
 
 export default {
   name: 'Index',
-  components: { Posts, Section },
+  components: { Reviews, Posts, Section },
   mixins: [pageDataFetch, pageHead],
   computed: {
     ...mapState('default', ['lang']),
