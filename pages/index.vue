@@ -1,5 +1,6 @@
 <template>
   <div>
+    <TaskAccordionBlock title="Задачи программы" img="/tasks/2.png" />
     <Section title="test">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
       animi assumenda consequuntur, debitis magni maiores minima minus odio
@@ -16,10 +17,12 @@
 
 <script>
 import TextBlock from '~/components/TextBlock'
+import TaskAccordionBlock from '~/components/TaskAccordionBlock'
 
 export default {
   components: {
     TextBlock,
+    TaskAccordionBlock,
   },
 }
 </script>
