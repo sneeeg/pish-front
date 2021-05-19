@@ -1,6 +1,6 @@
 <template>
-  <div ref="HTMLContent" class="html-content">
-    <blockquote>
+  <div ref="HTMLContent" class="html-content" v-html="html">
+    <!-- <blockquote>
       <p>
         Таким образом, программа, используя опыт предыдущих проектов и программ,
         реализованных в РФ, нацелена на более системную и комплексную работу по
@@ -81,13 +81,19 @@
       Федерации». В основу новой программы легли принципы интеграции и
       кооперации научных и образовательных организаций, а также принципы
       конкуренции и открытости.
-    </p>
+    </p> -->
   </div>
 </template>
 
 <script>
 export default {
   name: 'HTMLContent',
+  props: {
+    html: {
+      type: String,
+      default: '',
+    },
+  },
   mounted() {
     const $tables = this.$refs.HTMLContent.querySelectorAll('table')
     const wrapper = document.createElement('section')
