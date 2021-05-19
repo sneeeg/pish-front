@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <div class="reviews"></div>
+</template>
 
 <script>
 export default {
@@ -6,4 +8,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss"></style>

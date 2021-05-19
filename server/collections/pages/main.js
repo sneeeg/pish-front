@@ -28,4 +28,5 @@ export default {
     subtitle: 'До окончания приема заявок',
     dateTo: '2020-12-09T16:09:53+00:00',
   },
+  newsTitle: 'Новости',
 }
