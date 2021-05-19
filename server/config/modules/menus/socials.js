@@ -1,7 +1,27 @@
 export default [
   {
-    title: 'vk',
+    text: 'Вконтакте',
+    href: '#',
     icon: 'vk',
-    href: '/',
+  },
+  {
+    text: 'Facebook',
+    href: '#',
+    icon: 'fb',
+  },
+  {
+    text: 'Twitter',
+    href: '#',
+    icon: 'tw',
+  },
+  {
+    text: 'Youtube',
+    href: '#',
+    icon: 'yt',
+  },
+  {
+    text: 'Instagram',
+    href: '#',
+    icon: 'in',
   },
 ]
