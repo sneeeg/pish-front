@@ -3,7 +3,7 @@ export const state = () => ({
   sessid: '',
   settings: {},
   lang: {},
-  menus: [],
+  menus: {},
 })
 
 export const mutations = {
@@ -29,7 +29,7 @@ export const actions = {
     commit('setSiteId', window.siteId[locale])
     this.$axios.defaults.headers.common['X-Bitrix-Site-Id'] = state.siteId
 
-    const data = await this.$api.config.get()
+    const { data } = await this.$api.config.get()
     commit('setSettings', data.settings)
     commit('setLang', data.lang)
     commit('setMenus', data.menus)
