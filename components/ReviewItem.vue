@@ -41,7 +41,7 @@ export default {
   }
 
   &__title {
-    margin-bottom: 0.6rem;
+    margin-bottom: 1rem;
     font-weight: 500;
   }
 

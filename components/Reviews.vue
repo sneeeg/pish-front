@@ -1,6 +1,6 @@
 <template>
   <div class="reviews">
-    <div ref="reviewsList" :class="['reviews-list', { _flex: isListFlex }]">
+    <div ref="reviewsList" :class="['reviews-list', { _flex: !sliderStatus }]">
       <ReviewItem
         v-for="review in reviews"
         :key="review.id"
@@ -8,17 +8,21 @@
         :review="review"
       />
     </div>
+    <div class="reviews__controls">
+      <SliderControls v-if="sliderInstance" :slider-instance="sliderInstance" />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import ReviewItem from '~/components/ReviewItem'
-// import Slider from '~/assets/js/modules/slider'
+import Slider from '~/assets/js/modules/slider'
+import SliderControls from '~/components/SliderControls'
 
 export default {
   name: 'Reviews',
-  components: { ReviewItem },
+  components: { SliderControls, ReviewItem },
   data() {
     return {
       reviews: [],
@@ -26,9 +30,37 @@ export default {
     }
   },
   computed: {
-    ...mapState('responsive', ['window']),
-    isListFlex() {
-      return window.isDesktopSize && this.reviews.length <= 4
+    ...mapState('responsive', ['window', 'device']),
+    sliderStatus() {
+      if (this.window.isMobileSize && this.reviews.length > 1) {
+        return 'mobile'
+      } else if (this.window.isTabletSize && this.reviews.length > 2) {
+        return 'tablet'
+      } else if (this.window.isDesktopSize && this.reviews.length > 4) {
+        return 'desktop'
+      }
+
+      return false
+    },
+  },
+  watch: {
+    sliderStatus() {
+      this.sliderInstance?.flickity?.destroy()
+      this.sliderInstance = null
+
+      if (this.sliderStatus) {
+        setTimeout(
+          () =>
+            (this.sliderInstance = new Slider(this.$refs.reviewsList, {
+              groupCells: this.window.isDesktopSize
+                ? 4
+                : this.window.isMobileSize
+                ? false
+                : 2,
+              draggable: this.device.isAdaptive,
+            }))
+        )
+      }
     },
   },
   mounted() {
@@ -39,11 +71,33 @@ export default {
       this.reviews = await this.$api.reviews
         .get()
         .then(({ data }) => data || [])
-
-      console.log(this.reviews)
     },
   },
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.reviews {
+  &__controls {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 7.2rem;
+  }
+}
+
+.reviews-list {
+  &._flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    width: 23%;
+
+    &:not(:last-child) {
+      margin-right: 2.66666%;
+    }
+  }
+}
+</style>

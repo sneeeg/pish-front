@@ -33,6 +33,7 @@
       <div v-if="moreButtonExist" class="posts-more">
         <Btn
           class="posts-more__btn"
+          type="button"
           :text="lang['base.seeMore']"
           arrow="arrow-bottom"
           :loading="morePostsLoading"

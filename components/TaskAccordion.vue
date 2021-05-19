@@ -24,7 +24,7 @@
 </template>
 <script>
 import TransitionExpand from '~/assets/js/utils/TransitionExpand'
-import HTMLContent from '~/components/Utils/HTMLContent'
+import HTMLContent from '~/components/utils/HTMLContent'
 
 export default {
   name: 'TaskAccordion',
