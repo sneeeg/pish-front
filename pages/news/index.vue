@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Section :title="lang['news.title']">
+    <Section :title="page.mainNewsTitle">
       <Posts />
     </Section>
-    <Section background :title="lang['reviews.title']"> </Section>
+    <Section background :title="page.reviewsTitle"> </Section>
   </div>
 </template>
 
