@@ -1,3 +1,11 @@
 .hover-opacity {
   @include hover-opacity;
 }
+
+.hover-color-accent {
+  @include hover-color-accent;
+}
+
+.hover-accent-light {
+  @include hover-accent-light;
+}

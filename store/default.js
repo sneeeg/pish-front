@@ -25,13 +25,15 @@ export const mutations = {
 }
 
 export const actions = {
-  async getConfig({ state, commit }, locale) {
+  getConfig({ state, commit }, locale) {
     commit('setSiteId', window.siteId[locale])
     this.$axios.defaults.headers.common['X-Bitrix-Site-Id'] = state.siteId
+    this.$dayjs.locale(locale)
 
-    const data = await this.$api.config.get()
-    commit('setSettings', data.settings)
-    commit('setLang', data.lang)
-    commit('setMenus', data.menus)
+    return this.$api.config.get().then(({ data }) => {
+      commit('setSettings', data.settings)
+      commit('setLang', data.lang)
+      commit('setMenus', data.menus)
+    })
   },
 }

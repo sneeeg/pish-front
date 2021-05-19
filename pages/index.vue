@@ -15,11 +15,13 @@
 </template>
 
 <script>
+import Section from '~/components/layout/Section'
 import TextBlock from '~/components/TextBlock'
 
 export default {
   components: {
     TextBlock,
+    Section,
   },
 }
 </script>

@@ -36,7 +36,7 @@ body {
 
 html {
   font-size: 62.5%;
-  background: $color_light_grey; // in some versions Opera background is black by default
+  background: $color_background; // in some versions Opera background is black by default
 
   @media screen and (max-width: 767px) {
     font-size: calc(10px + 13 * (100vw - 375px) / 447);
@@ -68,7 +68,11 @@ body {
   }
 }
 
-main {
+.main {
+
+  &._default {
+    padding-top: 13.9rem;
+  }
 }
 
 ul {

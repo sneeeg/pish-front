@@ -1,3 +1,7 @@
 .padding-section  {
   @include padding-section;
 }
+
+.padding-card {
+  @include padding-card;
+}

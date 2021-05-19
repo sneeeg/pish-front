@@ -5,3 +5,19 @@
     opacity: 0.7;
   }
 }
+
+@mixin hover-color-accent {
+  transition: color 0.3s ease;
+
+  @include hover {
+    color: $color_accent;
+  }
+}
+
+@mixin hover-accent-light {
+  transition: color 0.3s ease;
+
+  @include hover {
+    color: $color_accent_light;
+  }
+}
