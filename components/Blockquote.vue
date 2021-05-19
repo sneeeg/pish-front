@@ -88,9 +88,9 @@ export default {
     @include text-big;
     position: relative;
     z-index: 2;
-    margin: 0 0 7.2rem;
     width: 100%;
     max-width: 100rem;
+    margin: 0 0 7.2rem;
 
     @include --tablet {
       margin-bottom: 4.8rem;
@@ -149,9 +149,9 @@ export default {
 
   &__name {
     display: block;
-    font-style: normal;
-    font-weight: bold;
     margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-style: normal;
   }
 }
 </style>

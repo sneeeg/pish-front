@@ -1,6 +1,6 @@
 <template>
   <div class="accordion-block">
-    <Accordion :tasks="tasks.items" @task-switch="switch3dModel" />
+    <Accordion :tasks="tasks" @task-switch="switch3dModel" />
     <div class="accordion-block__image-wrapper">
       <img :src="model3d" />
     </div>
@@ -17,13 +17,13 @@ export default {
   },
   props: {
     tasks: {
-      type: Object,
+      type: Array,
       required: true,
     },
   },
   data() {
     return {
-      model3d: this.tasks.items[0].model3d,
+      model3d: this.tasks[0].model3d,
     }
   },
   methods: {
@@ -74,7 +74,7 @@ export default {
 
     > img {
       position: absolute;
-      top: 40%;
+      top: 50%;
       left: 50%;
       max-width: 100%;
       max-height: 125%;
