@@ -11,15 +11,18 @@
       odit, officia quae qui quis ratione rem rerum sequi! Blanditiis, possimus.
     </Section>
     <TextBlock title="text-content"></TextBlock>
+    <BlockquoteBlock />
   </div>
 </template>
 
 <script>
 import TextBlock from '~/components/TextBlock'
+import BlockquoteBlock from '~/components/BlockquoteBlock'
 
 export default {
   components: {
     TextBlock,
+    BlockquoteBlock,
   },
 }
 </script>

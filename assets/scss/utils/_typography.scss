@@ -83,6 +83,16 @@
   }
 }
 
+@mixin text-big {
+  font-size: 3rem;
+  line-height: 4.2rem;
+
+  @include --mobile {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+}
+
 @mixin text-button {
   font-weight: 500;
   font-size: 1.4rem;
