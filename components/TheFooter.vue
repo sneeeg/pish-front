@@ -1,19 +1,25 @@
 <template>
   <footer class="footer">
     <div class="footer__content">
-      <address class="footer__info">
-        <p>{{ lang['company.copyright'] }}</p>
-        <a :href="lang['company.tel-href']"
-          ><span>{{ lang['company.tel-text'] }}</span></a
-        >
-        <a :href="`mailto:${lang['company.email']}`"
-          ><span>{{ lang['company.email'] }}</span></a
-        >
-      </address>
+      <div class="footer__row">
+        <nuxt-link to="/" class="footer__logo">
+          <img src="/i/logo-white.svg" alt="" />
+        </nuxt-link>
 
-      <div class="footer__socials">
-        <p>Подпишитесь на нас в соцсетях:</p>
-        <SocIcons></SocIcons>
+        <address class="footer__info">
+          <a :href="lang['company.tel-href']"
+            ><span>{{ lang['company.tel-text'] }}</span></a
+          >
+          <a :href="`mailto:${lang['company.email']}`"
+            ><span>{{ lang['company.email'] }}</span></a
+          >
+        </address>
+      </div>
+      <div class="footer__row">
+        <p class="footer__copyrights">
+          {{ lang['company.copyright'] }}
+        </p>
+        <SocIcons />
       </div>
     </div>
   </footer>
@@ -37,9 +43,9 @@ export default {
 <style lang="scss">
 .footer {
   width: 100%;
-  padding: 4.5rem 0 5.8rem 0;
+  padding: 4rem 0;
   color: #ffffff;
-  background: $color_dark_grey;
+  background: $color_black;
 
   @include --mobile {
     padding: 3.8rem 0;
@@ -53,19 +59,48 @@ export default {
     margin: 0 auto;
   }
 
-  &__info {
-    @include text-small;
+  &__row {
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
-    font-style: normal;
+    justify-content: space-between;
+    width: 100%;
 
     @include --mobile {
-      margin-bottom: 2.8rem;
+      flex-direction: column;
+    }
+
+    &:not(:last-child) {
+      margin: 0 0 5.6rem 0;
+
+      @include --mobile {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  &__logo {
+    width: 24.8rem;
+    height: 4.8rem;
+
+    @include --mobile {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    font-style: normal;
+
+    @include --tablet {
+      flex-direction: column;
     }
 
     > :not(:last-child) {
-      margin: 0 0 0.8em 0;
+      margin: 0 4rem 0 0;
+
+      @include --tablet {
+        margin: 0 0 1rem 0;
+      }
     }
 
     > a {
@@ -73,9 +108,12 @@ export default {
     }
   }
 
-  &__socials {
-    p {
-      margin: 0 0 1.6rem 0;
+  &__copyrights {
+    margin: 0;
+
+    @include --mobile {
+      order: 1;
+      margin-top: 1rem;
     }
   }
 }
