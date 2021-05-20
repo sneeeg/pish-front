@@ -14,6 +14,13 @@
     <Section background>
       <Blockquote :text="page.quote.content" :author="page.quote.author" />
     </Section>
+    <Section :title="page.participation.title">
+      <Participation
+        :title="page.participation.subtitle"
+        :text="page.participation.text"
+        :href="page.participation.href"
+      />
+    </Section>
     <Section :title="page.newsTitle">
       <Posts />
     </Section>
@@ -28,6 +35,7 @@ import Section from '~/components/layout/Section'
 import TextBlock from '~/components/TextBlock'
 import Blockquote from '~/components/Blockquote'
 import Posts from '~/components/Posts'
+import Participation from '~/components/Participation'
 
 export default {
   components: {
@@ -35,6 +43,7 @@ export default {
     TextBlock,
     Section,
     Blockquote,
+    Participation,
   },
   mixins: [pageDataFetch, pageHead],
   computed: {
