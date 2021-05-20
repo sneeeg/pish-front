@@ -8,4 +8,8 @@
 
 @mixin padding-card {
   padding: 3.2rem;
+
+  @include --mobile {
+    padding: 2rem;
+  }
 }

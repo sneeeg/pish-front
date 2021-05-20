@@ -1,7 +1,7 @@
 <template>
   <div class="posts">
     <div class="posts__head">
-      <ul class="posts-categories">
+      <ul v-if="window.isDesktopSize" class="posts-categories">
         <li
           v-for="category in categories"
           :key="category.id"
@@ -18,7 +18,18 @@
           >
         </li>
       </ul>
-      <ArrowLink v-if="!all" :text="lang['news.all']" to="/" />
+      <CustomSelect
+        v-else
+        :value="currentCategoryId"
+        :items="categories"
+        class="posts__select"
+        @input="changeCategory"
+      />
+      <ArrowLink
+        v-if="!all && window.isDesktopSize"
+        :text="lang['news.all']"
+        to="/news"
+      />
     </div>
     <div class="posts__content">
       <div class="posts-list">
@@ -27,16 +38,23 @@
           :key="post.id"
           class="posts-list__item"
           :post="post"
-          :category="findCategoryText(categories, post.categoryId)"
         />
       </div>
-      <div v-if="moreButtonExist" class="posts-more">
+      <div v-if="moreButtonExist" class="posts-foot">
         <Btn
-          class="posts-more__btn"
+          class="posts-foot__btn"
+          type="button"
           :text="lang['base.seeMore']"
           arrow="arrow-bottom"
           :loading="morePostsLoading"
           @click.native="loadMorePosts"
+        />
+      </div>
+      <div v-if="!all && !window.isDesktopSize" class="posts-foot">
+        <ArrowLink
+          class="posts-foot__link"
+          :text="lang['news.all']"
+          to="/news"
         />
       </div>
     </div>
@@ -49,14 +67,15 @@ import ArrowLink from '~/components/controls/ArrowLink'
 import findCategoryText from '~/assets/js/utils/find-category-text'
 import PostPreview from '~/components/PostPreview'
 import Btn from '~/components/controls/Btn'
+import CustomSelect from '~/components/controls/CustomSelect'
 
 export default {
   name: 'Posts',
-  components: { Btn, PostPreview, ArrowLink },
+  components: { CustomSelect, Btn, PostPreview, ArrowLink },
   props: {
     all: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   data() {
@@ -69,15 +88,11 @@ export default {
     }
   },
   async fetch() {
-    const categories = this.$api.posts.getCategories().then(({ data }) => {
-      this.categories = data || []
-      this.categories.unshift({ id: -1, text: this.lang['base.all'] })
-    })
-
-    await Promise.all([categories, this.fetchPosts(undefined, 1)])
+    await this.fetchPosts(undefined, 1)
   },
   computed: {
     ...mapState('default', ['lang']),
+    ...mapState('responsive', ['window']),
     moreButtonExist() {
       if (!this.all || !this.pagination.current) return false
 
@@ -112,6 +127,10 @@ export default {
           this.posts = data.posts || []
         }
 
+        if (!this.categories.length) {
+          this.categories = data.categories || []
+          this.categories.unshift({ id: -1, text: this.lang['base.all'] })
+        }
         this.pagination = data.pagination || {}
       })
     },
@@ -128,6 +147,10 @@ export default {
     justify-content: space-between;
     width: 100%;
     margin-bottom: 2.6rem;
+  }
+
+  &__select {
+    width: 100%;
   }
 }
 
@@ -157,10 +180,15 @@ export default {
   &__item {
     flex: 1 1 40%;
     max-width: calc(50% - 3rem);
+
+    @include --mobile {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
   }
 }
 
-.posts-more {
+.posts-foot {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -168,6 +196,14 @@ export default {
 
   &__btn {
     width: 23.2rem;
+
+    @include --mobile {
+      width: 18rem;
+    }
+  }
+
+  &__link {
+    width: fit-content;
   }
 }
 </style>

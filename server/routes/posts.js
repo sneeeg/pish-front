@@ -13,7 +13,11 @@ export default (pretender) => {
     return [
       200,
       { 'Content-Type': 'application/json' },
-      getResponse({ posts, pagination: { current: 1, total: 5 } }),
+      getResponse({
+        posts,
+        categories: postsCategories,
+        pagination: { current: 1, total: 5 },
+      }),
     ]
   })
 
@@ -23,15 +27,6 @@ export default (pretender) => {
       200,
       { 'Content-Type': 'application/json' },
       getResponse(universityPosts),
-    ]
-  })
-
-  // Get posts categories
-  pretender.get('/api/posts/categories', () => {
-    return [
-      200,
-      { 'Content-Type': 'application/json' },
-      getResponse(postsCategories),
     ]
   })
 }

@@ -77,10 +77,15 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.6rem 2rem;
+  height: 4.8rem;
+  padding: 2rem;
   color: $color_white;
   font-weight: 400;
   background-color: $color_accent;
+
+  @include --mobile {
+    height: 4.4rem;
+  }
 
   &::before {
     @include box(100%);

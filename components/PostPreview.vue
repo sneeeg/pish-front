@@ -1,12 +1,14 @@
 <template>
   <div class="post-preview">
     <SmartLink :to="toObject" class="post-preview__image">
-      <img :src="post.detailPicture.src" :alt="post.detailPicture.alt" />
+      <img :src="post.previewPicture.src" :alt="post.previewPicture.alt" />
     </SmartLink>
     <div class="post-preview__content">
       <div class="post-preview-head">
-        <template v-if="category">
-          <span class="post-preview-head__category">{{ category }}</span>
+        <template v-if="post.category.text">
+          <span class="post-preview-head__category">{{
+            post.category.text
+          }}</span>
           <span class="post-preview-head__separator"> / </span>
         </template>
         <span class="post-preview-head__date">{{
@@ -38,10 +40,6 @@ export default {
       type: Object,
       required: true,
     },
-    category: {
-      type: String,
-      default: '',
-    },
   },
   computed: {
     ...mapState('default', ['lang']),
@@ -62,6 +60,14 @@ export default {
     height: 32rem;
     transition: filter 0.3s ease;
 
+    @include --tablet {
+      height: 22.4rem;
+    }
+
+    @include --mobile {
+      height: 20rem;
+    }
+
     img {
       @include box(100%);
       object-fit: cover;
@@ -80,6 +86,11 @@ export default {
     display: block;
     margin: 2.4rem 0;
     line-height: 2.7rem;
+
+    @include --mobile {
+      margin: 1.6rem 0;
+      line-height: 2.2rem;
+    }
   }
 
   &__link {

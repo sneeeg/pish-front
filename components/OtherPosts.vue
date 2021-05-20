@@ -1,14 +1,24 @@
 <template>
-  <div class="reviews">
-    <div ref="reviewsList" :class="['reviews-list', { _flex: !sliderStatus }]">
-      <ReviewItem
-        v-for="review in reviews"
-        :key="review.id"
-        class="reviews-list__item"
-        :review="review"
+  <div class="other-posts">
+    <div
+      ref="otherPostsList"
+      :class="['other-posts-list', { _flex: !sliderStatus }]"
+    >
+      <OtherPostPreview
+        v-for="post in posts"
+        :key="post.id"
+        class="other-posts-list__item"
+        :to="
+          mainPosts
+            ? { name: 'news-post', params: { post: post.slug } }
+            : post.href
+        "
+        :active-from="post.activeFrom"
+        :picture="post.previewPicture"
+        :title="post.title"
       />
     </div>
-    <div class="reviews__controls">
+    <div class="other-posts__controls">
       <SliderControls v-if="sliderInstance" :slider-instance="sliderInstance" />
     </div>
   </div>
@@ -16,27 +26,37 @@
 
 <script>
 import { mapState } from 'vuex'
-import ReviewItem from '~/components/ReviewItem'
+import OtherPostPreview from '~/components/OtherPostPreview'
 import Slider from '~/assets/js/modules/slider'
 import SliderControls from '~/components/SliderControls'
 
 export default {
-  name: 'Reviews',
-  components: { SliderControls, ReviewItem },
+  name: 'OtherPosts',
+  components: { OtherPostPreview, SliderControls },
+  props: {
+    mainPosts: {
+      type: Boolean,
+      default: false,
+    },
+    categoryId: {
+      type: [String, Number, undefined],
+      default: undefined,
+    },
+  },
   data() {
     return {
-      reviews: [],
+      posts: [],
       sliderInstance: null,
     }
   },
   computed: {
     ...mapState('responsive', ['window', 'device']),
     sliderStatus() {
-      if (this.window.isMobileSize && this.reviews.length > 1) {
+      if (this.window.isMobileSize && this.posts.length > 1) {
         return 'mobile'
-      } else if (this.window.isTabletSize && this.reviews.length > 2) {
+      } else if (this.window.isTabletSize && this.posts.length > 2) {
         return 'tablet'
-      } else if (this.window.isDesktopSize && this.reviews.length > 4) {
+      } else if (this.window.isDesktopSize && this.posts.length > 3) {
         return 'desktop'
       }
 
@@ -51,9 +71,9 @@ export default {
       if (this.sliderStatus) {
         setTimeout(
           () =>
-            (this.sliderInstance = new Slider(this.$refs.reviewsList, {
+            (this.sliderInstance = new Slider(this.$refs.otherPostsList, {
               groupCells: this.window.isDesktopSize
-                ? 4
+                ? 3
                 : this.window.isMobileSize
                 ? false
                 : 2,
@@ -64,20 +84,26 @@ export default {
     },
   },
   mounted() {
-    this.fetchReviews()
+    this.fetchPosts()
   },
   methods: {
-    async fetchReviews() {
-      this.reviews = await this.$api.reviews
-        .get()
-        .then(({ data }) => data || [])
+    async fetchPosts() {
+      if (!this.mainPosts) {
+        this.posts = await this.$api.posts
+          .getUniversityPosts()
+          .then(({ data }) => data || [])
+      } else {
+        this.posts = await this.$api.posts
+          .get(this.categoryId, 1, 10)
+          .then(({ data }) => data.posts || [])
+      }
     },
   },
 }
 </script>
 
 <style lang="scss">
-.reviews {
+.other-posts {
   &__controls {
     display: flex;
     justify-content: center;
@@ -90,7 +116,7 @@ export default {
   }
 }
 
-.reviews-list {
+.other-posts-list {
   &._flex {
     display: flex;
     justify-content: space-between;
@@ -101,7 +127,7 @@ export default {
   }
 
   &__item {
-    width: 23%;
+    width: 31.6666666%;
 
     @include --tablet {
       width: 47.5%;
@@ -112,14 +138,14 @@ export default {
     }
 
     &:not(:last-child) {
-      margin-right: 2.66666%;
+      margin-right: 2.5%;
 
       @include --tablet {
         margin-right: 5%;
       }
 
       @include --mobile {
-        margin-right: 3rem;
+        margin-right: 1.6rem;
       }
     }
   }

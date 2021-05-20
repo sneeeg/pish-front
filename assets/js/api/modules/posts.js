@@ -8,9 +8,4 @@ export default ($axios) => ({
   getUniversityPosts() {
     return $axios.$get('/api/posts/university')
   },
-
-  /* Getting posts categories  */
-  getCategories() {
-    return $axios.$get('/api/posts/categories')
-  },
 })
