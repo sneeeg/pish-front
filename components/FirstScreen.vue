@@ -81,11 +81,15 @@ export default {
   &__link {
     width: 22rem;
     margin-top: 6.8rem;
+
+    @include --mobile {
+      width: 18rem;
+    }
   }
 
   &__lead {
-    margin-top: 8.4rem;
     max-width: 57rem;
+    margin-top: 8.4rem;
 
     @include --mobile {
       margin-top: 4rem;
