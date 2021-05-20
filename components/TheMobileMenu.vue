@@ -11,11 +11,11 @@
         </form>
 
         <nav class="menu__nav">
-          <nuxt-link
+          <SmartLink
             v-for="{ text, href } in menus.header"
             :key="text"
             :to="href"
-            >{{ text }}</nuxt-link
+            >{{ text }}</SmartLink
           >
 
           <LangToggler />
@@ -28,11 +28,13 @@
 import { mapActions, mapState } from 'vuex'
 
 import LangToggler from '~/components/Controls/LangToggler'
+import SmartLink from '~/components/Utils/SmartLink'
 
 export default {
   name: 'TheMenu',
   components: {
     LangToggler,
+    SmartLink,
   },
   data() {
     return {
@@ -127,6 +129,7 @@ export default {
     flex-direction: column;
     align-items: center;
     padding-top: 4.6rem;
+    font-weight: 500;
 
     > * {
       position: relative;

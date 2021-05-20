@@ -24,11 +24,11 @@
       </nuxt-link>
 
       <nav class="header__nav">
-        <nuxt-link
+        <SmartLink
           v-for="{ text, href } in menus.header"
           :key="text"
           :to="href"
-          >{{ text }}</nuxt-link
+          >{{ text }}</SmartLink
         >
       </nav>
 
@@ -50,6 +50,7 @@ import { mapState, mapActions } from 'vuex'
 import SocIcons from '~/components/SocIcons'
 import LangToggler from '~/components/Controls/LangToggler'
 import SearchHeader from '~/components/Controls/SearchHeader'
+import SmartLink from '~/components/Utils/SmartLink'
 
 export default {
   name: 'TheHeader',
@@ -57,6 +58,7 @@ export default {
     SocIcons,
     LangToggler,
     SearchHeader,
+    SmartLink,
   },
   computed: {
     ...mapState('default', ['menus']),
@@ -142,6 +144,7 @@ export default {
     height: 2.3rem;
     margin-left: auto;
     color: #000;
+    font-weight: 400;
 
     @include --tablet {
       display: none;

@@ -72,7 +72,7 @@ $toggle_border_rad: 3px;
     }
 
     &:nth-child(2) {
-      right: 0.9rem;
+      right: 0.8rem;
     }
   }
 
