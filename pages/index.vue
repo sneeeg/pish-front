@@ -1,5 +1,13 @@
 <template>
   <div>
+    <Section :title="page.request.title" background>
+      <TheCountdown
+        :title="page.request.title"
+        :subtitle="page.request.subtitle"
+        :date-to="page.request.dateTo"
+      ></TheCountdown>
+    </Section>
+
     <Section title="test">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
       animi assumenda consequuntur, debitis magni maiores minima minus odio
@@ -28,9 +36,11 @@ import Section from '~/components/layout/Section'
 import TextBlock from '~/components/TextBlock'
 import Blockquote from '~/components/Blockquote'
 import Posts from '~/components/Posts'
+import TheCountdown from '~/components/TheCountdown'
 
 export default {
   components: {
+    TheCountdown,
     Posts,
     TextBlock,
     Section,

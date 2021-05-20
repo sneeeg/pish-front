@@ -20,6 +20,7 @@
     "@nuxtjs/dayjs": "^1.4.0",
     "@nuxtjs/style-resources": "^1.0.0",
     "core-js": "^3.9.1",
+    "countdown-js": "^1.0.2",
     "flickity": "^2.2.2",
     "flickity-imagesloaded": "^2.0.0",
     "gsap": "^3.6.1",
@@ -27,6 +28,8 @@
     "normalize.css": "^8.0.1",
     "nuxt": "^2.15.3",
     "nuxt-i18n": "^6.27.0",
+    "plural-ru": "^2.0.2",
+    "string.prototype.padstart": "^3.1.2",
     "svg4everybody": "^2.1.9",
     "throttle-debounce": "^3.0.1",
     "vue-scrollto": "^2.20.0"
