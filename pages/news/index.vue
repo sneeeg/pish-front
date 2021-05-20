@@ -1,7 +1,7 @@
 <template>
   <div>
     <Section :title="page.mainNewsTitle">
-      <Posts />
+      <Posts all />
     </Section>
     <Section background :title="page.reviewsTitle">
       <Reviews />

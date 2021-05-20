@@ -14,7 +14,7 @@
             : post.href
         "
         :active-from="post.activeFrom"
-        :picture="mainPosts ? post.detailPicture : post.previewPicture"
+        :picture="post.previewPicture"
         :title="post.title"
       />
     </div>
@@ -109,6 +109,10 @@ export default {
     justify-content: center;
     width: 100%;
     margin-top: 7.2rem;
+
+    @include --mobile {
+      margin-top: 5rem;
+    }
   }
 }
 
@@ -118,11 +122,31 @@ export default {
     justify-content: space-between;
   }
 
+  @include --mobile {
+    @include sliderViewportVisible;
+  }
+
   &__item {
     width: 31.6666666%;
 
+    @include --tablet {
+      width: 47.5%;
+    }
+
+    @include --mobile {
+      width: 100%;
+    }
+
     &:not(:last-child) {
       margin-right: 2.5%;
+
+      @include --tablet {
+        margin-right: 5%;
+      }
+
+      @include --mobile {
+        margin-right: 1.6rem;
+      }
     }
   }
 }

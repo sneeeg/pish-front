@@ -83,6 +83,10 @@ export default {
     justify-content: center;
     width: 100%;
     margin-top: 7.2rem;
+
+    @include --mobile {
+      margin-top: 5rem;
+    }
   }
 }
 
@@ -92,11 +96,31 @@ export default {
     justify-content: space-between;
   }
 
+  @include --mobile {
+    @include sliderViewportVisible;
+  }
+
   &__item {
     width: 23%;
 
+    @include --tablet {
+      width: 47.5%;
+    }
+
+    @include --mobile {
+      width: 100%;
+    }
+
     &:not(:last-child) {
       margin-right: 2.66666%;
+
+      @include --tablet {
+        margin-right: 5%;
+      }
+
+      @include --mobile {
+        margin-right: 3rem;
+      }
     }
   }
 }

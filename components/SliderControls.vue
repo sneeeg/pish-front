@@ -92,6 +92,10 @@ export default {
   display: flex;
   margin: 0 4.8rem;
 
+  @include --mobile {
+    margin: 0 3.2rem;
+  }
+
   &__btn {
     @include box(2rem);
     @include btn-reset;

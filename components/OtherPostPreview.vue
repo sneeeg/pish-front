@@ -61,6 +61,10 @@ export default {
     height: 22.8rem;
     transition: filter 0.3s ease;
 
+    @include --mobile {
+      height: 20rem;
+    }
+
     img {
       @include box(100%);
       object-fit: cover;
@@ -73,12 +77,20 @@ export default {
 
   &__content {
     padding: 2.2rem 4rem;
+
+    @include --mobile {
+      padding: 3.2rem 2rem;
+    }
   }
 
   &__title {
     @include text-small;
     display: block;
     margin: 2.2rem 0 4.8rem;
+
+    @include --mobile {
+      margin: 1.6rem 0 2rem;
+    }
   }
 
   &__link {
