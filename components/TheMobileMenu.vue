@@ -56,9 +56,7 @@ export default {
   methods: {
     ...mapActions('scroll', { unlockScroll: 'unlock', lockScroll: 'lock' }),
     onSubmit() {
-      const formData = new FormData()
-      formData.append('search', this.search)
-      this.$api.search.post(formData)
+      this.$router.push({ path: 'search', query: { q: this.search } })
     },
   },
 }
@@ -66,11 +64,11 @@ export default {
 <style lang="scss">
 .menu {
   position: absolute;
-  top: 11.9rem;
+  top: 13rem;
   left: 0;
   z-index: 9;
   width: 100%;
-  height: calc(100% - 11.9rem);
+  height: calc(100% - 13rem);
   background-color: #fff;
 
   @include --from-tablet {

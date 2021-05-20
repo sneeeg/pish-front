@@ -6,7 +6,6 @@
   >
     <div class="header__info">
       <div class="header__content">
-        <SocIcons mod="_header" />
         <a
           class="header__ministry"
           href="#"
@@ -15,6 +14,7 @@
         >
           <img src="/i/min-science.svg" alt="" />
         </a>
+        <SocIcons class="_header" />
       </div>
     </div>
 
@@ -33,9 +33,7 @@
       </nav>
 
       <div class="header__controls">
-        <button type="button" class="header__search-btn">
-          <svg-icon name="search" />
-        </button>
+        <SearchHeader />
         <LangToggler />
       </div>
       <button type="button" class="header__menu-btn" @click="toggleMenu">
@@ -51,12 +49,14 @@ import { mapState, mapActions } from 'vuex'
 
 import SocIcons from '~/components/SocIcons'
 import LangToggler from '~/components/Controls/LangToggler'
+import SearchHeader from '~/components/Controls/SearchHeader'
 
 export default {
   name: 'TheHeader',
   components: {
     SocIcons,
     LangToggler,
+    SearchHeader,
   },
   computed: {
     ...mapState('default', ['menus']),
@@ -80,7 +80,7 @@ export default {
 
     .header__content {
       align-items: center;
-      padding: 0.9rem 0;
+      padding: 1.3rem 0;
 
       @include --tablet {
         padding: 0.9rem 0;
@@ -102,8 +102,8 @@ export default {
   }
 
   &__ministry {
-    width: 12.8rem;
-    height: 3.2rem;
+    width: 16rem;
+    height: 4.2rem;
 
     img {
       width: 100%;
@@ -172,17 +172,9 @@ export default {
     @include --tablet {
       display: none;
     }
-  }
 
-  &__search-btn {
-    @include btn-reset;
-    width: 1.5rem;
-    height: 1.7rem;
-    margin: 0 3.7rem 0 2.1rem;
-
-    svg {
-      width: 100%;
-      height: 100%;
+    .header-search {
+      margin: 0 3.7rem 0 2.1rem;
     }
   }
 
