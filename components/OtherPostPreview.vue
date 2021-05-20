@@ -76,7 +76,7 @@ export default {
   }
 
   &__content {
-    padding: 2.2rem 4rem;
+    padding: 2.2rem 4rem 3.2rem;
 
     @include --mobile {
       padding: 3.2rem 2rem;

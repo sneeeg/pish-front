@@ -19,7 +19,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: window.location.origin,
+          content: window.location.origin + window.location.pathname,
         },
         {
           hid: 'og:title',
@@ -37,12 +37,14 @@ export default {
         {
           hid: 'og:image',
           property: 'og:image',
-          content: this.page.ogFb || this.$store.state.default.settings.ogFb,
+          content:
+            window.location.origin + this.page.ogFb ||
+            this.$store.state.default.settings.ogFb,
         },
         {
           hid: 'twitter:url',
           property: 'twitter:url',
-          content: window.location.origin,
+          content: window.location.origin + window.location.pathname,
         },
         {
           hid: 'twitter:title',
@@ -60,12 +62,16 @@ export default {
         {
           hid: 'twitter:image',
           property: 'og:image',
-          content: this.page.ogFb || this.$store.state.default.settings.ogFb,
+          content:
+            window.location.origin + this.page.ogFb ||
+            this.$store.state.default.settings.ogFb,
         },
         {
           hid: 'vk:image',
           property: 'og:image',
-          content: this.page.ogVk || this.$store.state.default.settings.ogVk,
+          content:
+            window.location.origin + this.page.ogVk ||
+            this.$store.state.default.settings.ogVk,
         },
       ],
     }

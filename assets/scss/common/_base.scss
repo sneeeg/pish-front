@@ -78,6 +78,14 @@ body {
   }
 }
 
+.page {
+  &__back {
+    @include container;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
 ul {
   margin: 0;
   padding-left: 0;

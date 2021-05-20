@@ -1,7 +1,10 @@
 <template>
   <SmartLink class="arrow-link hover-accent-light" :aria-label="text" :to="to">
     <span>{{ text }}</span
-    ><SvgIcon name="arrow-right" />
+    ><SvgIcon
+      :class="['arrow-link__svg', { _left: arrowLeft }]"
+      :name="arrowLeft ? 'arrow-left' : 'arrow-right'"
+    />
   </SmartLink>
 </template>
 
@@ -20,6 +23,10 @@ export default {
       type: String,
       required: true,
     },
+    arrowLeft: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 </script>
@@ -31,15 +38,24 @@ export default {
   align-items: center;
   color: $color_accent;
 
-  svg {
+  &__svg {
     @include box(1rem);
     margin-left: 0.6rem;
     transition: transform 0.3s ease;
+
+    &._left {
+      order: -1;
+      margin: 0 0.6rem 0 0;
+    }
   }
 
   @include hover {
     svg {
       transform: translateX(4px);
+
+      &._left {
+        transform: translateX(-4px);
+      }
     }
   }
 }

@@ -5,6 +5,7 @@
       'section',
       {
         _background: background,
+        '_background-absolute': backgroundAbsolute,
       },
     ]"
     :style="{ overflow: hasOverflow ? '' : 'hidden' }"
@@ -46,6 +47,10 @@ export default {
     hasOverflow: {
       type: Boolean,
       default: true,
+    },
+    backgroundAbsolute: {
+      type: Boolean,
+      default: false,
     },
   },
 }
