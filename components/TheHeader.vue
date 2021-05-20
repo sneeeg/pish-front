@@ -96,10 +96,10 @@ export default {
     align-items: flex-start;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 3rem 0;
+    padding: 3rem 0 0 0;
 
     @include --tablet {
-      padding: 1.5rem 0 2rem 0;
+      padding: 1.5rem 0 0;
     }
   }
 

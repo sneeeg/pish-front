@@ -57,10 +57,15 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 14rem);
+  min-height: calc(100vh - 15.8rem);
 
   @include --tablet {
     justify-content: flex-end;
+    min-height: calc(100vh - 12.3rem);
+  }
+
+  @include --mobile {
+    min-height: calc(100vh - 11rem);
   }
 
   &._adaptive-top {
