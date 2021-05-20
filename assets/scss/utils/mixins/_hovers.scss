@@ -31,3 +31,19 @@
   background-position: 0 100%;
   background-size: 100% 1px;
 }
+
+@mixin hover-color-accent {
+  transition: color 0.3s ease;
+
+  @include hover {
+    color: $color_accent;
+  }
+}
+
+@mixin hover-accent-light {
+  transition: color 0.3s ease;
+
+  @include hover {
+    color: $color_accent_light;
+  }
+}

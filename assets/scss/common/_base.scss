@@ -31,12 +31,12 @@ body {
   margin: 0;
   color: $color_black;
   font-weight: 300;
-  font-family: $font-gerbera;
+  font-family: $font-main;
 }
 
 html {
   font-size: 62.5%;
-  background: $color_light_grey; // in some versions Opera background is black by default
+  background: $color_background; // in some versions Opera background is black by default
 
   @media screen and (max-width: 767px) {
     font-size: calc(10px + 13 * (100vw - 375px) / 447);
@@ -56,6 +56,8 @@ body {
 }
 
 #app {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
 
@@ -68,7 +70,20 @@ body {
   }
 }
 
-main {
+.main {
+  flex: 1 0 auto;
+
+  &._default {
+    padding-top: 13.9rem;
+  }
+}
+
+.page {
+  &__back {
+    @include container;
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 ul {

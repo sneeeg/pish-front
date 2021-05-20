@@ -10,7 +10,20 @@ import { getResponse } from '~/server/utils'
 export default (pretender) => {
   // Get posts
   pretender.get('/api/posts', () => {
-    return [200, { 'Content-Type': 'application/json' }, getResponse(posts)]
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse({
+        posts,
+        categories: postsCategories,
+        pagination: { current: 1, total: 5 },
+      }),
+    ]
+  })
+
+  // Get post by slug
+  pretender.get('/api/posts/item', () => {
+    return [200, { 'Content-Type': 'application/json' }, getResponse(posts[0])]
   })
 
   // Get university posts
@@ -19,15 +32,6 @@ export default (pretender) => {
       200,
       { 'Content-Type': 'application/json' },
       getResponse(universityPosts),
-    ]
-  })
-
-  // Get posts categories
-  pretender.get('/api/posts/categories', () => {
-    return [
-      200,
-      { 'Content-Type': 'application/json' },
-      getResponse(postsCategories),
     ]
   })
 }

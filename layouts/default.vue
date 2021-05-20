@@ -2,9 +2,9 @@
   <div id="app">
     <TheHeader />
 
-    <main class="main">
+    <div class="main _default">
       <Nuxt />
-    </main>
+    </div>
 
     <TheFooter />
 
@@ -13,8 +13,6 @@
     </transition>
   </div>
 </template>
-
-<style></style>
 
 <script>
 import TheHeader from '~/components/TheHeader.vue'

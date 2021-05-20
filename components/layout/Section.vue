@@ -5,8 +5,10 @@
       'section',
       {
         _background: background,
+        '_background-absolute': backgroundAbsolute,
       },
     ]"
+    :style="{ overflow: hasOverflow ? '' : 'hidden' }"
   >
     <div v-if="isLayout" class="section__content">
       <slot name="default" />
@@ -39,6 +41,14 @@ export default {
       default: false,
     },
     isLayout: {
+      type: Boolean,
+      default: false,
+    },
+    hasOverflow: {
+      type: Boolean,
+      default: true,
+    },
+    backgroundAbsolute: {
       type: Boolean,
       default: false,
     },

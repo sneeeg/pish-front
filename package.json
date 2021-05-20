@@ -28,7 +28,8 @@
     "nuxt": "^2.15.3",
     "nuxt-i18n": "^6.27.0",
     "svg4everybody": "^2.1.9",
-    "throttle-debounce": "^3.0.1"
+    "throttle-debounce": "^3.0.1",
+    "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",

@@ -5,4 +5,7 @@ export default {
   metaDescription: 'Новости', // Мета описание
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
+  mainNewsTitle: 'Новости',
+  reviewsTitle: 'СМИ о программе',
+  universityNewsTitle: 'Новости университетов',
 }

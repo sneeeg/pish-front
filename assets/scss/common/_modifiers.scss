@@ -10,3 +10,11 @@
 ._hidden {
   visibility: hidden;
 }
+
+.accent-color-by-active {
+  transition: color 0.3s ease;
+
+  &._active {
+    color: $color_accent;
+  }
+}
