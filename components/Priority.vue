@@ -27,6 +27,7 @@ export default {
 
 <style lang="scss">
 .priority {
+  @include text-small;
   display: flex;
   padding: 2.4rem 0;
 
@@ -37,7 +38,7 @@ export default {
   &__icon-wrapper {
     display: flex;
     flex: 0 0 21%;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     margin-right: 2.4rem;
 
@@ -48,14 +49,6 @@ export default {
     > img {
       max-width: 100%;
       max-height: 100%;
-    }
-  }
-
-  > .html-content {
-    margin-top: 2.4rem;
-
-    @include --tablet {
-      margin-top: 1.6rem;
     }
   }
 }

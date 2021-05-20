@@ -42,10 +42,6 @@ export default {
       flex-basis: calc(100% - 3rem);
       max-width: none;
     }
-
-    > .priority {
-      min-height: 100%;
-    }
   }
 }
 </style>
