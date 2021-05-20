@@ -4,7 +4,7 @@
     <p class="blockquote__text">{{ text }}</p>
     <footer>
       <div class="blockquote__photo">
-        <img :src="author.photo" alt="Портрет автора" />
+        <img :src="author.image" />
       </div>
       <div class="blockquote__author-block">
         <cite class="blockquote__name">{{ author.name }}</cite>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+// import HTMLContent from '~/components/utils/HTMLContent'
+
 export default {
   name: 'Blockquote',
   components: {},

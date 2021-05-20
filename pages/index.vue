@@ -11,7 +11,9 @@
       odit, officia quae qui quis ratione rem rerum sequi! Blanditiis, possimus.
     </Section>
     <TextBlock title="text-content"></TextBlock>
-    <BlockquoteBlock />
+    <Section background>
+      <Blockquote :text="page.quote.content" :author="page.quote.author" />
+    </Section>
     <Section :title="page.newsTitle">
       <Posts />
     </Section>
@@ -19,11 +21,12 @@
 </template>
 
 <script>
-import Section from '~/components/layout/Section'
-import TextBlock from '~/components/TextBlock'
-import BlockquoteBlock from '~/components/BlockquoteBlock'
+import { mapState } from 'vuex'
 import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageHead from '~/assets/js/vue-mixins/page-head'
+import Section from '~/components/layout/Section'
+import TextBlock from '~/components/TextBlock'
+import Blockquote from '~/components/Blockquote'
 import Posts from '~/components/Posts'
 
 export default {
@@ -31,9 +34,12 @@ export default {
     Posts,
     TextBlock,
     Section,
-    BlockquoteBlock,
+    Blockquote,
   },
   mixins: [pageDataFetch, pageHead],
+  computed: {
+    ...mapState('default', ['lang']),
+  },
 }
 </script>
 
