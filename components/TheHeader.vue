@@ -50,7 +50,7 @@ import { mapState, mapActions } from 'vuex'
 import SocIcons from '~/components/SocIcons'
 import LangToggler from '~/components/Controls/LangToggler'
 import SearchHeader from '~/components/Controls/SearchHeader'
-import SmartLink from '~/components/Utils/SmartLink'
+import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'TheHeader',

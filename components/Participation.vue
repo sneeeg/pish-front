@@ -46,11 +46,11 @@ export default {
 
   &__title {
     margin: 0 0 1.9rem;
+    color: $color_red;
     font-weight: bold;
     font-size: 1.6rem;
     line-height: 1.8rem;
     text-transform: uppercase;
-    color: $color_red;
 
     @include --tablet {
       margin: 0 0 1.6rem;

@@ -28,7 +28,7 @@
 import { mapActions, mapState } from 'vuex'
 
 import LangToggler from '~/components/Controls/LangToggler'
-import SmartLink from '~/components/Utils/SmartLink'
+import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'TheMenu',
