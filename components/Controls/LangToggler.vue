@@ -82,7 +82,7 @@ $toggle_border_rad: 3px;
     width: 3.6rem;
     height: 2.1rem;
     border-radius: $toggle_border_rad;
-    background-color: $color_red;
+    background-color: $color_accent;
 
     @include --tablet {
       height: 2.5rem;

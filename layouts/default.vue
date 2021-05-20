@@ -8,7 +8,7 @@
 
     <TheFooter />
 
-    <transition name="slide-right">
+    <transition name="fade">
       <TheMobileMenu v-if="$store.state.menu.isActive"></TheMobileMenu>
     </transition>
   </div>
