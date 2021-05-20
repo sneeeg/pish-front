@@ -3,10 +3,10 @@
     <div class="review-item__date">
       {{ $dayjs(review.activeFrom).format($constants.POST_DATE_FORMAT) }}
     </div>
-    <NuxtLink
+    <SmartLink
       :to="review.href"
       class="review-item__title hover-opacity _visually-h4"
-      >{{ review.title }}</NuxtLink
+      >{{ review.title }}</SmartLink
     >
     <div class="review-item__text" v-html="review.content"></div>
     <ArrowLink
@@ -20,9 +20,10 @@
 <script>
 import { mapState } from 'vuex'
 import ArrowLink from '~/components/controls/ArrowLink'
+import SmartLink from '~/components/utils/SmartLink'
 export default {
   name: 'ReviewItem',
-  components: { ArrowLink },
+  components: { SmartLink, ArrowLink },
   props: {
     review: {
       type: Object,
