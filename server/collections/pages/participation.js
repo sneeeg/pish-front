@@ -1,8 +1,8 @@
 export default {
   id: 4, // id
-  title: 'Участие', // Заголовок на вкладке
-  metaTitle: 'Участие', // Мета заголовок
-  metaDescription: 'Участие', // Мета описание
+  title: 'Каĸ стать участниĸом программы', // Заголовок на вкладке
+  metaTitle: 'Каĸ стать участниĸом программы', // Мета заголовок
+  metaDescription: 'Каĸ стать участниĸом программы', // Мета описание
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
   advertisement: 'html',

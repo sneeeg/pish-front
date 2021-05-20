@@ -1,5 +1,8 @@
 <template>
   <div>
+    <Section is-layout>
+      <FirstScreen :title="page.mainScreenTitles[0]" link major />
+    </Section>
     <Section title="test">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
       animi assumenda consequuntur, debitis magni maiores minima minus odio
@@ -28,9 +31,11 @@ import Section from '~/components/layout/Section'
 import TextBlock from '~/components/TextBlock'
 import Blockquote from '~/components/Blockquote'
 import Posts from '~/components/Posts'
+import FirstScreen from '~/components/FirstScreen'
 
 export default {
   components: {
+    FirstScreen,
     Posts,
     TextBlock,
     Section,
