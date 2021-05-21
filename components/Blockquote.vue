@@ -37,14 +37,14 @@ export default {
 .blockquote {
   position: relative;
   margin: 0 auto;
-  padding: 9.6rem 10.4rem;
+  padding: 0 10.4rem;
 
   @include --tablet {
-    padding: 3.2rem 2.4rem;
+    padding: 0 2.4rem;
   }
 
   @include --mobile {
-    padding: 1.6rem;
+    padding: 0 1.6rem;
   }
 
   &::before {

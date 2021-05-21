@@ -20,7 +20,10 @@
 
     <div class="header__content">
       <nuxt-link to="/" class="header__logo">
-        <img src="/i/logo.svg" alt="" />
+        <img
+          :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"
+          alt=""
+        />
       </nuxt-link>
 
       <nav class="header__nav">

@@ -3,7 +3,14 @@
     <div class="footer__content">
       <div class="footer__row">
         <nuxt-link to="/" class="footer__logo">
-          <img src="/i/logo-white.svg" alt="" />
+          <img
+            :src="
+              $i18n.locale === 'ru'
+                ? '/i/logo-white.svg'
+                : '/i/logo-white-en.svg'
+            "
+            alt=""
+          />
         </nuxt-link>
 
         <address class="footer__info">

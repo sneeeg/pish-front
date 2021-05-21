@@ -3,13 +3,6 @@
     <Section is-layout>
       <FirstScreen :title="page.mainScreenTitles[0]" link major />
     </Section>
-    <Section :title="page.request.title" background>
-      <TheCountdown
-        :title="page.request.title"
-        :subtitle="page.request.subtitle"
-        :date-to="page.request.dateTo"
-      ></TheCountdown>
-    </Section>
     <Section background>
       <Blockquote :text="page.quote.content" :author="page.quote.author" />
     </Section>
@@ -19,6 +12,13 @@
         :text="page.participation.text"
         :href="page.participation.href"
       />
+    </Section>
+    <Section :title="page.request.title" background>
+      <TheCountdown
+        :title="page.request.title"
+        :subtitle="page.request.subtitle"
+        :date-to="page.request.dateTo"
+      ></TheCountdown>
     </Section>
     <Section :title="page.newsTitle">
       <Posts />
