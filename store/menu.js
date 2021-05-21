@@ -19,4 +19,8 @@ export const actions = {
       dispatch('scroll/unlock', '', { root: true })
     }
   },
+  close({ commit, dispatch }) {
+    commit('setIsActive', false)
+    dispatch('scroll/unlock', '', { root: true })
+  },
 }

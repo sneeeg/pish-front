@@ -20,14 +20,18 @@ export default {
 <style lang="scss">
 .soc {
   display: flex;
-  color: $color_dark_grey;
+  color: #fff;
 
   &._header {
-    color: $color_red;
+    color: $color_accent;
 
     a {
-      width: 2rem;
+      width: auto;
       height: 2rem;
+
+      @include hover {
+        background-color: transparent;
+      }
     }
 
     > :not(:last-child) {
@@ -39,22 +43,25 @@ export default {
     }
   }
 
-  a {
-    @include box(4.1rem);
+  li {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: #fff;
-    transition: background-color 0.3s ease;
+  }
 
-    @include hover {
-      background-color: $color_light_grey;
-    }
+  a {
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: auto;
 
     svg {
       width: 2rem;
-      height: 2rem;
+      height: 1.6rem;
+      margin: auto;
+
+      &._icon-in {
+        width: 1.5rem;
+        height: 1.4rem;
+      }
     }
   }
 

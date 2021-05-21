@@ -50,7 +50,7 @@ import { mapState, mapActions } from 'vuex'
 import SocIcons from '~/components/SocIcons'
 import LangToggler from '~/components/Controls/LangToggler'
 import SearchHeader from '~/components/Controls/SearchHeader'
-import SmartLink from '~/components/Utils/SmartLink'
+import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'TheHeader',
@@ -73,6 +73,8 @@ export default {
 </script>
 <style lang="scss">
 .header {
+  transition: background-color 0.3s ease;
+
   ._menu-active & {
     background-color: #fff;
   }
@@ -86,6 +88,10 @@ export default {
 
       @include --tablet {
         padding: 0.9rem 0;
+      }
+
+      @include --mobile {
+        flex-direction: row-reverse;
       }
     }
   }

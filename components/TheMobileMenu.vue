@@ -28,7 +28,7 @@
 import { mapActions, mapState } from 'vuex'
 
 import LangToggler from '~/components/Controls/LangToggler'
-import SmartLink from '~/components/Utils/SmartLink'
+import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'TheMenu',
@@ -50,13 +50,11 @@ export default {
   },
   updated() {
     if (this.window.isDesktopSize) {
-      this.unlockScroll('')
-    } else {
-      this.lockScroll('')
+      this.closeMenu()
     }
   },
   methods: {
-    ...mapActions('scroll', { unlockScroll: 'unlock', lockScroll: 'lock' }),
+    ...mapActions('menu', { closeMenu: 'close' }),
     onSubmit() {
       this.$router.push({ path: 'search', query: { q: this.search } })
     },
@@ -66,11 +64,11 @@ export default {
 <style lang="scss">
 .menu {
   position: absolute;
-  top: 13rem;
+  top: 11rem;
   left: 0;
   z-index: 9;
   width: 100%;
-  height: calc(100% - 13rem);
+  height: calc(100% - 11rem);
   background-color: #fff;
 
   @include --from-tablet {
@@ -81,6 +79,7 @@ export default {
     position: relative;
     z-index: 10;
     height: 100%;
+    padding: 2rem 0 4rem 0;
     overflow: hidden auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -92,7 +91,6 @@ export default {
     flex-direction: column;
     min-height: 100%;
     margin: 0 auto;
-    padding-bottom: 2rem;
   }
 
   &__search {
@@ -146,16 +144,12 @@ export default {
   }
 }
 
-.slide-right-enter-active {
-  transition: opacity 0.5s ease;
+.fade-enter-active {
+  transition: opacity 0.3s ease;
 }
 
-.slide-right-leave-active {
-  transition: opacity 0.8s ease;
-}
-
-.slide-right-enter,
-.slide-right-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
