@@ -1,17 +1,26 @@
 .pagination {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 
   .pagination-list {
     display: flex;
     margin: 0 4.8rem;
 
+    @include --mobile {
+      margin: 0 3.2rem;
+    }
+
     &__item {
       @include text-small;
-      font-weight: 700;
       margin: 0 1rem;
+      color: $color_grey_text;
+      transition: color 0.3s ease;
+
+      &.active {
+        color: $color_accent;
+      }
     }
   }
 }

@@ -4,14 +4,14 @@
       {{ $dayjs(review.activeFrom).format($constants.POST_DATE_FORMAT) }}
     </div>
     <SmartLink
-      :to="review.href"
+      :to="linkObject"
       class="review-item__title hover-opacity _visually-h4"
       >{{ review.title }}</SmartLink
     >
-    <div class="review-item__text" v-html="review.content"></div>
+    <div class="review-item__text" v-html="review.description"></div>
     <ArrowLink
       class="reciew-item__link"
-      :to="review.href"
+      :to="linkObject"
       :text="lang['base.readMore']"
     />
   </div>
@@ -32,6 +32,12 @@ export default {
   },
   computed: {
     ...mapState('default', ['lang']),
+    linkObject() {
+      return {
+        name: 'news-type-post',
+        params: { type: 'media', post: this.review.slug },
+      }
+    },
   },
 }
 </script>
@@ -65,6 +71,10 @@ export default {
 
     @include --mobile {
       margin-bottom: 2rem;
+    }
+
+    p {
+      margin: 0;
     }
   }
 }

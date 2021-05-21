@@ -3,7 +3,7 @@
     <h1 class="post-head__title _visually-h2">{{ title }}</h1>
     <div class="post-head-info">
       <template v-if="category">
-        <span class="post-head-info__category">{{ category }}</span>
+        <span class="post-head-info__category">{{ category.text }}</span>
         <span class="post-head-info__separator"> / </span>
       </template>
       <span class="post-head-info__date">{{
@@ -29,8 +29,8 @@ export default {
       default: null,
     },
     category: {
-      type: String,
-      default: '',
+      type: Object,
+      default: null,
     },
     date: {
       type: String,

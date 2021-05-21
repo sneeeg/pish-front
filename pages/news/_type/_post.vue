@@ -1,13 +1,13 @@
 <template>
-  <div class="page _background">
+  <div :class="page">
     <div v-if="window.isDesktopSize" class="page__back">
-      <ArrowLink :text="lang['base.back']" to="/news" arrow-left />
+      <ArrowLink :text="lang['news.all']" to="/news" arrow-left />
     </div>
-    <Section background-absolute
+    <Section :background-absolute="!!page.detailPicture"
       ><article class="post">
         <PostHead
           :title="page.title"
-          :category="page.category.text"
+          :category="page.category"
           :date="page.activeFrom"
           :description="page.description"
           :picture="page.detailPicture"
@@ -22,7 +22,7 @@
       <HTMLContent :html="page.content" class="post__body" />
     </Section>
     <Section :title="lang['news.other']">
-      <OtherPosts main-posts :category-id="page.category.id" />
+      <OtherPosts main-posts :category="page.category" />
     </Section>
   </div>
 </template>
@@ -41,9 +41,15 @@ export default {
   components: { HTMLContent, PostHead, Section, ArrowLink, OtherPosts },
   mixins: [pageHead],
   async asyncData({ $nuxt, route, $api }) {
-    const page = await $api.posts
-      .getPostBySlug(route.params.post)
-      .then(({ data }) => data)
+    const type = route.params.type
+    const apiMethod =
+      type === 'all'
+        ? $api.posts.getPostBySlug
+        : type === 'university'
+        ? $api.posts.getUniversityPostBySlug
+        : $api.reviews.getReviewBySlug
+
+    const page = await apiMethod(route.params.post).then(({ data }) => data)
 
     if (!page) {
       return $nuxt.error({ statusCode: 404, message: 'Post not found' })

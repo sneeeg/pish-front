@@ -1,12 +1,21 @@
 <template>
-  <form class="header-search" @submit.prevent="onSubmit">
+  <form
+    :class="[
+      'header-search',
+      { _disabled: routing.currentPageName === 'search' },
+    ]"
+    @submit.prevent="onSubmit"
+  >
     <div class="header-search__inner" :class="{ '_is-open': isOpen }">
-      <button type="button" class="header-search__submit" @click="toggleSearch">
-        <svg-icon name="search" />
-      </button>
+      <SearchBtn
+        type="button"
+        class="header-search__submit"
+        @click.native="toggleSearch"
+      />
       <input
         v-show="isOpen"
-        v-model="search"
+        ref="headerSearchInput"
+        v-model.trim="search"
         type="text"
         :placeholder="lang['search.placeholder']"
         class="header-search__input"
@@ -26,9 +35,11 @@
 
 <script>
 import { mapState } from 'vuex'
+import SearchBtn from '~/components/controls/SearchBtn'
 
 export default {
-  name: 'LangToggler',
+  name: 'SearchHeader',
+  components: { SearchBtn },
   data() {
     return {
       isOpen: false,
@@ -36,7 +47,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('default', ['lang']),
+    ...mapState('default', ['lang', 'routing']),
   },
   methods: {
     toggleSearch() {
@@ -44,6 +55,7 @@ export default {
         this.onSubmit()
       } else {
         this.isOpen = true
+        setTimeout(() => this.$refs.headerSearchInput.focus())
       }
     },
     closeSearch() {
@@ -51,8 +63,10 @@ export default {
       this.search = ''
     },
     onSubmit() {
-      this.$router.push({ path: 'search', query: { q: this.search } })
-      this.search = ''
+      if (!this.search) return
+
+      this.$router.push({ path: 'search', query: { request: this.search } })
+      this.closeSearch()
     },
   },
 }
@@ -80,26 +94,21 @@ export default {
     }
   }
 
-  &__submit {
-    @include btn-reset;
-    width: 1.5rem;
-    height: 1.7rem;
-    margin: auto 0;
-
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
   &__input {
+    @include text-small;
     position: absolute;
     top: 0;
     left: 3rem;
     width: calc(100% - 5rem);
     height: 100%;
     border: 0;
+    color: $color_black;
+    color: $color_black;
     background-color: transparent;
+
+    &::placeholder {
+      color: $color_black;
+    }
   }
 
   &__close {

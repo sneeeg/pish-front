@@ -23,7 +23,7 @@
           <ControlBtn
             class="pagination__btn"
             :disabled="pagination.current === 1"
-            @click.native="pagination.current - 1"
+            @click.native="prev"
           />
           <Paginate
             v-if="pagination.total > 1"
@@ -34,12 +34,13 @@
             :next-text="''"
             :page-range="window.isMobileSize ? 3 : 8"
             :page-class="'pagination-list__item'"
+            :click-handler="scrollToResults"
           ></Paginate>
           <ControlBtn
             class="pagination__btn"
             type="next"
             :disabled="pagination.current === pagination.total"
-            @click.native="pagination.current + 1"
+            @click.native="next"
           />
         </div>
       </template>
@@ -118,6 +119,14 @@ export default {
         offset: -125,
       })
     },
+    next() {
+      this.pagination.current += 1
+      this.scrollToResults()
+    },
+    prev() {
+      this.pagination.current -= 1
+      this.scrollToResults()
+    },
   },
 }
 </script>
@@ -125,6 +134,10 @@ export default {
 <style lang="scss">
 .search-module-results {
   margin-top: 2.4rem;
+
+  @include --mobile {
+    margin-top: 2rem;
+  }
 
   &__done,
   &__empty {
@@ -139,15 +152,27 @@ export default {
 
   &__pagination {
     margin-top: 7.2rem;
+
+    @include --mobile {
+      margin-top: 5.2rem;
+    }
   }
 }
 
 .search-module-results-list {
   margin-top: 6rem;
 
+  @include --mobile {
+    margin-top: 4rem;
+  }
+
   &__item {
     &:not(:last-child) {
       margin-bottom: 3.2rem;
+
+      @include --mobile {
+        margin-bottom: 2.4rem;
+      }
     }
   }
 }

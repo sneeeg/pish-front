@@ -82,6 +82,10 @@ body {
     @include container;
     display: block;
     margin: 3.8rem auto 0;
+
+    > * {
+      width: fit-content;
+    }
   }
 }
 

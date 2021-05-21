@@ -9,7 +9,11 @@
       >{{ result.title }}</SmartLink
     >
     <HTMLContent :html="result.content" class="search-result__text" />
-    <ArrowLink :text="lang['base.more']" :to="linkObject" />
+    <ArrowLink
+      class="search-result__link"
+      :text="lang['base.more']"
+      :to="linkObject"
+    />
   </div>
 </template>
 
@@ -30,7 +34,10 @@ export default {
   computed: {
     ...mapState('default', ['lang']),
     linkObject() {
-      return { name: 'news-post', params: { post: this.result.slug } }
+      return {
+        name: 'news-type-post',
+        params: { type: this.result.type, post: this.result.slug },
+      }
     },
   },
 }
@@ -42,13 +49,17 @@ export default {
   padding: 4rem 0 3.2rem;
   border-bottom: 1px solid #e1e4e8;
 
+  @include --mobile {
+    padding: 3rem 0 2.4rem;
+  }
+
   &__date {
     @include text-button-small;
-    font-weight: 400;
     position: absolute;
     top: 0;
     left: 0;
     color: $color_grey_text;
+    font-weight: 400;
   }
 
   &__title {
@@ -59,6 +70,14 @@ export default {
   &__text {
     @include text-small;
     margin: 1.6rem 0 3.2rem;
+
+    @include --mobile {
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  &__link {
+    width: fit-content;
   }
 }
 </style>

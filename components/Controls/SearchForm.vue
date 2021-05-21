@@ -1,7 +1,11 @@
 <template>
   <form class="search-form" @submit.prevent="emit">
     <div class="search-form-field">
-      <SvgIcon class="search-form-field__svg" name="search" />
+      <SvgIcon
+        v-if="window.isDesktopSize"
+        class="search-form-field__svg"
+        name="search"
+      />
       <input
         ref="searchInput"
         v-model.trim="request"
@@ -11,20 +15,23 @@
       />
     </div>
     <Btn
+      v-if="window.isDesktopSize"
       :loading="loading"
       class="search-form__btn"
       :text="lang['search.title']"
     />
+    <SearchBtn v-else class="search-form__btn" />
   </form>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import Btn from '~/components/controls/Btn'
+import SearchBtn from '~/components/controls/SearchBtn'
 
 export default {
   name: 'SearchForm',
-  components: { Btn },
+  components: { SearchBtn, Btn },
   props: {
     value: {
       type: String,
@@ -42,6 +49,7 @@ export default {
   },
   computed: {
     ...mapState('default', ['lang']),
+    ...mapState('responsive', ['window']),
   },
   mounted() {
     !this.value && this.$refs.searchInput.focus()
@@ -59,17 +67,29 @@ export default {
 .search-form {
   display: flex;
 
+  @include --tablet {
+    border-bottom: 1px solid $color_grey_text;
+  }
+
   &__btn {
     flex-shrink: 0;
-    width: 16.3rem;
-    margin-left: 1.6rem;
+    margin-left: 1.6rem !important;
+
+    @include --from-tablet {
+      width: 16.3rem;
+    }
   }
 }
 
 .search-form-field {
   position: relative;
   flex-grow: 1;
-  border-bottom: 1.5px solid $color_grey_text;
+  height: 4.7rem;
+  border-bottom: 1px solid $color_grey_text;
+
+  @include --tablet {
+    border-bottom: 0;
+  }
 
   &__svg {
     @include box(1.6rem);
@@ -84,6 +104,10 @@ export default {
     border: 0;
     background: transparent;
     appearance: none;
+
+    @include --tablet {
+      padding: 0;
+    }
 
     &::placeholder {
       color: $color_black;

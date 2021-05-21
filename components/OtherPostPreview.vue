@@ -1,17 +1,20 @@
 <template>
   <div class="other-post-preview">
-    <SmartLink :to="to" class="other-post-preview__image">
-      <img :src="picture.src" :alt="picture.alt" />
+    <SmartLink :to="linkObject" class="other-post-preview__image">
+      <img :src="post.previewPicture.src" :alt="post.previewPicture.alt" />
     </SmartLink>
     <div class="other-post-preview__content">
       <div class="other-post-preview-head">
-        {{ $dayjs(activeFrom).format($constants.POST_DATE_FORMAT) }}
+        {{ $dayjs(post.activeFrom).format($constants.POST_DATE_FORMAT) }}
       </div>
-      <SmartLink :to="to" class="other-post-preview__title hover-opacity">
-        {{ title }}
+      <SmartLink
+        :to="linkObject"
+        class="other-post-preview__title hover-opacity"
+      >
+        <span>{{ post.title }}</span>
       </SmartLink>
       <ArrowLink
-        :to="to"
+        :to="linkObject"
         :text="lang['base.readMore']"
         class="other-post-preview__link"
       >
@@ -28,35 +31,41 @@ export default {
   name: 'OtherPostPreview',
   components: { ArrowLink, SmartLink },
   props: {
-    to: {
-      type: [String, Object],
-      required: true,
-    },
-    picture: {
+    post: {
       type: Object,
-      required: true,
-    },
-    activeFrom: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
       required: true,
     },
   },
   computed: {
     ...mapState('default', ['lang']),
+    linkObject() {
+      return {
+        name: 'news-type-post',
+        params: { type: 'university', post: this.post.slug },
+      }
+    },
   },
 }
 </script>
 
 <style lang="scss">
 .other-post-preview {
+  display: flex;
+  flex-direction: column;
+  min-height: 44rem;
   background-color: $color_white;
+
+  @include --tablet {
+    min-height: 46rem;
+  }
+
+  @include --mobile {
+    min-height: 40rem;
+  }
 
   &__image {
     display: block;
+    flex-shrink: 0;
     width: 100%;
     height: 22.8rem;
     transition: filter 0.3s ease;
@@ -76,6 +85,9 @@ export default {
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     padding: 2.2rem 4rem 3.2rem;
 
     @include --mobile {
@@ -86,10 +98,19 @@ export default {
   &__title {
     @include text-small;
     display: block;
-    margin: 2.2rem 0 4.8rem;
+    flex-grow: 1;
+    margin: 2.2rem 0;
+
+    span {
+      @include lineClamp(5);
+
+      @include --mobile {
+        @include lineClamp(4);
+      }
+    }
 
     @include --mobile {
-      margin: 1.6rem 0 2rem;
+      margin: 1.6rem 0;
     }
   }
 

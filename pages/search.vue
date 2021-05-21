@@ -2,7 +2,7 @@
   <div class="page">
     <div v-if="window.isDesktopSize" class="page__back">
       <ArrowLink
-        v-if="from"
+        v-if="routing.hasHistory"
         :text="lang['base.back']"
         to="/"
         arrow-left
@@ -23,24 +23,20 @@ import ArrowLink from '~/components/controls/ArrowLink'
 import SearchModule from '~/components/SearchModule'
 
 export default {
+  name: 'Search',
   components: {
     SearchModule,
     Section,
     ArrowLink,
   },
   mixins: [pageHead],
-  asyncData({ from }) {
-    const fromName = from.name.split('_')[0]
-
-    return { from: fromName !== 'search' ? from : null }
-  },
   data() {
     return {
       request: this.$route.query.request,
     }
   },
   computed: {
-    ...mapState('default', ['lang', 'settings']),
+    ...mapState('default', ['lang', 'settings', 'routing']),
     ...mapState('responsive', ['window']),
     page() {
       const title = this.request
