@@ -1,14 +1,14 @@
 <template>
-  <div class="header-search">
+  <form class="header-search" @submit.prevent="onSubmit">
     <div class="header-search__inner" :class="{ '_is-open': isOpen }">
-      <button class="header-search__submit" @click="toggleSearch">
+      <button type="button" class="header-search__submit" @click="toggleSearch">
         <svg-icon name="search" />
       </button>
       <input
         v-show="isOpen"
         v-model="search"
         type="text"
-        placeholder="поиск"
+        :placeholder="lang['search.placeholder']"
         class="header-search__input"
       />
       <button
@@ -21,10 +21,12 @@
         <i></i>
       </button>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'LangToggler',
   data() {
@@ -32,6 +34,9 @@ export default {
       isOpen: false,
       search: '',
     }
+  },
+  computed: {
+    ...mapState('default', ['lang']),
   },
   methods: {
     toggleSearch() {

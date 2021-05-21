@@ -1,23 +1,17 @@
 <template>
-  <div id="app">
-    <div class="main _error">
-      <Section>
-        <Error :error="error" />
-      </Section>
-    </div>
-
-    <TheFooter />
-  </div>
+  <Section>
+    <Error :error="error" />
+  </Section>
 </template>
 
 <script>
-import TheFooter from '~/components/TheFooter.vue'
 import Error from '~/components/Error.vue'
+import Section from '~/components/layout/Section'
 
 export default {
   components: {
-    TheFooter,
     Error,
+    Section,
   },
   layout: 'error',
   data() {

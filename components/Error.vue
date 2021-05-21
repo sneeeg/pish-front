@@ -49,14 +49,14 @@ export default {
   }
 
   &__title {
-    margin: 0 0 3.7rem;
+    margin: 0 0 3.7rem !important;
 
     @include --tablet {
-      margin-bottom: 3.2rem;
+      margin-bottom: 3.2rem !important;
     }
 
     @include --mobile {
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.6rem !important;
     }
   }
 

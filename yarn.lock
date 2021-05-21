@@ -7162,11 +7162,6 @@ nuxt-i18n@^6.27.0:
     ufo "^0.7.2"
     vue-i18n "^8.24.4"
 
-nuxt-polyfill@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/nuxt-polyfill/-/nuxt-polyfill-1.0.3.tgz#b93d970153d6139a9fc0ea085480212adad13889"
-  integrity sha512-cYJoCxaHcTJpIsqs2xRuHf/KapODH1/HHGGGVJGjAMvog55jXxubsrtwBmZRV+QK1MZzpGQZWwSBz/JnTDvXhQ==
-
 nuxt@^2.15.3:
   version "2.15.6"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.15.6.tgz#628ff86d57c1d4671802777635ce7fd2c24f9091"

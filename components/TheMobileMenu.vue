@@ -4,7 +4,11 @@
       <div class="menu__content">
         <form @submit.prevent="onSubmit">
           <label for="search" class="menu__search">
-            <input id="search" v-model="search" placeholder="поиск" />
+            <input
+              id="search"
+              v-model="search"
+              :placeholder="lang['search.placeholder']"
+            />
 
             <button class="menu__search-btn"><svg-icon name="search" /></button>
           </label>
@@ -42,7 +46,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('default', ['menus']),
+    ...mapState('default', ['menus', 'lang']),
     ...mapState('responsive', ['window']),
     isDesktop() {
       return this.window.isDesktopSize
@@ -64,15 +68,20 @@ export default {
 <style lang="scss">
 .menu {
   position: absolute;
-  top: 11rem;
+  top: 12.3rem;
   left: 0;
   z-index: 9;
   width: 100%;
-  height: calc(100% - 11rem);
+  height: calc(100% - 12.3rem);
   background-color: #fff;
 
   @include --from-tablet {
     display: none;
+  }
+
+  @include --mobile {
+    top: 11rem;
+    height: calc(100% - 11rem);
   }
 
   &__scroll-wrap {
