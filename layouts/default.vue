@@ -1,19 +1,28 @@
 <template>
   <div id="app">
+    <TheHeader />
+
     <div class="main _default">
       <Nuxt />
     </div>
 
     <TheFooter />
+
+    <transition name="slide-right">
+      <TheMobileMenu v-if="$store.state.menu.isActive"></TheMobileMenu>
+    </transition>
   </div>
 </template>
 
 <script>
+import TheHeader from '~/components/TheHeader.vue'
 import TheFooter from '~/components/TheFooter.vue'
 
 export default {
   components: {
+    TheHeader,
     TheFooter,
+    TheMobileMenu: () => import('~/components/TheMobileMenu'),
   },
   head() {
     return {

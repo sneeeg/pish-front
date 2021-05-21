@@ -30,7 +30,6 @@ body {
   min-height: 100vh;
   margin: 0;
   color: $color_black;
-  font-weight: 300;
   font-family: $font-main;
 }
 
@@ -73,8 +72,16 @@ body {
 .main {
   flex: 1 0 auto;
 
-  &._default {
-    padding-top: 13.9rem;
+  //&._default {
+  //  padding-top: 14rem;
+  //}
+}
+
+.page {
+  &__back {
+    @include container;
+    display: block;
+    margin: 0 auto;
   }
 }
 

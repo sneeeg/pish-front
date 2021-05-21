@@ -22,6 +22,23 @@ export default {
   display: flex;
   color: $color_dark_grey;
 
+  &._header {
+    color: $color_red;
+
+    a {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    > :not(:last-child) {
+      margin-right: 2rem;
+
+      @include --mobile {
+        margin-right: 1.2rem;
+      }
+    }
+  }
+
   a {
     @include box(4.1rem);
     display: flex;
@@ -41,7 +58,7 @@ export default {
     }
   }
 
-  > :not(last-child) {
+  > :not(:last-child) {
     margin-right: 1.7rem;
   }
 }

@@ -5,6 +5,21 @@
     background-color: $color_white;
   }
 
+  &._background-absolute {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 70vh;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: calc(100% - 70vh);
+      background-color: $color_white;
+      content: '';
+    }
+  }
+
   &__inner {
     @include container;
     @include padding-section;

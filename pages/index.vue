@@ -1,5 +1,8 @@
 <template>
   <div>
+    <Section is-layout>
+      <FirstScreen :title="page.mainScreenTitles[0]" link major />
+    </Section>
     <Section :title="page.request.title" background>
       <TheCountdown
         :title="page.request.title"
@@ -7,18 +10,6 @@
         :date-to="page.request.dateTo"
       ></TheCountdown>
     </Section>
-
-    <Section title="test">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
-      animi assumenda consequuntur, debitis magni maiores minima minus odio
-      odit, officia quae qui quis ratione rem rerum sequi! Blanditiis, possimus.
-    </Section>
-    <Section title="test" background>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci
-      animi assumenda consequuntur, debitis magni maiores minima minus odio
-      odit, officia quae qui quis ratione rem rerum sequi! Blanditiis, possimus.
-    </Section>
-    <TextBlock title="text-content"></TextBlock>
     <Section background>
       <Blockquote :text="page.quote.content" :author="page.quote.author" />
     </Section>
@@ -33,16 +24,16 @@ import { mapState } from 'vuex'
 import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
-import TextBlock from '~/components/TextBlock'
 import Blockquote from '~/components/Blockquote'
 import Posts from '~/components/Posts'
+import FirstScreen from '~/components/FirstScreen'
 import TheCountdown from '~/components/TheCountdown'
 
 export default {
   components: {
+    FirstScreen,
     TheCountdown,
     Posts,
-    TextBlock,
     Section,
     Blockquote,
   },
