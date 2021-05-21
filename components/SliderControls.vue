@@ -1,11 +1,10 @@
 <template>
   <div class="slider-controls">
-    <button
-      :class="['slider-controls__btn', '_prev', { _disabled: !slideIndex }]"
-      @click="changeSlide(slideIndex - 1)"
-    >
-      <SvgIcon name="arrow-left" />
-    </button>
+    <ControlBtn
+      class="slider-controls__btn"
+      :disabled="!slideIndex"
+      @click.native="changeSlide(slideIndex - 1)"
+    />
     <div class="slider-controls-dots">
       <button
         v-for="(btn, index) in total"
@@ -19,22 +18,20 @@
         @click="changeSlide(index)"
       ></button>
     </div>
-    <button
-      :class="[
-        'slider-controls__btn',
-        '_next',
-        { _disabled: slideIndex === total - 1 },
-      ]"
-      @click="changeSlide(slideIndex + 1)"
-    >
-      <SvgIcon name="arrow-right" />
-    </button>
+    <ControlBtn
+      class="slider-controls__btn"
+      :disabled="slideIndex === total - 1"
+      type="next"
+      @click.native="changeSlide(slideIndex + 1)"
+    />
   </div>
 </template>
 
 <script>
+import ControlBtn from '~/components/controls/ControlBtn'
 export default {
   name: 'SliderControls',
+  components: { ControlBtn },
   props: {
     sliderInstance: {
       type: Object,
@@ -68,24 +65,6 @@ export default {
 .slider-controls {
   display: flex;
   align-items: center;
-
-  &__btn {
-    @include btn-reset;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    color: $color_accent;
-    transition: color 0.3s ease;
-
-    @include hover {
-      color: $color_accent_light;
-    }
-
-    svg {
-      @include box(2rem);
-    }
-  }
 }
 
 .slider-controls-dots {

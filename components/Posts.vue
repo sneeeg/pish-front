@@ -119,7 +119,13 @@ export default {
 
       this.morePostsLoading = false
     },
-    fetchPosts(categoryId, page, concat = false) {
+    async fetchPosts(categoryId, page, concat = false) {
+      if (!concat) {
+        this.posts = this.$utils.fillEmptyArray({}, 4)
+      }
+
+      await this.$utils.delay(1500, true)
+
       return this.$api.posts.get(categoryId, page).then(({ data }) => {
         if (concat) {
           this.posts = this.posts.concat(data.posts || [])

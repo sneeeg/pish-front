@@ -9,4 +9,13 @@ export default (pretender) => {
   pretender.get('/api/reviews', () => {
     return [200, { 'Content-Type': 'application/json' }, getResponse(reviews)]
   })
+
+  // Get review by slug
+  pretender.get('/api/reviews/item', () => {
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse(reviews[0]),
+    ]
+  })
 }

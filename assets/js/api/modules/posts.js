@@ -9,8 +9,13 @@ export default ($axios) => ({
     return $axios.$get('/api/posts/item', { params: { slug } })
   },
 
-  /* Getting university categories  */
+  /* Getting university posts  */
   getUniversityPosts() {
     return $axios.$get('/api/posts/university')
+  },
+
+  /* Getting university post by slug */
+  getUniversityPostBySlug(slug) {
+    return $axios.$get('/api/posts/university/item', { params: { slug } })
   },
 })

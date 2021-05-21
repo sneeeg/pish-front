@@ -4,6 +4,10 @@ export const state = () => ({
   settings: {},
   lang: {},
   menus: [],
+  routing: {
+    currentPageName: '',
+    hasHistory: false,
+  },
 })
 
 export const mutations = {
@@ -21,6 +25,12 @@ export const mutations = {
   },
   setMenus(state, menus) {
     state.menus = menus
+  },
+  changeRoutingState(state, { to, from }) {
+    const str = to.name.split('_')[0]
+    state.routing.currentPageName = str === 'index' ? 'main' : str
+
+    state.routing.hasHistory = !!from.name
   },
 }
 

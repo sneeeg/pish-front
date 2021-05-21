@@ -8,14 +8,7 @@
         v-for="post in posts"
         :key="post.id"
         class="other-posts-list__item"
-        :to="
-          mainPosts
-            ? { name: 'news-post', params: { post: post.slug } }
-            : post.href
-        "
-        :active-from="post.activeFrom"
-        :picture="post.previewPicture"
-        :title="post.title"
+        :post="post"
       />
     </div>
     <div class="other-posts__controls">
@@ -38,9 +31,9 @@ export default {
       type: Boolean,
       default: false,
     },
-    categoryId: {
-      type: [String, Number, undefined],
-      default: undefined,
+    category: {
+      type: Object,
+      default: null,
     },
   },
   data() {
@@ -94,7 +87,7 @@ export default {
           .then(({ data }) => data || [])
       } else {
         this.posts = await this.$api.posts
-          .get(this.categoryId, 1, 10)
+          .get(this.category?.id, 1, 10)
           .then(({ data }) => data.posts || [])
       }
     },

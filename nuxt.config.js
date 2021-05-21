@@ -75,6 +75,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/svg-sprite',
     '@nuxtjs/dayjs',
+    'vue-scrollto/nuxt',
   ],
 
   dayjs: {

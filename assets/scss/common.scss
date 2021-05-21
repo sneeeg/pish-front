@@ -20,7 +20,8 @@
 'utils/mixins/paddings',
 'utils/mixins/flexGap',
 'utils/mixins/slider',
-'utils/mixins/scrollbar';
+'utils/mixins/scrollbar',
+'utils/mixins/skeleton-container';
 
 // ==
 // 2 - import base styles
@@ -33,4 +34,5 @@
 'common/vue-transitions',
 'common/hovers',
 'common/modifiers',
-'common/html-content';
+'common/html-content',
+'common/pagination';
