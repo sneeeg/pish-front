@@ -66,7 +66,7 @@ export default {
   }
 
   &__label {
-    @include arrow-down(1.3rem, 3px, $color_red);
+    @include arrow-down(1.3rem, 3px, $color_accent);
     @include btn-reset;
 
     position: relative;

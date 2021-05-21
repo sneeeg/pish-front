@@ -61,7 +61,7 @@ $listPadding: 2rem;
         width: 5px;
         height: 5px;
         border-radius: 50%;
-        background-color: $color_red;
+        background-color: $color_accent;
         content: '';
 
         @include --mobile {
@@ -85,7 +85,7 @@ $listPadding: 2rem;
         display: inline-block;
         width: $listPadding;
         margin-left: -$listPadding;
-        color: $color_red;
+        color: $color_accent;
         content: counter(item) '.';
         counter-increment: item;
       }
@@ -115,7 +115,7 @@ $listPadding: 2rem;
       left: 0;
       width: 6px;
       height: 100%;
-      background-color: $color_red;
+      background-color: $color_accent;
       content: '';
 
       @include --mobile {
@@ -235,7 +235,7 @@ $listPadding: 2rem;
       line-height: 2rem;
 
       span {
-        color: $color_red;
+        color: $color_accent;
       }
     }
   }

@@ -46,7 +46,7 @@ export default {
 
   &__title {
     margin: 0 0 1.9rem;
-    color: $color_red;
+    color: $color_accent;
     font-weight: bold;
     font-size: 1.6rem;
     line-height: 1.8rem;
@@ -77,7 +77,7 @@ export default {
 
   > .arrow-link {
     display: inline-flex;
-    color: $color_red;
+    color: $color_accent;
   }
 }
 </style>

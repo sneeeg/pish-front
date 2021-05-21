@@ -134,7 +134,7 @@ export default {
       transition: color 0.3s ease;
 
       &.nuxt-link-exact-active {
-        color: $color_red;
+        color: $color_accent;
       }
 
       &:not(:last-child) {
