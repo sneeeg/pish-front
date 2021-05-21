@@ -65,7 +65,9 @@ export default {
     onSubmit() {
       if (!this.search) return
 
-      this.$router.push({ path: 'search', query: { request: this.search } })
+      this.$router.push(
+        this.localePath({ name: 'search', query: { request: this.search } })
+      )
       this.closeSearch()
     },
   },
