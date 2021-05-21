@@ -34,7 +34,7 @@ export default {
 <style lang="scss">
 .custom-select {
   position: relative;
-  border-bottom: 2px solid $color_grey_text;
+  border-bottom: 1.5px solid $color_grey_text;
   color: $color_accent;
 
   select {

@@ -1,4 +1,5 @@
 export default {
+  siteName: 'Приоритет 2030',
   mainLink: '/',
   lkLink: '/',
   title: 'Дефолтный тайтл',

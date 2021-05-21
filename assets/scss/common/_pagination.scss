@@ -1,0 +1,17 @@
+.pagination {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  .pagination-list {
+    display: flex;
+    margin: 0 4.8rem;
+
+    &__item {
+      @include text-small;
+      font-weight: 700;
+      margin: 0 1rem;
+    }
+  }
+}

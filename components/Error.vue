@@ -38,9 +38,9 @@ export default {
 
   &__content {
     display: flex;
+    flex: 0 0 54%;
     flex-direction: column;
     align-items: flex-start;
-    flex: 0 0 54%;
 
     @include --tablet {
       flex: 0 0 100%;
