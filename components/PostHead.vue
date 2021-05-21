@@ -68,7 +68,7 @@ export default {
 }
 
 .post-head-info {
-  @include text-small;
+  @include text-button;
   margin-top: 3.2rem;
   font-weight: 500;
   text-transform: uppercase;
