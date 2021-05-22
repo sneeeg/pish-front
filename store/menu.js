@@ -14,13 +14,13 @@ export const actions = {
     commit('setIsActive', !state.isActive)
 
     if (state.isActive) {
-      dispatch('scroll/lock', '', { root: true })
+      dispatch('scroll/lock', 'menu', { root: true })
     } else {
-      dispatch('scroll/unlock', '', { root: true })
+      dispatch('scroll/unlock', 'menu', { root: true })
     }
   },
   close({ commit, dispatch }) {
     commit('setIsActive', false)
-    dispatch('scroll/unlock', '', { root: true })
+    dispatch('scroll/unlock', 'menu', { root: true })
   },
 }
