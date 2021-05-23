@@ -5,7 +5,7 @@
         {{ left.title }}
       </h3>
       <div class="architecture-component__content">
-        <div class="architecture-item">
+        <div class="architecture-item _row">
           <svg
             class="architecture-item__icon"
             width="63"
@@ -173,6 +173,14 @@ export default {
   &__title {
     margin-bottom: 3.3rem;
     font-weight: bold;
+
+    @include --tablet {
+      margin-bottom: 2.7rem;
+    }
+
+    @include --mobile {
+      margin-bottom: 2.1rem;
+    }
   }
 
   &__content {
@@ -235,6 +243,21 @@ export default {
   display: flex;
   flex-direction: column;
 
+  &._row {
+    @include --mobile {
+      flex-direction: row;
+      align-items: center;
+
+      > .architecture-item__icon {
+        margin: 0;
+      }
+
+      > *:not(:last-child) {
+        margin-right: 2.8em;
+      }
+    }
+  }
+
   @include --from-tablet {
     align-items: center;
   }
@@ -265,6 +288,7 @@ export default {
   &__head {
     padding: 1.6rem;
     border: 1px solid $color_red;
+    text-align: center;
 
     &:not(:last-child) {
       margin-bottom: 1.2rem;

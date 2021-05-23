@@ -10,11 +10,7 @@
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
     <Section :title="page.architecture.title" background>
-      <Architecture
-        :left="page.architecture.left"
-        :center="page.architecture.center"
-        :right="page.architecture.right"
-      />
+      <ArchitectureBlock :architecture="page.architecture" />
     </Section>
   </div>
 </template>
@@ -27,7 +23,7 @@ import Section from '~/components/layout/Section'
 import AccordionBlock from '~/components/AccordionBlock'
 import PriorityBlock from '~/components/PriorityBlock'
 import FirstScreen from '~/components/FirstScreen'
-import Architecture from '~/components/Architecture'
+import ArchitectureBlock from '~/components/ArchitectureBlock'
 
 export default {
   name: 'About',
@@ -36,7 +32,7 @@ export default {
     Section,
     PriorityBlock,
     FirstScreen,
-    Architecture,
+    ArchitectureBlock,
   },
   mixins: [pageDataFetch, pageHead],
   computed: {
