@@ -15,6 +15,7 @@
 <script>
 import { mapState } from 'vuex'
 import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
+import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import AccordionBlock from '~/components/AccordionBlock'
@@ -24,7 +25,7 @@ import FirstScreen from '~/components/FirstScreen'
 export default {
   name: 'About',
   components: { AccordionBlock, Section, PriorityBlock, FirstScreen },
-  mixins: [pageDataFetch, pageHead],
+  mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
   },

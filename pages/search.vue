@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div v-view="$utils.scrollCenterDetection" class="page">
     <div v-if="window.isDesktopSize" class="page__back">
       <ArrowLink
         v-if="routing.hasHistory"
@@ -18,6 +18,7 @@
 <script>
 import { mapState } from 'vuex'
 import Section from '~/components/layout/Section'
+import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import ArrowLink from '~/components/controls/ArrowLink'
 import SearchModule from '~/components/SearchModule'
@@ -29,7 +30,7 @@ export default {
     Section,
     ArrowLink,
   },
-  mixins: [pageHead],
+  mixins: [pageHead, pageDefault],
   data() {
     return {
       request: this.$route.query.request,

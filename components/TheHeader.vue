@@ -4,7 +4,7 @@
     class="header"
     :class="{ '_has-background': hasBackground }"
   >
-    <div class="header__info">
+    <div v-will-change class="header__info gsap_header__info">
       <div class="header__content">
         <a
           class="header__ministry"
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="header__content">
+    <div v-will-change class="header__content gsap_header__content">
       <nuxt-link to="/" class="header__logo">
         <img
           :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"

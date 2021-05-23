@@ -1,14 +1,21 @@
 <template>
-  <blockquote class="blockquote">
-    <img class="blockquote__logo" src="/logo.svg" alt="Логотип" />
-    <p class="blockquote__text">{{ text }}</p>
+  <blockquote v-view="$utils.scrollCenterDetection" class="blockquote">
+    <img
+      v-scroll-element
+      class="blockquote__logo"
+      src="/logo.svg"
+      alt="Логотип"
+    />
+    <p v-scroll-element class="blockquote__text">{{ text }}</p>
     <footer>
-      <div class="blockquote__photo">
+      <div v-scroll-element="'left'" class="blockquote__photo">
         <img :src="author.image" />
       </div>
       <div class="blockquote__author-block">
-        <cite class="blockquote__name">{{ author.name }}</cite>
-        <div class="blockquote__position">{{ author.position }}</div>
+        <cite v-scroll-element class="blockquote__name">{{ author.name }}</cite>
+        <div v-scroll-element class="blockquote__position">
+          {{ author.position }}
+        </div>
       </div>
     </footer>
   </blockquote>

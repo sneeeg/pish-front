@@ -6,21 +6,21 @@
     <Section background>
       <Blockquote :text="page.quote.content" :author="page.quote.author" />
     </Section>
-    <Section :title="page.participation.title">
-      <Participation
-        :title="page.participation.subtitle"
-        :text="page.participation.text"
-        :href="page.participation.href"
-      />
-    </Section>
-    <Section :title="page.request.title" background>
-      <TheCountdown
-        :title="page.request.title"
-        :subtitle="page.request.subtitle"
-        :date-to="page.request.dateTo"
-      ></TheCountdown>
-    </Section>
-    <Section :title="page.newsTitle">
+
+    <Participation
+      :title="page.participation.title"
+      :subtitle="page.participation.subtitle"
+      :text="page.participation.text"
+      :href="page.participation.href"
+    />
+
+    <TheCountdown
+      :section-title="page.request.title"
+      :title="page.request.title"
+      :subtitle="page.request.subtitle"
+      :date-to="page.request.dateTo"
+    ></TheCountdown>
+    <Section v-view="$utils.scrollCenterDetection" :title="page.newsTitle">
       <Posts />
     </Section>
   </div>
@@ -29,6 +29,7 @@
 <script>
 import { mapState } from 'vuex'
 import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
+import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import Blockquote from '~/components/Blockquote'
@@ -46,7 +47,7 @@ export default {
     Blockquote,
     Participation,
   },
-  mixins: [pageDataFetch, pageHead],
+  mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
   },

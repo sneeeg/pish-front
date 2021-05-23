@@ -1,12 +1,19 @@
 <template>
   <div>
-    <Section :title="page.mainNewsTitle">
+    <Section v-view="$utils.scrollCenterDetection" :title="page.mainNewsTitle">
       <Posts all />
     </Section>
-    <Section background :title="page.reviewsTitle">
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      background
+      :title="page.reviewsTitle"
+    >
       <Reviews />
     </Section>
-    <Section :title="page.universityNewsTitle">
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      :title="page.universityNewsTitle"
+    >
       <OtherPosts />
     </Section>
   </div>
@@ -20,11 +27,12 @@ import Section from '~/components/layout/Section'
 import Posts from '~/components/Posts'
 import Reviews from '~/components/Reviews'
 import OtherPosts from '~/components/OtherPosts'
+import pageDefault from '~/assets/js/vue-mixins/page-default'
 
 export default {
   name: 'Index',
   components: { Reviews, Posts, Section, OtherPosts },
-  mixins: [pageDataFetch, pageHead],
+  mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
   },

@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer v-will-change class="footer">
     <div class="footer__content">
       <div class="footer__row">
         <nuxt-link to="/" class="footer__logo">

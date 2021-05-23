@@ -1,11 +1,6 @@
 // --
 // base
 // ==
-
-* {
-  @include scrollbar;
-}
-
 *,
 *::after,
 *::before {
@@ -51,10 +46,12 @@ html {
 }
 
 body {
+  @include scrollbar;
   @include text;
 }
 
 #app {
+  @include scrollbarHidden;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

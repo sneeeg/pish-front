@@ -35,11 +35,12 @@ import Section from '~/components/layout/Section'
 import PostHead from '~/components/PostHead'
 import HTMLContent from '~/components/utils/HTMLContent'
 import OtherPosts from '~/components/OtherPosts'
+import pageDefault from '~/assets/js/vue-mixins/page-default'
 
 export default {
   name: 'Post',
   components: { HTMLContent, PostHead, Section, ArrowLink, OtherPosts },
-  mixins: [pageHead],
+  mixins: [pageHead, pageDefault],
   async asyncData({ $nuxt, route, $api }) {
     const type = route.params.type
     const apiMethod =

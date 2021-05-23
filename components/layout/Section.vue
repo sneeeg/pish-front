@@ -14,7 +14,7 @@
       <slot name="default" />
     </div>
     <div v-else class="section__inner">
-      <div v-if="title" :class="['section-head']">
+      <div v-if="title" v-scroll-element :class="['section-head']">
         <h2 class="section-head__title">{{ title }}</h2>
       </div>
       <div class="section__content">

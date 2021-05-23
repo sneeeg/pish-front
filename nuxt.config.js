@@ -27,11 +27,15 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/injections.js',
+    '~/plugins/directives.js',
     '~/plugins/server.js',
     '~/plugins/config.js',
-    '~/plugins/router-processing.js',
     '~/plugins/responsive.js',
     '~/plugins/scroll.js',
+    '~/plugins/mouse.js',
+    '~/plugins/motion.js',
+    '~/plugins/vue-check-view',
+    '~/plugins/router-processing.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -97,6 +101,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    analyze: false,
     babel: {
       plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
     },

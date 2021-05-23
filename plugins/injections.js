@@ -11,6 +11,9 @@ import createUid from '~/assets/js/utils/create-Uid'
 import fillEmptyArray from '~/assets/js/utils/fill-empty-array'
 import isInViewport from '~/assets/js/utils/is-in-viewport'
 import isObjectEmpty from '~/assets/js/utils/is-object-empty'
+import getUniqueArrayOfObjects from '~/assets/js/utils/get-unique-array-of-objects'
+import getPageNameByRoute from '~/assets/js/utils/get-page-name-by-route'
+import scrollCenterDetection from '~/assets/js/utils/scroll-center-detection'
 
 /* API */
 import api from '~/assets/js/api/index'
@@ -26,6 +29,9 @@ export default ({ $axios }, inject) => {
     fillEmptyArray,
     isInViewport,
     isObjectEmpty,
+    getUniqueArrayOfObjects,
+    getPageNameByRoute,
+    scrollCenterDetection,
   })
   inject('api', api($axios))
 }
