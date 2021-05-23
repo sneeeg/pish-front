@@ -9,6 +9,13 @@
     <Section :title="page.priorities.title" background>
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
+    <Section>
+      <SupportBlock
+        :title="page.support.title"
+        :subtitle="page.support.subtitle"
+        :sections="page.support.sections"
+      />
+    </Section>
   </div>
 </template>
 
@@ -20,10 +27,17 @@ import Section from '~/components/layout/Section'
 import AccordionBlock from '~/components/AccordionBlock'
 import PriorityBlock from '~/components/PriorityBlock'
 import FirstScreen from '~/components/FirstScreen'
+import SupportBlock from '~/components/SupportBlock'
 
 export default {
   name: 'About',
-  components: { AccordionBlock, Section, PriorityBlock, FirstScreen },
+  components: {
+    AccordionBlock,
+    Section,
+    PriorityBlock,
+    FirstScreen,
+    SupportBlock,
+  },
   mixins: [pageDataFetch, pageHead],
   computed: {
     ...mapState('default', ['lang']),

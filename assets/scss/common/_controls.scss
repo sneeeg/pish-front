@@ -1,0 +1,70 @@
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  &__btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.9rem;
+    height: 1.8rem;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+    background-color: transparent;
+    transition-duration: 300ms;
+
+    &:not(:last-child) {
+      margin-right: 4.8rem;
+    }
+
+    > svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:disabled {
+      opacity: 0.7;
+    }
+
+    @include hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__next svg {
+    transform: rotate(180deg);
+  }
+
+  &__dots {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 4.8rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__dot {
+    @include box(0.9rem);
+    margin: 0;
+    border-radius: 50%;
+    background-color: $color_grey_text;
+
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+
+    &._selected {
+      background-color: $color_red;
+    }
+  }
+}
+
+// <div class="controls">
+//   <button class="controls__btn controls__prev theme-item-color theme-item-pseudo"></button>
+//   <button class="controls__btn controls__next theme-item-color theme-item-pseudo"></button>
+// </div>`;
