@@ -64,9 +64,7 @@ export default {
 
     @include --mobile {
       top: 6.4rem;
-      left: -3rem;
-      width: 9.6rem;
-      height: 7.2rem;
+      left: -5rem;
     }
   }
 
@@ -119,13 +117,13 @@ export default {
     overflow: hidden;
 
     @include --tablet {
-      @include box(14rem);
+      @include box(12rem);
       margin-right: 2.4rem;
     }
 
     @include --mobile {
-      @include box(10rem);
-      margin-right: 1.6rem;
+      @include box(8rem);
+      margin-right: 1.8rem;
     }
 
     > img {
@@ -144,8 +142,8 @@ export default {
 
     @include --mobile {
       max-width: none;
-      font-size: 1.2rem;
-      line-height: 1.5rem;
+      font-size: 1.5rem;
+      line-height: 1.8rem;
     }
   }
 

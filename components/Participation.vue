@@ -73,8 +73,6 @@ export default {
 
     @include --mobile {
       margin: 0 0 2.7rem;
-      font-size: 2rem;
-      line-height: 2.8rem;
     }
   }
 
