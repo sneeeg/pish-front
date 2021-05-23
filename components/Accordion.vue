@@ -76,9 +76,9 @@ export default {
     display: block;
     width: 100%;
     padding: 2.6rem 0;
+    font-weight: bold;
     font-size: 2.2rem;
     line-height: 2.8rem;
-    font-weight: bold;
     text-align: left;
   }
 

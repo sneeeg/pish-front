@@ -81,8 +81,8 @@ export default {
 
     @include --tablet {
       flex: 0 0 100%;
-      margin-bottom: 2.4rem;
       order: -1;
+      margin-bottom: 2.4rem;
     }
 
     > img {
