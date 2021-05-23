@@ -7,7 +7,7 @@
     >
       <button
         type="button"
-        class="accordion__label _visually-h5"
+        class="accordion__label"
         :class="{ _active: expanded.includes(title) }"
         @click="taskChange(title, model3d)"
       >
@@ -16,6 +16,9 @@
 
       <TransitionExpand>
         <div v-if="expanded.includes(title)" class="accordion__content">
+          <div class="accordion__image-wrapper">
+            <img :src="model3d" />
+          </div>
           <HTMLContent :html="content" />
         </div>
       </TransitionExpand>
@@ -72,7 +75,9 @@ export default {
     position: relative;
     display: block;
     width: 100%;
-    padding: 2.4rem 0;
+    padding: 2.6rem 0;
+    font-size: 2.2rem;
+    line-height: 2.8rem;
     font-weight: bold;
     text-align: left;
   }
@@ -82,6 +87,22 @@ export default {
       display: block;
       height: 3.2rem;
       content: '';
+    }
+  }
+
+  &__image-wrapper {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+
+    @include --from-mobile {
+      display: none;
+    }
+
+    > img {
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0 auto;
     }
   }
 }
