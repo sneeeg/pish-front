@@ -32,16 +32,16 @@ export default {
 <style lang="scss">
 .participation {
   position: relative;
-  min-height: 50.4rem;
+  min-height: 39rem;
   padding: 0 0 0 calc((100% + 3rem) / 2);
 
   @include --tablet {
-    min-height: 40rem;
+    min-height: 29rem;
   }
 
   @include --mobile {
     min-height: auto;
-    padding: 0;
+    padding: 0 0 16.4rem;
   }
 
   &__title {
@@ -57,7 +57,8 @@ export default {
     }
 
     @include --mobile {
-      margin: 0 0 1.2rem;
+      margin: 0 0 2.6rem;
+      font-size: 1.4rem;
     }
   }
 
@@ -71,13 +72,17 @@ export default {
     }
 
     @include --mobile {
-      margin: 0 0 4rem;
+      margin: 0 0 2.7rem;
+      font-size: 2rem;
+      line-height: 2.8rem;
     }
   }
 
   > .arrow-link {
     display: inline-flex;
     color: $color_accent;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
   }
 }
 </style>
