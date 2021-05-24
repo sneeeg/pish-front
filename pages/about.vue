@@ -21,6 +21,13 @@
     >
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
+    <Section v-view="$utils.scrollCenterDetection" :title="page.progress.title">
+      <Progress
+        :year="page.progress.year"
+        :active-stage="page.progress.activeStage"
+        :items="page.progress.items"
+      />
+    </Section>
   </div>
 </template>
 
@@ -33,10 +40,11 @@ import Section from '~/components/layout/Section'
 import AccordionBlock from '~/components/AccordionBlock'
 import PriorityBlock from '~/components/PriorityBlock'
 import FirstScreen from '~/components/FirstScreen'
+import Progress from '~/components/Progress'
 
 export default {
   name: 'About',
-  components: { AccordionBlock, Section, PriorityBlock, FirstScreen },
+  components: { AccordionBlock, Section, PriorityBlock, FirstScreen, Progress },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
