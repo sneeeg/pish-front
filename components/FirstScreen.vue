@@ -185,6 +185,7 @@ export default {
 
     p {
       font-size: 1.8rem;
+      line-height: 2.9rem;
 
       @include --mobile {
         font-size: 1.4rem;
