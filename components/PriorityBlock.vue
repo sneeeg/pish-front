@@ -3,6 +3,7 @@
     <li
       v-for="{ id, icon, content } in priorities"
       :key="id"
+      v-scroll-element
       class="priority-block__item"
     >
       <Priority :icon="icon" :content="content" />

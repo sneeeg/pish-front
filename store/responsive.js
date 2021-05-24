@@ -22,6 +22,7 @@ import {
   browserName,
 } from 'mobile-device-detect'
 import { TABLET_WIDTH, MOBILE_WIDTH } from '~/assets/js/constants'
+import isWebGLAvailable from '~/assets/js/utils/is-webgl-available'
 
 export const state = () => ({
   window: {
@@ -63,7 +64,7 @@ export const state = () => ({
     browserVersion,
     browserName,
     hasWebpSupport: false,
-    hasWebGLSupport: false,
+    hasWebGLSupport: isWebGLAvailable(),
   },
 })
 

@@ -1,7 +1,7 @@
 module.exports = {
   title: 'priority2030-promo',
   htmlAttrs: {
-    lang: 'en',
+    lang: 'ru',
   },
   meta: [
     { charset: 'utf-8' },

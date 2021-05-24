@@ -1,7 +1,7 @@
 <template>
-  <div class="post-head">
-    <h1 class="post-head__title _visually-h2">{{ title }}</h1>
-    <div class="post-head-info">
+  <div v-view="$utils.scrollCenterDetection" class="post-head">
+    <h1 v-scroll-element class="post-head__title _visually-h2">{{ title }}</h1>
+    <div v-scroll-element class="post-head-info">
       <template v-if="category">
         <span class="post-head-info__category">{{ category.text }}</span>
         <span class="post-head-info__separator"> / </span>
@@ -10,7 +10,7 @@
         $dayjs(date).format($constants.POST_DATE_FORMAT)
       }}</span>
     </div>
-    <div v-if="picture" class="post-head__picture">
+    <div v-if="picture" v-scroll-element class="post-head__picture">
       <img :src="picture.src" :alt="picture.alt" />
     </div>
   </div>

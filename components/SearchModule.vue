@@ -1,5 +1,5 @@
 <template>
-  <div class="search-module">
+  <div v-scroll-element class="search-module">
     <SearchForm
       v-model="request"
       class="search-module__form"
@@ -109,7 +109,7 @@ export default {
         this.pagination.total = Math.ceil(
           this.results.length / RESULTS_PER_PAGE
         )
-        this.scrollToResults()
+        // this.scrollToResults()
       })
     },
     scrollToResults() {

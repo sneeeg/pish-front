@@ -3,9 +3,10 @@
     <Section is-layout>
       <FirstScreen adaptive-top :title="page.title" />
     </Section>
-    <Section background>
+    <Section v-view="$utils.scrollCenterDetection" background>
       <div class="participation-advertisement">
         <img
+          v-scroll-element
           class="participation-advertisement__img"
           :src="
             $i18n.locale === 'ru'
@@ -14,22 +15,32 @@
           "
           alt=""
         />
-        <HTMLContent :html="page.advertisement"></HTMLContent>
+        <HTMLContent v-scroll-element :html="page.advertisement"></HTMLContent>
       </div>
     </Section>
-    <Section :title="page.requirements.title">
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      :title="page.requirements.title"
+    >
       <div
         v-for="(requirement, index) in page.requirements.items"
         :key="index"
         class="participation-rules"
       >
-        <div class="participation-rules__icon">
+        <div v-scroll-element="'left'" class="participation-rules__icon">
           <img :src="`/participation/${index + 1}.svg`" alt="" />
         </div>
-        <HTMLContent :html="requirement.content"></HTMLContent>
+        <HTMLContent
+          v-scroll-element="'right'"
+          :html="requirement.content"
+        ></HTMLContent>
       </div>
     </Section>
-    <Section :title="page.steps.title" :has-overflow="false">
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      :title="page.steps.title"
+      :has-overflow="false"
+    >
       <TheStages :stages="page.steps.sections"></TheStages>
     </Section>
   </div>
@@ -38,6 +49,7 @@
 <script>
 import { mapState } from 'vuex'
 import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
+import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import FirstScreen from '~/components/FirstScreen'
@@ -47,7 +59,7 @@ import HTMLContent from '~/components/utils/HTMLContent'
 export default {
   name: 'Participation',
   components: { FirstScreen, Section, TheStages, HTMLContent },
-  mixins: [pageDataFetch, pageHead],
+  mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
   },

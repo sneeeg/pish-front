@@ -4,6 +4,7 @@
       <ReviewItem
         v-for="review in reviews"
         :key="review.id"
+        v-scroll-element
         class="reviews-list__item"
         :review="review"
       />

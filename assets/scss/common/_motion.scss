@@ -1,0 +1,15 @@
+.motion-canvas {
+  @include box(100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  &._warming {
+    position: fixed;
+  }
+
+  &._controls-active {
+    z-index: 11111;
+  }
+}

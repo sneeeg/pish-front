@@ -7,6 +7,7 @@
       <OtherPostPreview
         v-for="post in posts"
         :key="post.id"
+        v-scroll-element
         class="other-posts-list__item"
         :post="post"
       />

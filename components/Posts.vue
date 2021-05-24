@@ -1,6 +1,6 @@
 <template>
   <div class="posts">
-    <div class="posts__head">
+    <div v-scroll-element class="posts__head">
       <ul v-if="window.isDesktopSize" class="posts-categories">
         <li
           v-for="category in categories"
@@ -31,7 +31,7 @@
         to="/news"
       />
     </div>
-    <div class="posts__content">
+    <div v-scroll-element class="posts__content">
       <div class="posts-list">
         <PostPreview
           v-for="post in posts"

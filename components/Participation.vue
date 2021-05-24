@@ -1,19 +1,26 @@
 <template>
-  <div class="participation">
-    <h3 class="participation__title">{{ title }}</h3>
-    <p class="participation__text">{{ text }}</p>
-    <ArrowLink :to="href" text="подробнее" />
-  </div>
+  <Section ref="participation" v-view="scrollHandler" :title="title">
+    <div class="participation">
+      <h3 v-scroll-element class="participation__title">{{ subtitle }}</h3>
+      <p v-scroll-element class="participation__text">{{ text }}</p>
+      <ArrowLink v-scroll-element :to="href" text="подробнее" />
+    </div>
+  </Section>
 </template>
 
 <script>
 import ArrowLink from '~/components/controls/ArrowLink'
+import Section from '~/components/layout/Section'
 
 export default {
   name: 'Participation',
-  components: { ArrowLink },
+  components: { Section, ArrowLink },
   props: {
     title: {
+      type: String,
+      default: '',
+    },
+    subtitle: {
       type: String,
       default: '',
     },
@@ -24,6 +31,29 @@ export default {
     href: {
       type: String,
       default: '',
+    },
+  },
+  data() {
+    return {
+      motionIsActive: false,
+    }
+  },
+  mounted() {
+    this.$motion?.scenes.dna.init(this.$refs.participation.$el)
+  },
+  methods: {
+    scrollHandler(event) {
+      this.$utils.scrollCenterDetection(event)
+
+      if (event.type === 'enter' && !this.motionIsActive) {
+        this.motionIsActive = true
+
+        this.$motion?.scenes.dna.start()
+      } else if (event.type === 'exit' && this.motionIsActive) {
+        this.motionIsActive = false
+
+        this.$motion?.scenes.dna.freeze()
+      }
     },
   },
 }

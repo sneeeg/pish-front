@@ -1,37 +1,53 @@
 <template>
-  <div class="countdown">
-    <p class="countdown__subtitle _visually-h5">{{ subtitle }}</p>
+  <Section v-view="scrollHandler" :title="title" background>
+    <div class="countdown">
+      <p v-scroll-element class="countdown__subtitle _visually-h5">
+        {{ subtitle }}
+      </p>
 
-    <div class="timer">
-      <div class="timer__item">
-        <span class="timer__number">{{ padStart(days, 2, '0') }}</span>
-        <span class="timer__label">{{
-          plural(days, 'день', 'дня', 'дней')
-        }}</span>
+      <div v-scroll-element class="timer">
+        <div class="timer__item">
+          <span class="timer__number">{{ padStart(days, 2, '0') }}</span>
+          <span class="timer__label">{{
+            plural(days, 'день', 'дня', 'дней')
+          }}</span>
+        </div>
+        <div class="timer__item">
+          <span class="timer__number">{{ padStart(hours, 2, '0') }}</span>
+          <span class="timer__label">{{
+            plural(hours, 'час', 'часа', 'часов')
+          }}</span>
+        </div>
+        <div class="timer__item">
+          <span class="timer__number">{{ padStart(minutes, 2, '0') }}</span>
+          <span class="timer__label">мин</span>
+        </div>
+        <div class="timer__item">
+          <span class="timer__number">{{ padStart(seconds, 2, '0') }}</span>
+          <span class="timer__label">сек</span>
+        </div>
       </div>
-      <div class="timer__item">
-        <span class="timer__number">{{ padStart(hours, 2, '0') }}</span>
-        <span class="timer__label">{{
-          plural(hours, 'час', 'часа', 'часов')
-        }}</span>
-      </div>
-      <div class="timer__item">
-        <span class="timer__number">{{ padStart(minutes, 2, '0') }}</span>
-        <span class="timer__label">мин</span>
-      </div>
-      <div class="timer__item">
-        <span class="timer__number">{{ padStart(seconds, 2, '0') }}</span>
-        <span class="timer__label">сек</span>
-      </div>
+
+      <Btn
+        v-scroll-element
+        :text="lang['base.sendRequest']"
+        class="countdown__btn"
+        is-link
+        :to="settings.lkLink"
+      />
     </div>
 
-    <Btn
-      :text="lang['base.sendRequest']"
-      class="countdown__btn"
-      is-link
-      :to="settings.lkLink"
-    />
-  </div>
+    <div class="countdown-video">
+      <video
+        v-if="window.isDesktopSize"
+        ref="video"
+        preload="auto"
+        src="../assets/videos/arm.mp4"
+        playsinline
+        muted
+      ></video>
+    </div>
+  </Section>
 </template>
 <script>
 import { mapState } from 'vuex'
@@ -39,13 +55,19 @@ import padStart from 'string.prototype.padstart'
 import plural from 'plural-ru'
 import Countdown from 'countdown-js'
 import Btn from '~/components/controls/Btn'
+import Section from '~/components/layout/Section'
 
 export default {
   name: 'TheCountdown',
   components: {
+    Section,
     Btn,
   },
   props: {
+    sectionTitle: {
+      type: String,
+      default: '',
+    },
     title: {
       type: String,
       default: '',
@@ -71,6 +93,7 @@ export default {
   },
   computed: {
     ...mapState('default', ['lang', 'settings']),
+    ...mapState('responsive', ['window']),
   },
   created() {
     const dateTime = this.$dayjs(this.dateTo).toDate()
@@ -93,11 +116,19 @@ export default {
   methods: {
     plural,
     padStart,
+    scrollHandler(event) {
+      this.$utils.scrollCenterDetection(event, () => {
+        this.$refs.video?.play()
+      })
+    },
   },
 }
 </script>
 <style lang="scss">
 .countdown {
+  position: relative;
+  z-index: 1;
+
   @include --from-tablet {
     margin: 0 0 4rem;
   }
@@ -152,6 +183,21 @@ export default {
   &__btn {
     display: inline-flex;
     margin-top: 6.2rem;
+  }
+}
+
+.countdown-video {
+  @include box(100%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+
+  video {
+    width: auto;
+    height: 100%;
   }
 }
 </style>

@@ -2,7 +2,7 @@
   <div id="app">
     <TheHeader />
 
-    <div class="main _default">
+    <div id="main" v-will-change class="main _default">
       <Nuxt />
     </div>
 

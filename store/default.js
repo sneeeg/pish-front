@@ -27,8 +27,7 @@ export const mutations = {
     state.menus = menus
   },
   changeRoutingState(state, { to, from }) {
-    const str = to.name.split('_')[0]
-    state.routing.currentPageName = str === 'index' ? 'main' : str
+    state.routing.currentPageName = this.$utils.getPageNameByRoute(to.name)
 
     state.routing.hasHistory = !!from.name
   },
