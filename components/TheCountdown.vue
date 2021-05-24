@@ -97,6 +97,7 @@ export default {
   },
   created() {
     const dateTime = this.$dayjs(this.dateTo).toDate()
+    console.log(this.dateTo, dateTime)
     this.countdown = Countdown.timer(
       dateTime,
       (timeLeft) => {
@@ -168,8 +169,8 @@ export default {
       }
 
       @include --mobile {
-        font-size: 5.6rem;
-        line-height: 3.8rem;
+        font-size: 5rem;
+        line-height: 3.2rem;
       }
     }
 

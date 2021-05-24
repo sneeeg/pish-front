@@ -48,6 +48,7 @@ $toggle_border_rad: 3px;
   padding: 1px;
   border-radius: $toggle_border_rad;
   background-color: $color_mid_grey;
+  visibility: hidden;
 
   &__text {
     position: absolute;
