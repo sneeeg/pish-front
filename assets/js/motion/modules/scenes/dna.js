@@ -58,6 +58,8 @@ export default class Dna extends AbstractScene {
     this.#addModel()
 
     this.scene.add(this.group)
+
+    this.render()
   }
 
   render = () => {

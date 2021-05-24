@@ -91,6 +91,8 @@ export default class FirstScreen extends AbstractScene {
 
     /* Adding vectors */
     this.#addArrowVector()
+
+    this.render()
   }
 
   render = () => {
@@ -109,13 +111,6 @@ export default class FirstScreen extends AbstractScene {
 
       firstScreenSceneAppear(this.models, this.vectors)
     }
-
-    window.addEventListener('resize', () => {
-      this.mouseTarget = {
-        x: 0,
-        y: 0,
-      }
-    })
   }
 
   freeze() {

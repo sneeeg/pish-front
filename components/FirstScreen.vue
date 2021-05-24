@@ -112,7 +112,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 15.8rem);
+  min-height: calc(100vh - 15.7rem);
 
   &__background {
     position: absolute;
