@@ -110,6 +110,11 @@ export default {
     display: block;
   }
 
+  &__text {
+    position: relative;
+    top: 1px;
+  }
+
   &__arrow {
     @include box(1.2rem);
     margin-left: 1.2rem;
