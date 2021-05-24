@@ -38,6 +38,11 @@ export default {
   align-items: center;
   color: $color_accent;
 
+  span {
+    position: relative;
+    top: 1px;
+  }
+
   &__svg {
     @include box(1rem);
     margin-left: 0.6rem;

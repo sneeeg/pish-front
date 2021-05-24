@@ -30,7 +30,7 @@ body {
 
 html {
   font-size: 62.5%;
-  background: $color_background; // in some versions Opera background is black by default
+  background: $color_white; // in some versions Opera background is black by default
 
   @media screen and (max-width: 767px) {
     font-size: calc(10px + 13 * (100vw - 375px) / 447);
@@ -48,6 +48,7 @@ html {
 body {
   @include scrollbar;
   @include text;
+  background: $color_background;
 }
 
 #app {

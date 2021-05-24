@@ -193,9 +193,15 @@ export default {
   &__video {
     @include container;
     position: absolute;
+    bottom: 0;
+    z-index: -1;
     display: block;
     height: 100%;
     margin: 0 auto;
+
+    @include --mobile {
+      height: 70%;
+    }
 
     video {
       position: absolute;
