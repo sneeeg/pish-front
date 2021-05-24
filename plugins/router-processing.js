@@ -2,13 +2,18 @@ import appContentDisappear from '~/assets/js/composables/animations/app-content-
 
 export default ({ app, store, $motion }) => {
   app.router.beforeEach((to, from, next) => {
-    store.commit('default/changeRoutingState', { to, from })
-
-    const hasHistory = store.state.default.routing.hasHistory
-
     if (store.state.menu.isActive) {
       store.dispatch('menu/close')
     }
+
+    if (!to.name) {
+      next()
+      return
+    }
+
+    store.commit('default/changeRoutingState', { to, from })
+
+    const hasHistory = store.state.default.routing.hasHistory
 
     if (hasHistory) {
       appContentDisappear()
@@ -25,7 +30,5 @@ export default ({ app, store, $motion }) => {
     } else {
       next()
     }
-
-    next()
   })
 }

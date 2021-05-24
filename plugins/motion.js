@@ -8,7 +8,9 @@ export default (context, inject) => {
     inject('motion', motionInstance)
 
     return motionInstance.changePreset(
-      context.$utils.getPageNameByRoute(context.route.name)
+      context.route.name
+        ? context.$utils.getPageNameByRoute(context.route.name)
+        : ''
     )
   })
 }
