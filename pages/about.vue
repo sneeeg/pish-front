@@ -14,6 +14,13 @@
     >
       <AccordionBlock :tasks="page.tasks.items" />
     </Section>
+    <Section>
+      <SupportBlock
+        :title="page.support.title"
+        :subtitle="page.support.subtitle"
+        :sections="page.support.sections"
+      />
+    </Section>
     <Section
       v-view="$utils.scrollCenterDetection"
       :title="page.priorities.title"
@@ -33,10 +40,17 @@ import Section from '~/components/layout/Section'
 import AccordionBlock from '~/components/AccordionBlock'
 import PriorityBlock from '~/components/PriorityBlock'
 import FirstScreen from '~/components/FirstScreen'
+import SupportBlock from '~/components/SupportBlock'
 
 export default {
   name: 'About',
-  components: { AccordionBlock, Section, PriorityBlock, FirstScreen },
+  components: {
+    AccordionBlock,
+    Section,
+    PriorityBlock,
+    FirstScreen,
+    SupportBlock,
+  },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),

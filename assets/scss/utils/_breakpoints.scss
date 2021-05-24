@@ -35,3 +35,10 @@ $from_mobile: #{$mobile + 1px};
     @content;
   }
 }
+
+//only
+@mixin --tablet-only {
+  @media (min-width: $from_mobile) and (max-width: $tablet) {
+    @content;
+  }
+}
