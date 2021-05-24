@@ -2,12 +2,12 @@
   <div class="other-posts">
     <div
       ref="otherPostsList"
+      v-scroll-element
       :class="['other-posts-list', { _flex: !sliderStatus }]"
     >
       <OtherPostPreview
         v-for="post in posts"
         :key="post.id"
-        v-scroll-element
         class="other-posts-list__item"
         :post="post"
       />
