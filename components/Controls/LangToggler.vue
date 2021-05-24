@@ -49,18 +49,16 @@ $toggle_border_rad: 3px;
   border-radius: $toggle_border_rad;
   background-color: $color_mid_grey;
 
-  @include --tablet {
-    height: 2.7rem;
-  }
-
   &__text {
     position: absolute;
-    top: 50%;
+    top: 0;
     z-index: 2;
+    display: flex;
+    align-items: center;
+    height: 100%;
     color: rgba(0, 0, 0, 0.4);
     font-size: 1.6rem;
     line-height: 1.8rem;
-    transform: translateY(-55%);
     transition: color 0.3s ease;
 
     &._active {
@@ -83,10 +81,6 @@ $toggle_border_rad: 3px;
     height: 2.1rem;
     border-radius: $toggle_border_rad;
     background-color: $color_accent;
-
-    @include --tablet {
-      height: 2.5rem;
-    }
   }
 }
 </style>

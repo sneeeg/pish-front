@@ -6,14 +6,7 @@
   >
     <div v-will-change class="header__info gsap_header__info">
       <div class="header__content">
-        <a
-          class="header__ministry"
-          href="#"
-          rel="nofollow noopener"
-          target="_blank"
-        >
-          <img src="/i/min-science.svg" alt="" />
-        </a>
+        <LangToggler />
         <SocIcons class="_header" />
       </div>
     </div>
@@ -37,7 +30,6 @@
 
       <div class="header__controls">
         <SearchHeader />
-        <LangToggler />
       </div>
       <button type="button" class="header__menu-btn" @click="toggleMenu">
         <i></i>
@@ -87,7 +79,7 @@ export default {
 
     .header__content {
       align-items: center;
-      padding: 1.3rem 0;
+      padding: 2.2rem 0;
 
       @include --tablet {
         padding: 0.9rem 0;
@@ -108,34 +100,23 @@ export default {
     padding: 3rem 0 0 0;
 
     @include --tablet {
-      padding: 1.5rem 0 0;
-    }
-  }
-
-  &__ministry {
-    width: 16rem;
-    height: 4.2rem;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      padding: 1.7rem 0;
     }
   }
 
   &__logo {
     position: relative;
     flex-shrink: 0;
-    width: 31.3rem;
+    width: 22.9rem;
     height: 6rem;
 
     @include --tablet {
-      width: 24.6rem;
+      width: 18.3rem;
       height: 4.8rem;
     }
 
     @include --mobile {
-      width: 18rem;
+      width: 13.4rem;
       height: 3.5rem;
     }
 
@@ -150,7 +131,6 @@ export default {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    height: 2.3rem;
     margin-left: auto;
     color: #000;
     font-weight: 400;
@@ -186,7 +166,7 @@ export default {
     }
 
     .header-search {
-      margin: 0 3.7rem 0 2.1rem;
+      margin: 0 0 0 2.1rem;
     }
   }
 

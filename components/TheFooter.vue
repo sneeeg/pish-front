@@ -77,20 +77,27 @@ export default {
     }
 
     &:not(:last-child) {
-      margin: 0 0 5.6rem 0;
+      margin: 0 0 4.4rem 0;
 
       @include --mobile {
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
       }
     }
   }
 
   &__logo {
-    width: 24.8rem;
-    height: 4.8rem;
+    width: 22.9rem;
+    height: 6rem;
+
+    @include --tablet {
+      width: 18.3rem;
+      height: 4.8rem;
+    }
 
     @include --mobile {
-      margin-bottom: 2rem;
+      width: 13.4rem;
+      height: 3.5rem;
+      margin-bottom: 3rem;
     }
   }
 
@@ -116,11 +123,13 @@ export default {
   }
 
   &__copyrights {
+    @include text-small;
     margin: 0;
+    opacity: 0.7;
 
     @include --mobile {
       order: 1;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
   }
 }

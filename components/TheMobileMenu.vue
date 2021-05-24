@@ -21,8 +21,6 @@
             :to="href"
             >{{ text }}</SmartLink
           >
-
-          <LangToggler />
         </nav>
       </div>
     </div>
@@ -31,13 +29,11 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 
-import LangToggler from '~/components/Controls/LangToggler'
 import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'TheMenu',
   components: {
-    LangToggler,
     SmartLink,
   },
   data() {
@@ -88,7 +84,7 @@ export default {
     position: relative;
     z-index: 10;
     height: 100%;
-    padding: 2rem 0 4rem 0;
+    padding: 1rem 0 4rem 0;
     overflow: hidden auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -104,6 +100,8 @@ export default {
 
   &__search {
     position: relative;
+    display: block;
+    height: 100%;
 
     input {
       width: 100%;
