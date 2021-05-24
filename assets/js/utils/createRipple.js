@@ -10,6 +10,11 @@ const createRipple = (event) => {
   circle.style.left = `${event.clientX - rect.left - radius}px`
   circle.style.top = `${event.clientY - rect.top - radius}px`
   circle.classList.add('ripple')
+  circle.addEventListener('animationend', ({ animationName }) => {
+    if (animationName === 'ripple') {
+      button.removeChild(circle)
+    }
+  })
 
   const ripple = button.getElementsByClassName('ripple')[0]
 
@@ -18,10 +23,6 @@ const createRipple = (event) => {
   }
 
   button.appendChild(circle)
-
-  setTimeout(() => {
-    button && button.removeChild(circle)
-  }, 601)
 }
 
 export default createRipple

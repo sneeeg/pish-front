@@ -39,6 +39,8 @@ export default class Slider {
 
     this._handleStart = this._handleStart.bind(this)
     this._handleMove = this._handleMove.bind(this)
+    this._onPrevBtn = this._onPrevBtn.bind(this)
+    this._onNextBtn = this._onNextBtn.bind(this)
 
     /**
      * Фикс вертикального скролла на мобильном Safari при свайпе
@@ -70,6 +72,7 @@ export default class Slider {
     this._element.removeEventListener('touchmove', this._handleMove)
 
     this._flickityRemove()
+    this._UIUnbinding()
   }
 
   _flickityRemove() {
@@ -82,17 +85,27 @@ export default class Slider {
       this._onChange()
     })
 
-    this._UI.prevButton?.addEventListener('click', (event) => {
-      this.flickity.previous()
-      createRipple(event)
-    })
-    this._UI.nextButton?.addEventListener('click', (event) => {
-      this.flickity.next()
-      createRipple(event)
-    })
+    this._UI.prevButton?.addEventListener('click', this._onPrevBtn)
+    this._UI.nextButton?.addEventListener('click', this._onNextBtn)
+  }
+
+  _UIUnbinding() {
+    this._UI.prevButton?.removeEventListener('click', this._onPrevBtn)
+    this._UI.nextButton?.removeEventListener('click', this._onNextBtn)
+    this._UI = Slider._defaultUI
   }
 
   // Events
+  _onPrevBtn(e) {
+    this.flickity.previous()
+    createRipple(e)
+  }
+
+  _onNextBtn(e) {
+    this.flickity.next()
+    createRipple(e)
+  }
+
   _onChange() {
     if (!this.flickity.slides) return
     const slides = this.flickity.slides.length

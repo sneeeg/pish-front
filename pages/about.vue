@@ -28,6 +28,13 @@
     >
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
+    <Section v-view="$utils.scrollCenterDetection" :title="page.progress.title">
+      <Progress
+        :year="page.progress.year"
+        :active-stage="page.progress.activeStage"
+        :items="page.progress.items"
+      />
+    </Section>
     <Section :title="page.architecture.title" background>
       <ArchitectureBlock :architecture="page.architecture" />
     </Section>
@@ -45,6 +52,7 @@ import PriorityBlock from '~/components/PriorityBlock'
 import FirstScreen from '~/components/FirstScreen'
 import SupportBlock from '~/components/SupportBlock'
 import ArchitectureBlock from '~/components/ArchitectureBlock'
+import Progress from '~/components/Progress'
 
 export default {
   name: 'About',
@@ -55,6 +63,7 @@ export default {
     FirstScreen,
     SupportBlock,
     ArchitectureBlock,
+    Progress,
   },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
