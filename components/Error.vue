@@ -44,7 +44,6 @@ export default {
 
     @include --tablet {
       flex: 0 0 100%;
-      margin-bottom: 2.4rem;
     }
   }
 
@@ -56,6 +55,7 @@ export default {
     }
 
     @include --mobile {
+      max-width: 75%;
       margin-bottom: 1.6rem !important;
     }
   }
@@ -81,6 +81,8 @@ export default {
 
     @include --tablet {
       flex: 0 0 100%;
+      order: -1;
+      margin-bottom: 2.4rem;
     }
 
     > img {
