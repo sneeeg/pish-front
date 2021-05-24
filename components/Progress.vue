@@ -1,10 +1,10 @@
 <template>
   <div class="progress">
-    <div class="progress__year">{{ year }}</div>
+    <div v-scroll-element class="progress__year">{{ year }}</div>
     <div class="progress__slider-block">
       <ul ref="slider" class="progress__slider">
         <li v-for="content in items" :key="content.id" class="progress__slide">
-          <HTMLContent :html="content" />
+          <HTMLContent v-scroll-element="'right'" :html="content" />
         </li>
       </ul>
       <div class="controls">

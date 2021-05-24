@@ -35,7 +35,11 @@
         :items="page.progress.items"
       />
     </Section>
-    <Section :title="page.architecture.title" background>
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      :title="page.architecture.title"
+      background
+    >
       <ArchitectureBlock :architecture="page.architecture" />
     </Section>
   </div>

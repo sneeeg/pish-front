@@ -1,11 +1,13 @@
 <template>
   <div class="architecture-block">
     <Architecture
+      v-scroll-element
       :left="architecture.left"
       :center="architecture.center"
       :right="architecture.right"
     />
     <Principles
+      v-scroll-element
       :title="architecture.principles.title"
       :content="architecture.principles.content"
     />

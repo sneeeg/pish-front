@@ -1,10 +1,10 @@
 <template>
-  <div class="support">
+  <div v-view="$utils.scrollCenterDetection" class="support">
     <div class="support__head">
-      <h2 class="support__title">{{ title }}</h2>
-      <p class="support__subtitle">{{ subtitle }}</p>
+      <h2 v-scroll-element class="support__title">{{ title }}</h2>
+      <p v-scroll-element class="support__subtitle">{{ subtitle }}</p>
     </div>
-    <Tabs :sections="sections" />
+    <Tabs v-scroll-element :sections="sections" />
   </div>
 </template>
 
