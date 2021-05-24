@@ -1,10 +1,13 @@
 <template>
   <div class="reviews">
-    <div ref="reviewsList" :class="['reviews-list', { _flex: !sliderStatus }]">
+    <div
+      ref="reviewsList"
+      v-scroll-element
+      :class="['reviews-list', { _flex: !sliderStatus }]"
+    >
       <ReviewItem
         v-for="review in reviews"
         :key="review.id"
-        v-scroll-element
         class="reviews-list__item"
         :review="review"
       />
