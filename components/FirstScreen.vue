@@ -31,6 +31,16 @@
         :to="settings.lkLink"
       />
     </div>
+
+    <div v-if="video" class="first-screen__video">
+      <video
+        ref="video"
+        preload="auto"
+        src="/videos/arm2.mp4"
+        playsinline
+        muted
+      ></video>
+    </div>
   </div>
 </template>
 
@@ -68,6 +78,10 @@ export default {
       type: String,
       default: '',
     },
+    video: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -81,8 +95,9 @@ export default {
     if (this.major) {
       this.$motion?.scenes.firstScreen.init(this.$refs.firstScreen)
     }
-
     scrollAnimation(this.$refs.firstScreen)
+
+    this.$refs.video?.play()
   },
   beforeDestroy() {
     this.major && this.$motion?.scenes.firstScreen.destroy()
@@ -172,6 +187,21 @@ export default {
 
     @include --mobile {
       width: 18rem;
+    }
+  }
+
+  &__video {
+    @include container;
+    position: absolute;
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+
+    video {
+      position: absolute;
+      right: 0;
+      width: auto;
+      height: 100%;
     }
   }
 

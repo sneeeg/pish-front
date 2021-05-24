@@ -7,5 +7,12 @@ export default {
     name: 'main',
     modelsToLoad: ['david', 'satellite', 'numbers', 'books', 'molecule', 'dna'],
     vectorsToLoad: ['arrow'],
+    videosToLoad: [],
+  },
+  participation: {
+    name: 'participation',
+    modelsToLoad: [],
+    vectorsToLoad: [],
+    videosToLoad: ['/videos/arm2.mp4'],
   },
 }

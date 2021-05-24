@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <Section is-layout>
-      <FirstScreen adaptive-top :title="page.title" />
+      <FirstScreen adaptive-top video :title="page.title" />
     </Section>
     <Section v-view="$utils.scrollCenterDetection" background>
       <div class="participation-advertisement">

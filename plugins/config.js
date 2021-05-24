@@ -19,7 +19,7 @@ export default ({ app, $axios, store, $constants }) => {
   })
 
   $axios.interceptors.response.use((response) => {
-    if (response.data.errors || response.data.errors.length) {
+    if (response.data.errors && response.data.errors.length) {
       const sessidError = response.data.errors.find(
         (error) => error.code === $constants.CSRF_ERROR_CODE
       )

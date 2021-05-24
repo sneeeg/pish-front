@@ -26,7 +26,7 @@ export default class LoadingManager {
 
   /* Public */
 
-  async load({ modelsToLoad, vectorsToLoad }) {
+  async load({ modelsToLoad, vectorsToLoad, videosToLoad }) {
     const promises = []
     const texturesToLoad = [] // textures to be loaded
     let needModelsWarning = false // true new models loaded
@@ -72,7 +72,7 @@ export default class LoadingManager {
         promises.push(texturePromise)
       })
 
-    /* Vectors */
+    /* Loading vectors */
     vectorsToLoad &&
       vectorsToLoad.forEach((vectorToLoad) => {
         if (this.context.vectors[vectorToLoad] || !vectors[vectorToLoad]) {
@@ -88,6 +88,14 @@ export default class LoadingManager {
         )
 
         promises.push(vectorPromise)
+      })
+
+    /* Loading videos */
+    videosToLoad &&
+      videosToLoad.forEach((videoToLoad) => {
+        promises.push(
+          this.context.nuxt.$axios.get(videoToLoad, { responseType: 'blob' })
+        )
       })
 
     /* Result */

@@ -42,7 +42,7 @@
         v-if="window.isDesktopSize"
         ref="video"
         preload="auto"
-        src="../assets/videos/arm.mp4"
+        src="/videos/arm.mp4"
         playsinline
         muted
       ></video>
@@ -97,7 +97,7 @@ export default {
   },
   created() {
     const dateTime = this.$dayjs(this.dateTo).toDate()
-    console.log(this.dateTo, dateTime)
+
     this.countdown = Countdown.timer(
       dateTime,
       (timeLeft) => {
