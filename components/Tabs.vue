@@ -315,7 +315,7 @@ export default {
   &__content-item {
     @include text-small;
     position: relative;
-    padding: 0 2rem 0 1rem;
+    padding: 0 2rem 0 2rem;
     break-inside: avoid-column;
 
     &:not(:first-child) {
