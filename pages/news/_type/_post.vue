@@ -4,7 +4,7 @@
       <ArrowLink :text="lang['news.all']" to="/news" arrow-left />
     </div>
     <Section :background-absolute="!!page.detailPicture"
-      ><article class="post">
+      ><article ref="post" class="post">
         <PostHead
           :title="page.title"
           :category="page.category"
@@ -13,13 +13,14 @@
           :picture="page.detailPicture"
           class="post__head"
         />
+        <HTMLContent
+          v-if="page.description"
+          v-scroll-element
+          :html="page.description"
+          class="post__description"
+        />
+        <HTMLContent v-scroll-element :html="page.content" class="post__body" />
       </article>
-      <HTMLContent
-        v-if="page.description"
-        :html="page.description"
-        class="post__description"
-      />
-      <HTMLContent :html="page.content" class="post__body" />
     </Section>
     <Section v-view="$utils.scrollCenterDetection" :title="lang['news.other']">
       <OtherPosts main-posts :category="page.category" />
@@ -36,6 +37,7 @@ import PostHead from '~/components/PostHead'
 import HTMLContent from '~/components/utils/HTMLContent'
 import OtherPosts from '~/components/OtherPosts'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
+import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
 
 export default {
   name: 'Post',
@@ -61,6 +63,9 @@ export default {
   computed: {
     ...mapState('default', ['lang']),
     ...mapState('responsive', ['window']),
+  },
+  mounted() {
+    scrollAnimation(this.$refs.post)
   },
 }
 </script>

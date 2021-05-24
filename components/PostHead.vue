@@ -1,5 +1,5 @@
 <template>
-  <div v-view="$utils.scrollCenterDetection" class="post-head">
+  <div class="post-head">
     <h1 v-scroll-element class="post-head__title _visually-h2">{{ title }}</h1>
     <div v-scroll-element class="post-head-info">
       <template v-if="category">
