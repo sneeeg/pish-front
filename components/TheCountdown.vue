@@ -41,6 +41,7 @@
       <video
         v-if="window.isDesktopSize"
         ref="video"
+        preload="auto"
         src="../assets/videos/arm.mp4"
         playsinline
         muted

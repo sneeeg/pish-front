@@ -1,12 +1,24 @@
 <template>
   <div>
     <Section is-layout>
-      <FirstScreen :title="page.title" :lead="page.lead" />
+      <FirstScreen
+        :title="page.title"
+        :lead="page.lead"
+        background="/3d/i/background.jpg"
+      />
     </Section>
-    <Section :title="page.tasks.title" background>
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      :title="page.tasks.title"
+      background
+    >
       <AccordionBlock :tasks="page.tasks.items" />
     </Section>
-    <Section :title="page.priorities.title" background>
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      :title="page.priorities.title"
+      background
+    >
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
   </div>

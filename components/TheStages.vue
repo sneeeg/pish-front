@@ -1,5 +1,5 @@
 <template>
-  <div class="stages">
+  <div v-scroll-element class="stages">
     <div v-for="(stage, i) in stages" :key="i" class="stage">
       <span class="stage__index">
         <template v-if="$i18n.locale === 'ru'"> {{ i + 1 }} ЭТАП </template>

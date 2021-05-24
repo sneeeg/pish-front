@@ -1,6 +1,6 @@
 <template>
   <div v-view="$utils.scrollCenterDetection" class="page">
-    <div v-if="window.isDesktopSize" class="page__back">
+    <div v-if="false" class="page__back">
       <ArrowLink
         v-if="routing.hasHistory"
         :text="lang['base.back']"

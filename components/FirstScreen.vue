@@ -5,6 +5,11 @@
     :class="['first-screen', { '_adaptive-top': adaptiveTop }]"
   >
     <div class="first-screen__content">
+      <div
+        v-scroll-element="'right'"
+        class="first-screen__background"
+        :style="{ backgroundImage: background ? `url(${background})` : false }"
+      ></div>
       <h1
         v-scroll-element
         :class="['first-screen__title', { '_visually-h2': !major }]"
@@ -59,6 +64,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    background: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -105,6 +114,27 @@ export default {
   justify-content: center;
   min-height: calc(100vh - 15.8rem);
 
+  &__background {
+    position: absolute;
+    top: 0;
+    right: -3rem;
+    width: 71.6rem;
+    height: 43.5rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include --tablet {
+      width: 40rem;
+      height: 24.3rem;
+    }
+
+    @include --mobile {
+      top: -10vh;
+      width: 26rem;
+      height: 15.8rem;
+    }
+  }
+
   canvas {
     @include --tablet {
       visibility: hidden;
@@ -129,6 +159,7 @@ export default {
   &__content {
     @include container;
     @include padding-section;
+    position: relative;
   }
 
   &__title {

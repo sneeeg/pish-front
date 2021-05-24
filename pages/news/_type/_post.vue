@@ -1,6 +1,6 @@
 <template>
   <div :class="page">
-    <div v-if="window.isDesktopSize" class="page__back">
+    <div v-if="false" class="page__back">
       <ArrowLink :text="lang['news.all']" to="/news" arrow-left />
     </div>
     <Section :background-absolute="!!page.detailPicture"
@@ -21,7 +21,7 @@
       />
       <HTMLContent :html="page.content" class="post__body" />
     </Section>
-    <Section :title="lang['news.other']">
+    <Section v-view="$utils.scrollCenterDetection" :title="lang['news.other']">
       <OtherPosts main-posts :category="page.category" />
     </Section>
   </div>

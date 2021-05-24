@@ -3,6 +3,7 @@
     <div
       v-for="{ title, model3d, content } in tasks"
       :key="title"
+      v-scroll-element
       class="accordion__item"
     >
       <button
