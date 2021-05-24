@@ -187,7 +187,7 @@ export default {
       font-size: 1.8rem;
 
       @include --mobile {
-        font-size: 1.6rem;
+        @include text-small;
       }
     }
   }
