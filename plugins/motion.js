@@ -1,5 +1,8 @@
 export default (context, inject) => {
-  if (!context.store.state.responsive.browser.hasWebGLSupport) {
+  if (
+    !context.store.state.responsive.browser.hasWebGLSupport ||
+    context.store.state.responsive.browser.isIE
+  ) {
     return inject('motion', null)
   }
 
