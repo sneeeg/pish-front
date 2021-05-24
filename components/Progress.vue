@@ -187,13 +187,18 @@ export default {
         top: 0;
         left: 50%;
         justify-content: space-between;
-        width: calc(100% + 6rem);
+        width: calc(100% + 7rem);
         margin: 0;
         transform: translateX(-50%);
 
         > .controls__btn {
           width: 2rem;
           height: 4rem;
+
+          @include --tablet {
+            width: 1.6rem;
+            height: 3.2rem;
+          }
 
           &:disabled {
             cursor: auto;
@@ -206,6 +211,7 @@ export default {
 
   &__slider {
     position: relative;
+    z-index: 1;
 
     &::after {
       display: none;
