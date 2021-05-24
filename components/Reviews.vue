@@ -3,7 +3,13 @@
     <div
       ref="reviewsList"
       v-scroll-element
-      :class="['reviews-list', { _flex: !sliderStatus }]"
+      :class="[
+        'reviews-list',
+        {
+          _flex: !sliderStatus,
+          '_flex-sb': !sliderStatus && reviews.length > 3,
+        },
+      ]"
     >
       <ReviewItem
         v-for="review in reviews"
@@ -97,6 +103,9 @@ export default {
 .reviews-list {
   &._flex {
     display: flex;
+  }
+
+  &._flex-sb {
     justify-content: space-between;
   }
 

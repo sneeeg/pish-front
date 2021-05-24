@@ -3,7 +3,10 @@
     <div
       ref="otherPostsList"
       v-scroll-element
-      :class="['other-posts-list', { _flex: !sliderStatus }]"
+      :class="[
+        'other-posts-list',
+        { _flex: !sliderStatus, '_flex-sb': !sliderStatus && posts.length > 2 },
+      ]"
     >
       <OtherPostPreview
         v-for="post in posts"
@@ -113,6 +116,9 @@ export default {
 .other-posts-list {
   &._flex {
     display: flex;
+  }
+
+  &._flex-sb {
     justify-content: space-between;
   }
 
