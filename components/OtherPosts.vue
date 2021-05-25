@@ -11,6 +11,7 @@
       <OtherPostPreview
         v-for="post in posts"
         :key="post.id"
+        :type="type"
         class="other-posts-list__item"
         :post="post"
       />
@@ -31,13 +32,17 @@ export default {
   name: 'OtherPosts',
   components: { OtherPostPreview, SliderControls },
   props: {
-    mainPosts: {
-      type: Boolean,
-      default: false,
+    type: {
+      type: String,
+      default: 'all',
     },
     category: {
       type: Object,
       default: null,
+    },
+    slug: {
+      type: String,
+      default: '',
     },
   },
   data() {
@@ -85,14 +90,22 @@ export default {
   },
   methods: {
     async fetchPosts() {
-      if (!this.mainPosts) {
-        this.posts = await this.$api.posts
-          .getUniversityPosts()
-          .then(({ data }) => data || [])
-      } else {
-        this.posts = await this.$api.posts
-          .get(this.category?.id, 1, 10)
-          .then(({ data }) => data.posts || [])
+      const apiMethod =
+        this.type === 'all'
+          ? this.$api.posts.get
+          : this.type === 'university'
+          ? this.$api.posts.getUniversityPosts
+          : this.$api.reviews.get
+
+      this.posts = await apiMethod(this.category?.id, 1, 10).then(
+        ({ data }) => data.posts || []
+      )
+
+      if (this.slug) {
+        this.posts.splice(
+          this.posts.findIndex((elem) => elem.slug === this.slug),
+          1
+        )
       }
     },
   },

@@ -2,11 +2,15 @@
   <div class="post-preview">
     <template v-if="!$utils.isObjectEmpty(post)">
       <SmartLink :to="linkObject" class="post-preview__image">
-        <img :src="post.previewPicture.src" :alt="post.previewPicture.alt" />
+        <img
+          v-if="post.previewPicture && post.previewPicture.src"
+          :src="post.previewPicture.src"
+          :alt="post.previewPicture.alt"
+        />
       </SmartLink>
       <div class="post-preview__content">
         <div class="post-preview-head">
-          <template v-if="post.category.text">
+          <template v-if="post.category && post.category.text">
             <span class="post-preview-head__category">{{
               post.category.text
             }}</span>
@@ -44,13 +48,20 @@ export default {
       type: Object,
       required: true,
     },
+    type: {
+      type: String,
+      default: 'all',
+    },
   },
   computed: {
     ...mapState('default', ['lang']),
+    linkName() {
+      return this.type === 'all' ? 'news-post' : `news-${this.type}-post`
+    },
     linkObject() {
       return {
-        name: 'news-type-post',
-        params: { type: 'all', post: this.post.slug },
+        name: this.linkName,
+        params: { post: this.post.slug },
       }
     },
   },

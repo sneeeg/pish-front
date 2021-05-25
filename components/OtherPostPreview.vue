@@ -1,7 +1,11 @@
 <template>
   <div class="other-post-preview">
     <SmartLink :to="linkObject" class="other-post-preview__image">
-      <img :src="post.previewPicture.src" :alt="post.previewPicture.alt" />
+      <img
+        v-if="post.previewPicture && post.previewPicture.src"
+        :src="post.previewPicture.src"
+        :alt="post.previewPicture.alt"
+      />
     </SmartLink>
     <div class="other-post-preview__content">
       <div class="other-post-preview-head">
@@ -35,13 +39,20 @@ export default {
       type: Object,
       required: true,
     },
+    type: {
+      type: String,
+      default: 'all',
+    },
   },
   computed: {
     ...mapState('default', ['lang']),
+    linkName() {
+      return this.type === 'all' ? 'news-post' : `news-${this.type}-post`
+    },
     linkObject() {
       return {
-        name: 'news-type-post',
-        params: { type: 'university', post: this.post.slug },
+        name: this.linkName,
+        params: { post: this.post.slug },
       }
     },
   },

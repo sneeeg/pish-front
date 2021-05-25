@@ -15,7 +15,13 @@
     </div>
     <div v-else class="section__inner">
       <div v-if="title" v-scroll-element :class="['section-head']">
-        <h2 class="section-head__title">{{ title }}</h2>
+        <h2 v-if="!to" class="section-head__title">{{ title }}</h2>
+        <SmartLink
+          v-else
+          class="section-head__title hover-opacity _visually-h2"
+          :to="to"
+          >{{ title }}</SmartLink
+        >
       </div>
       <div class="section__content">
         <slot name="default" />
@@ -25,8 +31,10 @@
 </template>
 
 <script>
+import SmartLink from '~/components/utils/SmartLink'
 export default {
   name: 'Section',
+  components: { SmartLink },
   props: {
     tag: {
       type: String,
@@ -51,6 +59,10 @@ export default {
     backgroundAbsolute: {
       type: Boolean,
       default: false,
+    },
+    to: {
+      type: [String, Object],
+      default: null,
     },
   },
 }

@@ -236,6 +236,17 @@ export default {
     &._IE {
       right: 30rem;
       z-index: 1;
+      overflow: hidden;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 40rem;
+        width: 1rem;
+        height: 100%;
+        background-color: $color_background;
+        content: '';
+      }
     }
 
     @include --mobile {

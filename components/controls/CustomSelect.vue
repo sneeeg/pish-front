@@ -57,6 +57,7 @@ export default {
     position: absolute;
     top: 4px;
     right: 0;
+    pointer-events: none;
     @include box(1.2rem);
   }
 }

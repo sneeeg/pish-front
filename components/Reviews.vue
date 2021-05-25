@@ -80,7 +80,7 @@ export default {
     async fetchReviews() {
       this.reviews = await this.$api.reviews
         .get()
-        .then(({ data }) => data || [])
+        .then(({ data }) => data.posts || [])
     },
   },
 }

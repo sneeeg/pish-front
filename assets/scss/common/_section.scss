@@ -48,7 +48,9 @@
 }
 
 .section-head {
+  display: block;
   margin-bottom: 7.4rem;
+  font-weight: 700;
 
   @include --tablet {
     margin-bottom: 3.8rem;
