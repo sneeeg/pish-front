@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import Error from '~/components/Error.vue'
 import Section from '~/components/layout/Section'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
@@ -29,6 +30,12 @@ export default {
         lang: this.$i18n.locale,
       },
     }
+  },
+  created() {
+    this.changeErrorPageState(true)
+  },
+  methods: {
+    ...mapMutations('default', ['changeErrorPageState']),
   },
 }
 </script>

@@ -8,6 +8,7 @@ export const state = () => ({
     currentPageName: '',
     hasHistory: false,
   },
+  onErrorPage: false,
 })
 
 export const mutations = {
@@ -30,6 +31,9 @@ export const mutations = {
     state.routing.currentPageName = this.$utils.getPageNameByRoute(to.name)
 
     state.routing.hasHistory = !!from.name
+  },
+  changeErrorPageState(state, value) {
+    state.onErrorPage = value
   },
 }
 

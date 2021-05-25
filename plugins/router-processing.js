@@ -15,7 +15,9 @@ export default ({ app, store, $motion }) => {
 
     const hasHistory = store.state.default.routing.hasHistory
 
-    if (hasHistory) {
+    if (hasHistory || store.state.default.onErrorPage) {
+      store.commit('default/changeErrorPageState', false)
+
       appContentDisappear()
         .then(() => {
           return (
