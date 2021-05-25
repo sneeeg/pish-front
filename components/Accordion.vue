@@ -8,7 +8,7 @@
     >
       <button
         type="button"
-        class="accordion__label"
+        class="accordion__label _visually-h4"
         :class="{ _active: expanded.includes(title) }"
         @click="taskChange(title, model3d)"
       >
@@ -78,8 +78,6 @@ export default {
     width: 100%;
     padding: 2.6rem 0;
     font-weight: bold;
-    font-size: 2.2rem;
-    line-height: 2.8rem;
     text-align: left;
   }
 
@@ -92,6 +90,9 @@ export default {
   }
 
   &__image-wrapper {
+    width: 100%;
+    height: 18rem;
+
     &:not(:last-child) {
       margin-bottom: 2rem;
     }
@@ -101,9 +102,7 @@ export default {
     }
 
     > img {
-      max-width: 100%;
-      max-height: 100%;
-      margin: 0 auto;
+      @include adaptiveImg(50%, 50%, contain);
     }
   }
 }

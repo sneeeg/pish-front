@@ -37,18 +37,25 @@ export default {
 
   &__icon-wrapper {
     display: flex;
-    flex: 0 0 21%;
+    flex: 0 0 6rem;
     align-items: center;
     justify-content: center;
+    max-width: 6rem;
+    max-height: 6rem;
     margin-right: 2.4rem;
 
     @include --tablet {
-      margin-right: 1.6rem;
+      margin-right: 2rem;
+    }
+
+    @include --mobile {
+      flex: 0 0 4rem;
+      max-width: 4rem;
+      max-height: 4rem;
     }
 
     > img {
-      max-width: 100%;
-      max-height: 100%;
+      @include adaptiveImg(50%, 50%, contain);
     }
   }
 }

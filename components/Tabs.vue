@@ -324,10 +324,10 @@ export default {
 
     &::before {
       position: absolute;
-      top: 1rem;
+      top: 0.6rem;
       left: 0;
-      width: 4px;
-      height: 4px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background-color: $color_red;
       content: '';
@@ -357,7 +357,7 @@ export default {
 
   &__title {
     max-width: 75%;
-    margin-bottom: 2px;
+    margin-bottom: 2rem;
     font-weight: bold;
   }
 }

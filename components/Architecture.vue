@@ -220,7 +220,9 @@ export default {
     }
 
     ._center & > *:not(:last-child) {
-      flex: 0 0 calc(50% - 3rem / 2);
+      flex-basis: calc(50% - 3rem / 2);
+      flex-grow: 0;
+      flex-shrink: 0;
       margin-bottom: 3rem;
 
       @include --mobile {
@@ -264,6 +266,7 @@ export default {
 
   &__name {
     @include text;
+    max-width: 100%;
     margin: 0;
     line-height: 2.7rem;
 
@@ -286,6 +289,7 @@ export default {
   }
 
   &__head {
+    max-width: 100%;
     padding: 1.6rem;
     border: 1px solid $color_red;
     text-align: center;
