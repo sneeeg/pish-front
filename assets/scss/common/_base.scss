@@ -188,7 +188,7 @@ a.lk-link {
 
   @include hover {
     &::before {
-      border-color: $color_black;
+      border-color: $color_black !important;
     }
   }
 
