@@ -48,8 +48,8 @@ export default {
   components: { HTMLContent, PostHead, Section, ArrowLink, OtherPosts },
   mixins: [pageHead, pageDefault],
   async asyncData({ $nuxt, route, $api }) {
-    const page = await $api.reviews
-      .getReviewBySlug(route.params.post)
+    const page = await $api.posts
+      .getUniversityPostBySlug(route.params.post)
       .then(({ data }) => data)
 
     if (!page) {

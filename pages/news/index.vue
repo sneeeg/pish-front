@@ -16,7 +16,7 @@
       to="/news/university"
       :title="page.universityNewsTitle"
     >
-      <OtherPosts />
+      <OtherPosts type="university" />
     </Section>
   </div>
 </template>

@@ -34,8 +34,8 @@ export default {
     ...mapState('default', ['lang']),
     linkObject() {
       return {
-        name: 'news-type-post',
-        params: { type: 'media', post: this.review.slug },
+        name: 'news-media-post',
+        params: { post: this.review.slug },
       }
     },
   },
