@@ -26,6 +26,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/svg4everybody.js',
     '~/plugins/injections.js',
     '~/plugins/directives.js',
     '~/plugins/server.js',
