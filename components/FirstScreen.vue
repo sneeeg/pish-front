@@ -36,7 +36,7 @@
       />
     </div>
 
-    <div v-if="video" class="first-screen__video">
+    <div v-if="video" :class="['first-screen__video', { _IE: browser.isIE }]">
       <video
         ref="video"
         preload="auto"
@@ -232,6 +232,11 @@ export default {
     display: block;
     height: 100%;
     margin: 0 auto;
+
+    &._IE {
+      right: 30rem;
+      z-index: 1;
+    }
 
     @include --mobile {
       height: 70%;
