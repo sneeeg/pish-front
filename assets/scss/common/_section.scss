@@ -26,6 +26,24 @@
     @include padding-section;
     display: block;
     margin: 0 auto;
+
+    ._participation & {
+      padding: 8.4rem 0 8.4rem 60rem;
+
+      > * {
+        @include --mobile {
+          max-width: 75%;
+        }
+      }
+
+      @include --tablet {
+        padding-left: 36rem;
+      }
+
+      @include --mobile {
+        padding: 26rem 0 6rem;
+      }
+    }
   }
 }
 

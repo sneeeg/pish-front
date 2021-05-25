@@ -109,11 +109,10 @@ export default {
   }
 
   > footer {
+    @include text-small;
     display: inline-flex;
     align-items: center;
     margin: 0;
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 
   &__photo {
@@ -139,9 +138,8 @@ export default {
   }
 
   &__author-block {
+    @include text;
     max-width: 50%;
-    font-size: 2rem;
-    line-height: 2.4rem;
 
     @include --tablet {
       max-width: 65%;
@@ -149,8 +147,6 @@ export default {
 
     @include --mobile {
       max-width: none;
-      font-size: 1.5rem;
-      line-height: 1.8rem;
     }
   }
 

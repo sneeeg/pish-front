@@ -1,5 +1,10 @@
 <template>
-  <Section ref="participation" v-view="scrollHandler" :title="title">
+  <Section
+    ref="participation"
+    v-view="scrollHandler"
+    class="_participation"
+    :title="title"
+  >
     <div class="participation">
       <h3 v-scroll-element class="participation__title">{{ subtitle }}</h3>
       <p v-scroll-element class="participation__text">{{ text }}</p>
@@ -62,16 +67,10 @@ export default {
 <style lang="scss">
 .participation {
   position: relative;
-  min-height: 39rem;
-  padding: 0 0 0 calc((100% + 3rem) / 2);
+  min-height: 30rem;
 
   @include --tablet {
-    min-height: 29rem;
-  }
-
-  @include --mobile {
     min-height: auto;
-    padding: 0 0 16.4rem;
   }
 
   &__title {
@@ -94,12 +93,8 @@ export default {
 
   &__text {
     @include text-big;
-    margin: 0 0 9.6rem;
+    margin: 0 0 4rem;
     padding-right: 3.2rem;
-
-    @include --tablet {
-      margin: 0 0 6.4rem;
-    }
 
     @include --mobile {
       margin: 0 0 2.7rem;

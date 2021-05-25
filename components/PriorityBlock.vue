@@ -31,7 +31,7 @@ export default {
   @include flexGap(3rem);
 
   &__item {
-    flex: 1 1 calc(33% - 3rem);
+    flex-basis: calc(33% - 3rem);
     max-width: calc(33% - 3rem);
 
     @include --tablet {
