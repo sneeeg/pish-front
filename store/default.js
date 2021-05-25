@@ -8,6 +8,12 @@ export const state = () => ({
     currentPageName: '',
     hasHistory: false,
   },
+  popup: {
+    isShow: false,
+    title: '',
+    text: '',
+    href: '',
+  },
 })
 
 export const mutations = {
@@ -30,6 +36,16 @@ export const mutations = {
     state.routing.currentPageName = this.$utils.getPageNameByRoute(to.name)
 
     state.routing.hasHistory = !!from.name
+  },
+  changePopupState(
+    state,
+    { isShow = false, title = '', text = '', href = '' }
+  ) {
+    state.popup.title = title
+    state.popup.text = text
+    state.popup.href = href
+
+    state.popup.isShow = isShow
   },
 }
 
