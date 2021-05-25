@@ -2,7 +2,7 @@
   <div class="custom-select">
     <select aria-label="select" :value="value" class="pointer" @change="emit">
       <option v-for="item in items" :key="item.id" :value="item.id">
-        {{ item.text }}
+        {{ item.text || item.title }}
       </option>
     </select>
     <SvgIcon name="arrow-bottom" />
