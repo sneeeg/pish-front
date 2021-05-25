@@ -1,7 +1,12 @@
 <template>
   <div>
     <Section is-layout>
-      <FirstScreen :title="page.mainScreenTitles[0]" link major />
+      <FirstScreen
+        background="/3d/i/main.png"
+        :title="page.mainScreenTitles[0]"
+        link
+        major
+      />
     </Section>
     <Section background>
       <Blockquote :text="page.quote.content" :author="page.quote.author" />

@@ -2,12 +2,16 @@
   <div
     ref="firstScreen"
     v-view="scrollHandler"
-    :class="['first-screen', { '_adaptive-top': adaptiveTop }]"
+    :class="[
+      'first-screen',
+      { '_adaptive-top': adaptiveTop, _IE: browser.isIE },
+    ]"
   >
     <div class="first-screen__content">
       <div
+        v-if="!major || majorBackgroungJPG"
         v-scroll-element="'right'"
-        class="first-screen__background"
+        :class="['first-screen__background', { _major: majorBackgroungJPG }]"
         :style="{ backgroundImage: background ? `url(${background})` : false }"
       ></div>
       <h1
@@ -90,9 +94,13 @@ export default {
   },
   computed: {
     ...mapState('default', ['lang', 'settings', 'routing']),
+    ...mapState('responsive', ['browser', 'device']),
+    majorBackgroungJPG() {
+      return this.major && (this.browser.isIE || !this.device.isDesktop)
+    },
   },
   mounted() {
-    if (this.major) {
+    if (this.major && this.device.isDesktop) {
       this.$motion?.scenes.firstScreen.init(this.$refs.firstScreen)
     }
     scrollAnimation(this.$refs.firstScreen)
@@ -100,11 +108,13 @@ export default {
     this.$refs.video?.play()
   },
   beforeDestroy() {
-    this.major && this.$motion?.scenes.firstScreen.destroy()
+    this.major &&
+      this.device.isDesktop &&
+      this.$motion?.scenes.firstScreen.destroy()
   },
   methods: {
     scrollHandler(event) {
-      if (!this.major) return
+      if (!this.major || !this.device.isDesktop) return
 
       if (event.type === 'enter' && !this.motionIsActive) {
         this.motionIsActive = true
@@ -129,6 +139,10 @@ export default {
   justify-content: center;
   min-height: calc(100vh - 15.7rem);
 
+  &._IE {
+    height: calc(100vh - 15.7rem);
+  }
+
   &__background {
     position: absolute;
     top: 0;
@@ -147,6 +161,26 @@ export default {
       top: -10vh;
       width: 26rem;
       height: 15.8rem;
+    }
+
+    &._major {
+      top: calc(50% - 36.5rem);
+      width: 73rem;
+      height: 58rem;
+
+      @include --tablet {
+        top: -40vh;
+
+        @media (orientation: landscape) {
+          display: none;
+        }
+      }
+
+      @include --mobile {
+        top: -30vh;
+        width: 42rem;
+        height: 33rem;
+      }
     }
   }
 

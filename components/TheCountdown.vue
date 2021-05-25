@@ -161,6 +161,7 @@ export default {
       color: $color_accent;
       font-size: 12rem;
       line-height: 7.4rem;
+      will-change: transform;
 
       @include --tablet {
         margin-bottom: 1rem;
