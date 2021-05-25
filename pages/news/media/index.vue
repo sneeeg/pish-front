@@ -34,7 +34,7 @@ export default {
 
     const page = await apiMethod().then(({ data }) => data)
 
-    page.title = page.reviewsTitle
+    page.title = page.title + ' - ' + page.reviewsTitle
 
     return { page }
   },
