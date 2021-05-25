@@ -1,78 +1,49 @@
 <template>
   <div class="tabs">
-    <template v-if="!window.isMobileSize">
-      <ul class="tabs__list">
+    <ul v-if="!window.isMobileSize" class="tabs__list">
+      <li
+        v-for="{ id, title } in sections"
+        :key="id"
+        :class="[
+          'tabs__item',
+          '_visually-h4',
+          { _selected: id === currentTabID },
+        ]"
+        @click="toggleTab(id)"
+      >
+        {{ title }}
+      </li>
+    </ul>
+    <CustomSelect
+      v-else
+      :value="currentTabID"
+      :items="sections"
+      class="tabs__select"
+      @input="toggleTab"
+    />
+    <transition mode="out-in" :css="false" @enter="enter" @leave="leave">
+      <ul ref="content" :key="currentTabID" class="tabs__content-list">
         <li
-          v-for="{ id, title } in sections"
-          :key="id"
-          :class="[
-            'tabs__item',
-            '_visually-h4',
-            { _selected: title === currentTab },
-          ]"
-          @click="toggleTab(title)"
+          v-for="content in contents"
+          :key="content.id"
+          class="tabs__content-item"
         >
-          {{ title }}
+          {{ content }}
         </li>
       </ul>
-      <transition mode="out-in" :css="false" @enter="enter" @leave="leave">
-        <ul ref="content" :key="currentTab" class="tabs__content-list">
-          <li
-            v-for="content in contents"
-            :key="content.id"
-            class="tabs__content-item"
-          >
-            {{ content }}
-          </li>
-        </ul>
-      </transition>
-    </template>
-    <template v-else>
-      <ul ref="slider" class="tabs__slider">
-        <li
-          v-for="{ id, title, items } in sections"
-          :key="id"
-          class="tabs__ceil"
-        >
-          <h3 class="tabs__title">{{ title }}</h3>
-          <ul class="tabs__content-list">
-            <li v-for="item in items" :key="item.id" class="tabs__content-item">
-              {{ item }}
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <div class="controls">
-        <button ref="prev" class="controls__btn controls__prev">
-          <svg-icon name="arrow-slider" />
-        </button>
-        <ol class="controls__dots">
-          <li
-            v-for="number in dotNumbers"
-            :key="number"
-            :class="[
-              'controls__dot',
-              { _selected: number === currentSlideIndex },
-            ]"
-            @click="selectSlide(number)"
-          ></li>
-        </ol>
-        <button ref="next" class="controls__btn controls__next">
-          <svg-icon name="arrow-slider" />
-        </button>
-      </div>
-    </template>
+    </transition>
   </div>
 </template>
 
 <script>
 import gsap from 'gsap'
 import { mapState } from 'vuex'
-import Slider from '~/assets/js/modules/slider.js'
+
+import CustomSelect from '~/components/controls/CustomSelect'
 
 export default {
   name: 'Tabs',
-  components: {},
+  components: { CustomSelect },
   props: {
     sections: {
       type: Array,
@@ -80,107 +51,26 @@ export default {
     },
   },
   data() {
-    const dotNumbers = this.sections.map((item, i) => i)
     return {
-      currentTab: this.sections[0].title,
+      currentTabID: this.sections[0].id,
       tabsContentHeight: null,
       heightAnimation: null,
       animationIsOver: true,
-      slider: null,
-      currentSlideIndex: 0,
-      dotNumbers,
-      sliderViewport: null,
-      sliderViewportHeight: null,
     }
   },
   computed: {
     contents() {
-      return this.sections.find((section) => section.title === this.currentTab)
+      return this.sections.find((section) => section.id === this.currentTabID)
         .items
     },
     ...mapState('responsive', ['window']),
   },
   mounted() {
-    if (!this.window.isMobileSize) {
-      this.tabsContentHeight = this.$refs.content.scrollHeight
-    } else {
-      this.initSlider()
-    }
-
-    this.$watch('window.isMobileSize', () => {
-      this.window.isMobileSize && this.updateSlider()
-    })
-  },
-  beforeUpdate() {
-    !this.window.isMobileSize && this.destroySlider()
-  },
-  beforeDestroy() {
-    this.destroySlider()
+    this.tabsContentHeight = this.$refs.content.scrollHeight
   },
   methods: {
-    initSlider() {
-      this.slider = new Slider(
-        this.$refs.slider,
-        {
-          contain: true,
-          adaptiveHeight: true,
-          watchCSS: true,
-          draggable: this.window.isMobileSize,
-        },
-        {
-          prevButton: this.$refs.prev,
-          nextButton: this.$refs.next,
-        }
-      )
-      this.sliderViewport =
-        this.$refs.slider.querySelector('.flickity-viewport')
-      this.sliderViewportHeight = this.sliderViewport.style.height
-
-      this.slider.flickity.on('change', (i) => {
-        this.currentSlideIndex = i
-        const viewportHeight = this.sliderViewportHeight
-        const currentSlide = this.slider.flickity.selectedElement
-        const currentSlideHeight = currentSlide.scrollHeight + 3
-        gsap.set(this.sliderViewport, {
-          height: viewportHeight,
-          willChange: 'transform',
-        })
-        gsap.to(this.sliderViewport, {
-          height: currentSlideHeight,
-          duration: 0.45,
-          ease: 'power1.out',
-          onComplete: () => {
-            this.sliderViewportHeight = currentSlideHeight
-          },
-        })
-        if (parseInt(viewportHeight, 10) < currentSlideHeight) {
-          gsap.set(currentSlide, {
-            height: viewportHeight,
-            willChange: 'transform',
-          })
-          gsap.to(currentSlide, {
-            height: 'auto',
-            duration: 0.45,
-            ease: 'power1.out',
-          })
-        }
-      })
-    },
-    updateSlider() {
-      this.destroySlider()
-      this.initSlider()
-    },
-    destroySlider() {
-      this.slider && this.slider.destroy()
-      this.slider = null
-      this.sliderViewport = null
-      this.sliderViewportHeight = null
-    },
-    selectSlide(index) {
-      this.slider && this.slider.flickity.select(index)
-    },
-    toggleTab(title) {
-      this.currentTab = title
+    toggleTab(id) {
+      this.currentTabID = id
     },
     appearContent(el, done) {
       gsap.to(el, {
@@ -296,6 +186,10 @@ export default {
         background-color: $color_red;
       }
     }
+  }
+
+  &__select {
+    margin-bottom: 2rem;
   }
 
   &__content-list {
