@@ -122,10 +122,12 @@ $listPadding: 2rem;
     background-color: $color_grey_text;
   }
 
-  .attention {
+  .attention,
+  .stage & blockquote:not([class]) {
     @include h5;
     position: relative;
-    padding-left: 3.2rem;
+    min-height: auto;
+    padding: 0 0 0 3.2rem;
 
     @include --mobile {
       padding-left: 2rem;
@@ -137,7 +139,7 @@ $listPadding: 2rem;
       left: 0;
       width: 6px;
       height: 100%;
-      background-color: $color_accent;
+      background: $color_accent;
       content: '';
 
       @include --mobile {
@@ -200,6 +202,8 @@ $listPadding: 2rem;
 
   blockquote:not([class]) {
     position: relative;
+    z-index: 1;
+    min-height: 12rem;
     padding: 3.4rem 0 0 10.1rem;
 
     @include --tablet {
@@ -210,7 +214,7 @@ $listPadding: 2rem;
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 1;
+      z-index: -1;
       width: 11.7rem;
       height: 8.9rem;
       background: url('static/qoute.svg') no-repeat center / auto;

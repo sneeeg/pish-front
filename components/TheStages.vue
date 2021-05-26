@@ -116,7 +116,7 @@ export default {
       left: 50%;
       border-radius: 50%;
       background: #000000;
-      transform: translatex(-50%);
+      transform: translatex(-53%);
       content: '';
     }
   }
