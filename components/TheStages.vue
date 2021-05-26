@@ -89,7 +89,7 @@ export default {
   padding: 3.7rem 0 0 7rem;
 
   @include --mobile {
-    padding: 1rem 0;
+    padding: 1rem 0 0 0;
   }
 
   @include --from-mobile {
@@ -144,16 +144,12 @@ export default {
     &::after {
       position: absolute;
       top: 0;
-      left: calc(50% - 3.5rem - 50vw);
+      left: calc(50% - 50vw);
       z-index: -2;
       width: 100vw;
       height: 100%;
-      background: $color_mid_grey;
+      background: #e9eef5;
       content: '';
-
-      @include --mobile {
-        left: calc(50% - 50vw);
-      }
     }
 
     .stage__index {
@@ -161,22 +157,27 @@ export default {
     }
 
     .substage__content::before {
-      background: #eaecef;
+      background: #f0f3f8;
+    }
+
+    a.lk-link::before {
+      border-color: $color_mid_grey;
     }
   }
 
   &__index {
     display: inline-block;
+    padding: 0 1.5rem;
     color: $color_accent;
     font-weight: 500;
     font-size: 1.8rem;
     line-height: 5rem;
+    background-color: $color_light_grey;
 
     @include --from-mobile {
       position: absolute;
       left: 0;
       z-index: 3;
-      background: $color_light_grey;
       transform: translate(-50%, -3px);
     }
   }
@@ -254,7 +255,7 @@ export default {
       }
 
       &::after {
-        height: 4rem;
+        height: 3.5rem;
       }
     }
   }
