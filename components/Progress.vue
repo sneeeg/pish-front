@@ -67,6 +67,7 @@ export default {
     ...mapState('responsive', ['window']),
   },
   mounted() {
+    console.log(this.$refs.test.style.height)
     this.initSlider()
 
     this.$watch('window.isMobileSize', () => {
