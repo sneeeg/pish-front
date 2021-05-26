@@ -126,7 +126,6 @@ export default {
     if (this.major && this.device.isDesktop) {
       this.$motion?.scenes.firstScreen.init(this.$refs.firstScreen)
     }
-    scrollAnimation(this.$refs.firstScreen)
 
     this.$refs.video?.play()
 
@@ -139,8 +138,11 @@ export default {
 
           window.addEventListener('resize', this.calcHeight.bind(this))
           this.createTimeline()
+          scrollAnimation(this.$refs.firstScreen)
         })
       }
+    } else {
+      scrollAnimation(this.$refs.firstScreen)
     }
   },
   beforeDestroy() {
