@@ -10,7 +10,7 @@
       <div class="doc-popup__title _visually-h5">{{ title }}</div>
       <p class="doc-popup__text">{{ text }}</p>
       <a :href="to" class="doc-popup__download" download>
-        скачать весь документ
+        {{ lang['docPopup.downloadBtn.text'] }}
       </a>
     </div>
   </div>
@@ -28,6 +28,7 @@ export default {
       title: (state) => state.popup.title,
       text: (state) => state.popup.text,
       to: (state) => state.popup.href,
+      lang: 'lang',
     }),
   },
   mounted() {
