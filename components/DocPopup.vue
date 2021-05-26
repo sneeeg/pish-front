@@ -18,6 +18,7 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 export default {
   name: 'DocPopup',
   components: {},
@@ -30,10 +31,19 @@ export default {
     }),
   },
   mounted() {
+    disableBodyScroll(this.$refs.popup)
+
     this.closePopup = this.closePopup.bind(this)
     this.onWrapperClick = this.onWrapperClick.bind(this)
-    document.addEventListener('keydown', this.closePopup)
+    this.onEscKeydown = this.onEscKeydown.bind(this)
+
+    document.addEventListener('keydown', this.onEscKeydown)
     this.$refs.popup.addEventListener('click', this.onWrapperClick)
+  },
+  beforeDestroy() {
+    document.removeEventListener('keydown', this.onEscKeydown)
+    this.$refs.popup.removeEventListener('click', this.onWrapperClick)
+    enableBodyScroll(this.$refs.popup)
   },
   methods: {
     ...mapMutations('default', ['changePopupState']),
@@ -43,6 +53,11 @@ export default {
     onWrapperClick(e) {
       if (e.target.classList.contains('popup-wrapper')) {
         this.changePopupState({})
+      }
+    },
+    onEscKeydown(e) {
+      if (e.key === 'Esc' || e.key === 'Escape') {
+        this.closePopup()
       }
     },
   },
@@ -66,7 +81,7 @@ export default {
 .doc-popup {
   position: relative;
   max-width: 56rem;
-  margin: 0 2rem;
+  margin: 4rem 2rem;
   padding: 7.2rem 3.2rem;
   background-color: $color_white;
 

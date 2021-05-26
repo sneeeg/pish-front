@@ -38,9 +38,6 @@ export const mutations = {
 
     state.routing.hasHistory = !!from.name
   },
-  changeErrorPageState(state, value) {
-    state.onErrorPage = value
-  },
   changePopupState(
     state,
     { isShow = false, title = '', text = '', href = '' }
@@ -50,6 +47,9 @@ export const mutations = {
     state.popup.href = href
 
     state.popup.isShow = isShow
+  },
+  changeErrorPageState(state, value) {
+    state.onErrorPage = value
   },
 }
 

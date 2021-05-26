@@ -37,9 +37,10 @@ export default {
     ...mapMutations('default', ['changePopupState']),
     showDocInfo(e) {
       e.preventDefault()
-      const title = e.target.textContent
-      const text = e.target.getAttribute('title')
-      const href = e.target.getAttribute('href')
+      const link = e.target.closest('a')
+      const title = link.textContent
+      const text = link.getAttribute('title')
+      const href = link.getAttribute('href')
       this.changePopupState({ isShow: true, title, text, href })
     },
   },
