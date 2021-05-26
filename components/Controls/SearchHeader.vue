@@ -87,7 +87,7 @@ export default {
     bottom: -1rem;
     display: flex;
     width: 100%;
-    background-color: $color_light_grey;
+    background-color: $color_background;
     transition: width 0.5s ease;
 
     &._is-open {
