@@ -3,11 +3,7 @@
     <Section v-view="$utils.scrollCenterDetection" :title="page.reviewsTitle">
       <Posts all type="media" />
     </Section>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      to="/news"
-      :title="lang['news.all']"
-    >
+    <Section v-view="$utils.scrollCenterDetection" :title="lang['news.all']">
       <OtherPosts />
     </Section>
   </div>

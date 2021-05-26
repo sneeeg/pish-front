@@ -16,4 +16,24 @@ export default {
     name: 'matcap_white2',
     path: TEXTURES_PATH + '/matcaps/white2.png',
   },
+  color_plastic: {
+    name: 'color_plastic',
+    path: TEXTURES_PATH + '/color/plastic.jpg',
+  },
+  normal_plastic: {
+    name: 'normal_plastic',
+    path: TEXTURES_PATH + '/normal/plastic.jpg',
+  },
+  normal_marble: {
+    name: 'normal_marble',
+    path: TEXTURES_PATH + '/normal/marble.jpg',
+  },
+  roughness_plastic: {
+    name: 'roughness_plastic',
+    path: TEXTURES_PATH + '/roughness/plastic.jpg',
+  },
+  color_marble: {
+    name: 'color_marble',
+    path: TEXTURES_PATH + '/color/marble.jpg',
+  },
 }

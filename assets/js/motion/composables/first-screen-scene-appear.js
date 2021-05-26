@@ -28,7 +28,7 @@ export default (models, vectors) => {
         x: scale.x,
         y: scale.y,
         z: scale.z,
-        ease: 'back.out(1.7)',
+        ease: 'back.out(2.1)',
         duration: 0.75,
       },
       `main+=${0.35 + index / 7}`
@@ -39,7 +39,7 @@ export default (models, vectors) => {
       { x: -1 },
       {
         x: 0,
-        ease: 'back.out(1.7)',
+        ease: 'back.out(2.1)',
         duration: 0.5,
       },
       `main+=${0.35 + index / 7}`

@@ -48,12 +48,27 @@
 }
 
 .section-head {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 7.4rem;
   font-weight: 700;
 
   @include --tablet {
+    display: block;
     margin-bottom: 3.8rem;
+  }
+
+
+  &__link {
+    display: block;
+
+    @include --tablet {
+      margin-top: 2.4rem;
+    }
+
+    @include --mobile {
+      margin-top: 1.8rem;
+    }
   }
 
   &__title {

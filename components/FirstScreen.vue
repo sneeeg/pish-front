@@ -146,7 +146,7 @@ export default {
   &__background {
     position: absolute;
     top: 0;
-    right: -3rem;
+    right: -6rem;
     width: 71.6rem;
     height: 43.5rem;
     background-repeat: no-repeat;

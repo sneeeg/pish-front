@@ -15,13 +15,13 @@
     </div>
     <div v-else class="section__inner">
       <div v-if="title" v-scroll-element :class="['section-head']">
-        <h2 v-if="!to" class="section-head__title">{{ title }}</h2>
-        <SmartLink
-          v-else
-          class="section-head__title hover-opacity _visually-h2"
+        <h2 class="section-head__title">{{ title }}</h2>
+        <ArrowLink
+          v-if="to"
           :to="to"
-          >{{ title }}</SmartLink
-        >
+          class="section-head__link"
+          :text="lang['news.all']"
+        />
       </div>
       <div class="section__content">
         <slot name="default" />
@@ -31,10 +31,11 @@
 </template>
 
 <script>
-import SmartLink from '~/components/utils/SmartLink'
+import { mapState } from 'vuex'
+import ArrowLink from '~/components/controls/ArrowLink'
 export default {
   name: 'Section',
-  components: { SmartLink },
+  components: { ArrowLink },
   props: {
     tag: {
       type: String,
@@ -64,6 +65,9 @@ export default {
       type: [String, Object],
       default: null,
     },
+  },
+  computed: {
+    ...mapState('default', ['lang']),
   },
 }
 </script>

@@ -15,6 +15,7 @@ export default {
           'books',
           'molecule',
           'dna',
+          'molecule2',
         ],
         vectorsToLoad: ['arrow'],
         videosToLoad: [],

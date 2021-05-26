@@ -1,10 +1,10 @@
 <template>
   <div class="posts">
-    <div
-      v-if="categories.length > 1 || (!all && window.isDesktopSize)"
-      class="posts__head"
-    >
-      <ul v-if="window.isDesktopSize" class="posts-categories">
+    <div v-scroll-element class="posts__head">
+      <ul
+        v-if="window.isDesktopSize && categories.length > 1"
+        class="posts-categories"
+      >
         <li
           v-for="category in categories"
           :key="category.id"
@@ -22,7 +22,7 @@
         </li>
       </ul>
       <CustomSelect
-        v-else
+        v-else-if="categories.length > 1"
         :value="currentCategoryId"
         :items="categories"
         class="posts__select"
