@@ -10,7 +10,7 @@
       <div class="doc-popup__title _visually-h5">{{ title }}</div>
       <p class="doc-popup__text">{{ text }}</p>
       <a :href="to" class="doc-popup__download" download>
-        {{ lang['docPopup.downloadBtn.text'] }}
+        {{ lang['base.doc.download'] }}
       </a>
     </div>
   </div>
