@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       error: {
-        ststusCode: 404,
+        statusCode: 404,
       },
     }
   },

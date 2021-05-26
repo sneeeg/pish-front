@@ -13,7 +13,7 @@
       <Btn to="/" :text="lang['error.toMain.text']" is-link />
     </div>
     <div class="error__image-wrapper">
-      <img src="/error/404.png" />
+      <img src="/i/error/404.png" />
     </div>
   </div>
 </template>

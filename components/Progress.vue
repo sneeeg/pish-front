@@ -67,7 +67,6 @@ export default {
     ...mapState('responsive', ['window']),
   },
   mounted() {
-    console.log(this.$refs.test.style.height)
     this.initSlider()
 
     this.$watch('window.isMobileSize', () => {
@@ -120,7 +119,7 @@ export default {
       this.initSlider()
     },
     destroySlider() {
-      this.slider.flickity.cells.forEach((cell) => {
+      this.slider?.flickity.cells.forEach((cell) => {
         cell.element.style.minHeight = ''
       })
       this.slider && this.slider.destroy()

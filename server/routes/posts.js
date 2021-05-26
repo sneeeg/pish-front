@@ -27,7 +27,7 @@ export default (pretender) => {
   })
 
   // Get university posts
-  pretender.get('/api/posts/university', () => {
+  pretender.get('/api/university', () => {
     return [
       200,
       { 'Content-Type': 'application/json' },
@@ -40,7 +40,7 @@ export default (pretender) => {
   })
 
   // Get university post by slug
-  pretender.get('/api/posts/university/item', () => {
+  pretender.get('/api/university/item', () => {
     return [
       200,
       { 'Content-Type': 'application/json' },

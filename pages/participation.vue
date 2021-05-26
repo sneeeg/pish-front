@@ -28,7 +28,7 @@
         class="participation-rules"
       >
         <div v-scroll-element="'left'" class="participation-rules__icon">
-          <img :src="`/participation/${index + 1}.svg`" alt="" />
+          <img :src="`/i/participation/${index + 1}.svg`" alt="" />
         </div>
         <HTMLContent
           v-scroll-element="'right'"
