@@ -20,7 +20,9 @@
           v-if="to"
           :to="to"
           class="section-head__link"
-          :text="lang['news.all']"
+          :text="
+            lang['news.all'] !== title ? lang['news.all'] : lang['base.go']
+          "
         />
       </div>
       <div class="section__content">

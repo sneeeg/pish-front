@@ -15,10 +15,26 @@
         :style="{ backgroundImage: background ? `url(${background})` : false }"
       ></div>
       <h1
+        v-if="!titles.length"
         v-scroll-element
         :class="['first-screen__title', { '_visually-h2': !major }]"
       >
         {{ title }}
+      </h1>
+      <div
+        v-else-if="!browser.isIE && titles.length > 1"
+        ref="titles"
+        v-scroll-element
+        class="first-screen-titles"
+      >
+        <h2 v-for="item in titles" :key="item.id">{{ item }}</h2>
+      </div>
+      <h1
+        v-else
+        v-scroll-element
+        :class="['first-screen__title', { '_visually-h2': !major }]"
+      >
+        {{ titles[0] }}
       </h1>
       <HTMLContent
         v-if="lead"
@@ -50,6 +66,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import gsap from 'gsap'
 import HTMLContent from '~/components/utils/HTMLContent'
 import Btn from '~/components/controls/Btn'
 import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
@@ -60,7 +77,11 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
+      default: '',
+    },
+    titles: {
+      type: Array,
+      default: () => [],
     },
     lead: {
       type: String,
@@ -90,6 +111,8 @@ export default {
   data() {
     return {
       motionIsActive: false,
+      timeline: null,
+      currentTitle: 0,
     }
   },
   computed: {
@@ -106,11 +129,29 @@ export default {
     scrollAnimation(this.$refs.firstScreen)
 
     this.$refs.video?.play()
+
+    if (this.titles.length > 1 && !this.browser.isIE) {
+      this.calcHeight()
+
+      if (document.fonts) {
+        document.fonts.ready.then(() => {
+          this.calcHeight()
+
+          window.addEventListener('resize', this.calcHeight.bind(this))
+          this.createTimeline()
+        })
+      }
+    }
   },
   beforeDestroy() {
     this.major &&
       this.device.isDesktop &&
       this.$motion?.scenes.firstScreen.destroy()
+
+    if (this.titles.length > 1 && !this.browser.isIE) {
+      window.removeEventListener('resize', this.calcHeight.bind(this))
+      this.timeline?.kill()
+    }
   },
   methods: {
     scrollHandler(event) {
@@ -118,13 +159,46 @@ export default {
 
       if (event.type === 'enter' && !this.motionIsActive) {
         this.motionIsActive = true
+        this.timeline?.resume()
 
         this.$motion?.scenes.firstScreen.start()
       } else if (event.type === 'exit' && this.motionIsActive) {
         this.motionIsActive = false
+        this.timeline?.paused()
 
         this.$motion?.scenes.firstScreen.freeze()
       }
+    },
+    calcHeight() {
+      let result = 0
+
+      this.$refs.titles.querySelectorAll('h2').forEach((title) => {
+        const height = getComputedStyle(title).height.replace(/\D+/g, '')
+
+        if (height > result) {
+          result = height
+        }
+      })
+
+      gsap.set(this.$refs.titles, { height: result + 'px' })
+    },
+    createTimeline() {
+      const items = this.$refs.titles.querySelectorAll('h2')
+      items.forEach((item, index) => index && gsap.set(item, { opacity: 0 }))
+
+      this.timeline = gsap.timeline({ repeat: -1 })
+
+      items.forEach((item, index) => {
+        this.timeline.to(item, { opacity: 0, delay: 2, duration: 1 })
+
+        this.timeline.to(
+          index >= items.length - 1 ? items[0] : items[index + 1],
+          {
+            opacity: 1,
+            duration: 1,
+          }
+        )
+      })
     },
   },
 }
@@ -212,7 +286,7 @@ export default {
   }
 
   &__title {
-    max-width: 60rem;
+    max-width: 56rem;
   }
 
   &__link {
@@ -277,6 +351,16 @@ export default {
         font-size: 1.4rem;
         line-height: 2.2rem;
       }
+    }
+  }
+
+  .first-screen-titles {
+    position: relative;
+    max-width: 56rem;
+
+    h2 {
+      position: absolute;
+      max-width: 56rem;
     }
   }
 }

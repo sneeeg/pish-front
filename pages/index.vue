@@ -3,7 +3,7 @@
     <Section is-layout>
       <FirstScreen
         background="/3d/i/main.png"
-        :title="page.mainScreenTitles[0]"
+        :titles="page.mainScreenTitles"
         link
         major
       />

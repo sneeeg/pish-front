@@ -22,7 +22,11 @@
         <HTMLContent v-scroll-element :html="page.content" class="post__body" />
       </article>
     </Section>
-    <Section v-view="$utils.scrollCenterDetection" :title="lang['news.other']">
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      to="/news"
+      :title="lang['news.other']"
+    >
       <OtherPosts main-posts :category="page.category" />
     </Section>
   </div>
