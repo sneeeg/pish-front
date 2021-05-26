@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'HTMLContent',
   props: {
@@ -13,6 +14,7 @@ export default {
   },
   mounted() {
     const $tables = this.$refs.HTMLContent.querySelectorAll('table')
+    const $docLinks = this.$refs.HTMLContent.querySelectorAll('a.doc[title]')
     const wrapper = document.createElement('section')
     const parentWith = this.$refs.HTMLContent.offsetWidth
 
@@ -25,6 +27,21 @@ export default {
         wrapper.appendChild(el)
       }
     })
+
+    this.showDocInfo = this.showDocInfo.bind(this)
+    $docLinks.forEach((link) => {
+      link.addEventListener('click', this.showDocInfo)
+    })
+  },
+  methods: {
+    ...mapMutations('default', ['changePopupState']),
+    showDocInfo(e) {
+      e.preventDefault()
+      const title = e.target.textContent
+      const text = e.target.getAttribute('title')
+      const href = e.target.getAttribute('href')
+      this.changePopupState({ isShow: true, title, text, href })
+    },
   },
 }
 </script>

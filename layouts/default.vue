@@ -11,6 +11,10 @@
     <transition name="fade">
       <TheMobileMenu v-if="$store.state.menu.isActive"></TheMobileMenu>
     </transition>
+
+    <transition name="fade">
+      <DocPopup v-if="$store.state.default.popup.isShow" />
+    </transition>
   </div>
 </template>
 
@@ -23,6 +27,7 @@ export default {
     TheHeader,
     TheFooter,
     TheMobileMenu: () => import('~/components/TheMobileMenu'),
+    DocPopup: () => import('~/components/DocPopup'),
   },
   head() {
     return {
