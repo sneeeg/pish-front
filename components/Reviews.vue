@@ -7,7 +7,7 @@
         'reviews-list',
         {
           _flex: !sliderStatus,
-          '_flex-sb': !sliderStatus && reviews.length > 3,
+          '_flex-sb': !sliderStatus && reviews.length > 2,
         },
       ]"
     >
@@ -46,7 +46,7 @@ export default {
         return 'mobile'
       } else if (this.window.isTabletSize && this.reviews.length > 2) {
         return 'tablet'
-      } else if (this.window.isDesktopSize && this.reviews.length > 4) {
+      } else if (this.window.isDesktopSize && this.reviews.length > 3) {
         return 'desktop'
       }
 
@@ -63,7 +63,7 @@ export default {
           () =>
             (this.sliderInstance = new Slider(this.$refs.reviewsList, {
               groupCells: this.window.isDesktopSize
-                ? 4
+                ? 3
                 : this.window.isMobileSize
                 ? false
                 : 2,
@@ -80,7 +80,7 @@ export default {
     async fetchReviews() {
       this.reviews = await this.$api.reviews
         .get()
-        .then(({ data }) => data || [])
+        .then(({ data }) => data.posts || [])
     },
   },
 }
@@ -114,7 +114,7 @@ export default {
   }
 
   &__item {
-    width: 23%;
+    width: 30%;
 
     @include --tablet {
       width: 47.5%;
@@ -125,11 +125,7 @@ export default {
     }
 
     &:not(:last-child) {
-      margin-right: 2.66666%;
-
-      @include --tablet {
-        margin-right: 5%;
-      }
+      margin-right: 5%;
 
       @include --mobile {
         margin-right: 3rem;

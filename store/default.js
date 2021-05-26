@@ -14,6 +14,7 @@ export const state = () => ({
     text: '',
     href: '',
   },
+  onErrorPage: false,
 })
 
 export const mutations = {
@@ -46,6 +47,9 @@ export const mutations = {
     state.popup.href = href
 
     state.popup.isShow = isShow
+  },
+  changeErrorPageState(state, value) {
+    state.onErrorPage = value
   },
 }
 

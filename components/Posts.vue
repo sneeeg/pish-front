@@ -1,7 +1,10 @@
 <template>
   <div class="posts">
     <div v-scroll-element class="posts__head">
-      <ul v-if="window.isDesktopSize" class="posts-categories">
+      <ul
+        v-if="window.isDesktopSize && categories.length > 1"
+        class="posts-categories"
+      >
         <li
           v-for="category in categories"
           :key="category.id"
@@ -19,7 +22,7 @@
         </li>
       </ul>
       <CustomSelect
-        v-else
+        v-else-if="categories.length > 1"
         :value="currentCategoryId"
         :items="categories"
         class="posts__select"
@@ -38,6 +41,7 @@
           :key="post.id"
           class="posts-list__item"
           :post="post"
+          :type="type"
         />
       </div>
       <div v-if="moreButtonExist" class="posts-foot">
@@ -77,6 +81,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    type: {
+      type: String,
+      default: 'all',
+    },
   },
   data() {
     return {
@@ -85,9 +93,17 @@ export default {
       categories: [],
       currentCategoryId: -1,
       morePostsLoading: false,
+      apiMethod: null,
     }
   },
   async fetch() {
+    this.apiMethod =
+      this.type === 'all'
+        ? this.$api.posts.get
+        : this.type === 'university'
+        ? this.$api.posts.getUniversityPosts
+        : this.$api.reviews.get
+
     await this.fetchPosts(undefined, 1)
   },
   computed: {
@@ -126,7 +142,7 @@ export default {
 
       await this.$utils.delay(1500, true)
 
-      return this.$api.posts.get(categoryId, page).then(({ data }) => {
+      return this.apiMethod(categoryId, page).then(({ data }) => {
         if (concat) {
           this.posts = this.posts.concat(data.posts || [])
         } else {

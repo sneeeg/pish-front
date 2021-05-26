@@ -31,7 +31,11 @@ export default (pretender) => {
     return [
       200,
       { 'Content-Type': 'application/json' },
-      getResponse(universityPosts),
+      getResponse({
+        posts: universityPosts,
+        categories: [],
+        pagination: { current: 1, total: 5 },
+      }),
     ]
   })
 

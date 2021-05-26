@@ -23,7 +23,11 @@
       </article>
     </Section>
     <Section v-view="$utils.scrollCenterDetection" :title="lang['news.other']">
-      <OtherPosts main-posts :category="page.category" />
+      <OtherPosts
+        type="university"
+        :slug="page.slug"
+        :category="page.category"
+      />
     </Section>
   </div>
 </template>
@@ -44,15 +48,9 @@ export default {
   components: { HTMLContent, PostHead, Section, ArrowLink, OtherPosts },
   mixins: [pageHead, pageDefault],
   async asyncData({ $nuxt, route, $api }) {
-    const type = route.params.type
-    const apiMethod =
-      type === 'all'
-        ? $api.posts.getPostBySlug
-        : type === 'university'
-        ? $api.posts.getUniversityPostBySlug
-        : $api.reviews.getReviewBySlug
-
-    const page = await apiMethod(route.params.post).then(({ data }) => data)
+    const page = await $api.posts
+      .getUniversityPostBySlug(route.params.post)
+      .then(({ data }) => data)
 
     if (!page) {
       return $nuxt.error({ statusCode: 404, message: 'Post not found' })

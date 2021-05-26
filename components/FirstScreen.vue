@@ -146,7 +146,7 @@ export default {
   &__background {
     position: absolute;
     top: 0;
-    right: -3rem;
+    right: -6rem;
     width: 71.6rem;
     height: 43.5rem;
     background-repeat: no-repeat;
@@ -236,6 +236,17 @@ export default {
     &._IE {
       right: 30rem;
       z-index: 1;
+      overflow: hidden;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 40rem;
+        width: 1rem;
+        height: 100%;
+        background-color: $color_background;
+        content: '';
+      }
     }
 
     @include --mobile {

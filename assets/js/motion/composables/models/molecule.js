@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { MODELS_PATH } from '~/assets/js/motion/utils/constants'
+import centerMesh from '~/assets/js/motion/utils/center-mesh'
 
 /**
  * Molecule model
@@ -7,18 +8,20 @@ import { MODELS_PATH } from '~/assets/js/motion/utils/constants'
 export default {
   name: 'molecule',
   path: MODELS_PATH + '/molecule.drc',
-  textures: [],
-  setup(geometry) {
+  textures: ['color_plastic', 'roughness_plastic'],
+  setup(geometry, context) {
     /* Material */
     const materialParams = {
-      roughness: 0,
-      metalness: 0.56,
-      emissive: new THREE.Color(0x5c5c5c),
+      map: context.textures.color_plastic,
+      roughnessMap: context.textures.roughness_plastic,
       color: new THREE.Color(0xffffff),
+      emissive: new THREE.Color(0x878787),
+      roughness: 0,
+      metalness: 0,
     }
 
     const material = new THREE.MeshStandardMaterial(materialParams)
 
-    return new THREE.Mesh(geometry, material)
+    return centerMesh(new THREE.Mesh(geometry, material))
   },
 }

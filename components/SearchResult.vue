@@ -33,10 +33,15 @@ export default {
   },
   computed: {
     ...mapState('default', ['lang']),
+    linkName() {
+      return this.result.type === 'all'
+        ? 'news-post'
+        : `news-${this.result.type}-post`
+    },
     linkObject() {
       return {
-        name: 'news-type-post',
-        params: { type: this.result.type, post: this.result.slug },
+        name: this.linkName,
+        params: { post: this.result.slug },
       }
     },
   },

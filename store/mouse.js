@@ -6,20 +6,13 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setMouseParams(state, { event, centerX, centerY }) {
+  setMouseParams(state, event) {
     state.x = event.clientX
     state.y = event.clientY
 
-    state.hX = event.clientX - centerX
-    state.hY = event.clientY - centerY
+    state.hX = event.clientX - window.innerWidth / 2
+    state.hY = event.clientY - window.innerHeight / 2
   },
 }
 
-export const actions = {
-  updateMouseParams({ commit, rootState }, event) {
-    const centerX = rootState.responsive.window.centerX
-    const centerY = rootState.responsive.window.centerY
-
-    commit('setMouseParams', { event, centerX, centerY })
-  },
-}
+export const actions = {}

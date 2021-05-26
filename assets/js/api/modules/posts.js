@@ -10,8 +10,10 @@ export default ($axios) => ({
   },
 
   /* Getting university posts  */
-  getUniversityPosts() {
-    return $axios.$get('/api/posts/university')
+  getUniversityPosts(categoryId, page = 1, count = 4) {
+    return $axios.$get('/api/posts/university', {
+      params: { categoryId, page, count },
+    })
   },
 
   /* Getting university post by slug */

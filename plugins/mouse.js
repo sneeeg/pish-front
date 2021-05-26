@@ -1,5 +1,5 @@
 export default ({ store }) => {
   document.addEventListener('mousemove', (event) =>
-    store.dispatch('mouse/updateMouseParams', event)
+    store.commit('mouse/setMouseParams', event)
   )
 }

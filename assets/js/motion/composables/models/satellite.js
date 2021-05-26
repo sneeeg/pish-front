@@ -8,13 +8,16 @@ import centerMesh from '~/assets/js/motion/utils/center-mesh'
 export default {
   name: 'satellite',
   path: MODELS_PATH + '/satellite.drc',
-  textures: [],
-  setup(geometry) {
+  textures: ['color_plastic', 'roughness_plastic'],
+  setup(geometry, context) {
     /* Material */
     const materialParams = {
-      roughness: 0.5,
-      metalness: 0.2,
+      map: context.textures.color_plastic,
+      roughnessMap: context.textures.roughness_plastic,
       color: new THREE.Color(0xffffff),
+      emissive: new THREE.Color(0x878787),
+      roughness: 0,
+      metalness: 0,
     }
 
     const material = new THREE.MeshStandardMaterial(materialParams)

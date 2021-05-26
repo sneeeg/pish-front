@@ -67,7 +67,7 @@ export default {
 <style lang="scss">
 .participation {
   position: relative;
-  min-height: 30rem;
+  min-height: 40rem;
 
   @include --tablet {
     min-height: auto;
