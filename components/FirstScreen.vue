@@ -180,7 +180,7 @@ export default {
       let result = 0
 
       this.$refs.titles.querySelectorAll('h2').forEach((title) => {
-        const height = getComputedStyle(title).height.replace(/\D+/g, '')
+        const height = parseFloat(getComputedStyle(title).height)
 
         if (height > result) {
           result = height

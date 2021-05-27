@@ -97,6 +97,14 @@ b {
   font-weight: 700;
 }
 
+/* stylelint-disable */
+video {
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+/* stylelint-enable */
+
 a {
   color: inherit;
   text-decoration: none;
