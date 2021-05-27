@@ -66,6 +66,10 @@ body {
   }
 }
 
+.dg.ac {
+  z-index: 1000000 !important;
+}
+
 .main {
   flex: 1 0 auto;
 

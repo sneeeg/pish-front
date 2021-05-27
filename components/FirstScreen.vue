@@ -1,13 +1,12 @@
 <template>
   <div
-    ref="firstScreen"
     v-view="scrollHandler"
     :class="[
       'first-screen',
       { '_adaptive-top': adaptiveTop, _IE: browser.isIE },
     ]"
   >
-    <div class="first-screen__content">
+    <div ref="firstScreen" class="first-screen__content">
       <div
         v-if="!major || majorBackgroungJPG"
         v-scroll-element="'right'"
@@ -218,7 +217,6 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 15.7rem);
 
   &._IE {
     height: calc(100vh - 15.7rem);
@@ -290,6 +288,10 @@ export default {
     @include container;
     @include padding-section;
     position: relative;
+    min-height: calc(100vh - 15.7rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   &__title {
