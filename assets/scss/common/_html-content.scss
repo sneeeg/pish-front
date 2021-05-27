@@ -123,7 +123,8 @@ $listPadding: 2rem;
   }
 
   .attention,
-  .stage & blockquote:not([class]) {
+  .stage & blockquote:not([class]),
+  .stage & blockquote.quote {
     @include h5;
     position: relative;
     min-height: auto;
@@ -200,7 +201,8 @@ $listPadding: 2rem;
     }
   }
 
-  blockquote:not([class]) {
+  blockquote:not([class]),
+  .quote {
     position: relative;
     z-index: 1;
     min-height: 12rem;
