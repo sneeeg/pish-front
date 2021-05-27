@@ -53,6 +53,11 @@
     </div>
 
     <div v-if="video" :class="['first-screen__video', { _IE: browser.isIE }]">
+      <img
+        v-if="browser.isMobileSafari"
+        src="/videos/arm2-last-frame.jpg"
+        alt=""
+      />
       <video
         ref="video"
         preload="auto"
@@ -329,11 +334,16 @@ export default {
       height: 70%;
     }
 
-    video {
+    video,
+    img {
       position: absolute;
       right: 0;
       width: auto;
       height: 100%;
+    }
+
+    img {
+      z-index: -1;
     }
   }
 
