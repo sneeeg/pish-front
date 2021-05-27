@@ -28,7 +28,11 @@
         class="participation-rules"
       >
         <div v-scroll-element="'left'" class="participation-rules__icon">
-          <img :src="`/i/participation/${index + 1}.svg`" alt="" />
+          <img
+            :class="{ _IE: $store.state.responsive.browser.isIE }"
+            :src="`/i/participation/${index + 1}.svg`"
+            alt=""
+          />
         </div>
         <HTMLContent
           v-scroll-element="'right'"
@@ -38,6 +42,7 @@
     </Section>
     <Section
       v-view="$utils.scrollCenterDetection"
+      class="_mb-0"
       :title="page.steps.title"
       :has-overflow="false"
     >
@@ -103,6 +108,10 @@ $participationTextPaddingMobile: 8.7rem;
 
     img {
       max-width: 100%;
+
+      &._IE {
+        width: 100%;
+      }
     }
   }
 
