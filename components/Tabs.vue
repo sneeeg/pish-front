@@ -2,7 +2,7 @@
   <div class="tabs">
     <ul v-if="!window.isMobileSize" class="tabs__list">
       <li
-        v-for="{ id, title } in sections"
+        v-for="{ id, title } in items"
         :key="id"
         :class="[
           'tabs__item',
@@ -17,7 +17,7 @@
     <CustomSelect
       v-else
       :value="currentTabID"
-      :items="sections"
+      :items="items"
       class="tabs__select"
       @input="toggleTab"
     />
@@ -51,8 +51,13 @@ export default {
     },
   },
   data() {
+    const items = this.sections.map((section, i) => ({
+      ...section,
+      id: `${section.title + ' #' + i}`,
+    }))
     return {
-      currentTabID: this.sections[0].id,
+      currentTabID: items[0].id,
+      items,
       tabsContentHeight: null,
       heightAnimation: null,
       animationIsOver: true,
@@ -60,8 +65,7 @@ export default {
   },
   computed: {
     contents() {
-      return this.sections.find((section) => section.id === this.currentTabID)
-        .items
+      return this.items.find((item) => item.id === this.currentTabID)?.items
     },
     ...mapState('responsive', ['window']),
   },
