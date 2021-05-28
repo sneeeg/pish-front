@@ -40,8 +40,10 @@ export default class AbstractScene {
 
     /* Camera */
     this.camera = new THREE.PerspectiveCamera(
-      75,
-      this.sizes.width / this.sizes.height
+      45,
+      this.sizes.width / this.sizes.height,
+      1,
+      1000
     )
     this.camera.position.z = 3 // Camera z
     this.scene.add(this.camera)
@@ -80,9 +82,9 @@ export default class AbstractScene {
     this.sizes.height = this.container.offsetHeight
 
     this.camera.aspect = this.sizes.width / this.sizes.height
-    this.camera.updateProjectionMatrix()
 
     this.renderer.setSize(this.sizes.width, this.sizes.height)
+    this.camera.updateProjectionMatrix()
     this.setRendererPixelRatio()
   }
 

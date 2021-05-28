@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Section is-layout>
+    <Section has-overflow is-layout>
       <FirstScreen
         background="/3d/i/main.png"
         :titles="page.mainScreenTitles"

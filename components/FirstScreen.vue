@@ -1,70 +1,86 @@
 <template>
-  <div
-    v-view="scrollHandler"
-    :class="[
-      'first-screen',
-      { '_adaptive-top': adaptiveTop, _IE: browser.isIE },
-    ]"
-  >
-    <div ref="firstScreen" class="first-screen__content">
-      <div
-        v-if="!major || majorBackgroungJPG"
-        v-scroll-element="'right'"
-        :class="['first-screen__background', { _major: majorBackgroungJPG }]"
-        :style="{ backgroundImage: background ? `url(${background})` : false }"
-      ></div>
-      <h1
-        v-if="!titles.length"
-        v-scroll-element
-        :class="['first-screen__title', { '_visually-h2': !major }]"
-      >
-        {{ title }}
-      </h1>
-      <div
-        v-else-if="!browser.isIE && titles.length > 1"
-        ref="titles"
-        v-scroll-element
-        class="first-screen-titles"
-      >
-        <h2 v-for="item in titles" :key="item.id">{{ item }}</h2>
+  <div>
+    <div
+      v-view="scrollHandler"
+      :class="[
+        'first-screen',
+        { '_adaptive-top': adaptiveTop, _IE: browser.isIE },
+      ]"
+    >
+      <div ref="firstScreen" class="first-screen__content">
+        <div
+          v-if="!major || majorBackgroungJPG"
+          v-scroll-element="'right'"
+          :class="['first-screen__background', { _major: majorBackgroungJPG }]"
+          :style="{
+            backgroundImage: background ? `url(${background})` : false,
+          }"
+        ></div>
+        <h1
+          v-if="!titles.length"
+          v-scroll-element
+          :class="['first-screen__title', { '_visually-h2': !major }]"
+        >
+          {{ title }}
+        </h1>
+        <div
+          v-else-if="!browser.isIE && titles.length > 1"
+          ref="titles"
+          v-scroll-element
+          class="first-screen-titles"
+        >
+          <h2 v-for="item in titles" :key="item.id">{{ item }}</h2>
+        </div>
+        <h1
+          v-else
+          v-scroll-element
+          :class="['first-screen__title', { '_visually-h2': !major }]"
+        >
+          {{ titles[0] }}
+        </h1>
+        <HTMLContent
+          v-if="lead"
+          v-scroll-element
+          :html="lead"
+          class="first-screen__lead"
+        />
+        <Btn
+          v-if="link"
+          v-scroll-element
+          :text="lang['base.sendRequest']"
+          class="first-screen__link"
+          is-link
+          :to="settings.lkLink"
+        />
       </div>
-      <h1
-        v-else
-        v-scroll-element
-        :class="['first-screen__title', { '_visually-h2': !major }]"
-      >
-        {{ titles[0] }}
-      </h1>
-      <HTMLContent
-        v-if="lead"
-        v-scroll-element
-        :html="lead"
-        class="first-screen__lead"
-      />
-      <Btn
-        v-if="link"
-        v-scroll-element
-        :text="lang['base.sendRequest']"
-        class="first-screen__link"
-        is-link
-        :to="settings.lkLink"
-      />
+
+      <div v-if="video" :class="['first-screen__video', { _IE: browser.isIE }]">
+        <img
+          v-if="browser.isMobileSafari"
+          src="/videos/arm2-last-frame.jpg"
+          alt=""
+        />
+        <video
+          ref="video"
+          preload="auto"
+          src="/videos/arm2.mp4"
+          playsinline
+          muted
+        ></video>
+      </div>
     </div>
 
-    <div v-if="video" :class="['first-screen__video', { _IE: browser.isIE }]">
-      <img
-        v-if="browser.isMobileSafari"
-        src="/videos/arm2-last-frame.jpg"
-        alt=""
-      />
-      <video
-        ref="video"
-        preload="auto"
-        src="/videos/arm2.mp4"
-        playsinline
-        muted
-      ></video>
-    </div>
+    <div
+      ref="canvasContainer"
+      :style="{
+        position: 'absolute',
+        top: '-15.7rem',
+        left: '0vw',
+        width: '100vw',
+        height: '100vh',
+      }"
+      class="canvas-container"
+    ></div>
   </div>
 </template>
 
@@ -128,7 +144,7 @@ export default {
   },
   mounted() {
     if (this.major && this.device.isDesktop) {
-      this.$motion?.scenes.firstScreen.init(this.$refs.firstScreen)
+      this.$motion?.scenes.firstScreen.init(this.$refs.canvasContainer)
     }
 
     this.$refs.video?.play()

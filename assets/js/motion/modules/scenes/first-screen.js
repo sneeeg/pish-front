@@ -80,6 +80,8 @@ export default class FirstScreen extends AbstractScene {
 
     this.createWorld()
 
+    this.debugCamera = FirstScreen.debug.addFolder('camera')
+
     // // Add specific params to three scene
     // this.scene.background = new THREE.Color(COLOR_GREY)
 
@@ -411,7 +413,7 @@ export default class FirstScreen extends AbstractScene {
   /* Models */
   #addDavidModel() {
     this.models.david = this.context.models.david.clone()
-    // this.models.david.scale.set(0.45, 0.45, 0.45)
+    this.models.david.scale.set(0.45, 0.45, 0.45)
     //
     // /* Positioning */
     // this.models.david.geometry.rotateY(-Math.PI * 0.5)
@@ -434,7 +436,7 @@ export default class FirstScreen extends AbstractScene {
     this.debugDavid.add(this.models.david.rotation, 'y', -10, 10, 0.01)
     this.debugDavid.add(this.models.david.rotation, 'z', -10, 10, 0.01)
 
-    this.davidScale = 1
+    this.davidScale = 0.45
 
     this.debugDavid
       .add(this, 'davidScale', 0, 5, 0.01)
@@ -443,7 +445,7 @@ export default class FirstScreen extends AbstractScene {
 
   #addSatelliteModel() {
     this.models.satellite = this.context.models.satellite.clone()
-    // this.models.satellite.scale.set(0.5, 0.5, 0.5)
+    this.models.satellite.scale.set(0.5, 0.5, 0.5)
     //
     // /* Positioning */
     // this.models.satellite.position.x = Math.PI * 0.25
@@ -462,7 +464,7 @@ export default class FirstScreen extends AbstractScene {
     this.debugSatellite.add(this.models.satellite.rotation, 'y', -10, 10, 0.01)
     this.debugSatellite.add(this.models.satellite.rotation, 'z', -10, 10, 0.01)
 
-    this.satelliteScale = 1
+    this.satelliteScale = 0.5
 
     this.debugSatellite
       .add(this, 'satelliteScale', 0, 5, 0.01)
@@ -471,7 +473,7 @@ export default class FirstScreen extends AbstractScene {
 
   #addNumbersModel() {
     this.models.numbers = this.context.models.numbers.clone()
-    // this.models.numbers.scale.set(0.35, 0.35, 0.35)
+    this.models.numbers.scale.set(0.35, 0.35, 0.35)
 
     // /* Positioning */
     // this.models.numbers.position.x = -Math.PI * 0.25
@@ -490,7 +492,7 @@ export default class FirstScreen extends AbstractScene {
     this.debugNumbers.add(this.models.numbers.rotation, 'y', -10, 10, 0.01)
     this.debugNumbers.add(this.models.numbers.rotation, 'z', -10, 10, 0.01)
 
-    this.numbersScale = 1
+    this.numbersScale = 0.35
 
     this.debugNumbers
       .add(this, 'numbersScale', 0, 5, 0.01)
@@ -499,7 +501,7 @@ export default class FirstScreen extends AbstractScene {
 
   #addBooksModel() {
     this.models.books = this.context.models.books.clone()
-    // this.models.books.scale.set(0.5, 0.5, 0.5)
+    this.models.books.scale.set(0.5, 0.5, 0.5)
     //
     // /* Positioning */
     // this.models.books.position.x = -Math.PI * 0.4
@@ -517,7 +519,7 @@ export default class FirstScreen extends AbstractScene {
     this.debugBooks.add(this.models.books.rotation, 'y', -10, 10, 0.01)
     this.debugBooks.add(this.models.books.rotation, 'z', -10, 10, 0.01)
 
-    this.booksScale = 1
+    this.booksScale = 0.5
 
     this.debugBooks
       .add(this, 'booksScale', 0, 5, 0.01)
@@ -526,7 +528,7 @@ export default class FirstScreen extends AbstractScene {
 
   #addMoleculeModel() {
     this.models.molecule = this.context.models.molecule.clone()
-    // this.models.molecule.scale.set(0.3, 0.3, 0.3)
+    this.models.molecule.scale.set(0.3, 0.3, 0.3)
     //
     // /* Positioning */
     // this.models.molecule.position.y = -Math.PI * 0.2
@@ -543,7 +545,7 @@ export default class FirstScreen extends AbstractScene {
     this.debugMolecule.add(this.models.molecule.rotation, 'y', -10, 10, 0.01)
     this.debugMolecule.add(this.models.molecule.rotation, 'z', -10, 10, 0.01)
 
-    this.moleculeScale = 1
+    this.moleculeScale = 0.3
 
     this.debugMolecule
       .add(this, 'moleculeScale', 0, 5, 0.01)
@@ -554,7 +556,7 @@ export default class FirstScreen extends AbstractScene {
 
   #addMolecule2Model() {
     this.models.molecule2 = this.context.models.molecule2.clone()
-    // this.models.molecule2.scale.set(0.4, 0.4, 0.4)
+    this.models.molecule2.scale.set(0.4, 0.4, 0.4)
 
     this.debugMolecule2 = this.debugMehes.addFolder('Molecule2')
 
@@ -566,7 +568,7 @@ export default class FirstScreen extends AbstractScene {
     this.debugMolecule2.add(this.models.molecule2.rotation, 'y', -10, 10, 0.01)
     this.debugMolecule2.add(this.models.molecule2.rotation, 'z', -10, 10, 0.01)
 
-    this.moleculeScale2 = 1
+    this.moleculeScale2 = 0.4
 
     this.debugMolecule2
       .add(this, 'moleculeScale2', 0, 5, 0.01)
