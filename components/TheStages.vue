@@ -93,10 +93,10 @@ export default {
   padding: 3.7rem 0 0 7rem;
 
   &._last {
-    padding: 3.7rem 0 3.7rem 7rem;
+    padding: 3.7rem 0 8.4rem 7rem;
 
     @include --mobile {
-      padding: 1rem 0;
+      padding: 1rem 0 6rem;
     }
   }
 
@@ -156,9 +156,9 @@ export default {
     &::after {
       position: absolute;
       top: 0;
-      left: calc(50% - 50vw);
+      left: calc(50% - 70vw);
       z-index: -2;
-      width: 100vw;
+      width: 120vw;
       height: 100%;
       background: #e9eef5;
       content: '';
@@ -179,7 +179,6 @@ export default {
 
   &__index {
     display: inline-block;
-    padding: 0 1.5rem;
     color: $color_accent;
     font-weight: 500;
     font-size: 1.8rem;
@@ -188,6 +187,7 @@ export default {
 
     @include --from-mobile {
       position: absolute;
+      padding: 0 1.5rem;
       left: 0;
       z-index: 3;
       transform: translate(-50%, -3px);
