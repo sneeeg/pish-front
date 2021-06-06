@@ -91,7 +91,7 @@ export default class FirstScreen extends AbstractScene {
     /* Adding vectors */
     this.#addArrowVector()
 
-    this.wholeGroup.position.set(0.2, -0.2, 0)
+    this.wholeGroup.position.set(0.2, -0.15, 0)
 
     this.scene.add(this.wholeGroup)
 
