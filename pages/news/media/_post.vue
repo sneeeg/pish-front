@@ -19,7 +19,12 @@
           :html="page.description"
           class="post__description"
         />
-        <HTMLContent v-scroll-element :html="page.content" class="post__body" />
+        <HTMLContent
+          v-scroll-element
+          for-news
+          :html="page.content"
+          class="post__body"
+        />
       </article>
     </Section>
     <Section

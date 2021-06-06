@@ -9,12 +9,14 @@ module.exports = {
     {
       hid: 'title',
       name: 'title',
-      content: '',
+      content:
+        'ПРИОРИТЕТ–2030 | Единая программа государственной поддержки университетов Российской Федерации',
     },
     {
       hid: 'description',
       name: 'description',
-      content: '',
+      content:
+        'Единая программа государственной поддержки университетов Россииской Федерации в целях реализации прорывных проектов, направленных на научно-технологическое развитие страны',
     },
     {
       hid: 'og:type',
@@ -24,22 +26,24 @@ module.exports = {
     {
       hid: 'og:url',
       property: 'og:url',
-      content: '',
+      content: 'https://priority2030.ru/',
     },
     {
       hid: 'og:title',
       property: 'og:title',
-      content: '',
+      content:
+        'ПРИОРИТЕТ–2030 | Единая программа государственной поддержки университетов Российской Федерации',
     },
     {
       hid: 'og:description',
       property: 'og:description',
-      content: '',
+      content:
+        'Единая программа государственной поддержки университетов Россииской Федерации в целях реализации прорывных проектов, направленных на научно-технологическое развитие страны',
     },
     {
       hid: 'og:image',
       property: 'og:image',
-      content: '',
+      content: 'https://priority2030.ru/fb.jpg',
     },
     {
       hid: 'twitter:card',
@@ -49,27 +53,29 @@ module.exports = {
     {
       hid: 'twitter:url',
       property: 'twitter:url',
-      content: '',
+      content: 'https://priority2030.ru/',
     },
     {
       hid: 'twitter:title',
       property: 'twitter:title',
-      content: '',
+      content:
+        'ПРИОРИТЕТ–2030 | Единая программа государственной поддержки университетов Российской Федерации',
     },
     {
       hid: 'twitter:description',
       property: 'twitter:description',
-      content: '',
+      content:
+        'Единая программа государственной поддержки университетов Россииской Федерации в целях реализации прорывных проектов, направленных на научно-технологическое развитие страны',
     },
     {
       hid: 'twitter:image',
       property: 'og:image',
-      content: '',
+      content: 'https://priority2030.ru/fb.jpg',
     },
     {
       hid: 'vk:image',
       property: 'og:image',
-      content: '',
+      content: 'https://priority2030.ru/vk.jpg',
     },
     {
       name: 'apple-mobile-web-app-title',

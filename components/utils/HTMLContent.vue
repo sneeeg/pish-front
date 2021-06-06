@@ -1,5 +1,9 @@
 <template>
-  <div ref="HTMLContent" class="html-content" v-html="html"></div>
+  <div
+    ref="HTMLContent"
+    :class="['html-content', { _news: forNews }]"
+    v-html="html"
+  ></div>
 </template>
 
 <script>
@@ -10,6 +14,10 @@ export default {
     html: {
       type: String,
       default: '',
+    },
+    forNews: {
+      type: Boolean,
+      default: false,
     },
   },
   mounted() {

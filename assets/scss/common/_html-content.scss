@@ -14,6 +14,12 @@ $listPadding: 2rem;
   //  margin: 0;
   //}
 
+  &._news {
+    > div {
+      @include p;
+    }
+  }
+
   p {
     @include p;
     //margin: 0;
