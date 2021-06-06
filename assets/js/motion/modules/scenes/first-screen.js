@@ -12,6 +12,7 @@ export default class FirstScreen extends AbstractScene {
   firstStart = false // First start or after destroy
 
   group // Models group
+  wholeGroup
 
   /* Models */
   models = {
@@ -62,6 +63,8 @@ export default class FirstScreen extends AbstractScene {
 
     this.createWorld()
 
+    this.wholeGroup = new THREE.Group()
+
     // // Add specific params to three scene
     // this.scene.background = new THREE.Color(COLOR_GREY)
 
@@ -83,10 +86,14 @@ export default class FirstScreen extends AbstractScene {
     // /* Group positioning */
     // this.group.position.x = Math.PI * 0.4
 
-    this.scene.add(this.group)
+    this.wholeGroup.add(this.group)
 
     /* Adding vectors */
     this.#addArrowVector()
+
+    this.wholeGroup.position.set(0.2, -0.2, 0)
+
+    this.scene.add(this.wholeGroup)
 
     this.render()
   }
@@ -278,6 +285,6 @@ export default class FirstScreen extends AbstractScene {
 
     this.vectors.arrow.position.x = 0.48
 
-    this.scene.add(this.vectors.arrow)
+    this.wholeGroup.add(this.vectors.arrow)
   }
 }
