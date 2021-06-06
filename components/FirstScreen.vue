@@ -134,6 +134,7 @@ export default {
       motionIsActive: false,
       timeline: null,
       currentTitle: 0,
+      calcHeightWrapper: this.calcHeight.bind(this),
     }
   },
   computed: {
@@ -157,7 +158,7 @@ export default {
         document.fonts.ready.then(() => {
           this.calcHeight()
 
-          window.addEventListener('resize', this.calcHeight.bind(this))
+          window.addEventListener('resize', this.calcHeightWrapper)
           this.createTimeline()
           scrollAnimation(this.$refs.firstScreen)
         })
@@ -172,7 +173,7 @@ export default {
       this.$motion?.scenes.firstScreen.destroy()
 
     if (this.titles.length > 1 && !this.browser.isIE) {
-      window.removeEventListener('resize', this.calcHeight.bind(this))
+      window.removeEventListener('resize', this.calcHeightWrapper)
       this.timeline?.kill()
     }
   },
