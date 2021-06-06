@@ -27,7 +27,7 @@
       to="/news"
       :title="lang['news.other']"
     >
-      <OtherPosts main-posts :category="page.category" />
+      <OtherPosts main-posts :slug="page.slug" :category="page.category" />
     </Section>
   </div>
 </template>

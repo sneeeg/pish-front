@@ -19,13 +19,22 @@ $listPadding: 2rem;
     //margin: 0;
   }
 
+  a {
+    @include hover-opacity;
+    color: $color_accent;
+  }
+
   strong, b {
     color: $color_accent;
   }
 
   > :not([class]),
   > a.doc {
-    margin: .8em 0;
+    margin: 1.2em 0;
+
+    @include --mobile {
+      margin: 1em 0;
+    }
   }
 
   img:not([class]) {

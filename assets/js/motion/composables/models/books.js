@@ -15,7 +15,7 @@ export default {
       roughnessMap: context.textures.roughness_plastic,
       color: new THREE.Color(0xffffff),
       emissive: new THREE.Color(0x878787),
-      emissiveIntensity: 1.1,
+      emissiveIntensity: 1.075,
       roughness: 0,
       metalness: 0,
     }

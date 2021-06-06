@@ -78,6 +78,7 @@
         left: '0vw',
         width: '100vw',
         height: '100vh',
+        zIndex: -1,
       }"
       class="canvas-container"
     ></div>
@@ -227,12 +228,19 @@ export default {
 </script>
 
 <style lang="scss">
+.canvas-container {
+  @include --tablet {
+    visibility: hidden;
+  }
+}
+
 .first-screen {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: calc(100vh - 15.7rem);
 
   &._IE {
     height: calc(100vh - 15.7rem);
@@ -279,12 +287,6 @@ export default {
     }
   }
 
-  canvas {
-    @include --tablet {
-      visibility: hidden;
-    }
-  }
-
   @include --tablet {
     justify-content: flex-end;
     min-height: calc(100vh - 12.3rem);
@@ -304,10 +306,6 @@ export default {
     @include container;
     @include padding-section;
     position: relative;
-    min-height: calc(100vh - 15.7rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   &__title {

@@ -1,6 +1,10 @@
 <template>
   <div v-scroll-element class="stages">
-    <div v-for="(stage, i) in stages" :key="i" class="stage">
+    <div
+      v-for="(stage, i) in stages"
+      :key="i"
+      :class="['stage', { _last: i === stages.length - 1 }]"
+    >
       <span class="stage__index">
         <template v-if="$i18n.locale === 'ru'"> {{ i + 1 }} ЭТАП </template>
         <template v-else> STAGE {{ i + 1 }} </template>
@@ -87,6 +91,14 @@ export default {
 .stage {
   position: relative;
   padding: 3.7rem 0 0 7rem;
+
+  &._last {
+    padding: 3.7rem 0 3.7rem 7rem;
+
+    @include --mobile {
+      padding: 1rem 0;
+    }
+  }
 
   @include --mobile {
     padding: 1rem 0 0 0;

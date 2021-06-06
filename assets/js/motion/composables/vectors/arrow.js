@@ -28,7 +28,7 @@ export default {
         geometry.center()
 
         const mesh = new THREE.Mesh(geometry, material)
-        mesh.scale.set(0.008, 0.008, 0.008)
+        mesh.scale.set(0.0038, 0.0038, 0.0038)
 
         group.add(mesh)
       })

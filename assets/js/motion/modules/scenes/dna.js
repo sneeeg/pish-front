@@ -57,6 +57,8 @@ export default class Dna extends AbstractScene {
     // Add specific params to renderer
     this.renderer.outputEncoding = THREE.sRGBEncoding // Renderer encoding
 
+    this.camera.position.z = 5
+
     /* Lights */
 
     this.#addSpotLight()
@@ -129,7 +131,7 @@ export default class Dna extends AbstractScene {
   }
 
   #addAmbientLight() {
-    this.lights.ambient = new THREE.AmbientLight(0x000000, 1)
+    this.lights.ambient = new THREE.AmbientLight(0x222222, 1.15)
 
     this.scene.add(this.lights.ambient)
   }
