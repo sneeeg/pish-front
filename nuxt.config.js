@@ -81,7 +81,16 @@ export default {
     '@nuxtjs/svg-sprite',
     '@nuxtjs/dayjs',
     'vue-scrollto/nuxt',
+    '@nuxtjs/yandex-metrika',
   ],
+
+  yandexMetrika: {
+    id: '80378578',
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true,
+    webvisor: true,
+  },
 
   dayjs: {
     locales: ['en', 'ru'],

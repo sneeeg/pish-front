@@ -101,6 +101,12 @@ export default {
         ({ data }) => data.posts || []
       )
 
+      if (this.category && !this.posts.length) {
+        this.posts = await apiMethod(undefined, 1, 10).then(
+          ({ data }) => data.posts || []
+        )
+      }
+
       if (this.slug) {
         this.posts.splice(
           this.posts.findIndex((elem) => elem.slug === this.slug),
