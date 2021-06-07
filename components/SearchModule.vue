@@ -19,14 +19,16 @@
             class="search-module-results-list__item"
           />
         </div>
-        <div class="pagination search-module-results__pagination">
+        <div
+          v-if="pagination.total > 1"
+          class="pagination search-module-results__pagination"
+        >
           <ControlBtn
             class="pagination__btn"
             :disabled="pagination.current === 1"
             @click.native="prev"
           />
           <Paginate
-            v-if="pagination.total > 1"
             v-model="pagination.current"
             :page-count="pagination.total"
             :container-class="'pagination-list'"
