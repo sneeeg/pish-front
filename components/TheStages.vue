@@ -75,9 +75,7 @@ export default {
 </script>
 <style lang="scss">
 .stages {
-  @media (max-width: 1366px) {
-    padding-left: 3.8rem;
-  }
+  padding-left: 3.2rem;
 
   @include --tablet {
     padding-left: 3.8rem;
