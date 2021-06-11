@@ -8,10 +8,17 @@
         @click="closePopup"
       ></button>
       <div class="doc-popup__title _visually-h5">{{ title }}</div>
-      <p class="doc-popup__text">{{ text }}</p>
-      <a :href="to" class="doc-popup__download" download>
+      <p class="doc-popup__text" v-html="text"></p>
+      <a v-if="to" :href="to" class="doc-popup__download" download>
         {{ lang['base.doc.download'] }}
       </a>
+      <Btn
+        arrow=""
+        class="doc-popup__btn"
+        type="button"
+        :text="lang['base.close']"
+        @click.native="closePopup"
+      />
     </div>
   </div>
 </template>
@@ -19,9 +26,10 @@
 <script>
 import { mapMutations, mapState } from 'vuex'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import Btn from '~/components/controls/Btn'
 export default {
   name: 'DocPopup',
-  components: {},
+  components: { Btn },
   props: {},
   computed: {
     ...mapState('default', {

@@ -4,7 +4,11 @@
       v-view="scrollHandler"
       :class="[
         'first-screen',
-        { '_adaptive-top': adaptiveTop, _IE: browser.isIE },
+        {
+          '_adaptive-top': adaptiveTop,
+          _IE: browser.isIE,
+          _registration: registration,
+        },
       ]"
     >
       <div ref="firstScreen" class="first-screen__content">
@@ -43,6 +47,12 @@
           v-scroll-element
           :html="lead"
           class="first-screen__lead"
+        />
+        <HTMLContent
+          v-if="htmlContent"
+          v-scroll-element
+          :html="htmlContent"
+          class="first-screen__html-content"
         />
         <Btn
           v-if="link"
@@ -127,6 +137,14 @@ export default {
     video: {
       type: Boolean,
       default: false,
+    },
+    registration: {
+      type: Boolean,
+      default: false,
+    },
+    htmlContent: {
+      type: String,
+      default: '',
     },
   },
   data() {
@@ -247,6 +265,18 @@ export default {
     height: calc(100vh - 15.7rem);
   }
 
+  &__html-content {
+    margin-top: 8.6rem;
+
+    @include --mobile {
+      margin-top: 5.2rem;
+    }
+
+    .doc {
+      color: $color_grey_text;
+    }
+  }
+
   &__background {
     position: absolute;
     top: 0;
@@ -255,6 +285,25 @@ export default {
     height: 43.5rem;
     background-repeat: no-repeat;
     background-size: contain;
+
+    ._registration & {
+      top: -15rem;
+      right: -15rem;
+      width: 85.4rem;
+      height: 75.3rem;
+
+      @include --tablet {
+        top: -30rem;
+        width: 60rem;
+        height: 53rem;
+      }
+
+      @include --mobile {
+        top: -25rem;
+        width: 42rem;
+        height: 37rem;
+      }
+    }
 
     @include --tablet {
       width: 40rem;
@@ -367,6 +416,15 @@ export default {
   &__lead {
     max-width: 57rem;
     margin-top: 8.4rem;
+
+    ._registration & {
+      max-width: 50rem;
+      margin-top: 5.2rem;
+
+      @include --mobile {
+        margin-top: 4rem;
+      }
+    }
 
     @include --mobile {
       margin-top: 4rem;

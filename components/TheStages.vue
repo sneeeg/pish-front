@@ -185,9 +185,9 @@ export default {
 
     @include --from-mobile {
       position: absolute;
-      padding: 0 1.5rem;
       left: 0;
       z-index: 3;
+      padding: 0 1.5rem;
       transform: translate(-50%, -3px);
     }
   }

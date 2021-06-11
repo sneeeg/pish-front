@@ -25,8 +25,18 @@
       :subtitle="page.request.subtitle"
       :date-to="page.request.dateTo"
     ></TheCountdown>
-    <Section v-view="$utils.scrollCenterDetection" :title="page.newsTitle">
-      <Posts />
+
+    <RegistrationPreview
+      :forehead="page.registration.forehead"
+      :title="page.registration.title"
+    />
+
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      background
+      :title="page.newsTitle"
+    >
+      <Posts colored />
     </Section>
   </div>
 </template>
@@ -42,9 +52,11 @@ import Posts from '~/components/Posts'
 import Participation from '~/components/Participation'
 import FirstScreen from '~/components/FirstScreen'
 import TheCountdown from '~/components/TheCountdown'
+import RegistrationPreview from '~/components/RegistrationPreview'
 
 export default {
   components: {
+    RegistrationPreview,
     FirstScreen,
     TheCountdown,
     Posts,

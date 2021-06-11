@@ -15,4 +15,8 @@ export default [
     text: 'Подать заявку',
     href: 'https://paraweb.me/',
   },
+  {
+    text: 'Регистрация',
+    href: '/registration',
+  },
 ]

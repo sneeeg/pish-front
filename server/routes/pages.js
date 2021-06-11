@@ -2,6 +2,7 @@ import main from '~/server/collections/pages/main'
 import about from '~/server/collections/pages/about'
 import news from '~/server/collections/pages/news'
 import participation from '~/server/collections/pages/participation'
+import registration from '~/server/collections/pages/registration'
 
 import { getResponse } from '~/server/utils'
 
@@ -30,6 +31,15 @@ export default (pretender) => {
       200,
       { 'Content-Type': 'application/json' },
       getResponse(participation),
+    ]
+  })
+
+  // Registration page
+  pretender.get('/api/pages/registration', () => {
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse(registration),
     ]
   })
 }

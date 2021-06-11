@@ -1,0 +1,12 @@
+{
+  "action": "Зарегистрироваться",
+  "rector.label": "ФИО ректора",
+  "rector.placeholder": "Укажите ФИО ректора",
+  "university.label": "Название университета",
+  "university.placeholder": "Укажите название университета",
+  "email.label": "E-mail",
+  "email.placeholder": "Укажите вашу почту",
+  "phone.label": "Телефон",
+  "policy.text": "Нажимая кнопку «Зарегистрироваться» Я соглашаюсь",
+  "policy.link.text": "с политикой безопасности и конфиденциальности"
+}

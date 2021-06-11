@@ -41,6 +41,7 @@
           :key="post.id"
           class="posts-list__item"
           :post="post"
+          :colored="colored"
           :type="type"
         />
       </div>
@@ -84,6 +85,10 @@ export default {
     type: {
       type: String,
       default: 'all',
+    },
+    colored: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {

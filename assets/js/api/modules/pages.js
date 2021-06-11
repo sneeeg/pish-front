@@ -18,4 +18,9 @@ export default ($axios) => ({
   participation() {
     return $axios.$get('/api/pages/participation')
   },
+
+  /* Getting registration */
+  registration() {
+    return $axios.$get('/api/pages/registration')
+  },
 })

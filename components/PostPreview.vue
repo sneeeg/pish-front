@@ -1,5 +1,5 @@
 <template>
-  <div class="post-preview">
+  <div :class="['post-preview', { _colored: colored }]">
     <template v-if="!$utils.isObjectEmpty(post)">
       <SmartLink :to="linkObject" class="post-preview__image">
         <img
@@ -52,6 +52,10 @@ export default {
       type: String,
       default: 'all',
     },
+    colored: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     ...mapState('default', ['lang']),
@@ -75,6 +79,10 @@ export default {
   flex-direction: column;
   min-height: 52rem;
   background-color: $color_white;
+
+  &._colored {
+    background-color: $color_background;
+  }
 
   @include --tablet {
     min-height: 48rem;

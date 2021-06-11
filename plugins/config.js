@@ -1,3 +1,5 @@
+const ERROR_CODE = 'invalid_csrf'
+
 export default ({ app, $axios, store, $constants }) => {
   // Get sessid
   store.commit('default/setSessid', window.sessid ?? '')
@@ -18,20 +20,40 @@ export default ({ app, $axios, store, $constants }) => {
     return config
   })
 
-  $axios.interceptors.response.use((response) => {
-    if (response.data.errors && response.data.errors.length) {
-      const sessidError = response.data.errors.find(
-        (error) => error.code === $constants.CSRF_ERROR_CODE
-      )
+  $axios.interceptors.response.use(
+    (response) => {
+      if (response.data.errors && response.data.errors.length) {
+        const csrfError = response.data.errors.find(
+          (error) => error.code === ERROR_CODE
+        )
 
-      if (sessidError) {
-        store.commit('default/setSessid', sessidError.customData.csrf)
-        return Promise.reject($constants.CSRF_ERROR_CODE)
+        if (csrfError) {
+          store.commit('default/setSessid', csrfError.customData.csrf)
+
+          response.config.headers['X-Bitrix-Csrf-Token'] =
+            store.state.Default.sessid
+          return $axios(response.config)
+        }
+      }
+
+      return response
+    },
+    (error) => {
+      if (error.response.status === 401) {
+        const csrfError = error.response.data.errors.find(
+          (error) => error.code === ERROR_CODE
+        )
+
+        if (csrfError) {
+          store.commit('default/setSessid', csrfError.customData.csrf)
+
+          error.config.headers['X-Bitrix-Csrf-Token'] =
+            store.state.Default.sessid
+          return $axios(error.config)
+        }
       }
     }
-
-    return response
-  })
+  )
 
   // Get app configuration
   return store.dispatch('default/getConfig', app.i18n.locale)
