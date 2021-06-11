@@ -102,12 +102,12 @@ export default {
   }
 
   &__error {
+    @include text-button-small;
     position: absolute;
     bottom: -2rem;
     color: red;
     font-weight: 400;
     text-transform: none;
-    @include text-button-small;
   }
 }
 </style>
