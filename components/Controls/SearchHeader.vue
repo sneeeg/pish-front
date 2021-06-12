@@ -91,7 +91,7 @@ export default {
     transition: width 0.5s ease;
 
     &._is-open {
-      width: 60rem;
+      width: 74rem;
       border-bottom: 1px solid $color_grey_text;
     }
   }
