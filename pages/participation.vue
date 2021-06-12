@@ -40,7 +40,7 @@
           :html="requirement.content"
         ></HTMLContent>
         <Tabs
-          v-if="requirement.sections.length"
+          v-if="requirement.sections && requirement.sections.length"
           v-scroll-element
           class="participation-rules__tabs"
           :sections="requirement.sections"

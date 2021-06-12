@@ -222,6 +222,8 @@ $listPadding: 2rem;
     z-index: 1;
     min-height: 12rem;
     padding: 3.4rem 0 0 10.1rem;
+    margin-left: 0;
+    margin-right: 0;
 
     @include --tablet {
       padding: 0;
