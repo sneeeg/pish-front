@@ -79,7 +79,7 @@ export default {
   methods: {
     async fetchReviews() {
       this.reviews = await this.$api.reviews
-        .get()
+        .get(undefined, 1, 9)
         .then(({ data }) => data.posts || [])
     },
   },
