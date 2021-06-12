@@ -42,6 +42,13 @@
     >
       <ArchitectureBlock :architecture="page.architecture" />
     </Section>
+
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      :title="page.documents.title"
+    >
+      <Documents v-scroll-element :documents="page.documents.items" />
+    </Section>
   </div>
 </template>
 
@@ -57,10 +64,12 @@ import FirstScreen from '~/components/FirstScreen'
 import SupportBlock from '~/components/SupportBlock'
 import ArchitectureBlock from '~/components/ArchitectureBlock'
 import Progress from '~/components/Progress'
+import Documents from '~/components/Documents'
 
 export default {
   name: 'About',
   components: {
+    Documents,
     AccordionBlock,
     Section,
     PriorityBlock,

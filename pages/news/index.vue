@@ -11,13 +11,13 @@
     >
       <Reviews />
     </Section>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      to="/news/university"
-      :title="page.universityNewsTitle"
-    >
-      <OtherPosts type="university" />
-    </Section>
+    <!--    <Section-->
+    <!--      v-view="$utils.scrollCenterDetection"-->
+    <!--      to="/news/university"-->
+    <!--      :title="page.universityNewsTitle"-->
+    <!--    >-->
+    <!--      <OtherPosts type="university" />-->
+    <!--    </Section>-->
   </div>
 </template>
 
@@ -28,12 +28,12 @@ import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import Posts from '~/components/Posts'
 import Reviews from '~/components/Reviews'
-import OtherPosts from '~/components/OtherPosts'
+// import OtherPosts from '~/components/OtherPosts'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 
 export default {
   name: 'Index',
-  components: { Reviews, Posts, Section, OtherPosts },
+  components: { Reviews, Posts, Section },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),

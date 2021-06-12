@@ -22,7 +22,11 @@
             @click="selectSlide(number)"
           ></li>
         </ol>
-        <button ref="next" class="controls__btn controls__next">
+        <button
+          v-show="!window.isDesktopSize || items.length > 4"
+          ref="next"
+          class="controls__btn controls__next"
+        >
           <svg-icon name="arrow-slider" />
         </button>
       </div>

@@ -37,7 +37,11 @@ export default {
   }
 
   > .architecture {
-    margin-bottom: 6.4rem;
+    margin-bottom: 9.8rem;
+
+    @include --mobile {
+      margin-bottom: 5.2rem;
+    }
   }
 
   > .principles {

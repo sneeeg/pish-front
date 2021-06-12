@@ -274,6 +274,10 @@ export default {
 
     .doc {
       color: $color_grey_text;
+
+      span {
+        background-image: none;
+      }
     }
   }
 

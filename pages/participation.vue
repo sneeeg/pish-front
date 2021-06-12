@@ -3,23 +3,24 @@
     <Section is-layout>
       <FirstScreen adaptive-top video :title="page.title" />
     </Section>
-    <Section v-view="$utils.scrollCenterDetection" background>
-      <div class="participation-advertisement">
-        <img
-          v-scroll-element
-          class="participation-advertisement__img"
-          :src="
-            $i18n.locale === 'ru'
-              ? '/i/min-science-full.svg'
-              : '/i/min-science-full-en.svg'
-          "
-          alt=""
-        />
-        <HTMLContent v-scroll-element :html="page.advertisement"></HTMLContent>
-      </div>
-    </Section>
+    <!--    <Section v-view="$utils.scrollCenterDetection" background>-->
+    <!--      <div class="participation-advertisement">-->
+    <!--        <img-->
+    <!--          v-scroll-element-->
+    <!--          class="participation-advertisement__img"-->
+    <!--          :src="-->
+    <!--            $i18n.locale === 'ru'-->
+    <!--              ? '/i/min-science-full.svg'-->
+    <!--              : '/i/min-science-full-en.svg'-->
+    <!--          "-->
+    <!--          alt=""-->
+    <!--        />-->
+    <!--        <HTMLContent v-scroll-element :html="page.advertisement"></HTMLContent>-->
+    <!--      </div>-->
+    <!--    </Section>-->
     <Section
       v-view="$utils.scrollCenterDetection"
+      background
       :title="page.requirements.title"
     >
       <div
@@ -38,6 +39,12 @@
           v-scroll-element="'right'"
           :html="requirement.content"
         ></HTMLContent>
+        <Tabs
+          v-if="requirement.sections.length"
+          v-scroll-element
+          class="participation-rules__tabs"
+          :sections="requirement.sections"
+        />
       </div>
     </Section>
     <Section
@@ -60,10 +67,11 @@ import Section from '~/components/layout/Section'
 import FirstScreen from '~/components/FirstScreen'
 import TheStages from '~/components/TheStages'
 import HTMLContent from '~/components/utils/HTMLContent'
+import Tabs from '~/components/Tabs'
 
 export default {
   name: 'Participation',
-  components: { FirstScreen, Section, TheStages, HTMLContent },
+  components: { Tabs, FirstScreen, Section, TheStages, HTMLContent },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
@@ -94,6 +102,19 @@ $participationTextPaddingMobile: 8.7rem;
 .participation-rules {
   position: relative;
   padding-left: $participationTextPadding;
+
+  &__tabs {
+    position: relative;
+    margin-top: 9.2rem;
+    width: calc(100% + 8.7rem);
+    left: -8.7rem;
+
+    @include --mobile {
+      width: calc(100% + 7rem);
+      left: -7rem;
+      margin-top: 7.2rem;
+    }
+  }
 
   @include --mobile {
     padding-left: 7rem;
