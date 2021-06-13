@@ -18,6 +18,10 @@ $listPadding: 2rem;
     > div {
       @include p;
     }
+
+    blockquote {
+      @include p;
+    }
   }
 
   p {

@@ -12,6 +12,7 @@
           :description="page.description"
           :picture="page.detailPicture"
           class="post__head"
+          :source="page.pictureSource"
         />
         <HTMLContent
           v-if="page.description"
@@ -25,6 +26,7 @@
           :html="page.content"
           class="post__body"
         />
+        <PostSource v-if="page.source" :source="page.source" />
       </article>
     </Section>
     <Section
@@ -49,12 +51,20 @@ import Section from '~/components/layout/Section'
 import PostHead from '~/components/PostHead'
 import HTMLContent from '~/components/utils/HTMLContent'
 import OtherPosts from '~/components/OtherPosts'
+import PostSource from '~/components/PostSource'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
 
 export default {
   name: 'Post',
-  components: { HTMLContent, PostHead, Section, ArrowLink, OtherPosts },
+  components: {
+    HTMLContent,
+    PostHead,
+    Section,
+    ArrowLink,
+    OtherPosts,
+    PostSource,
+  },
   mixins: [pageHead, pageDefault],
   async asyncData({ $nuxt, route, $api }) {
     const page = await $api.posts

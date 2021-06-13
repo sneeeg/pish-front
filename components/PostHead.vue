@@ -12,6 +12,7 @@
     </div>
     <div v-if="picture" v-scroll-element class="post-head__picture">
       <img :src="picture.src" :alt="picture.alt" />
+      <span v-if="source">© {{ source }}</span>
     </div>
   </div>
 </template>
@@ -36,6 +37,10 @@ export default {
       type: String,
       required: true,
     },
+    source: {
+      type: String,
+      default: '',
+    },
   },
 }
 </script>
@@ -47,6 +52,7 @@ export default {
   }
 
   &__picture {
+    position: relative;
     width: 100%;
     height: 53.5rem;
     margin-top: 4.2rem;
@@ -58,6 +64,23 @@ export default {
     @include --mobile {
       height: 26rem;
       margin-top: 3.2rem;
+    }
+
+    span {
+      @include text-button;
+      text-transform: none;
+      font-weight: normal;
+      background-color: rgba($color_black, 0.5);
+      padding: 1rem;
+      position: absolute;
+      display: block;
+      color: $color_white;
+      bottom: 0;
+      right: 0;
+
+      @include --mobile {
+        padding: 0.8rem;
+      }
     }
 
     img {
