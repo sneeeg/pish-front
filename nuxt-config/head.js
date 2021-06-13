@@ -1,5 +1,6 @@
-module.exports = {
-  title: 'priority2030-promo',
+export default {
+  title:
+    'ПРИОРИТЕТ–2030 | Единая программа государственной поддержки университетов Российской Федерации',
   htmlAttrs: {
     lang: 'ru',
   },
