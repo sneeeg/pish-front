@@ -29,6 +29,7 @@ export default {
 
   a {
     color: $color_accent;
+    overflow-wrap: break-word;
   }
 }
 </style>
