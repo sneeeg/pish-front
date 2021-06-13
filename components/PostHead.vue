@@ -68,15 +68,15 @@ export default {
 
     span {
       @include text-button;
-      text-transform: none;
-      font-weight: normal;
-      background-color: rgba($color_black, 0.5);
-      padding: 1rem;
       position: absolute;
-      display: block;
-      color: $color_white;
-      bottom: 0;
       right: 0;
+      bottom: 0;
+      display: block;
+      padding: 1rem;
+      color: $color_white;
+      font-weight: normal;
+      text-transform: none;
+      background-color: rgba($color_black, 0.6);
 
       @include --mobile {
         padding: 0.8rem;

@@ -16,7 +16,7 @@ export default (pretender) => {
   })
 
   // University search
-  pretender.get('/api/university', () => {
+  pretender.get('/api/company', () => {
     return [
       200,
       { 'Content-Type': 'application/json' },

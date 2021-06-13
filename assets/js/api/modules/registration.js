@@ -6,6 +6,6 @@ export default ($axios) => ({
 
   /* Search university */
   searchUniversity() {
-    return $axios.$get('/api/university')
+    return $axios.$get('/api/company')
   },
 })
