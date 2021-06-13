@@ -160,12 +160,12 @@ export default {
       z-index: -2;
       width: 120vw;
       height: 100%;
-      background: #e9eef5;
+      background: #e1e4e8;
       content: '';
     }
 
     .stage__index {
-      background: $color_mid_grey;
+      background: #e1e4e8;
     }
 
     .substage__content::before {
@@ -225,7 +225,7 @@ export default {
       height: 1.1rem;
       margin-right: 1.6rem;
       vertical-align: middle;
-      background-image: url("data:image/svg+xml,%3Csvg width='20' height='12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l9 9 9-9' stroke='%23344887' stroke-width='2'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l9 9 9-9' stroke='%23F32735' stroke-width='2'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: 50%;
       transition: transform 0.25s ease;

@@ -86,18 +86,21 @@ export default {
   }
 
   &__logo {
-    width: 22.9rem;
-    height: 6rem;
+    width: 24.6rem;
+    height: 4.8rem;
 
     @include --tablet {
-      width: 18.3rem;
-      height: 4.8rem;
+      width: 19.7rem;
+      height: 3.9rem;
     }
 
     @include --mobile {
-      width: 13.4rem;
-      height: 3.5rem;
       margin-bottom: 3rem;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 

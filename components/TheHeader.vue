@@ -6,8 +6,18 @@
   >
     <div v-will-change class="header__info gsap_header__info">
       <div class="header__content">
-        <LangToggler />
-        <SocIcons class="_header" />
+        <nuxt-link to="/" class="header__logo--full">
+          <img
+            :src="
+              $i18n.locale === 'ru'
+                ? '/i/min-science-full.svg'
+                : '/i/min-science-full-en.svg'
+            "
+            alt=""
+          />
+        </nuxt-link>
+        <!--  TODO      -->
+        <a v-if="false" href="#" class="header__account">Личный кабинет</a>
       </div>
     </div>
 
@@ -42,16 +52,14 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 
-import SocIcons from '~/components/SocIcons'
-import LangToggler from '~/components/Controls/LangToggler'
+// import LangToggler from '~/components/Controls/LangToggler'
 import SearchHeader from '~/components/Controls/SearchHeader'
 import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'TheHeader',
   components: {
-    SocIcons,
-    LangToggler,
+    // LangToggler,
     SearchHeader,
     SmartLink,
   },
@@ -81,7 +89,8 @@ export default {
 
     .header__content {
       align-items: center;
-      padding: 2.2rem 0;
+      justify-content: flex-end;
+      padding: 1.4rem 0;
 
       @include --tablet {
         padding: 0.9rem 0;
@@ -109,22 +118,69 @@ export default {
   &__logo {
     position: relative;
     flex-shrink: 0;
-    width: 22.9rem;
-    height: 6rem;
+    width: 24.6rem;
+    height: 4.8rem;
+    margin-top: -0.9rem;
 
     @include --tablet {
-      width: 18.3rem;
-      height: 4.8rem;
+      width: 19.7rem;
+      height: 3.9rem;
     }
 
     @include --mobile {
-      width: 13.4rem;
-      height: 3.5rem;
+      width: 14.4rem;
+      height: 2.8rem;
+      margin-top: 0;
+    }
+
+    &--full {
+      position: relative;
+      flex-shrink: 0;
+      width: 14.2rem;
+      height: 4rem;
+      margin-right: auto;
+
+      @include --mobile {
+        width: 11.3rem;
+        height: 2.8rem;
+        margin: 0 0 0 auto;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     img {
       width: 100%;
       height: 100%;
+    }
+  }
+
+  &__account {
+    @include text-button-small;
+    display: flex;
+    align-items: center;
+    color: $color_red;
+
+    &:not(:last-child) {
+      margin-right: 4rem;
+    }
+
+    &::before {
+      @include box(2rem);
+      display: block;
+      margin-right: 1rem;
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zM5.07 16.28c.43-.9 3.05-1.78 4.93-1.78s4.51.88 4.93 1.78A7.893 7.893 0 0110 18c-1.86 0-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33A7.95 7.95 0 012 10c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM10 4C8.06 4 6.5 5.56 6.5 7.5S8.06 11 10 11s3.5-1.56 3.5-3.5S11.94 4 10 4zm0 5c-.83 0-1.5-.67-1.5-1.5S9.17 6 10 6s1.5.67 1.5 1.5S10.83 9 10 9z' fill='%23F32735'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: cover;
+      content: '';
+
+      @include --mobile {
+        @include box(1.6rem);
+        margin-right: 0.8rem;
+      }
     }
   }
 

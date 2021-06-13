@@ -92,9 +92,9 @@ export default {
     transition: border-color 0.5s ease;
     appearance: none;
 
-    &:focus {
-      border-color: $color_accent;
-    }
+    //&:focus {
+    //  border-color: $color_accent;
+    //}
 
     &::placeholder {
       color: $color_grey_text;
