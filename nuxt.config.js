@@ -18,6 +18,7 @@ export default {
     // Node.js modules
     'normalize.css',
     'flickity/css/flickity.css',
+    'vue-select/dist/vue-select.css',
     // CSS files
 
     // SCSS files
@@ -36,6 +37,7 @@ export default {
     '~/plugins/mouse.js',
     '~/plugins/motion.js',
     '~/plugins/vue-check-view',
+    '~/plugins/vue-select',
     '~/plugins/router-processing.js',
   ],
 

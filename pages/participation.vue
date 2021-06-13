@@ -105,13 +105,13 @@ $participationTextPaddingMobile: 8.7rem;
 
   &__tabs {
     position: relative;
-    margin-top: 9.2rem;
-    width: calc(100% + 8.7rem);
     left: -8.7rem;
+    width: calc(100% + 8.7rem);
+    margin-top: 9.2rem;
 
     @include --mobile {
-      width: calc(100% + 7rem);
       left: -7rem;
+      width: calc(100% + 7rem);
       margin-top: 7.2rem;
     }
   }

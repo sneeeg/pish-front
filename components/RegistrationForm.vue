@@ -15,9 +15,10 @@
         name="rector"
       />
 
-      <CustomInput
-        v-model.trim.lazy="$v.university.$model"
+      <SearchSelect
+        v-model="searchRequest"
         v-scroll-element
+        :options="searchOptions"
         class="registration-form__field"
         :label="lang['registration.university.label']"
         :placeholder="lang['registration.university.placeholder']"
@@ -26,6 +27,16 @@
             ? 'Это поле необходимо заполнить'
             : ''
         "
+        @search="search"
+      />
+
+      <CustomInput
+        v-model.trim.lazy="$v.university.$model"
+        v-scroll-element
+        class="registration-form__field"
+        :label="lang['registration.university.label']"
+        :placeholder="lang['registration.university.placeholder']"
+        :error-text="universityError"
         name="university"
       />
 
@@ -81,25 +92,26 @@
 import { mapMutations, mapState } from 'vuex'
 import { validationMixin } from 'vuelidate'
 import { required, email, minLength } from 'vuelidate/lib/validators'
+import { debounce } from 'throttle-debounce'
 
 import Section from '~/components/layout/Section'
 import CustomInput from '~/components/controls/CustomInput'
 import SmartLink from '~/components/utils/SmartLink'
 import Btn from '~/components/controls/Btn'
+import SearchSelect from '~/components/Controls/SearchSelect'
 export default {
   name: 'RegistrationForm',
-  components: { Btn, SmartLink, CustomInput, Section },
+  components: { SearchSelect, Btn, SmartLink, CustomInput, Section },
   mixins: [validationMixin],
   data() {
     return {
+      searchRequest: '',
+      searchOptions: [],
       rector: '',
-      rectorError: '',
       university: '',
       universityError: '',
       email: '',
-      emailError: '',
       phone: '',
-      phoneError: '',
       isLoading: false,
     }
   },
@@ -114,6 +126,28 @@ export default {
   },
   methods: {
     ...mapMutations('default', ['changePopupState']),
+    search({ str, loading }) {
+      console.log(str.length)
+      if (!str.length) return
+
+      const handler = debounce(350, (str, loading, vm) => {
+        if (!str.length) return
+        loading(true)
+
+        vm.$api.registration
+          .searchUniversity(str)
+          .then(({ data }) => {
+            vm.searchOptions = data
+            loading(false)
+          })
+          .catch(() => {
+            vm.searchOptions = []
+            loading(false)
+          })
+      })
+
+      handler(str, loading, this)
+    },
     async submit() {
       this.$v.$touch()
       if (this.$v.$invalid) return
@@ -123,6 +157,7 @@ export default {
       const data = {
         rector: this.rector,
         university: this.university,
+        universityError: '',
         email: this.email,
         phone: this.phone,
       }
