@@ -2,12 +2,13 @@
   <div class="search-select">
     <div v-if="label" class="search-select__label">{{ label }}</div>
     <v-select
+      autocomplete="on"
       :options="options"
       :value="value"
       :placeholder="placeholder"
       @input="$emit('input', $event)"
       @search="onSearch"
-      @option:selected="$emit('selected', item)"
+      @option:selected="$emit('selected', $event)"
     >
       <template #no-options>
         {{ lang['search.empty'] }}

@@ -1,6 +1,22 @@
 <template>
   <Section v-view="$utils.scrollCenterDetection" background>
     <form class="registration-form" @submit.prevent="submit">
+      <SearchSelect
+        v-scroll-element
+        :value="university"
+        :options="searchOptions"
+        class="registration-form__field"
+        :label="lang['registration.university.label']"
+        :placeholder="lang['registration.university.placeholder']"
+        :error-text="
+          $v.university.$dirty && !$v.university.required
+            ? 'Это поле необходимо заполнить'
+            : ''
+        "
+        @search="search"
+        @selected="onSelect"
+      />
+
       <CustomInput
         v-model.trim.lazy="$v.rector.$model"
         v-scroll-element
@@ -13,31 +29,6 @@
             : ''
         "
         name="rector"
-      />
-
-      <SearchSelect
-        v-model="searchRequest"
-        v-scroll-element
-        :options="searchOptions"
-        class="registration-form__field"
-        :label="lang['registration.university.label']"
-        :placeholder="lang['registration.university.placeholder']"
-        :error-text="
-          $v.university.$dirty && !$v.university.required
-            ? 'Это поле необходимо заполнить'
-            : ''
-        "
-        @search="search"
-      />
-
-      <CustomInput
-        v-model.trim.lazy="$v.university.$model"
-        v-scroll-element
-        class="registration-form__field"
-        :label="lang['registration.university.label']"
-        :placeholder="lang['registration.university.placeholder']"
-        :error-text="universityError"
-        name="university"
       />
 
       <CustomInput
@@ -127,7 +118,6 @@ export default {
   methods: {
     ...mapMutations('default', ['changePopupState']),
     search({ str, loading }) {
-      console.log(str.length)
       if (!str.length) return
 
       const handler = debounce(350, (str, loading, vm) => {
@@ -188,6 +178,10 @@ export default {
       this.university = ''
       this.email = ''
       this.phone = ''
+    },
+    onSelect(item) {
+      this.university = item.label
+      this.rector = item.rector || ''
     },
   },
 }
