@@ -133,6 +133,7 @@ export default {
 
   .vs__dropdown-menu {
     @include text-small;
+    @include scrollbar($color_accent);
     border: 1px solid #e1e4e8;
     border-radius: 0 0 5px 5px;
     box-shadow: none;
