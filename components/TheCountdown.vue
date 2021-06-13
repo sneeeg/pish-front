@@ -28,7 +28,9 @@
         </div>
       </div>
 
+      <!--   TODO    -->
       <Btn
+        v-if="false"
         v-scroll-element
         :text="lang['base.sendRequest']"
         class="countdown__btn"

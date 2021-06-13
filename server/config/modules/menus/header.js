@@ -12,11 +12,7 @@ export default [
     href: '/participation',
   },
   {
-    text: 'Подать заявку',
-    href: 'https://paraweb.me/',
-  },
-  {
-    text: 'Регистрация',
+    text: 'Мероприятия',
     href: '/registration',
   },
 ]

@@ -39,7 +39,7 @@
         :placeholder="lang['registration.email.placeholder']"
         :error-text="
           $v.email.$dirty && (!$v.email.email || !$v.email.required)
-            ? 'Введите действующий адрес электронной почты'
+            ? 'Введите действительный адрес электронной почты'
             : ''
         "
         name="email"
@@ -53,7 +53,7 @@
         :label="lang['registration.phone.label']"
         :error-text="
           $v.phone.$dirty && (!$v.phone.minLength || !$v.phone.required)
-            ? 'Введите действующий номер телефона'
+            ? 'Введите действительный номер телефона'
             : ''
         "
         placeholder="+7"

@@ -1,11 +1,11 @@
 <template>
   <blockquote v-view="$utils.scrollCenterDetection" class="blockquote">
-    <img
-      v-scroll-element
-      class="blockquote__logo"
-      src="/logo.svg"
-      alt="Логотип"
-    />
+    <!--    <img-->
+    <!--      v-scroll-element-->
+    <!--      class="blockquote__logo"-->
+    <!--      src="/logo.svg"-->
+    <!--      alt="Логотип"-->
+    <!--    />-->
     <p v-scroll-element class="blockquote__text">{{ text }}</p>
     <footer>
       <div v-scroll-element="'left'" class="blockquote__photo">
@@ -56,7 +56,7 @@ export default {
 
   &::before {
     position: absolute;
-    top: 21.5rem;
+    top: -2.5rem;
     left: 0;
     z-index: 1;
     width: 12.8rem;

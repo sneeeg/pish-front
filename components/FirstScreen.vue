@@ -54,8 +54,9 @@
           :html="htmlContent"
           class="first-screen__html-content"
         />
+        <!--     TODO   -->
         <Btn
-          v-if="link"
+          v-if="false"
           v-scroll-element
           :text="lang['base.sendRequest']"
           class="first-screen__link"

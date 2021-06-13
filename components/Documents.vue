@@ -33,6 +33,8 @@ export default {
 
 <style lang="scss">
 .documents {
+  max-width: 70rem;
+
   ul {
     padding: 0 !important;
 

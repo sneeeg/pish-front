@@ -126,9 +126,13 @@ export default {
     display: none;
   }
 
+  .vs__dropdown-option {
+    padding: 1.2rem;
+  }
+
   .vs__dropdown-option--highlight {
-    color: #fff;
-    background: $color_accent;
+    color: $color_accent;
+    background: rgba($color_accent, 0.05);
   }
 
   .vs__dropdown-menu {

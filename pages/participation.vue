@@ -18,9 +18,12 @@
     <!--        <HTMLContent v-scroll-element :html="page.advertisement"></HTMLContent>-->
     <!--      </div>-->
     <!--    </Section>-->
+
+    <Section v-view="$utils.scrollCenterDetection" background>
+      <ParticipationSteps :steps="page.participationSteps" />
+    </Section>
     <Section
       v-view="$utils.scrollCenterDetection"
-      background
       :title="page.requirements.title"
     >
       <div
@@ -68,10 +71,18 @@ import FirstScreen from '~/components/FirstScreen'
 import TheStages from '~/components/TheStages'
 import HTMLContent from '~/components/utils/HTMLContent'
 import Tabs from '~/components/Tabs'
+import ParticipationSteps from '~/components/ParticipationSteps'
 
 export default {
   name: 'Participation',
-  components: { Tabs, FirstScreen, Section, TheStages, HTMLContent },
+  components: {
+    ParticipationSteps,
+    Tabs,
+    FirstScreen,
+    Section,
+    TheStages,
+    HTMLContent,
+  },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
