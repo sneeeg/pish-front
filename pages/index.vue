@@ -68,6 +68,15 @@ export default {
   computed: {
     ...mapState('default', ['lang']),
   },
+  created() {
+    /* TODO */
+    if (!this.page.registration) {
+      this.page.registration = {
+        forehead: 'Регистрация на мероприятие',
+        title: 'Примите участие в очном мероприятии программы «ПРИОРИТЕТ 2О3О»',
+      }
+    }
+  },
 }
 </script>
 

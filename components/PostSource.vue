@@ -1,7 +1,7 @@
 <template>
   <p class="post-source">
     {{ lang['news.source'] || 'Источник' }}:
-    <a class="hover-opacity" :href="source">{{ source }}</a>
+    <a class="hover-opacity" :href="source.href">{{ source.text }}</a>
   </p>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   name: 'PostSource',
   props: {
     source: {
-      type: String,
+      type: Object,
       required: true,
     },
   },
@@ -25,7 +25,7 @@ export default {
 <style lang="scss">
 .post-source {
   @include p;
-  margin: 0;
+  margin-bottom: 0;
 
   a {
     color: $color_accent;

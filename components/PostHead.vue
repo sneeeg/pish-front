@@ -12,7 +12,9 @@
     </div>
     <div v-if="picture" v-scroll-element class="post-head__picture">
       <img :src="picture.src" :alt="picture.alt" />
-      <span v-if="source">© {{ source }}</span>
+      <a v-if="source.href" class="hover-opacity" :href="source.text"
+        >© {{ source.text }}</a
+      >
     </div>
   </div>
 </template>
@@ -38,8 +40,8 @@ export default {
       required: true,
     },
     source: {
-      type: String,
-      default: '',
+      type: Object,
+      default: null,
     },
   },
 }
@@ -66,7 +68,7 @@ export default {
       margin-top: 3.2rem;
     }
 
-    span {
+    a {
       @include text-button;
       position: absolute;
       right: 0;

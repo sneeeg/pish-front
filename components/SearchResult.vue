@@ -4,15 +4,15 @@
       {{ $dayjs(result.activeFrom).format($constants.POST_DATE_FORMAT) }}
     </div>
     <SmartLink
-      :to="linkObject"
+      :to="result.href"
       class="search-result__title hover-opacity _visually-h4"
-      >{{ result.title }}</SmartLink
-    >
+      v-html="result.title"
+    ></SmartLink>
     <HTMLContent :html="result.content" class="search-result__text" />
     <ArrowLink
       class="search-result__link"
       :text="lang['base.more']"
-      :to="linkObject"
+      :to="result.href"
     />
   </div>
 </template>

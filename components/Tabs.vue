@@ -27,9 +27,8 @@
           v-for="content in contents"
           :key="content.id"
           class="tabs__content-item"
-        >
-          {{ content }}
-        </li>
+          v-html="content"
+        ></li>
       </ul>
     </transition>
   </div>
@@ -215,6 +214,10 @@ export default {
     position: relative;
     padding: 0 2rem 0 2rem;
     break-inside: avoid-column;
+
+    span {
+      color: $color_accent;
+    }
 
     &:not(:first-child) {
       margin-top: 2rem;

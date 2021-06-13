@@ -23,9 +23,6 @@ export default [
     },
     ogVk: '/i/posts/example.jpg',
     ogFb: '/i/posts/example.jpg',
-    pictureSource: 'Источник название',
-    source:
-      'https://www.kommersant.ru/doc/4849524765333333333333333333333333333333333333333',
     content: `
             <p>
   Министерство науки и высшего образования Российской Федерации подготовило ответы на самые распространенные вопросы от представителей вузов, общественных организаций и СМИ по реализации государственной программы поддержки университетов «Приоритет-2030».
@@ -157,8 +154,6 @@ export default [
     },
     ogVk: '/i/posts/example.jpg',
     ogFb: '/i/posts/example.jpg',
-    pictureSource: 'Источник название',
-    source: 'https://www.kommersant.ru/doc/4849524',
     content: 'html',
   },
   {
@@ -184,8 +179,6 @@ export default [
     },
     ogVk: '/i/posts/example.jpg',
     ogFb: '/i/posts/example.jpg',
-    pictureSource: 'Источник название',
-    source: 'https://www.kommersant.ru/doc/4849524',
     content: 'html',
   },
   {
@@ -211,8 +204,6 @@ export default [
     },
     ogVk: '/i/posts/example.jpg',
     ogFb: '/i/posts/example.jpg',
-    pictureSource: 'Источник название',
-    source: 'https://www.kommersant.ru/doc/4849524',
     content: 'html',
   },
 ]
