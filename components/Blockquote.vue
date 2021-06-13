@@ -1,11 +1,5 @@
 <template>
   <blockquote v-view="$utils.scrollCenterDetection" class="blockquote">
-    <img
-      v-scroll-element
-      class="blockquote__logo"
-      src="/logo.svg"
-      alt="Логотип"
-    />
     <p v-scroll-element class="blockquote__text">{{ text }}</p>
     <footer>
       <div v-scroll-element="'left'" class="blockquote__photo">
@@ -22,8 +16,6 @@
 </template>
 
 <script>
-// import HTMLContent from '~/components/utils/HTMLContent'
-
 export default {
   name: 'Blockquote',
   components: {},
@@ -44,34 +36,35 @@ export default {
 .blockquote {
   position: relative;
   margin: 0 auto;
-  padding: 0 10.4rem;
+  padding: 4rem 10.4rem 0;
 
   @include --tablet {
-    padding: 0 2.4rem;
+    padding: 2.4rem 2.4rem 0;
   }
 
   @include --mobile {
-    padding: 0 1.6rem;
+    padding: 1.6rem 1.6rem 0;
   }
 
   &::before {
     position: absolute;
-    top: 21.5rem;
+    top: 0;
     left: 0;
     z-index: 1;
     width: 12.8rem;
     height: 9.6rem;
-    background: url('static/qoute.svg') no-repeat center / auto;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 117 89' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M96.14 44.85c4.01 1.17 7.66 3.39 10.96 6.66 3.3 3.27 4.95 8.17 4.95 14.71 0 6.55-2.24 12.03-6.72 16.47-4.47 4.2-10.01 6.31-16.6 6.31-6.84 0-12.62-2.22-17.33-6.66-4.48-4.44-6.71-10.04-6.71-16.82 0-5.6.82-10.4 2.47-14.36 1.89-3.97 4.24-8.41 7.07-13.32L95.79 0H117L96.14 44.85zm-64.68 0c4 1.17 7.66 3.39 10.96 6.66 3.3 3.27 4.95 8.17 4.95 14.71 0 6.55-2.24 12.03-6.72 16.47C36.17 86.9 30.63 89 24.04 89c-6.84 0-12.61-2.22-17.32-6.66C2.24 77.9 0 72.3 0 65.52c0-5.6.82-10.4 2.47-14.36 1.89-3.97 4.25-8.41 7.07-13.32L31.11 0h21.2L31.46 44.85z' fill='%23F4F4F6'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     content: '';
 
     @include --tablet {
-      top: 12.2rem;
       left: -5rem;
     }
 
     @include --mobile {
-      top: 6.4rem;
-      left: -5rem;
+      top: -1rem;
     }
   }
 

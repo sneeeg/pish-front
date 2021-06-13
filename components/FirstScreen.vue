@@ -291,6 +291,12 @@ export default {
     max-width: 56rem;
   }
 
+  &-titles h2 {
+    @include --mobile {
+      font-size: 2.7rem;
+    }
+  }
+
   &__link {
     width: 22rem;
     margin-top: 6.8rem;
