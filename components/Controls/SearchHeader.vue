@@ -105,7 +105,6 @@ export default {
     height: 100%;
     border: 0;
     color: $color_black;
-    color: $color_black;
     background-color: transparent;
 
     &::placeholder {

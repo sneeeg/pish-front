@@ -1,4 +1,4 @@
-@mixin scrollbar {
+@mixin scrollbar($color: #4E4E4E) {
   &::-webkit-scrollbar {
     width: 5px;               /* width of the entire scrollbar */
     height: 5px;
@@ -10,7 +10,7 @@
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;       /* roundness of the scroll thumb */
-    background-color: rgba(#4E4E4E, 0.7);    /* color of the scroll thumb */
+    background-color: rgba($color, 0.7);    /* color of the scroll thumb */
   }
 }
 

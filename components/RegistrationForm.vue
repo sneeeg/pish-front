@@ -13,7 +13,6 @@
             ? 'Это поле необходимо заполнить'
             : ''
         "
-        @search="search"
         @selected="onSelect"
       />
 
@@ -83,7 +82,7 @@
 import { mapMutations, mapState } from 'vuex'
 import { validationMixin } from 'vuelidate'
 import { required, email, minLength } from 'vuelidate/lib/validators'
-import { debounce } from 'throttle-debounce'
+// import { debounce } from 'throttle-debounce'
 
 import Section from '~/components/layout/Section'
 import CustomInput from '~/components/controls/CustomInput'
@@ -106,6 +105,18 @@ export default {
       isLoading: false,
     }
   },
+  async fetch() {
+    const options = await this.$api.registration
+      .searchUniversity()
+      .then(({ data }) => data)
+      .catch(() => [])
+
+    options.forEach((option, index) => {
+      option.code = String(index)
+    })
+
+    this.searchOptions = options
+  },
   validations: {
     rector: { required },
     university: { required },
@@ -117,27 +128,27 @@ export default {
   },
   methods: {
     ...mapMutations('default', ['changePopupState']),
-    search({ str, loading }) {
-      if (!str.length) return
-
-      const handler = debounce(350, (str, loading, vm) => {
-        if (!str.length) return
-        loading(true)
-
-        vm.$api.registration
-          .searchUniversity(str)
-          .then(({ data }) => {
-            vm.searchOptions = data
-            loading(false)
-          })
-          .catch(() => {
-            vm.searchOptions = []
-            loading(false)
-          })
-      })
-
-      handler(str, loading, this)
-    },
+    // search({ str, loading }) {
+    //   if (!str.length) return
+    //
+    //   const handler = debounce(350, (str, loading, vm) => {
+    //     if (!str.length) return
+    //     loading(true)
+    //
+    //     vm.$api.registration
+    //       .searchUniversity(str)
+    //       .then(({ data }) => {
+    //         vm.searchOptions = data
+    //         loading(false)
+    //       })
+    //       .catch(() => {
+    //         vm.searchOptions = []
+    //         loading(false)
+    //       })
+    //   })
+    //
+    //   handler(str, loading, this)
+    // },
     async submit() {
       this.$v.$touch()
       if (this.$v.$invalid) return

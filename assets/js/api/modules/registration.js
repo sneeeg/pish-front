@@ -5,9 +5,7 @@ export default ($axios) => ({
   },
 
   /* Search university */
-  searchUniversity(searchRequest) {
-    return $axios.$get('/api/university', {
-      params: { request: searchRequest },
-    })
+  searchUniversity() {
+    return $axios.$get('/api/university')
   },
 })
