@@ -85,7 +85,7 @@ export default {
   },
   mixins: [pageDataFetch, pageHead, pageDefault],
   created() {
-    /* TOD */
+    /* TODO */
 
     if (!this.page.participationSteps) {
       this.participationSteps = [

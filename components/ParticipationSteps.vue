@@ -3,7 +3,7 @@
     <div
       v-for="(step, index) in steps"
       :key="step.id"
-      v-scroll-element="'right'"
+      v-scroll-element
       class="participation-steps-item"
     >
       <div class="participation-steps-item__index">

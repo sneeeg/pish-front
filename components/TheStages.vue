@@ -14,23 +14,25 @@
       <!--eslint-enable-->
 
       <div v-for="(substage, j) in stage.items" :key="j" class="substage">
-        <h4
-          class="substage__title"
-          :class="{ _active: isActive(i, j) }"
-          @click="toggle(i, j)"
-        >
-          {{ substage.title }}
-        </h4>
-        <div class="substage__content">
-          <TransitionExpand>
-            <!-- eslint-disable vue/no-v-html -->
-            <HTMLContent
-              v-if="isActive(i, j)"
-              v-html="substage.content"
-            ></HTMLContent>
-            <!--eslint-enable-->
-          </TransitionExpand>
-        </div>
+        <template v-if="substage.content !== 'kek'">
+          <h4
+            class="substage__title"
+            :class="{ _active: isActive(i, j) }"
+            @click="toggle(i, j)"
+          >
+            {{ substage.title }}
+          </h4>
+          <div class="substage__content">
+            <TransitionExpand>
+              <!-- eslint-disable vue/no-v-html -->
+              <HTMLContent
+                v-if="isActive(i, j)"
+                v-html="substage.content"
+              ></HTMLContent>
+              <!--eslint-enable-->
+            </TransitionExpand>
+          </div>
+        </template>
       </div>
     </div>
   </div>
