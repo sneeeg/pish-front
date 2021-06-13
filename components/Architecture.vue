@@ -31,11 +31,15 @@
       </h3>
       <div class="architecture-component__content">
         <div
-          v-for="{ id, title, subtitle, content } in center.items"
+          v-for="({ id, title, subtitle, content }, index) in center.items"
           :key="id"
-          class="architecture-item _center"
+          :class="[
+            'architecture-item',
+            '_center',
+            { _fluid: index === 0 || index === 3 },
+          ]"
         >
-          <div class="architecture-item__head">
+          <div v-if="title" class="architecture-item__head">
             <p class="architecture-item__name">
               {{ title }}
             </p>
@@ -239,7 +243,7 @@ export default {
       }
     }
 
-    ._center & > *:nth-child(2n):not(:last-child) {
+    ._center & > *:nth-child(3n):not(:last-child) {
       margin-left: 3rem;
 
       @include --mobile {
@@ -253,9 +257,13 @@ export default {
   display: flex;
   flex-direction: column;
 
-  &._center {
-    @include --from-mobile {
-      height: 100%;
+  &._fluid {
+    flex-basis: 100%;
+
+    p {
+      @include --from-mobile {
+        text-align: center;
+      }
     }
   }
 
