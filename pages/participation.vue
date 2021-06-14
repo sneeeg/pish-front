@@ -94,7 +94,7 @@ export default {
       this.page.participationSteps = [
         {
           title: 'Подготовить пакет документов',
-          content: `<p>Ознакомиться с пакетом документов вы можете <a href="#">здесь</a><p>`,
+          content: `<p>Ознакомиться с пакетом документов вы можете <a href="/documents/docs">здесь</a><p>`,
         },
         {
           title: 'Направить пакет документов ',

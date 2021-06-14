@@ -168,7 +168,7 @@ export default {
       if (response.errors.length) {
         this.changePopupState({
           isShow: true,
-          title: this.lang.base.error,
+          title: this.lang['base.error'],
           text: response.errors[0].message,
           to: '',
         })

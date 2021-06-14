@@ -1,8 +1,8 @@
 <template>
   <div class="page">
-    <Section>
-      <h1>{{ page.title }}</h1>
-      <HTMLContent :html="page.detailText" />
+    <Section v-view="$utils.scrollCenterDetection">
+      <h1 v-scroll-element>{{ page.title }}</h1>
+      <HTMLContent v-scroll-element :html="page.detailText || page.content" />
     </Section>
   </div>
 </template>
@@ -28,13 +28,13 @@ export default {
       return
     }
 
-    page.title = page.elementPageTitle
-    page.metaTitle = page.elementMetaTitle
-    page.metaDescription = page.elementMetaDescription
+    page.title = page.name || page.title
+    page.metaTitle = page.elementMetaTitle || page.metaTitle
+    page.metaDescription = page.elementMetaDescription || page.metaDescription
 
-    delete page.elementPageTitle
-    delete page.elementMetaTitle
-    delete page.elementMetaDescription
+    // delete page.elementPageTitle
+    // delete page.elementMetaTitle
+    // delete page.elementMetaDescription
 
     return { page }
   },
