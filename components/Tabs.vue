@@ -199,6 +199,11 @@ export default {
     min-height: 17.8rem;
     column-count: 3;
 
+    li {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
     @include --tablet {
       min-height: 9.2rem;
       column-count: 2;

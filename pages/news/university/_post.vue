@@ -1,5 +1,5 @@
 <template>
-  <div :class="page">
+  <div class="page">
     <div v-if="false" class="page__back">
       <ArrowLink :text="lang['news.all']" to="/news" arrow-left />
     </div>
