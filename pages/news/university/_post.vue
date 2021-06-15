@@ -13,6 +13,8 @@
           :picture="page.detailPicture"
           class="post__head"
           :source="page.pictureSource"
+          :tags="page.tags"
+          type="university"
         />
         <HTMLContent
           v-if="page.description"

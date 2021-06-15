@@ -1,6 +1,10 @@
 <template>
   <div>
-    <Section v-view="$utils.scrollCenterDetection" :title="page.mainNewsTitle">
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      :title="page.mainNewsTitle"
+      :tag-title="$route.query.tag"
+    >
       <Posts all />
     </Section>
     <Section

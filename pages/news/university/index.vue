@@ -3,6 +3,7 @@
     <Section
       v-view="$utils.scrollCenterDetection"
       :title="page.universityNewsTitle"
+      :tag-title="$route.query.tag"
     >
       <Posts all type="university" />
     </Section>

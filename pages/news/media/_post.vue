@@ -12,7 +12,9 @@
           :description="page.description"
           :picture="page.detailPicture"
           :source="page.pictureSource"
+          :tags="page.tags"
           class="post__head"
+          type="media"
         />
         <HTMLContent
           v-if="page.description"

@@ -1,7 +1,9 @@
 export default ($axios) => ({
   /* Getting posts */
-  get(categoryId, page = 1, count = 4) {
-    return $axios.$get('/api/posts', { params: { categoryId, page, count } })
+  get(categoryId, page = 1, count = 4, tag = undefined) {
+    return $axios.$get('/api/posts', {
+      params: { categoryId, page, count, tag },
+    })
   },
 
   /* Getting post by slug */
@@ -10,9 +12,9 @@ export default ($axios) => ({
   },
 
   /* Getting university posts  */
-  getUniversityPosts(categoryId, page = 1, count = 4) {
+  getUniversityPosts(categoryId, page = 1, count = 4, tag = undefined) {
     return $axios.$get('/api/university', {
-      params: { categoryId, page, count },
+      params: { categoryId, page, count, tag },
     })
   },
 

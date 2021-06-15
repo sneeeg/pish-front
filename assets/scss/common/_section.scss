@@ -78,5 +78,11 @@
 
   &__title {
     margin: 0;
+
+    span {
+      &._colored {
+        color: $color_accent;
+      }
+    }
   }
 }

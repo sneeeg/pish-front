@@ -1,6 +1,10 @@
 <template>
   <div>
-    <Section v-view="$utils.scrollCenterDetection" :title="page.reviewsTitle">
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      :title="page.reviewsTitle"
+      :tag-title="$route.query.tag"
+    >
       <Posts all type="media" />
     </Section>
     <Section

@@ -10,6 +10,13 @@
         $dayjs(date).format($constants.POST_DATE_FORMAT)
       }}</span>
     </div>
+    <ul v-if="tags && tags.length" v-scroll-element class="post-tags">
+      <li v-for="tag in tags" :key="tag.id">
+        <SmartLink class="hover-color-accent" :to="getTagLink(tag)"
+          >#{{ tag }}</SmartLink
+        >
+      </li>
+    </ul>
     <div v-if="picture" v-scroll-element class="post-head__picture">
       <img :src="picture.src" :alt="picture.alt" />
       <a v-if="source && source.href" class="hover-opacity" :href="source.text"
@@ -20,8 +27,10 @@
 </template>
 
 <script>
+import SmartLink from '~/components/utils/SmartLink'
 export default {
   name: 'PostHead',
+  components: { SmartLink },
   props: {
     title: {
       type: String,
@@ -43,6 +52,22 @@ export default {
       type: Object,
       default: null,
     },
+    tags: {
+      type: Array,
+      default: () => [],
+    },
+    type: {
+      type: String,
+      default: 'news',
+    },
+  },
+  methods: {
+    getTagLink(tag) {
+      return {
+        name: this.type !== 'news' ? `news-${this.type}` : 'news',
+        query: { tag },
+      }
+    },
   },
 }
 </script>
@@ -57,7 +82,7 @@ export default {
     position: relative;
     width: 100%;
     height: 53.5rem;
-    margin-top: 4.2rem;
+    margin-top: 3.2rem;
 
     @include --tablet {
       height: 40rem;
@@ -108,6 +133,26 @@ export default {
 
   &__date {
     color: $color_grey_text;
+  }
+}
+
+.post-tags {
+  @include flexGap(2px, 60rem);
+  font-weight: 700;
+  padding-top: 3.2rem;
+
+  @include --tablet {
+    @include flexGap(2px, 100%);
+  }
+
+  @include --mobile {
+    padding-top: 2.4rem;
+  }
+
+  li {
+    &:not(:last-child) {
+      margin-right: 0.8rem;
+    }
   }
 }
 </style>

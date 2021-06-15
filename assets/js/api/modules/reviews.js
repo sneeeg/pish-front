@@ -1,7 +1,9 @@
 export default ($axios) => ({
   /* Getting reviews */
-  get(categoryId, page = 1, count = 4) {
-    return $axios.$get('/api/reviews', { params: { categoryId, page, count } })
+  get(categoryId, page = 1, count = 4, tag = undefined) {
+    return $axios.$get('/api/reviews', {
+      params: { categoryId, page, count, tag },
+    })
   },
 
   /* Getting post by slug */

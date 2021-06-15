@@ -147,19 +147,21 @@ export default {
 
       await this.$utils.delay(1500, true)
 
-      return this.apiMethod(categoryId, page).then(({ data }) => {
-        if (concat) {
-          this.posts = this.posts.concat(data.posts || [])
-        } else {
-          this.posts = data.posts || []
-        }
+      return this.apiMethod(categoryId, page, 4, this.$route.query.tag).then(
+        ({ data }) => {
+          if (concat) {
+            this.posts = this.posts.concat(data.posts || [])
+          } else {
+            this.posts = data.posts || []
+          }
 
-        if (!this.categories.length) {
-          this.categories = data.categories || []
-          this.categories.unshift({ id: -1, text: this.lang['base.all'] })
+          if (!this.categories.length) {
+            this.categories = data.categories || []
+            this.categories.unshift({ id: -1, text: this.lang['base.all'] })
+          }
+          this.pagination = data.pagination || {}
         }
-        this.pagination = data.pagination || {}
-      })
+      )
     },
     findCategoryText,
   },

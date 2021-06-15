@@ -2,6 +2,7 @@ export default [
   {
     id: 1,
     slug: 'horoshaia_novost',
+    tags: ['Тег1', 'Тег2'],
     category: null,
     activeFrom: '2020-12-09T16:09:53+00:00',
     title:
@@ -33,6 +34,7 @@ export default [
   {
     id: 2,
     slug: 'horoshaia_novost',
+    tags: ['Тег1', 'Тег2'],
     category: null,
     activeFrom: '2020-12-09T16:09:53+00:00',
     title: 'Университетам – участникам',
@@ -54,6 +56,7 @@ export default [
   // {
   //   id: 3,
   //   slug: 'horoshaia_novost',
+  //   tags: ['Тег1', 'Тег2'],
   //   category: null,
   //   activeFrom: '2020-12-09T16:09:53+00:00',
   //   title:

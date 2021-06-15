@@ -2,6 +2,7 @@ export default [
   {
     id: 1,
     slug: 'horoshaia_novost',
+    tags: ['Тег1', 'Тег2'],
     category: {
       id: 1,
       text: 'Наука и технологии',
@@ -135,6 +136,7 @@ export default [
   {
     id: 2,
     slug: 'horoshaia_novost',
+    tags: ['Тег1', 'Тег2'],
     category: {
       id: 1,
       text: 'Наука и технологии',
@@ -159,6 +161,7 @@ export default [
   {
     id: 3,
     slug: 'horoshaia_novost',
+    tags: ['Тег1', 'Тег2'],
     category: {
       id: 1,
       text: 'Наука и технологии',
@@ -184,6 +187,7 @@ export default [
   {
     id: 4,
     slug: 'horoshaia_novost',
+    tags: ['Тег1', 'Тег2'],
     category: {
       id: 1,
       text: 'Наука и технологии',
