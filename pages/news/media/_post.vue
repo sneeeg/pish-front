@@ -26,7 +26,10 @@
           :html="page.content"
           class="post__body"
         />
-        <PostSource v-if="page.source.href" :source="page.source" />
+        <PostSource
+          v-if="page.source && page.source.href"
+          :source="page.source"
+        />
       </article>
     </Section>
     <Section

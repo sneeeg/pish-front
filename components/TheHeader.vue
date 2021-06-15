@@ -6,7 +6,7 @@
   >
     <div v-will-change class="header__info gsap_header__info">
       <div class="header__content">
-        <nuxt-link to="/" class="header__logo--full">
+        <SmartLink to="/" class="header__logo--full">
           <img
             :src="
               $i18n.locale === 'ru'
@@ -15,9 +15,13 @@
             "
             alt=""
           />
-        </nuxt-link>
-        <!--  TODO      -->
-        <a v-if="false" href="#" class="header__account">Личный кабинет</a>
+        </SmartLink>
+
+        <div class="header__wrapper">
+          <!--  TODO      -->
+          <!--          <a href="#" class="header__account">Личный кабинет</a>-->
+          <LangToggler />
+        </div>
       </div>
     </div>
 
@@ -52,14 +56,14 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 
-// import LangToggler from '~/components/Controls/LangToggler'
+import LangToggler from '~/components/Controls/LangToggler'
 import SearchHeader from '~/components/Controls/SearchHeader'
 import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'TheHeader',
   components: {
-    // LangToggler,
+    LangToggler,
     SearchHeader,
     SmartLink,
   },

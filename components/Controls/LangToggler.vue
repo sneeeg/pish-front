@@ -25,6 +25,12 @@ export default {
       ],
     }
   },
+  mounted() {
+    if (this.$i18n.locale === 'en') {
+      this.activeLang = 'en'
+      gsap.set(this.$refs.substrate, { x: 3 + 'rem' })
+    }
+  },
   methods: {
     toggleLang() {
       const isRu = this.activeLang === 'ru'
@@ -47,8 +53,7 @@ $toggle_border_rad: 3px;
   height: 2.3rem;
   padding: 1px;
   border-radius: $toggle_border_rad;
-  background-color: $color_mid_grey;
-  visibility: hidden;
+  background-color: $color_background;
 
   &__text {
     position: absolute;

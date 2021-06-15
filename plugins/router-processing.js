@@ -20,11 +20,20 @@ export default ({ app, store, $motion }) => {
 
       appContentDisappear()
         .then(() => {
-          return (
+          const toLocale = to.name.slice(-2, to.name.length)
+          const fromLocale = from.name.slice(-2, from.name.length)
+
+          const localeSwitch =
+            toLocale !== fromLocale
+              ? store.dispatch('default/getConfig', toLocale)
+              : Promise.resolve()
+
+          const motionSwitch =
             $motion?.changePreset(
               store.state.default.routing.currentPageName
             ) || Promise.resolve()
-          )
+
+          return Promise.all([localeSwitch, motionSwitch])
         })
         .then(() => {
           next()

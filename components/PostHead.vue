@@ -12,7 +12,7 @@
     </div>
     <div v-if="picture" v-scroll-element class="post-head__picture">
       <img :src="picture.src" :alt="picture.alt" />
-      <a v-if="source.href" class="hover-opacity" :href="source.text"
+      <a v-if="source && source.href" class="hover-opacity" :href="source.text"
         >© {{ source.text }}</a
       >
     </div>
