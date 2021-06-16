@@ -20,7 +20,7 @@
         <div class="header__wrapper">
           <!--  TODO      -->
           <!--          <a href="#" class="header__account">Личный кабинет</a>-->
-          <LangToggler />
+          <LangToggler v-if="false" />
         </div>
       </div>
     </div>
