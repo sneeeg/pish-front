@@ -42,6 +42,10 @@
     >
       <Posts colored />
     </Section>
+
+    <Section v-view="$utils.scrollCenterDetection" :title="page.history.title">
+      <TheHistory :events="page.history.events" />
+    </Section>
   </div>
 </template>
 
@@ -58,6 +62,7 @@ import FirstScreen from '~/components/FirstScreen'
 import TheCountdown from '~/components/TheCountdown'
 import RegistrationPreview from '~/components/RegistrationPreview'
 import PagesSection from '~/components/PagesSection'
+import TheHistory from '~/components/TheHistory'
 
 export default {
   components: {
@@ -69,6 +74,7 @@ export default {
     Section,
     Blockquote,
     Participation,
+    TheHistory,
   },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
