@@ -3,6 +3,7 @@
     <article
       v-for="{ title, text } in events"
       :key="title"
+      v-scroll-element
       class="history-item"
     >
       <h4 class="history-item__title">{{ title }}</h4>
@@ -36,6 +37,14 @@ export default {
   padding: 0 0 5.6rem 10rem;
   border-left: 2px solid $color_grey_text;
 
+  @include --tablet {
+    padding-left: 5rem;
+  }
+
+  @include --mobile {
+    padding: 0 0 3rem 3rem;
+  }
+
   &:last-child {
     padding-bottom: 0;
 
@@ -48,6 +57,10 @@ export default {
       background: $color_grey_text;
       transform: translateX(calc(-50% - 1px));
       content: '';
+
+      @include --mobile {
+        height: calc(100% + 6rem);
+      }
     }
   }
 
@@ -56,6 +69,7 @@ export default {
 
     &::before {
       @include box(2.8rem);
+      top: 0;
       background: $color_red;
     }
   }
@@ -80,7 +94,7 @@ export default {
   &::before {
     @include box(1.2rem);
     position: absolute;
-    top: 0;
+    top: 0.4em;
     left: 0;
     border-radius: 50%;
     background: $color_grey_text;
