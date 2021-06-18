@@ -31,6 +31,10 @@
       :title="page.registration.title"
     />
 
+    <Section>
+      <PagesSection />
+    </Section>
+
     <Section
       v-view="$utils.scrollCenterDetection"
       background
@@ -53,9 +57,11 @@ import Participation from '~/components/Participation'
 import FirstScreen from '~/components/FirstScreen'
 import TheCountdown from '~/components/TheCountdown'
 import RegistrationPreview from '~/components/RegistrationPreview'
+import PagesSection from '~/components/PagesSection'
 
 export default {
   components: {
+    PagesSection,
     RegistrationPreview,
     FirstScreen,
     TheCountdown,
