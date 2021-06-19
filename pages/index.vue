@@ -7,8 +7,8 @@
       :cells="page.firstScreen.cells"
     />
 
-    <Section background>
-      <Blockquote :text="page.quote.content" :author="page.quote.author" />
+    <Section background is-layout>
+      <Quotes :quotes="page.quotes" />
     </Section>
 
     <Section v-view="$utils.scrollCenterDetection">
@@ -35,7 +35,7 @@ import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
-import Blockquote from '~/components/Blockquote'
+import Quotes from '~/components/Quotes'
 import Posts from '~/components/Posts'
 import PagesSection from '~/components/PagesSection'
 import TheHistory from '~/components/TheHistory'
@@ -47,7 +47,7 @@ export default {
     PagesSection,
     Posts,
     Section,
-    Blockquote,
+    Quotes,
     TheHistory,
   },
   mixins: [pageDataFetch, pageHead, pageDefault],
