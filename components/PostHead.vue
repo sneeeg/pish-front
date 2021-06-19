@@ -138,8 +138,8 @@ export default {
 
 .post-tags {
   @include flexGap(2px, 60rem);
-  font-weight: 700;
   padding-top: 3.2rem;
+  font-weight: 700;
 
   @include --tablet {
     @include flexGap(2px, 100%);
