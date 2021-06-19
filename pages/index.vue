@@ -9,7 +9,7 @@
       />
     </Section>
     <Section background>
-      <Blockquote :text="page.quote.content" :author="page.quote.author" />
+      <Quotes :quotes="page.quotes" />
     </Section>
 
     <Participation
@@ -55,7 +55,7 @@ import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
-import Blockquote from '~/components/Blockquote'
+import Quotes from '~/components/Quotes'
 import Posts from '~/components/Posts'
 import Participation from '~/components/Participation'
 import FirstScreen from '~/components/FirstScreen'
@@ -72,7 +72,7 @@ export default {
     TheCountdown,
     Posts,
     Section,
-    Blockquote,
+    Quotes,
     Participation,
     TheHistory,
   },

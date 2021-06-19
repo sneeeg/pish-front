@@ -1,5 +1,5 @@
 import Flickity from 'flickity'
-// import 'flickity-fade';
+import 'flickity-fade'
 import 'flickity-imagesloaded'
 // import 'flickity-as-nav-for';
 import createRipple from '~/assets/js/utils/createRipple'

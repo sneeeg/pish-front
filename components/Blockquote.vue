@@ -6,15 +6,22 @@
     <!--      src="/logo.svg"-->
     <!--      alt="Логотип"-->
     <!--    />-->
-    <p v-scroll-element class="blockquote__text">{{ text }}</p>
+    <HTMLContent v-scroll-element class="blockquote__text" :html="text" />
     <footer>
       <div v-scroll-element="'left'" class="blockquote__photo">
         <img :src="author.image" />
       </div>
       <div class="blockquote__author-block">
         <cite v-scroll-element class="blockquote__name">{{ author.name }}</cite>
-        <div v-scroll-element class="blockquote__position">
+        <div
+          v-if="author.position"
+          v-scroll-element
+          class="blockquote__position"
+        >
           {{ author.position }}
+        </div>
+        <div v-if="author.source" v-scroll-element class="blockquote__source">
+          {{ author.source }}
         </div>
       </div>
     </footer>
@@ -22,11 +29,11 @@
 </template>
 
 <script>
-// import HTMLContent from '~/components/utils/HTMLContent'
+import HTMLContent from '~/components/utils/HTMLContent'
 
 export default {
   name: 'Blockquote',
-  components: {},
+  components: { HTMLContent },
   props: {
     text: {
       type: String,
@@ -44,19 +51,19 @@ export default {
 .blockquote {
   position: relative;
   margin: 0 auto;
-  padding: 0 10.4rem;
+  padding: 3.2rem 10.4rem 0;
 
   @include --tablet {
-    padding: 0 2.4rem;
+    padding: 2.4rem 2.4rem 0;
   }
 
   @include --mobile {
-    padding: 0 1.6rem;
+    padding: 2.4rem 1.6rem 0;
   }
 
   &::before {
     position: absolute;
-    top: -2.5rem;
+    top: 0;
     left: 0;
     z-index: 1;
     width: 12.8rem;
@@ -65,12 +72,10 @@ export default {
     content: '';
 
     @include --tablet {
-      top: 12.2rem;
       left: -5rem;
     }
 
     @include --mobile {
-      top: 6.4rem;
       left: -5rem;
     }
   }
@@ -92,15 +97,19 @@ export default {
   }
 
   &__text {
-    @include text-big;
     position: relative;
     z-index: 2;
     width: 100%;
     max-width: 100rem;
-    margin: 0 0 7.2rem;
+    margin: 0 0 3.2rem;
 
-    @include --tablet {
-      margin-bottom: 4.8rem;
+    p {
+      @include h4;
+      font-weight: bold;
+
+      @include --mobile {
+        @include text;
+      }
     }
 
     @include --mobile {
@@ -113,10 +122,14 @@ export default {
     display: inline-flex;
     align-items: center;
     margin: 0;
+
+    @include --mobile {
+      align-items: flex-start;
+    }
   }
 
   &__photo {
-    @include box(17.5rem);
+    @include box(13rem);
     flex: 0 0 auto;
     margin-right: 3.6rem;
     border-radius: 50%;
@@ -152,9 +165,36 @@ export default {
 
   &__name {
     display: block;
-    margin-bottom: 0.5rem;
     font-weight: bold;
     font-style: normal;
+
+    &:not(:last-child) {
+      margin-bottom: 0.8rem;
+
+      @include --mobile {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  &__position {
+    &:not(:last-child) {
+      margin-bottom: 1.6rem;
+
+      @include --mobile {
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+
+  &__source {
+    @include text-small;
+    color: $color_dark_grey;
+
+    @include --mobile {
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+    }
   }
 }
 </style>
