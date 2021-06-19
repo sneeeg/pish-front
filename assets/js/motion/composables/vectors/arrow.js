@@ -25,7 +25,7 @@ export default {
 
       shapes.forEach((shape) => {
         const geometry = new THREE.ShapeGeometry(shape)
-        geometry.center()
+        // geometry.center()
 
         const mesh = new THREE.Mesh(geometry, material)
         mesh.scale.set(0.0038, 0.0038, 0.0038)

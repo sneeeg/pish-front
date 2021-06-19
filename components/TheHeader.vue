@@ -6,32 +6,24 @@
   >
     <div v-will-change class="header__info gsap_header__info">
       <div class="header__content">
-        <SmartLink to="/" class="header__logo--full">
-          <img
-            :src="
-              $i18n.locale === 'ru'
-                ? '/i/min-science-full.svg'
-                : '/i/min-science-full-en.svg'
-            "
-            alt=""
-          />
-        </SmartLink>
-
-        <div class="header__wrapper">
-          <!--  TODO      -->
-          <!--          <a href="#" class="header__account">Личный кабинет</a>-->
-          <LangToggler v-if="false" />
-        </div>
+        <LangToggler />
+        <SmartLink class="header__account" :to="settings.lkLink">{{
+          lang['base.lk']
+        }}</SmartLink>
       </div>
     </div>
 
     <div v-will-change class="header__content gsap_header__content">
-      <nuxt-link to="/" class="header__logo">
+      <SmartLink to="/" class="header__logo">
         <img
-          :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"
+          :src="
+            $i18n.locale === 'ru'
+              ? '/i/min-science-full.svg'
+              : '/i/min-science-full-en.svg'
+          "
           alt=""
         />
-      </nuxt-link>
+      </SmartLink>
 
       <nav class="header__nav">
         <SmartLink
@@ -68,7 +60,7 @@ export default {
     SmartLink,
   },
   computed: {
-    ...mapState('default', ['menus']),
+    ...mapState('default', ['menus', 'settings', 'lang']),
     hasBackground() {
       return this.$store.state.scroll.y > 50
     },
@@ -93,7 +85,7 @@ export default {
 
     .header__content {
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-between;
       padding: 1.4rem 0;
 
       @include --tablet {
@@ -109,10 +101,10 @@ export default {
   &__content {
     @include container;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 3rem 0 0 0;
+    padding: 2rem 0 0 0;
 
     @include --tablet {
       padding: 1.7rem 0;
@@ -121,20 +113,19 @@ export default {
 
   &__logo {
     position: relative;
+    display: block;
     flex-shrink: 0;
-    width: 24.6rem;
-    height: 4.8rem;
-    margin-top: -0.9rem;
+    width: 18.7rem;
+    height: 4.9rem;
 
     @include --tablet {
-      width: 19.7rem;
-      height: 3.9rem;
+      width: 16rem;
+      height: 4.2rem;
     }
 
     @include --mobile {
-      width: 14.4rem;
-      height: 2.8rem;
-      margin-top: 0;
+      width: 14rem;
+      height: 3.7rem;
     }
 
     &--full {

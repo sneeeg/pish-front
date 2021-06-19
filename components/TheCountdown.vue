@@ -128,80 +128,80 @@ export default {
 }
 </script>
 <style lang="scss">
-.countdown {
-  position: relative;
-  z-index: 1;
-
-  @include --from-tablet {
-    margin: 0 0 4rem;
-  }
-
-  &__subtitle {
-    margin-bottom: 4rem;
-  }
-
-  .timer {
-    display: flex;
-
-    > :not(:last-child) {
-      margin-right: 4rem;
-
-      @include --mobile {
-        margin-right: 2rem;
-      }
-    }
-
-    &__item {
-      display: flex;
-      flex-direction: column;
-      color: $color_grey_text;
-      font-size: 1.8rem;
-    }
-
-    &__number {
-      margin-bottom: 1.6rem;
-      color: $color_accent;
-      font-size: 12rem;
-      line-height: 7.4rem;
-      will-change: transform;
-
-      @include --tablet {
-        margin-bottom: 1rem;
-        font-size: 9rem;
-        line-height: 5.8rem;
-      }
-
-      @include --mobile {
-        font-size: 5rem;
-        line-height: 3.2rem;
-      }
-    }
-
-    &__label {
-      @include --from-mobile {
-        margin-left: 0.6rem;
-      }
-    }
-  }
-
-  &__btn {
-    display: inline-flex;
-    margin-top: 6.2rem;
-  }
-}
-
-.countdown-video {
-  @include box(100%);
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  justify-content: flex-end;
-  pointer-events: none;
-
-  video {
-    width: auto;
-    height: 100%;
-  }
-}
+//.countdown {
+//  position: relative;
+//  z-index: 1;
+//
+//  @include --from-tablet {
+//    margin: 0 0 4rem;
+//  }
+//
+//  &__subtitle {
+//    margin-bottom: 4rem;
+//  }
+//
+//  .timer {
+//    display: flex;
+//
+//    > :not(:last-child) {
+//      margin-right: 4rem;
+//
+//      @include --mobile {
+//        margin-right: 2rem;
+//      }
+//    }
+//
+//    &__item {
+//      display: flex;
+//      flex-direction: column;
+//      color: $color_grey_text;
+//      font-size: 1.8rem;
+//    }
+//
+//    &__number {
+//      margin-bottom: 1.6rem;
+//      color: $color_accent;
+//      font-size: 12rem;
+//      line-height: 7.4rem;
+//      will-change: transform;
+//
+//      @include --tablet {
+//        margin-bottom: 1rem;
+//        font-size: 9rem;
+//        line-height: 5.8rem;
+//      }
+//
+//      @include --mobile {
+//        font-size: 5rem;
+//        line-height: 3.2rem;
+//      }
+//    }
+//
+//    &__label {
+//      @include --from-mobile {
+//        margin-left: 0.6rem;
+//      }
+//    }
+//  }
+//
+//  &__btn {
+//    display: inline-flex;
+//    margin-top: 6.2rem;
+//  }
+//}
+//
+//.countdown-video {
+//  @include box(100%);
+//  position: absolute;
+//  top: 0;
+//  right: 0;
+//  display: flex;
+//  justify-content: flex-end;
+//  pointer-events: none;
+//
+//  video {
+//    width: auto;
+//    height: 100%;
+//  }
+//}
 </style>

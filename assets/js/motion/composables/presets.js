@@ -1,31 +1,21 @@
-import { isMobile } from 'mobile-device-detect'
-
 /**
  * Presets
  * equivalent to pages
  */
 export default {
-  main: !isMobile
-    ? {
-        name: 'main',
-        modelsToLoad: [
-          'david',
-          'satellite',
-          'numbers',
-          'books',
-          'molecule',
-          'dna',
-          'molecule2',
-        ],
-        vectorsToLoad: ['arrow'],
-        videosToLoad: [],
-      }
-    : {
-        name: 'main',
-        modelsToLoad: ['dna'],
-        vectorsToLoad: [],
-        videosToLoad: [],
-      },
+  main: {
+    name: 'main',
+    modelsToLoad: [
+      'david',
+      'satellite',
+      'numbers',
+      'books',
+      'molecule',
+      'molecule2',
+    ],
+    vectorsToLoad: ['arrow'],
+    videosToLoad: [],
+  },
   participation: {
     name: 'participation',
     modelsToLoad: [],

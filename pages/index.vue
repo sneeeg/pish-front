@@ -1,37 +1,17 @@
 <template>
   <div>
-    <Section has-overflow is-layout>
-      <FirstScreen
-        background="/3d/i/main.png"
-        :titles="page.mainScreenTitles"
-        link
-        major
-      />
-    </Section>
+    <MainFirstScreen
+      :title="page.firstScreen.title"
+      :subtitle="page.firstScreen.subtitle"
+      :main-cell="page.firstScreen.mainCell"
+      :cells="page.firstScreen.cells"
+    />
+
     <Section background>
       <Blockquote :text="page.quote.content" :author="page.quote.author" />
     </Section>
 
-    <Participation
-      :title="page.participation.title"
-      :subtitle="page.participation.subtitle"
-      :text="page.participation.text"
-      :href="page.participation.href"
-    />
-
-    <TheCountdown
-      :section-title="page.request.title"
-      :title="page.request.title"
-      :subtitle="page.request.subtitle"
-      :date-to="page.request.dateTo"
-    ></TheCountdown>
-
-    <RegistrationPreview
-      :forehead="page.registration.forehead"
-      :title="page.registration.title"
-    />
-
-    <Section>
+    <Section v-view="$utils.scrollCenterDetection">
       <PagesSection :pages="page.links" />
     </Section>
 
@@ -57,23 +37,17 @@ import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import Blockquote from '~/components/Blockquote'
 import Posts from '~/components/Posts'
-import Participation from '~/components/Participation'
-import FirstScreen from '~/components/FirstScreen'
-import TheCountdown from '~/components/TheCountdown'
-import RegistrationPreview from '~/components/RegistrationPreview'
 import PagesSection from '~/components/PagesSection'
 import TheHistory from '~/components/TheHistory'
+import MainFirstScreen from '~/components/MainFirstScreen'
 
 export default {
   components: {
+    MainFirstScreen,
     PagesSection,
-    RegistrationPreview,
-    FirstScreen,
-    TheCountdown,
     Posts,
     Section,
     Blockquote,
-    Participation,
     TheHistory,
   },
   mixins: [pageDataFetch, pageHead, pageDefault],

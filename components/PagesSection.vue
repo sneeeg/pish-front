@@ -1,10 +1,11 @@
 <template>
-  <section class="pages-section">
-    <nuxt-link
+  <div class="pages-section">
+    <SmartLink
       v-for="{ href, text, icon } in pages"
       :key="text"
+      v-scroll-element="'right'"
       :to="href"
-      class="page-item"
+      class="page-item hover-opacity"
     >
       <div class="page-item__icon-wrap">
         <svg-icon
@@ -15,13 +16,15 @@
       </div>
       <span class="page-item__text">{{ text }}</span>
       <svg-icon class="page-item__arrow" name="arrow-right"></svg-icon>
-    </nuxt-link>
-  </section>
+    </SmartLink>
+  </div>
 </template>
 
 <script>
+import SmartLink from '~/components/utils/SmartLink'
 export default {
   name: 'PagesSection',
+  components: { SmartLink },
   props: {
     pages: {
       type: Array,

@@ -20,8 +20,8 @@ export default {
   components: { HTMLContent },
   props: {
     events: {
-      type: Object,
-      default: null,
+      type: Array,
+      required: true,
     },
   },
 }

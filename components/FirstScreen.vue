@@ -260,10 +260,10 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 13.7rem);
+  min-height: calc(100vh - 12rem);
 
   &._IE {
-    height: calc(100vh - 13.7rem);
+    height: calc(100vh - 12rem);
   }
 
   &__html-content {
@@ -344,11 +344,11 @@ export default {
 
   @include --tablet {
     justify-content: flex-end;
-    min-height: calc(100vh - 12.2rem);
+    min-height: calc(100vh - 11.7rem);
   }
 
   @include --mobile {
-    min-height: calc(100vh - 10.8rem);
+    min-height: calc(100vh - 11.2rem);
   }
 
   &._adaptive-top {
