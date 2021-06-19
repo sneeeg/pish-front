@@ -8,7 +8,7 @@
         major
       />
     </Section>
-    <Section background>
+    <Section background is-layout>
       <Quotes :quotes="page.quotes" />
     </Section>
 

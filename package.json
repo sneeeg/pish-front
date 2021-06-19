@@ -39,6 +39,7 @@
     "three": "^0.128.0",
     "throttle-debounce": "^3.0.1",
     "vue-check-view": "^0.3.0",
+    "vue-marquee-text-component": "^1.2.0",
     "vue-scrollto": "^2.20.0",
     "vue-select": "^3.11.2",
     "vuejs-paginate": "^2.1.0",

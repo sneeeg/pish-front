@@ -1,5 +1,24 @@
 <template>
   <div class="quotes">
+    <MarqueeText
+      class="ticker"
+      :paused="window.isDesktopSize && isPaused"
+      :repeat="10"
+      @mouseover="isPaused = true"
+      @mouseleave="isPaused = false"
+    >
+      <div
+        v-for="({ id, author }, i) in quotes"
+        :key="id"
+        class="ticker__item"
+        @click="selectSlide(i)"
+      >
+        <div class="ticker__photo">
+          <img :src="author.image" />
+        </div>
+        <p class="ticker__name">{{ author.name }}</p>
+      </div>
+    </MarqueeText>
     <div class="quotes__slider-block">
       <ul ref="slider" class="quotes__slider">
         <li
@@ -24,13 +43,14 @@
 
 <script>
 import { mapState } from 'vuex'
+import MarqueeText from 'vue-marquee-text-component'
 import Slider from '~/assets/js/modules/slider.js'
 
 import Blockquote from '~/components/Blockquote'
 
 export default {
   name: 'Quotes',
-  components: { Blockquote },
+  components: { Blockquote, MarqueeText },
   props: {
     quotes: {
       type: Array,
@@ -40,7 +60,8 @@ export default {
   data() {
     return {
       slider: null,
-      currentSlideIndex: 0,
+      ticker: null,
+      isPaused: false,
     }
   },
   computed: {
@@ -74,12 +95,6 @@ export default {
           nextButton: this.$refs.next,
         }
       )
-      // this.slider.flickity.on('change', (i) => {
-      //   this.currentSlideIndex = i
-      // })
-      // this.slider.flickity.on('select', () => {
-      //   this.manageSliderBtns()
-      // })
     },
     updateSlider() {
       this.destroySlider()
@@ -100,8 +115,12 @@ export default {
 
 <style lang="scss">
 .quotes {
+  @include padding-section;
+
   &__slider-block {
+    @include container;
     position: relative;
+    margin: 0 auto;
 
     > .controls {
       justify-content: flex-start;
@@ -160,6 +179,48 @@ export default {
   &__slide {
     position: relative;
     width: 100%;
+  }
+}
+
+.ticker {
+  margin-bottom: 8rem;
+
+  @include --mobile {
+    margin-bottom: 6.4rem;
+  }
+
+  .marquee-text-text {
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    padding: 4px 1.6rem 4px 4px;
+    border: 1px solid $color_grey_border;
+    border-radius: 10rem;
+    cursor: pointer;
+
+    @include --mobile {
+      margin-right: 0.8rem;
+    }
+  }
+
+  &__photo {
+    @include box(4.2rem);
+    margin-right: 1.2rem;
+    border-radius: 50%;
+    overflow: hidden;
+
+    > img {
+      @include adaptiveImg();
+    }
+  }
+
+  &__name {
+    @include text-small;
+    margin: 0;
   }
 }
 </style>
