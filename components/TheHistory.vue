@@ -55,7 +55,7 @@ export default {
       width: 2px;
       height: calc(100% + 8.4rem);
       background: $color_grey_text;
-      transform: translateX(calc(-50% - 1px));
+      transform: translateX(-50%) translateX(-1px);
       content: '';
 
       @include --mobile {
@@ -86,7 +86,7 @@ export default {
       width: 2px;
       height: 70%;
       background: linear-gradient(to bottom, $color_red, transparent);
-      transform: translateX(calc(-50% - 1px));
+      transform: translateX(-50%) translateX(-1px);
       content: '';
     }
   }
@@ -98,7 +98,7 @@ export default {
     left: 0;
     border-radius: 50%;
     background: $color_grey_text;
-    transform: translateX(calc(-50% - 1px));
+    transform: translateX(-50%) translateX(-1px);
     content: '';
   }
 
