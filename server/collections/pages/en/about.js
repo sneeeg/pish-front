@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   id: 2, // id
   title: 'О программе', // Заголовок на вкладке
   metaTitle: 'О программе', // Мета заголовок
