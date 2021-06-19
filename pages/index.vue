@@ -32,7 +32,7 @@
     />
 
     <Section>
-      <PagesSection />
+      <PagesSection :pages="page.links" />
     </Section>
 
     <Section

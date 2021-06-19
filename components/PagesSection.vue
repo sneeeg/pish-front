@@ -22,31 +22,11 @@
 <script>
 export default {
   name: 'PagesSection',
-  data() {
-    return {
-      pages: [
-        {
-          href: '#',
-          text: 'Как стать участником',
-          icon: 'page-member',
-        },
-        {
-          href: '#',
-          text: 'Критерии',
-          icon: 'page-docs',
-        },
-        {
-          href: '#',
-          text: 'Этапы',
-          icon: 'page-screen',
-        },
-        {
-          href: '#',
-          text: 'Показатели',
-          icon: 'page-pie',
-        },
-      ],
-    }
+  props: {
+    pages: {
+      type: Array,
+      required: true,
+    },
   },
 }
 </script>

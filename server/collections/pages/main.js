@@ -41,6 +41,28 @@ export default {
     dateTo: '2021-06-14T00:00+03:00',
   },
   newsTitle: 'Новости',
+  links: [
+    {
+      href: '#',
+      text: 'Как стать участником',
+      icon: 'page-member',
+    },
+    {
+      href: '#',
+      text: 'Критерии',
+      icon: 'page-docs',
+    },
+    {
+      href: '#',
+      text: 'Этапы',
+      icon: 'page-screen',
+    },
+    {
+      href: '#',
+      text: 'Показатели',
+      icon: 'page-pie',
+    },
+  ],
   history: {
     title: 'Ключевые события в развитии высшего образования в России',
     events: [
