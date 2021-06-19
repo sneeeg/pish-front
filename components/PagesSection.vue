@@ -5,7 +5,7 @@
       :key="text"
       v-scroll-element="'right'"
       :to="href"
-      class="page-item hover-opacity"
+      class="page-item"
     >
       <div class="page-item__icon-wrap">
         <svg-icon
@@ -14,7 +14,7 @@
           :name="icon"
         ></svg-icon>
       </div>
-      <span class="page-item__text">{{ text }}</span>
+      <span class="page-item__text hover-opacity">{{ text }}</span>
       <svg-icon class="page-item__arrow" name="arrow-right"></svg-icon>
     </SmartLink>
   </div>
