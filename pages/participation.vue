@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <Section is-layout>
-      <FirstScreen adaptive-top video :title="page.title" />
+      <FirstScreen adaptive-top video :title="page.pageTitle" />
     </Section>
     <!--    <Section v-view="$utils.scrollCenterDetection" background>-->
     <!--      <div class="participation-advertisement">-->
@@ -23,6 +23,7 @@
       <ParticipationSteps :steps="page.participationSteps" />
     </Section>
     <Section
+      id="requirements"
       v-view="$utils.scrollCenterDetection"
       :title="page.requirements.title"
     >
@@ -51,12 +52,21 @@
       </div>
     </Section>
     <Section
+      id="steps"
       v-view="$utils.scrollCenterDetection"
       class="_mb-0"
       :title="page.steps.title"
       :has-overflow="false"
     >
       <TheStages :stages="page.steps.sections"></TheStages>
+    </Section>
+
+    <Section
+      id="stats"
+      v-view="$utils.scrollCenterDetection"
+      :title="page.stats.title"
+    >
+      <Tasks :content="page.stats.content"></Tasks>
     </Section>
   </div>
 </template>
@@ -72,10 +82,12 @@ import TheStages from '~/components/TheStages'
 import HTMLContent from '~/components/utils/HTMLContent'
 import Tabs from '~/components/Tabs'
 import ParticipationSteps from '~/components/ParticipationSteps'
+import Tasks from '~/components/Tasks'
 
 export default {
   name: 'Participation',
   components: {
+    Tasks,
     ParticipationSteps,
     Tabs,
     FirstScreen,
@@ -87,66 +99,7 @@ export default {
   computed: {
     ...mapState('default', ['lang']),
   },
-  created() {
-    /* TODO */
-
-    if (!this.page.participationSteps) {
-      this.page.participationSteps = [
-        {
-          title: 'Подготовить пакет документов',
-          content: `<p>Ознакомиться с пакетом документов вы можете <a href="/documents/docs">здесь</a><p>`,
-        },
-        {
-          title: 'Направить пакет документов ',
-          content: `<p>В Министерство науки и высшего образования Российской Федерации <p>`,
-        },
-        {
-          title: 'Узнать результаты отбора',
-          content: `<p>Информация о результатах отбора университетов будет опубликована 1 октября 2021 года<p>`,
-        },
-      ]
-    }
-
-    if (!this.page.requirements.items[0].sections) {
-      this.page.requirements.items[0].sections = [
-        {
-          id: 0,
-          title: 'Первая группа критериев',
-          items: [
-            `численность обучающихся по образовательным программам высшего образования по очной форме обучения – <span>не&nbsp;менее 4000 человек</span>`,
-            `совокупный объем доходов из всех источников – <span>не менее 1 млрд рублей</span>`,
-            `удельный вес доходов от НИОКР в общем объеме доходов – <span>не менее 5%</span>`,
-          ],
-        },
-        {
-          id: 1,
-          title: 'Вторая группа критериев',
-          items: [
-            `доля студентов, зачисленных на первый курс на обучение по специальностям и направлениям подготовки высшего образования творческой направленности в общем количестве первокурсников, – <span>не&nbsp;менее 60%</span>`,
-            `<span>наличие письма за подписью руководителя</span> организации, осуществляющей функции и полномочия учредителя университета, о рекомендации к участию в отборе с обоснованием наличия потенциала университета, необходимого для участия в программе «Приоритет-2030»`,
-          ],
-        },
-        {
-          id: 2,
-          title: 'Третья группа критериев',
-          items: [
-            `<span>соответствие двум из трех</span> критериев первой группы допуска к отбору`,
-            `<span>обязательство университета</span> по достижении соответствия первой группе критериев не позднее 2023 года`,
-            `наличие обязательства органа власти региона, на территории которого расположен университет, и (или) профильного ФОИВа, и (или) профильной системообразующей организации осуществлять дополнительную финансовую поддержку реализации программы развития университета в объеме <span>не менее 100 млн рублей в год</span>`,
-          ],
-        },
-        {
-          id: 3,
-          title: 'Четвертая группа критериев',
-          items: [
-            `<span>соответствие двум из трех критериев</span> первой группы допуска к отбору`,
-            `<span>решение университета об инициировании процедуры реорганизации</span> в форме слияния или присоединения с другими университетами и (или) научными организациями`,
-            `<span>обязательство университета</span> о завершении реорганизационных процедур и достижении соответствия первой группе критериев допуска к отбору не позднее 2023 года`,
-          ],
-        },
-      ]
-    }
-  },
+  created() {},
 }
 </script>
 

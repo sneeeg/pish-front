@@ -1,34 +1,33 @@
 <template>
   <Section>
-    <div class="main-first-screen">
-      <div ref="mainFirstScreenHead" class="main-first-screen-head">
-        <div v-scroll-element class="main-first-screen-head__logo">
-          <img
-            :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"
-            alt=""
-          />
-        </div>
-        <div class="main-first-screen-head__content">
-          <strong v-scroll-element v-html="title"></strong>
-          <span v-scroll-element v-html="subtitle"></span>
-        </div>
-      </div>
+    <div :class="['main-first-screen', { _IE: browser.isIE }]">
+      <!--      <div ref="mainFirstScreenHead" class="main-first-screen-head">-->
+      <!--        <div v-scroll-element class="main-first-screen-head__logo">-->
+      <!--          <img-->
+      <!--            :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"-->
+      <!--            alt=""-->
+      <!--          />-->
+      <!--        </div>-->
+      <!--        <div class="main-first-screen-head__content">-->
+      <!--          <strong v-scroll-element v-html="title"></strong>-->
+      <!--          <span v-scroll-element v-html="subtitle"></span>-->
+      <!--        </div>-->
+      <!--      </div>-->
 
-      <div class="main-first-screen__content">
+      <div ref="mainFirstScreenContent" class="main-first-screen__content">
         <div
-          v-show="$motion"
+          v-if="$motion"
           ref="mainFirstScreenMainCell"
+          v-scroll-element
           class="main-first-screen-cell _main"
         >
           <SmartLink
-            v-scroll-element
             :to="mainCell.href"
             class="main-first-screen-cell__title _visually-h2"
             >{{ mainCell.text }}</SmartLink
           >
 
           <ArrowLink
-            v-scroll-element
             class="main-first-screen-cell__link"
             :text="lang['base.more']"
             :to="mainCell.href"
@@ -36,12 +35,16 @@
           </ArrowLink>
         </div>
         <div class="_main-first-screen-cells__wrapper">
-          <div ref="mainFirstScreenCells" class="main-first-screen-cells">
+          <div class="main-first-screen-cells">
             <div
-              v-for="cell in cells"
+              v-for="cell in localCells"
               :key="cell.id"
               v-scroll-element
-              class="main-first-screen-cell _sub"
+              :class="[
+                'main-first-screen-cell',
+                '_sub',
+                { '_main-cell': cell.isMain },
+              ]"
             >
               <div
                 v-if="!cell.counter && cell.icon"
@@ -100,13 +103,29 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      localCells: [],
+    }
+  },
   computed: {
     ...mapState('default', ['lang']),
+    ...mapState('responsive', ['browser']),
+  },
+  created() {
+    this.localCells = this.cells
+
+    if (!this.$motion) {
+      this.localCells.unshift({
+        href: this.mainCell.href,
+        text: this.mainCell.text,
+        icon: 'university',
+        isMain: true,
+      })
+    }
   },
   mounted() {
-    scrollAnimation(this.$refs.mainFirstScreenHead)
-    scrollAnimation(this.$refs.mainFirstScreenMainCell)
-    scrollAnimation(this.$refs.mainFirstScreenCells)
+    scrollAnimation(this.$refs.mainFirstScreenContent)
 
     this.$motion?.scenes.firstScreen.init(this.$refs.mainFirstScreenMainCell)
     this.$motion?.scenes.firstScreen.start()
@@ -119,13 +138,26 @@ export default {
 
 <style lang="scss">
 .main-first-screen {
-  &__content {
-    padding-top: 8rem;
-    @include flexGap(3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 29.1rem);
 
-    @include --mobile {
-      padding-top: 4rem;
-    }
+  &._IE {
+    height: auto;
+  }
+
+  @include --tablet {
+    justify-content: flex-end;
+    min-height: calc(100vh - 28.3rem);
+  }
+
+  @include --mobile {
+    min-height: calc(100vh - 23.2rem);
+  }
+
+  &__content {
+    @include flexGap(3rem);
 
     > * {
       flex: 1 1 40%;
@@ -250,6 +282,10 @@ export default {
 
   > * {
     flex: 1 1 40%;
+
+    &._main-cell {
+      flex: 1 1 100%;
+    }
 
     @include --mobile {
       flex: 1 1 100%;

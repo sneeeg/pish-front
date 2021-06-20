@@ -1,5 +1,9 @@
 <template>
-  <Section v-view="$utils.scrollCenterDetection" class="_registration-preview">
+  <Section
+    v-view="$utils.scrollCenterDetection"
+    background
+    class="_registration-preview"
+  >
     <div class="registration-preview">
       <div
         v-scroll-element

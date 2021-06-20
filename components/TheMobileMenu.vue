@@ -15,6 +15,8 @@
         </form>
 
         <nav class="menu__nav">
+          <LangToggler v-if="window.isMobileSize" />
+
           <SmartLink
             v-for="{ text, href } in menus.header"
             :key="text"
@@ -30,11 +32,13 @@
 import { mapActions, mapState } from 'vuex'
 
 import SmartLink from '~/components/utils/SmartLink'
+import LangToggler from '~/components/controls/LangToggler'
 
 export default {
   name: 'TheMenu',
   components: {
     SmartLink,
+    LangToggler,
   },
   data() {
     return {
@@ -76,8 +80,8 @@ export default {
   }
 
   @include --mobile {
-    top: 11rem;
-    height: calc(100% - 11rem);
+    top: 10.4rem;
+    height: calc(100% - 10.4rem);
   }
 
   &__scroll-wrap {

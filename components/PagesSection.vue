@@ -5,13 +5,13 @@
       :key="text"
       v-scroll-element="'right'"
       :to="href"
-      class="page-item"
+      :class="['page-item', { _large: pages.length === 1 }]"
     >
       <div class="page-item__icon-wrap">
         <svg-icon
           class="page-item__icon"
           :class="`_${icon}`"
-          :name="icon"
+          :name="icon === 'page-docs' && browser.isIE ? 'university' : icon"
         ></svg-icon>
       </div>
       <span class="page-item__text hover-opacity">{{ text }}</span>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import SmartLink from '~/components/utils/SmartLink'
 export default {
   name: 'PagesSection',
@@ -30,6 +31,9 @@ export default {
       type: Array,
       required: true,
     },
+  },
+  computed: {
+    ...mapState('responsive', ['browser']),
   },
 }
 </script>
@@ -45,6 +49,14 @@ export default {
     align-items: center;
     padding: 2rem 1.6rem;
     background-color: #fff;
+
+    &._large {
+      @include col(2, 3rem);
+
+      @include --tablet {
+        @include col(1, 3rem);
+      }
+    }
 
     @include --tablet {
       @include col(2, 3rem);

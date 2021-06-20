@@ -1,24 +1,28 @@
 <template>
   <div class="quotes">
-    <MarqueeText
-      class="ticker"
-      :paused="window.isDesktopSize && isPaused"
-      :repeat="10"
-      @mouseover="isPaused = true"
-      @mouseleave="isPaused = false"
-    >
-      <div
-        v-for="({ id, author }, i) in quotes"
-        :key="id"
-        class="ticker__item"
-        @click="selectSlide(i)"
+    <div>
+      <MarqueeText
+        class="ticker"
+        :paused="window.isDesktopSize && isPaused"
+        :repeat="10"
+        :duration="30"
+        @mouseover="isPaused = true"
+        @mouseleave="isPaused = false"
       >
-        <div class="ticker__photo">
-          <img :src="author.image" />
+        <div
+          v-for="({ id, author }, i) in quotes"
+          :key="id"
+          class="ticker__item"
+          @click="selectSlide(i)"
+        >
+          <div class="ticker__photo">
+            <img :src="author.image" />
+          </div>
+          <p class="ticker__name">{{ author.name }}</p>
         </div>
-        <p class="ticker__name">{{ author.name }}</p>
-      </div>
-    </MarqueeText>
+      </MarqueeText>
+    </div>
+
     <div class="quotes__slider-block">
       <ul ref="slider" class="quotes__slider">
         <li

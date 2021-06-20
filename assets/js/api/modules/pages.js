@@ -24,6 +24,16 @@ export default ($axios) => ({
     return $axios.$get('/api/pages/registration')
   },
 
+  /* Getting documents page */
+  documents() {
+    return $axios.$get('/api/pages/documents')
+  },
+
+  /* Getting contacts page */
+  contacts() {
+    return $axios.$get('/api/pages/contacts')
+  },
+
   /* Get document page by name */
   getDocumentPageByName(name) {
     return $axios.$get('/api/documents', { params: { name } })

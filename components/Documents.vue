@@ -1,5 +1,5 @@
 <template>
-  <HTMLContent class="documents" :html="documentsHTML" />
+  <HTMLContent v-scroll-element class="documents" :html="documentsHTML" />
 </template>
 
 <script>

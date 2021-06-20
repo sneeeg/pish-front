@@ -260,10 +260,10 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 12rem);
+  min-height: calc(100vh - 13.1rem);
 
   &._IE {
-    height: calc(100vh - 12rem);
+    height: calc(100vh - 13.1rem);
   }
 
   &__html-content {
@@ -284,8 +284,8 @@ export default {
 
   &__background {
     position: absolute;
-    top: 0;
-    right: -6rem;
+    top: 10rem;
+    right: -10rem;
     width: 71.6rem;
     height: 43.5rem;
     background-repeat: no-repeat;
@@ -305,20 +305,14 @@ export default {
 
       @include --mobile {
         top: -25rem;
+        display: block;
         width: 42rem;
         height: 37rem;
       }
     }
 
     @include --tablet {
-      width: 40rem;
-      height: 24.3rem;
-    }
-
-    @include --mobile {
-      top: -10vh;
-      width: 26rem;
-      height: 15.8rem;
+      display: none;
     }
 
     &._major {
@@ -344,11 +338,11 @@ export default {
 
   @include --tablet {
     justify-content: flex-end;
-    min-height: calc(100vh - 11.7rem);
+    min-height: calc(100vh - 12.3rem);
   }
 
   @include --mobile {
-    min-height: calc(100vh - 11.2rem);
+    min-height: calc(100vh - 10.4rem);
   }
 
   &._adaptive-top {

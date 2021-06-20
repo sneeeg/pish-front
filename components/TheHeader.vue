@@ -6,21 +6,31 @@
   >
     <div v-will-change class="header__info gsap_header__info">
       <div class="header__content">
-        <LangToggler />
-        <SmartLink class="header__account" :to="settings.lkLink">{{
-          lang['base.lk']
-        }}</SmartLink>
+        <SmartLink :to="settings.mainLink" class="header__logo hover-opacity">
+          <img
+            :src="
+              $i18n.locale === 'ru'
+                ? '/i/min-science-full.svg'
+                : '/i/min-science-full-en.svg'
+            "
+            alt=""
+          />
+        </SmartLink>
+
+        <div class="header__wrapper">
+          <SmartLink class="header__account" :to="settings.lkLink">{{
+            lang['base.lk']
+          }}</SmartLink>
+
+          <LangToggler v-if="!window.isMobileSize" />
+        </div>
       </div>
     </div>
 
     <div v-will-change class="header__content gsap_header__content">
-      <SmartLink to="/" class="header__logo">
+      <SmartLink to="/" class="header__logo--full hover-opacity">
         <img
-          :src="
-            $i18n.locale === 'ru'
-              ? '/i/min-science-full.svg'
-              : '/i/min-science-full-en.svg'
-          "
+          :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"
           alt=""
         />
       </SmartLink>
@@ -48,8 +58,8 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 
-import LangToggler from '~/components/Controls/LangToggler'
-import SearchHeader from '~/components/Controls/SearchHeader'
+import LangToggler from '~/components/controls/LangToggler'
+import SearchHeader from '~/components/controls/SearchHeader'
 import SmartLink from '~/components/utils/SmartLink'
 
 export default {
@@ -61,6 +71,7 @@ export default {
   },
   computed: {
     ...mapState('default', ['menus', 'settings', 'lang']),
+    ...mapState('responsive', ['window']),
     hasBackground() {
       return this.$store.state.scroll.y > 50
     },
@@ -78,6 +89,11 @@ export default {
 
   ._menu-active & {
     background-color: #fff;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
   }
 
   &__info {
@@ -115,30 +131,34 @@ export default {
     position: relative;
     display: block;
     flex-shrink: 0;
-    width: 18.7rem;
-    height: 4.9rem;
+    width: 16rem;
+    height: 4.2rem;
 
     @include --tablet {
-      width: 16rem;
-      height: 4.2rem;
+      width: 14rem;
+      height: 3.7rem;
     }
 
     @include --mobile {
-      width: 14rem;
-      height: 3.7rem;
+      width: 12rem;
+      height: 3.2rem;
     }
 
     &--full {
       position: relative;
       flex-shrink: 0;
-      width: 14.2rem;
-      height: 4rem;
+      width: 38rem;
+      height: 4.1rem;
       margin-right: auto;
 
+      @include --tablet {
+        width: 32rem;
+        height: 3.4rem;
+      }
+
       @include --mobile {
-        width: 11.3rem;
-        height: 2.8rem;
-        margin: 0 0 0 auto;
+        width: 18rem;
+        height: 2rem;
       }
 
       img {
@@ -157,6 +177,7 @@ export default {
     @include text-button-small;
     display: flex;
     align-items: center;
+    margin-right: 4rem;
     color: $color_red;
 
     &:not(:last-child) {

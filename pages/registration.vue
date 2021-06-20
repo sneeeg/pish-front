@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Section is-layout>
+    <Section v-if="false" is-layout>
       <FirstScreen
         :title="page.title"
         :lead="page.lead"

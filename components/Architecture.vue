@@ -218,7 +218,7 @@ export default {
     }
 
     ._side & > * {
-      margin-top: 17.5rem;
+      margin-top: 10.5rem;
 
       @include --tablet {
         margin-top: 0;

@@ -2,7 +2,7 @@ import gsap from 'gsap'
 import * as THREE from 'three'
 import { isMobileOnly } from 'mobile-device-detect'
 import AbstractScene from '~/assets/js/motion/modules/scenes/abstract-scene'
-import firstScreenSceneAppear from '~/assets/js/motion/composables/first-screen-scene-appear'
+// import firstScreenSceneAppear from '~/assets/js/motion/composables/first-screen-scene-appear'
 
 /**
  * Scene on the first screen of the main page
@@ -122,11 +122,11 @@ export default class FirstScreen extends AbstractScene {
     this.startMainEventsHandling()
     gsap.ticker.add(this.render)
 
-    if (!this.firstStart) {
-      this.firstStart = true
-
-      firstScreenSceneAppear(this.models, this.vectors)
-    }
+    // if (!this.firstStart) {
+    //   this.firstStart = true
+    //
+    //   firstScreenSceneAppear(this.models, this.vectors)
+    // }
   }
 
   freeze() {
@@ -160,16 +160,16 @@ export default class FirstScreen extends AbstractScene {
     this.group.position.x +=
       0.003 * (this.mouseTarget.x - this.group.position.x)
 
-    Object.keys(this.models).forEach((key, index) => {
-      if (key === 'satellite') return
-
-      const model = this.models[key]
-
-      model.rotation.y +=
-        (0.035 / (index + 1)) * (this.mouseTarget.x - model.rotation.y)
-      model.rotation.x +=
-        (0.035 / (index + 1)) * (this.mouseTarget.y - model.rotation.x)
-    })
+    // Object.keys(this.models).forEach((key, index) => {
+    //   if (key === 'satellite') return
+    //
+    //   const model = this.models[key]
+    //
+    //   model.rotation.y +=
+    //     (0.035 / (index + 1)) * (this.mouseTarget.x - model.rotation.y)
+    //   model.rotation.x +=
+    //     (0.035 / (index + 1)) * (this.mouseTarget.y - model.rotation.x)
+    // })
   }
 
   /* Lights */

@@ -7,6 +7,7 @@
       :right="architecture.right"
     />
     <Principles
+      v-if="architecture.principles"
       v-scroll-element
       :title="architecture.principles.title"
       :content="architecture.principles.content"
@@ -32,17 +33,17 @@ export default {
 
 <style lang="scss">
 .architecture-block {
-  @include --from-mobile {
-    padding-bottom: 3.2rem;
-  }
+  //@include --from-mobile {
+  //  padding-bottom: 3.2rem;
+  //}
 
-  > .architecture {
-    margin-bottom: 9.8rem;
-
-    @include --mobile {
-      margin-bottom: 5.2rem;
-    }
-  }
+  //> .architecture {
+  //  margin-bottom: 9.8rem;
+  //
+  //  @include --mobile {
+  //    margin-bottom: 5.2rem;
+  //  }
+  //}
 
   > .principles {
     @include --from-mobile {

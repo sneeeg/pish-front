@@ -2,18 +2,17 @@
   <div>
     <Section is-layout>
       <FirstScreen
-        :title="page.title"
+        :title="page.pageTitle"
         :lead="page.lead"
         background="/3d/i/background.jpg"
       />
     </Section>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      :title="page.tasks.title"
-      background
-    >
-      <AccordionBlock :tasks="page.tasks.items" />
-    </Section>
+
+    <RegistrationPreview
+      :forehead="page.registration.forehead"
+      :title="page.registration.title"
+    />
+
     <Section>
       <SupportBlock
         :title="page.support.title"
@@ -21,21 +20,42 @@
         :sections="page.support.sections"
       />
     </Section>
+
     <Section
+      id="progress"
       v-view="$utils.scrollCenterDetection"
-      :title="page.priorities.title"
       background
+      :title="page.progress.title"
     >
-      <PriorityBlock :priorities="page.priorities.items" />
-    </Section>
-    <Section v-view="$utils.scrollCenterDetection" :title="page.progress.title">
       <Progress
         :year="page.progress.year"
         :active-stage="page.progress.activeStage"
         :items="page.progress.items"
       />
     </Section>
+
     <Section
+      id="priority"
+      v-view="$utils.scrollCenterDetection"
+      :title="page.priorities.title"
+    >
+      <PriorityBlock :priorities="page.priorities.items" />
+    </Section>
+
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      background
+      :title="page.tasks.title"
+    >
+      <Tasks :content="page.tasks.content" />
+    </Section>
+
+    <Section v-view="$utils.scrollCenterDetection">
+      <PagesSection :pages="page.links" />
+    </Section>
+
+    <Section
+      id="architecture"
       v-view="$utils.scrollCenterDetection"
       :title="page.architecture.title"
       background
@@ -43,12 +63,12 @@
       <ArchitectureBlock :architecture="page.architecture" />
     </Section>
 
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      :title="page.documents.title"
-    >
-      <Documents v-scroll-element :documents="page.documents.items" />
-    </Section>
+    <!--    <Section-->
+    <!--      v-view="$utils.scrollCenterDetection"-->
+    <!--      :title="page.documents.title"-->
+    <!--    >-->
+    <!--      <Documents v-scroll-element :documents="page.documents.items" />-->
+    <!--    </Section>-->
   </div>
 </template>
 
@@ -58,25 +78,27 @@ import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
-import AccordionBlock from '~/components/AccordionBlock'
 import PriorityBlock from '~/components/PriorityBlock'
 import FirstScreen from '~/components/FirstScreen'
 import SupportBlock from '~/components/SupportBlock'
 import ArchitectureBlock from '~/components/ArchitectureBlock'
 import Progress from '~/components/Progress'
-import Documents from '~/components/Documents'
+import RegistrationPreview from '~/components/RegistrationPreview'
+import Tasks from '~/components/Tasks'
+import PagesSection from '~/components/PagesSection'
 
 export default {
   name: 'About',
   components: {
-    Documents,
-    AccordionBlock,
+    Tasks,
+    RegistrationPreview,
     Section,
     PriorityBlock,
     FirstScreen,
     SupportBlock,
     ArchitectureBlock,
     Progress,
+    PagesSection,
   },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {

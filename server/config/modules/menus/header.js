@@ -8,11 +8,11 @@ export default [
     href: '/news',
   },
   {
-    text: 'Отбор участников',
-    href: '/participation',
+    text: 'Документы',
+    href: '/documents',
   },
   {
-    text: 'Мероприятия',
-    href: '/registration',
+    text: 'Контакты',
+    href: '/contacts',
   },
 ]

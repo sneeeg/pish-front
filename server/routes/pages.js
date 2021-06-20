@@ -3,12 +3,16 @@ import about from '~/server/collections/pages/s1/about'
 import news from '~/server/collections/pages/s1/news'
 import participation from '~/server/collections/pages/s1/participation'
 import registration from '~/server/collections/pages/s1/registration'
+import documents from '~/server/collections/pages/s1/documents'
+import contacts from '~/server/collections/pages/s1/contacts'
 
 import mainEn from '~/server/collections/pages/en/main'
 import aboutEn from '~/server/collections/pages/en/about'
 import newsEn from '~/server/collections/pages/en/news'
 import participationEn from '~/server/collections/pages/en/participation'
 import registrationEn from '~/server/collections/pages/en/registration'
+import documentsEn from '~/server/collections/pages/en/documents'
+import contactsEn from '~/server/collections/pages/en/contacts'
 
 import document from '~/server/collections/document'
 
@@ -21,6 +25,8 @@ const pages = {
     news,
     participation,
     registration,
+    documents,
+    contacts,
   },
   en: {
     main: mainEn,
@@ -28,6 +34,8 @@ const pages = {
     news: newsEn,
     participation: participationEn,
     registration: registrationEn,
+    documents: documentsEn,
+    contacts: contactsEn,
   },
 }
 
@@ -81,6 +89,24 @@ export default (pretender) => {
       getResponse(
         pages[request.requestHeaders['X-Bitrix-Site-Id']].registration
       ),
+    ]
+  })
+
+  // Documents page
+  pretender.get('/api/pages/documents', (request) => {
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse(pages[request.requestHeaders['X-Bitrix-Site-Id']].documents),
+    ]
+  })
+
+  // Contacts page
+  pretender.get('/api/pages/contacts', (request) => {
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse(pages[request.requestHeaders['X-Bitrix-Site-Id']].contacts),
     ]
   })
 
