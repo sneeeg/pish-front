@@ -51,20 +51,20 @@ export default {
 .blockquote {
   position: relative;
   margin: 0 auto;
-  padding: 3.2rem 10.4rem 0;
+  padding: 3.2rem 0;
 
   @include --tablet {
-    padding: 2.4rem 2.4rem 0;
+    padding: 2.4rem 0;
   }
 
   @include --mobile {
-    padding: 2.4rem 1.6rem 0;
+    padding: 2.4rem 0;
   }
 
   &::before {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -10rem;
     z-index: 1;
     width: 12.8rem;
     height: 9.6rem;
@@ -96,11 +96,14 @@ export default {
     }
   }
 
+  .html-content {
+    max-width: none;
+  }
+
   &__text {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 100rem;
     margin: 0 0 3.2rem;
 
     p {

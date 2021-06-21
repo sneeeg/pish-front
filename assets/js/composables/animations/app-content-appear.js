@@ -9,7 +9,7 @@ export default () => {
   const appHeaderInfo = app.querySelector('.gsap_header__info')
   const appHeaderContent = app.querySelector('.gsap_header__content')
   const appMain = document.getElementById('main')
-  const appFooter = app.querySelector('.footer')
+  // const appFooter = app.querySelector('.footer')
 
   const tl = gsap.timeline({ delay: 0.25 })
 
@@ -26,10 +26,10 @@ export default () => {
     { opacity: 1, duration: 1 },
     '>-.75'
   )
-  tl.fromTo(
-    appFooter,
-    { opacity: 0, y: '100%' },
-    { opacity: 1, y: 0, duration: 1 },
-    '>-.55'
-  )
+  // tl.fromTo(
+  //   appFooter,
+  //   { opacity: 0, y: '100%' },
+  //   { opacity: 1, y: 0, duration: 0.3 },
+  //   '>-.55'
+  // )
 }

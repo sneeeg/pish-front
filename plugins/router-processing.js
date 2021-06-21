@@ -21,7 +21,7 @@ export default ({ app, store, $motion }) => {
       appContentDisappear()
         .then(() => {
           const toLocale = to.name.slice(-2, to.name.length)
-          const fromLocale = from.name.slice(-2, from.name.length)
+          const fromLocale = from?.name?.slice(-2, from.name.length) || toLocale
 
           const localeSwitch =
             toLocale !== fromLocale

@@ -5,4 +5,6 @@ module.exports = {
   metaDescription: 'Регистрация на мероприятие', // Мета описание
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
+  pageTitle: 'Регистрация на мероприятие',
+  lead: `<p>Внесите информацию о вузе и его представителе в каждое поле формы.</p>`,
 }

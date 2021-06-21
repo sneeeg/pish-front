@@ -6,7 +6,11 @@
   >
     <div v-will-change class="header__info gsap_header__info">
       <div class="header__content">
-        <SmartLink :to="settings.mainLink" class="header__logo hover-opacity">
+        <SmartLink
+          v-will-change
+          :to="settings.mainLink"
+          class="header__logo hover-opacity"
+        >
           <img
             :src="
               $i18n.locale === 'ru'
@@ -18,17 +22,20 @@
         </SmartLink>
 
         <div class="header__wrapper">
-          <SmartLink class="header__account" :to="settings.lkLink">{{
-            lang['base.lk']
-          }}</SmartLink>
+          <SmartLink
+            v-will-change
+            class="header__account hover-opacity"
+            :to="settings.lkLink"
+            >{{ lang['base.lk'] }}</SmartLink
+          >
 
-          <LangToggler v-if="!window.isMobileSize" />
+          <LangToggler v-if="false" />
         </div>
       </div>
     </div>
 
     <div v-will-change class="header__content gsap_header__content">
-      <SmartLink to="/" class="header__logo--full hover-opacity">
+      <SmartLink v-will-change to="/" class="header__logo--full hover-opacity">
         <img
           :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"
           alt=""
@@ -177,7 +184,7 @@ export default {
     @include text-button-small;
     display: flex;
     align-items: center;
-    margin-right: 4rem;
+    //margin-right: 4rem;
     color: $color_red;
 
     &:not(:last-child) {
@@ -201,7 +208,7 @@ export default {
   }
 
   &__nav {
-    @include text-small;
+    //@include text-small;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

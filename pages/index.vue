@@ -11,16 +11,12 @@
       <Quotes :quotes="page.quotes" />
     </Section>
 
-    <Section v-view="$utils.scrollCenterDetection">
+    <Section v-if="false" v-view="$utils.scrollCenterDetection">
       <PagesSection :pages="page.links" />
     </Section>
 
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      background
-      :title="page.newsTitle"
-    >
-      <Posts colored />
+    <Section v-view="$utils.scrollCenterDetection" :title="page.newsTitle">
+      <Posts />
     </Section>
 
     <!--    <Section v-view="$utils.scrollCenterDetection" :title="page.history.title">-->

@@ -23,6 +23,13 @@
         <SmartLink :to="linkObject" class="post-preview__title hover-opacity">
           {{ post.title }}
         </SmartLink>
+        <ul v-if="post.tags && post.tags.length" class="post-preview__tags">
+          <li v-for="tag in post.tags" :key="tag.id">
+            <SmartLink class="hover-color-accent" :to="getTagLink(tag)"
+              >#{{ tag }}</SmartLink
+            >
+          </li>
+        </ul>
         <ArrowLink
           :to="linkObject"
           :text="lang['base.more']"
@@ -69,6 +76,14 @@ export default {
       }
     },
   },
+  methods: {
+    getTagLink(tag) {
+      return {
+        name: this.type !== 'all' ? `news-${this.type}` : 'news',
+        query: { tag },
+      }
+    },
+  },
 }
 </script>
 
@@ -80,12 +95,33 @@ export default {
   min-height: 52rem;
   background-color: $color_white;
 
+  &__tags {
+    @include flexGap(2px);
+    @include text-button;
+    padding-bottom: 3.8rem;
+    color: #6b6b74;
+
+    @include --mobile {
+      padding-bottom: 2.4rem;
+    }
+
+    @include --tablet {
+      @include flexGap(2px, 100%);
+    }
+
+    li {
+      &:not(:last-child) {
+        margin-right: 0.8rem;
+      }
+    }
+  }
+
   &._colored {
     background-color: $color_background;
   }
 
   @include --tablet {
-    min-height: 48rem;
+    min-height: 44rem;
   }
 
   @include --mobile {

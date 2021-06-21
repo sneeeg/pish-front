@@ -8,8 +8,6 @@ export default {
 
     const page = await apiMethod().then(({ data }) => data)
 
-    console.log(page)
-
     return { page }
   },
 }

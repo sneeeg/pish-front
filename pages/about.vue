@@ -9,11 +9,12 @@
     </Section>
 
     <RegistrationPreview
+      v-if="false"
       :forehead="page.registration.forehead"
       :title="page.registration.title"
     />
 
-    <Section>
+    <Section v-if="false">
       <SupportBlock
         :title="page.support.title"
         :subtitle="page.support.subtitle"
@@ -43,6 +44,8 @@
     </Section>
 
     <Section
+      id="tasks"
+      ref="tasks"
       v-view="$utils.scrollCenterDetection"
       background
       :title="page.tasks.title"
@@ -50,7 +53,7 @@
       <Tasks :content="page.tasks.content" />
     </Section>
 
-    <Section v-view="$utils.scrollCenterDetection">
+    <Section v-if="false" v-view="$utils.scrollCenterDetection">
       <PagesSection :pages="page.links" />
     </Section>
 
@@ -58,7 +61,6 @@
       id="architecture"
       v-view="$utils.scrollCenterDetection"
       :title="page.architecture.title"
-      background
     >
       <ArchitectureBlock :architecture="page.architecture" />
     </Section>
@@ -86,6 +88,7 @@ import Progress from '~/components/Progress'
 import RegistrationPreview from '~/components/RegistrationPreview'
 import Tasks from '~/components/Tasks'
 import PagesSection from '~/components/PagesSection'
+import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
 
 export default {
   name: 'About',
@@ -103,6 +106,11 @@ export default {
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
+  },
+  mounted() {
+    if (this.$route.hash === '#tasks') {
+      scrollAnimation(this.$refs.tasks.$el)
+    }
   },
 }
 </script>

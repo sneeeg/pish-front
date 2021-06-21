@@ -1,5 +1,5 @@
 <template>
-  <footer v-will-change class="footer">
+  <footer class="footer">
     <div class="footer__content">
       <div class="footer__row">
         <nuxt-link to="/" class="footer__logo">
@@ -14,11 +14,11 @@
         </nuxt-link>
 
         <address class="footer__info">
-          <a :href="lang['company.tel-href']"
-            ><span>{{ lang['company.tel-text'] }}</span></a
+          <a :href="lang['footer.tel.href']"
+            ><span>{{ lang['footer.tel.text'] }}</span></a
           >
-          <a :href="`mailto:${lang['company.email']}`"
-            ><span>{{ lang['company.email'] }}</span></a
+          <a :href="`mailto:${lang['footer.email']}`"
+            ><span>{{ lang['footer.email'] }}</span></a
           >
         </address>
       </div>

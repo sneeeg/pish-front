@@ -1,5 +1,5 @@
 <template>
-  <Section v-view="$utils.scrollCenterDetection">
+  <Section v-view="$utils.scrollCenterDetection" background>
     <form class="registration-form" @submit.prevent="submit">
       <SearchSelect
         v-scroll-element

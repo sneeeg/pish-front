@@ -1,7 +1,11 @@
 <template>
   <div class="tasks">
     <HTMLContent v-scroll-element class="tasks__content" :html="content" />
-    <div v-if="window.isDesktopSize" class="tasks__image">
+    <div
+      v-if="window.isDesktopSize"
+      v-scroll-element="'right'"
+      class="tasks__image"
+    >
       <img :src="image" alt="" />
     </div>
   </div>

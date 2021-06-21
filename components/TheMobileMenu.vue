@@ -15,7 +15,7 @@
         </form>
 
         <nav class="menu__nav">
-          <LangToggler v-if="window.isMobileSize" />
+          <LangToggler v-if="false" />
 
           <SmartLink
             v-for="{ text, href } in menus.header"

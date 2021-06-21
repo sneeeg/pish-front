@@ -4,7 +4,13 @@
       <h3 class="architecture-component__title _visually-h4">
         {{ left.title }}
       </h3>
-      <div class="architecture-component__content">
+      <a
+        v-will-change
+        href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=5&rangeSize=1"
+        target="_blank"
+        rel="noopener"
+        class="architecture-component__content hover-opacity"
+      >
         <div class="architecture-item _row">
           <svg
             class="architecture-item__icon"
@@ -23,7 +29,7 @@
           </svg>
           <p class="architecture-item__name">{{ left.iconText }}</p>
         </div>
-      </div>
+      </a>
     </div>
     <div class="architecture-component _center">
       <h3 class="architecture-component__title _visually-h4">

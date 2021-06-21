@@ -1,7 +1,8 @@
 <template>
   <div class="quotes">
-    <div>
+    <div v-view="$utils.scrollCenterDetection">
       <MarqueeText
+        v-if="quotes.length > 4"
         class="ticker"
         :paused="window.isDesktopSize && isPaused"
         :repeat="10"
@@ -12,7 +13,7 @@
         <div
           v-for="({ id, author }, i) in quotes"
           :key="id"
-          class="ticker__item"
+          class="ticker__item hover-opacity"
           @click="selectSlide(i)"
         >
           <div class="ticker__photo">
@@ -21,6 +22,22 @@
           <p class="ticker__name">{{ author.name }}</p>
         </div>
       </MarqueeText>
+
+      <div v-else class="_ticker-container">
+        <div v-scroll-element="'right'" class="ticker _chips">
+          <div
+            v-for="({ id, author }, i) in quotes"
+            :key="id"
+            class="ticker__item hover-opacity"
+            @click="selectSlide(i)"
+          >
+            <div class="ticker__photo">
+              <img :src="author.image" />
+            </div>
+            <p class="ticker__name">{{ author.name }}</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="quotes__slider-block">
@@ -186,11 +203,26 @@ export default {
   }
 }
 
+._ticker-container {
+  @include container;
+  display: block;
+  margin: 0 auto;
+}
+
 .ticker {
   margin-bottom: 8rem;
 
+  &._chips {
+    @include flexGap(1rem);
+    padding-bottom: 8rem;
+
+    @include --mobile {
+      padding-bottom: 4rem;
+    }
+  }
+
   @include --mobile {
-    margin-bottom: 6.4rem;
+    margin-bottom: 5.2rem;
   }
 
   .marquee-text-text {

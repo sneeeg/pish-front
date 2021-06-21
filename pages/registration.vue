@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Section v-if="false" is-layout>
+    <Section v-if="true" is-layout>
       <FirstScreen
-        :title="page.title"
+        :title="page.pageTitle"
         :lead="page.lead"
         background="/i/registration.png"
         registration

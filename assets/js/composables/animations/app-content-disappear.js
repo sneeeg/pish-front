@@ -7,7 +7,7 @@ export default () => {
   const app = document.getElementById('app')
   const appPreloader = document.getElementById('app-preloader')
   const elements = app.querySelectorAll(
-    '.gsap_header__info, .gsap_header__content, #main, .footer'
+    '.gsap_header__info, .gsap_header__content, #main'
   )
 
   return new Promise((resolve) => {

@@ -3,7 +3,7 @@
     <TheHeader />
 
     <div id="main" v-will-change class="main _default">
-      <Nuxt />
+      <Nuxt :key="$route.fullPath" />
     </div>
 
     <TheFooter />
