@@ -60,7 +60,7 @@ export default {
   methods: {
     ...mapActions('menu', { closeMenu: 'close' }),
     onSubmit() {
-      this.$router.push({ path: 'search', query: { q: this.search } })
+      this.$router.push({ path: 'search', query: { request: this.search } })
     },
   },
 }

@@ -6,9 +6,9 @@ module.exports = {
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
   pageTitle: 'Регистрация на мероприятие',
-  lead: `<p>Внесите информацию о вузе и его представителе в каждое поле формы.</p>`,
+  lead: `<p>Внесите информацию об университете и его представителе в каждое поле формы.</p>`,
   document: {
     text: 'Программа мероприятия ',
-    href: 'http://priority2030.ru/upload/medialibrary/89a/97utos07i13ihdeyo6zdchvawv1mo301/Programma-Skolkovo-_-24iyunya.pdf',
+    href: 'http://priority2030.ru/upload/medialibrary/e15/4n18d14s4mm84ehokdgsc6qb2ipcutc0/Programma_26.06.2021.pdf',
   },
 }
