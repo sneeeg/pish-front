@@ -357,6 +357,14 @@ export default {
       margin-bottom: 1.2rem;
     }
 
+    @include --tablet {
+      min-height: 10.74rem;
+    }
+
+    @include --mobile {
+      min-height: 10.9rem;
+    }
+
     > .architecture-item__name:not(:last-child) {
       margin-bottom: 3px;
     }

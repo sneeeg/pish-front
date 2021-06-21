@@ -15,7 +15,10 @@
         <div
           v-if="!major || majorBackgroungJPG"
           v-scroll-element="'right'"
-          :class="['first-screen__background', { _major: majorBackgroungJPG }]"
+          :class="[
+            'first-screen__background',
+            { _major: majorBackgroungJPG, _about: about },
+          ]"
           :style="{
             backgroundImage: background ? `url(${background})` : false,
           }"
@@ -23,7 +26,10 @@
         <h1
           v-if="!titles.length"
           v-scroll-element
-          :class="['first-screen__title', { '_visually-h2': !major }]"
+          :class="[
+            'first-screen__title',
+            { '_visually-h2': !major, _about: about },
+          ]"
         >
           {{ title }}
         </h1>
@@ -124,6 +130,10 @@ export default {
       default: false,
     },
     major: {
+      type: Boolean,
+      default: false,
+    },
+    about: {
       type: Boolean,
       default: false,
     },
@@ -291,6 +301,19 @@ export default {
     background-repeat: no-repeat;
     background-size: contain;
 
+    &._about {
+      @include --tablet {
+        top: 0;
+        right: -20rem;
+      }
+
+      @include --mobile {
+        right: -30rem;
+        width: 58rem;
+        height: 22rem;
+      }
+    }
+
     ._registration & {
       top: -15rem;
       right: -15rem;
@@ -311,9 +334,9 @@ export default {
       }
     }
 
-    @include --tablet {
-      display: none;
-    }
+    //@include --tablet {
+    //  display: none;
+    //}
 
     &._major {
       top: calc(50% - 36.5rem);
@@ -359,6 +382,16 @@ export default {
 
   &__title {
     max-width: 56rem;
+
+    &._about {
+      @include --tablet {
+        margin-top: 30rem;
+      }
+
+      @include --mobile {
+        margin-top: 15rem;
+      }
+    }
   }
 
   &-titles h2 {

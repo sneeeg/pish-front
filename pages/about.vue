@@ -5,6 +5,7 @@
         :title="page.pageTitle"
         :lead="page.lead"
         background="/3d/i/background.jpg"
+        about
       />
     </Section>
 

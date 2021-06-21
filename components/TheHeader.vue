@@ -23,6 +23,7 @@
 
         <div class="header__wrapper">
           <SmartLink
+            v-if="false"
             v-will-change
             class="header__account hover-opacity"
             :to="settings.lkLink"
