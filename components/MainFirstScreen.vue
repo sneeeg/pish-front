@@ -15,34 +15,35 @@
       <!--      </div>-->
 
       <div ref="mainFirstScreenContent" class="main-first-screen__content">
-        <div
+        <SmartLink
           v-if="$motion"
           ref="mainFirstScreenMainCell"
           v-scroll-element
-          class="main-first-screen-cell _main"
+          :to="mainCell.href"
+          class="main-first-screen-cell hover-opacity _main"
         >
-          <SmartLink
-            :to="mainCell.href"
-            class="main-first-screen-cell__title _visually-h2"
-            >{{ mainCell.text }}</SmartLink
-          >
+          <div class="main-first-screen-cell__title _visually-h2">
+            {{ mainCell.text }}
+          </div>
 
           <ArrowLink
+            is-div
             class="main-first-screen-cell__link"
             :text="lang['base.more']"
-            :to="mainCell.href"
           >
           </ArrowLink>
-        </div>
+        </SmartLink>
         <div class="_main-first-screen-cells__wrapper">
           <div class="main-first-screen-cells">
-            <div
+            <SmartLink
               v-for="cell in localCells"
               :key="cell.id"
               v-scroll-element
+              :to="cell.href"
               :class="[
                 'main-first-screen-cell',
                 '_sub',
+                'hover-opacity',
                 { '_main-cell': cell.isMain },
               ]"
             >
@@ -55,19 +56,17 @@
 
               <Countdown v-else-if="cell.counter" />
 
-              <SmartLink
-                :to="cell.href"
-                class="main-first-screen-cell__title _visually-h4"
-                >{{ cell.text }}</SmartLink
-              >
+              <div class="main-first-screen-cell__title _visually-h4">
+                {{ cell.text }}
+              </div>
 
               <ArrowLink
                 class="main-first-screen-cell__link"
                 :text="lang['base.more']"
-                :to="cell.href"
+                is-div
               >
               </ArrowLink>
-            </div>
+            </SmartLink>
           </div>
         </div>
       </div>
@@ -127,7 +126,9 @@ export default {
   mounted() {
     scrollAnimation(this.$refs.mainFirstScreenContent)
 
-    this.$motion?.scenes.firstScreen.init(this.$refs.mainFirstScreenMainCell)
+    this.$motion?.scenes.firstScreen.init(
+      this.$refs.mainFirstScreenMainCell.$el
+    )
     this.$motion?.scenes.firstScreen.start()
   },
   beforeDestroy() {
@@ -221,7 +222,6 @@ export default {
   background-color: $color_white;
 
   &__title {
-    @include hover-opacity;
     font-weight: 700;
 
     ._sub & {

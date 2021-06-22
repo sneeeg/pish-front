@@ -59,6 +59,7 @@
     </Section>
 
     <Section
+      v-if="false"
       id="architecture"
       v-view="$utils.scrollCenterDetection"
       :title="page.architecture.title"

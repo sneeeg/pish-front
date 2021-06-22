@@ -168,6 +168,16 @@ export default {
     padding-bottom: 1.6rem;
   }
 
+  a {
+    display: block;
+    @include hover-opacity;
+    color: $color_black;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
   &__year {
     margin-bottom: 4.8rem;
     color: $color_red;

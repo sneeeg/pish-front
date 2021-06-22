@@ -23,7 +23,7 @@ export default (element, delay = 0) => {
         ease: 'power2.out',
         duration: 1,
         onComplete: () => {
-          gsap.set(item, { clearProps: 'willChange' })
+          gsap.set(item, { clearProps: 'willChange,opacity' })
         },
       },
       '<0.3'

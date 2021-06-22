@@ -7,22 +7,10 @@
             v-scroll-element
             class="contacts-first-screen__title _visually-h2"
           >
-            {{ page.common.title }}
+            {{ page.reference.title }}
           </h1>
-          <div class="contacts-common">
-            <a
-              v-scroll-element
-              :href="`tel:${page.common.tel.href}`"
-              class="contact"
-              ><SvgIcon name="tel" /> <span>{{ page.common.tel.text }}</span></a
-            >
-            <a
-              v-scroll-element
-              :href="`mailto:${page.common.email.href}`"
-              class="contact"
-              ><SvgIcon name="email" />
-              <span>{{ page.common.email.text }}</span></a
-            >
+          <div v-scroll-element class="contacts-reference">
+            <HTMLContent :html="page.reference.content" />
           </div>
         </div>
 
@@ -31,7 +19,23 @@
         </div>
       </div>
     </Section>
-    <Section background :title="page.press.title">
+    <Section background :title="page.common.title">
+      <div class="contacts-common">
+        <a
+          v-scroll-element
+          :href="`tel:${page.common.tel.href}`"
+          class="contact"
+          ><SvgIcon name="tel" /> <span>{{ page.common.tel.text }}</span></a
+        >
+        <a
+          v-scroll-element
+          :href="`mailto:${page.common.email.href}`"
+          class="contact"
+          ><SvgIcon name="email" /> <span>{{ page.common.email.text }}</span></a
+        >
+      </div>
+    </Section>
+    <Section :title="page.press.title">
       <div class="contacts-press">
         <a v-scroll-element :href="`tel:${page.press.tel.href}`" class="contact"
           ><SvgIcon name="tel" /> <span>{{ page.press.tel.text }}</span></a
@@ -44,7 +48,7 @@
         >
       </div>
     </Section>
-    <Section :title="page.center.title">
+    <Section background :title="page.center.title">
       <div class="contacts-center">
         <a
           v-scroll-element
@@ -62,10 +66,11 @@ import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
+import HTMLContent from '~/components/utils/HTMLContent'
 
 export default {
   name: 'Documents',
-  components: { Section },
+  components: { HTMLContent, Section },
   mixins: [pageDataFetch, pageHead, pageDefault],
 }
 </script>
@@ -88,6 +93,7 @@ export default {
     flex-shrink: 0;
     width: 37.2rem;
     height: 28.3rem;
+    margin-left: 10rem;
 
     @include --tablet {
       width: 26rem;

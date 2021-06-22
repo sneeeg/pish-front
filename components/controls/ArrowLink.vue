@@ -1,11 +1,23 @@
 <template>
-  <SmartLink class="arrow-link hover-accent-light" :aria-label="text" :to="to">
+  <SmartLink
+    v-if="!isDiv"
+    class="arrow-link hover-accent-light"
+    :aria-label="text"
+    :to="to"
+  >
     <span>{{ text }}</span
     ><SvgIcon
       :class="['arrow-link__svg', { _left: arrowLeft }]"
       :name="arrowLeft ? 'arrow-left' : 'arrow-right'"
     />
   </SmartLink>
+  <div v-else class="arrow-link">
+    <span>{{ text }}</span
+    ><SvgIcon
+      :class="['arrow-link__svg', { _left: arrowLeft }]"
+      :name="arrowLeft ? 'arrow-left' : 'arrow-right'"
+    />
+  </div>
 </template>
 
 <script>
@@ -17,13 +29,17 @@ export default {
   props: {
     to: {
       type: [String, Object],
-      required: true,
+      default: '',
     },
     text: {
       type: String,
       required: true,
     },
     arrowLeft: {
+      type: Boolean,
+      default: false,
+    },
+    isDiv: {
       type: Boolean,
       default: false,
     },
