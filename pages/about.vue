@@ -44,14 +44,8 @@
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
 
-    <Section
-      id="tasks"
-      ref="tasks"
-      v-view="$utils.scrollCenterDetection"
-      background
-      :title="page.tasks.title"
-    >
-      <Tasks :content="page.tasks.content" />
+    <Section background>
+      <SupportBlock :title="page.tasks.title" :sections="page.tasks.sections" />
     </Section>
 
     <Section v-if="false" v-view="$utils.scrollCenterDetection">
@@ -88,14 +82,12 @@ import SupportBlock from '~/components/SupportBlock'
 import ArchitectureBlock from '~/components/ArchitectureBlock'
 import Progress from '~/components/Progress'
 import RegistrationPreview from '~/components/RegistrationPreview'
-import Tasks from '~/components/Tasks'
 import PagesSection from '~/components/PagesSection'
 import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
 
 export default {
   name: 'About',
   components: {
-    Tasks,
     RegistrationPreview,
     Section,
     PriorityBlock,

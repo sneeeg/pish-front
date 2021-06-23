@@ -157,7 +157,7 @@ export default {
 
   &__item {
     position: relative;
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     padding: 3px 2.4rem;
     font-weight: bold;
     text-align: center;
