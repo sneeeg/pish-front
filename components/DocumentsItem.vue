@@ -34,16 +34,16 @@ export default {
 
   &__date {
     @include text-button-small;
-    font-weight: normal;
-    color: $color_grey_text;
     margin-bottom: 2rem;
+    color: $color_grey_text;
+    font-weight: normal;
   }
 
   &__text {
+    display: block;
     @include text;
-    line-height: 2.7rem;
-    max-width: 99.3rem;
     font-weight: 700;
+    line-height: 2.7rem;
   }
 }
 </style>
