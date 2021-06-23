@@ -87,11 +87,11 @@ export default {
 
   &__logo {
     width: 24.6rem;
-    height: 2.7rem;
+    height: 4.7rem;
 
     @include --tablet {
       width: 18rem;
-      height: 2rem;
+      height: 3.4rem;
     }
 
     @include --mobile {

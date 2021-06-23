@@ -12,6 +12,14 @@
           <div v-scroll-element class="contacts-reference">
             <HTMLContent :html="page.reference.content" />
           </div>
+
+          <ArrowLink
+            v-scroll-element
+            is-link
+            class="contacts-first-screen__btn"
+            to="/upload/medialibrary/038/sgv2yvt1xd64ej11qpdi8khuhm622ehk/Logo.rar"
+            text="Скачать логотип"
+          />
         </div>
 
         <div v-scroll-element="'right'" class="contacts-first-screen__image">
@@ -67,10 +75,11 @@ import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import HTMLContent from '~/components/utils/HTMLContent'
+import ArrowLink from '~/components/controls/ArrowLink'
 
 export default {
   name: 'Documents',
-  components: { HTMLContent, Section },
+  components: { ArrowLink, HTMLContent, Section },
   mixins: [pageDataFetch, pageHead, pageDefault],
 }
 </script>
@@ -80,6 +89,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &__btn {
+    display: inline-flex;
+    margin-top: 3.2rem;
+  }
 
   &__title {
     margin-bottom: 7.4rem;

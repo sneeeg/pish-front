@@ -4,7 +4,7 @@
       <FirstScreen
         :title="page.pageTitle"
         :lead="page.lead"
-        background="/i/registration.png"
+        background="/static/i/registration.png"
         registration
         :html-content="document"
       />

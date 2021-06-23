@@ -44,7 +44,7 @@
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
 
-    <Section background>
+    <Section id="tasks" background>
       <SupportBlock :title="page.tasks.title" :sections="page.tasks.sections" />
     </Section>
 
@@ -83,7 +83,6 @@ import ArchitectureBlock from '~/components/ArchitectureBlock'
 import Progress from '~/components/Progress'
 import RegistrationPreview from '~/components/RegistrationPreview'
 import PagesSection from '~/components/PagesSection'
-import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
 
 export default {
   name: 'About',
@@ -100,11 +99,6 @@ export default {
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
-  },
-  mounted() {
-    if (this.$route.hash === '#tasks') {
-      scrollAnimation(this.$refs.tasks.$el)
-    }
   },
 }
 </script>

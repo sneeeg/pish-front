@@ -25,9 +25,9 @@ module.exports = {
       },
       {
         icon: 'build',
-        text: 'Регистрация на мероприятие',
+        text: 'Приоритеты программы',
         counter: false,
-        href: '/registration',
+        href: '/about#priority',
       },
       {
         icon: 'page-screen',

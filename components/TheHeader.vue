@@ -156,17 +156,17 @@ export default {
       position: relative;
       flex-shrink: 0;
       width: 38rem;
-      height: 4.1rem;
+      height: 7.3rem;
       margin-right: auto;
 
       @include --tablet {
         width: 32rem;
-        height: 3.4rem;
+        height: 6.2rem;
       }
 
       @include --mobile {
         width: 18rem;
-        height: 2rem;
+        height: 3.5rem;
       }
 
       img {
