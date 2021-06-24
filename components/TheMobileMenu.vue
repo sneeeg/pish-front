@@ -68,11 +68,11 @@ export default {
 <style lang="scss">
 .menu {
   position: absolute;
-  top: 12.3rem;
+  top: 15.1rem;
   left: 0;
   z-index: 9;
   width: 100%;
-  height: calc(100% - 12.3rem);
+  height: calc(100% - 15.1rem);
   background-color: #fff;
 
   @include --from-tablet {
@@ -80,8 +80,8 @@ export default {
   }
 
   @include --mobile {
-    top: 10.4rem;
-    height: calc(100% - 10.4rem);
+    top: 11.9rem;
+    height: calc(100% - 11.9rem);
   }
 
   &__scroll-wrap {

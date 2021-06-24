@@ -19,9 +19,12 @@
     </ul>
     <div v-if="picture" v-scroll-element class="post-head__picture">
       <img :src="picture.src" :alt="picture.alt" />
-      <a v-if="source && source.href" class="hover-opacity" :href="source.text"
-        >© {{ source.text }}</a
-      >
+    </div>
+    <div
+      v-if="source && (source.text || source.href)"
+      class="post-head__source"
+    >
+      © {{ source.text || source.href }}
     </div>
   </div>
 </template>
@@ -76,6 +79,12 @@ export default {
 .post-head {
   &__title {
     @include containerInnerSmall;
+  }
+
+  &__source {
+    @include text-small;
+    margin-top: 1.2rem;
+    text-align: right;
   }
 
   &__picture {

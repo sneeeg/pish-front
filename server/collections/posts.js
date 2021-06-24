@@ -22,6 +22,10 @@ export default [
       src: '/i/posts/example.jpg',
       alt: 'test',
     },
+    pictureSource: {
+      href: ' Пресс-служба Минобрнауки России',
+      text: ' Пресс-служба Минобрнауки России',
+    },
     ogVk: '/i/posts/example.jpg',
     ogFb: '/i/posts/example.jpg',
     content: `
