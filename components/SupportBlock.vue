@@ -19,7 +19,7 @@
         v-scroll-element="'right'"
         class="support__images"
       >
-        <img src="/i/tasks/1.png" alt="" />
+        <img src="/i/tasks/1.png" :style="{ height: '27.3rem' }" alt="" />
         <img src="/i/tasks/2.png" alt="" />
       </div>
     </div>
@@ -95,9 +95,9 @@ export default {
 
   &__images {
     position: absolute;
-    width: 36rem;
     top: 15rem;
     right: 0;
+    width: 36rem;
     height: 31.6rem;
     margin-left: 10rem;
 

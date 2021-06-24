@@ -13,7 +13,8 @@ export default ({ app, store, $motion }) => {
 
     store.commit('default/changeRoutingState', { to, from })
 
-    const hasHistory = store.state.default.routing.hasHistory
+    const hasHistory =
+      store.state.default.routing.hasHistory && document.getElementById('app')
 
     if (hasHistory || store.state.default.onErrorPage) {
       store.commit('default/changeErrorPageState', false)
