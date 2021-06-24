@@ -14,10 +14,11 @@
           </div>
 
           <ArrowLink
+            v-if="false"
             v-scroll-element
             is-link
             class="contacts-first-screen__btn"
-            to="/upload/medialibrary/038/sgv2yvt1xd64ej11qpdi8khuhm622ehk/Logo.rar"
+            to="/upload/medialibrary/086/uh21vyy8qkyu8rkrt3tt070ljc7ssych/Logo-so-sloganom.rar"
             text="Скачать логотип"
           />
         </div>

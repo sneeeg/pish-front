@@ -77,6 +77,7 @@ export default {
           },
         ],
         defaultLocale: 'ru',
+        detectBrowserLanguage: false,
       },
     ],
     '@nuxtjs/axios',
