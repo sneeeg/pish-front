@@ -6,6 +6,7 @@
     >
       <SingleTabs
         v-model="currentCategoryId"
+        v-scroll-element
         :items="categories"
         @change="show"
       />
