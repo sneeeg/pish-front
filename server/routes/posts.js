@@ -1,6 +1,8 @@
 import posts from '~/server/collections/posts'
 import universityPosts from '~/server/collections/university-posts'
 import postsCategories from '~/server/collections/posts-categories'
+import docs from '~/server/collections/docs'
+import docsCategories from '~/server/collections/docs-categories'
 
 import { getResponse } from '~/server/utils'
 
@@ -17,6 +19,19 @@ export default (pretender) => {
         posts,
         categories: postsCategories,
         pagination: { current: 1, total: 5 },
+      }),
+    ]
+  })
+
+  // Get docs
+  pretender.get('/api/docs', () => {
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse({
+        posts: docs,
+        categories: docsCategories,
+        pagination: { current: 1, total: 1 },
       }),
     ]
   })

@@ -4,9 +4,14 @@
       v-view="$utils.scrollCenterDetection"
       :title="page.documents.title"
     >
-      <div class="documents-list">
+      <SingleTabs
+        v-model="currentCategoryId"
+        :items="categories"
+        @change="show"
+      />
+      <div ref="list" class="documents-list">
         <DocumentsItem
-          v-for="doc in page.documents.items"
+          v-for="doc in processedDocs"
           :key="doc.id"
           class="documents-list__item"
           :document="doc"
@@ -17,21 +22,52 @@
 </template>
 
 <script>
-import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import DocumentsItem from '~/components/DocumentsItem'
+import SingleTabs from '~/components/SingleTabs'
+import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
 
 export default {
   name: 'Documents',
-  components: { Section, DocumentsItem },
-  mixins: [pageDataFetch, pageHead, pageDefault],
+  components: { SingleTabs, Section, DocumentsItem },
+  mixins: [pageHead, pageDefault],
+  async asyncData({ $api }) {
+    const page = await $api.pages.documents().then(({ data }) => data)
+    const data = await $api.posts.getDocs().then(({ data }) => data)
+
+    return { page, docs: data.posts, categories: data.categories }
+  },
+  data() {
+    return {
+      currentCategoryId: -1,
+    }
+  },
+  computed: {
+    processedDocs() {
+      const arr = this.docs.filter((item) => {
+        return String(item.category.id) === String(this.currentCategoryId)
+      })
+
+      return arr
+    },
+  },
+  created() {
+    this.currentCategoryId = this.categories[0].id
+  },
+  methods: {
+    show() {
+      setTimeout(() => scrollAnimation(this.$refs.list))
+    },
+  },
 }
 </script>
 
 <style lang="scss">
 .documents-list {
+  margin-top: 6.4rem;
+
   &__item {
     &:not(:last-child) {
       margin-bottom: 3.2rem;

@@ -6,6 +6,13 @@ export default ($axios) => ({
     })
   },
 
+  /* Getting Docs */
+  getDocs(categoryId) {
+    return $axios.$get('/api/docs', {
+      params: { categoryId },
+    })
+  },
+
   /* Getting post by slug */
   getPostBySlug(slug) {
     return $axios.$get('/api/posts/item', { params: { slug } })

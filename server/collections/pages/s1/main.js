@@ -43,6 +43,12 @@ module.exports = {
       },
     ],
   },
+  ads: [
+    {
+      href: '/news/29-iyunya-sostoitsya-pervyy-ve',
+      text: 'Информация о вебинаре для кандидатов в программу',
+    },
+  ],
   quotes: [
     {
       content:

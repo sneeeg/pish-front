@@ -7,6 +7,10 @@
       :cells="page.firstScreen.cells"
     />
 
+    <Section is-layout>
+      <Ads :items="page.ads" />
+    </Section>
+
     <Section background is-layout>
       <Quotes :quotes="page.quotes" />
     </Section>
@@ -36,9 +40,11 @@ import Posts from '~/components/Posts'
 import PagesSection from '~/components/PagesSection'
 // import TheHistory from '~/components/TheHistory'
 import MainFirstScreen from '~/components/MainFirstScreen'
+import Ads from '~/components/Ads'
 
 export default {
   components: {
+    Ads,
     MainFirstScreen,
     PagesSection,
     Posts,

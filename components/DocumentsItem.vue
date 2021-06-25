@@ -3,8 +3,8 @@
     <div class="documents-item__date">
       {{ $dayjs(document.activeFrom).format('D MMMM YYYY') }}
     </div>
-    <SmartLink class="documents-item__text hover-opacity" :to="document.href">
-      {{ document.text }}
+    <SmartLink class="documents-item__text hover-opacity" :to="document.link">
+      {{ document.description }}
     </SmartLink>
   </div>
 </template>
