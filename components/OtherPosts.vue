@@ -95,6 +95,8 @@ export default {
           ? this.$api.posts.get
           : this.type === 'university'
           ? this.$api.posts.getUniversityPosts
+          : this.type === 'comments'
+          ? this.$api.comments.get
           : this.$api.reviews.get
 
       this.posts = await apiMethod(this.category?.id, 1, 10).then(

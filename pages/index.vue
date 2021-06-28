@@ -19,7 +19,12 @@
       <PagesSection :pages="page.links" />
     </Section>
 
-    <Section v-view="$utils.scrollCenterDetection" :title="page.newsTitle">
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      to="/news"
+      :arrow-text="lang['news.all']"
+      :title="page.newsTitle"
+    >
       <Posts />
     </Section>
 

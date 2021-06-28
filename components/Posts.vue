@@ -28,11 +28,11 @@
         class="posts__select"
         @input="changeCategory"
       />
-      <ArrowLink
-        v-if="!all && window.isDesktopSize"
-        :text="lang['news.all']"
-        to="/news"
-      />
+      <!--      <ArrowLink-->
+      <!--        v-if="!all && window.isDesktopSize"-->
+      <!--        :text="lang['news.all']"-->
+      <!--        to="/news"-->
+      <!--      />-->
     </div>
     <div v-scroll-element class="posts__content">
       <div class="posts-list">
@@ -55,20 +55,13 @@
           @click.native="loadMorePosts"
         />
       </div>
-      <div v-if="!all && !window.isDesktopSize" class="posts-foot">
-        <ArrowLink
-          class="posts-foot__link"
-          :text="lang['news.all']"
-          to="/news"
-        />
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import ArrowLink from '~/components/controls/ArrowLink'
+// import ArrowLink from '~/components/controls/ArrowLink'
 import findCategoryText from '~/assets/js/utils/find-category-text'
 import PostPreview from '~/components/PostPreview'
 import Btn from '~/components/controls/Btn'
@@ -76,7 +69,7 @@ import CustomSelect from '~/components/controls/CustomSelect'
 
 export default {
   name: 'Posts',
-  components: { CustomSelect, Btn, PostPreview, ArrowLink },
+  components: { CustomSelect, Btn, PostPreview },
   props: {
     all: {
       type: Boolean,
@@ -107,6 +100,8 @@ export default {
         ? this.$api.posts.get
         : this.type === 'university'
         ? this.$api.posts.getUniversityPosts
+        : this.type === 'comments'
+        ? this.$api.comments.get
         : this.$api.reviews.get
 
     await this.fetchPosts(undefined, 1)

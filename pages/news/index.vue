@@ -9,8 +9,16 @@
     </Section>
     <Section
       v-view="$utils.scrollCenterDetection"
-      to="/news/media"
+      to="/news/comments"
       background
+      title="Комментарии"
+      arrow-text="Все комментарии"
+    >
+      <Reviews is-comments />
+    </Section>
+    <Section
+      v-view="$utils.scrollCenterDetection"
+      to="/news/media"
       :title="page.reviewsTitle"
     >
       <Reviews />

@@ -10,7 +10,7 @@
     >
     <div class="review-item__text" v-html="review.description"></div>
     <ArrowLink
-      class="reciew-item__link"
+      class="review-item__link"
       :to="linkObject"
       :text="lang['base.readMore']"
     />
@@ -29,12 +29,16 @@ export default {
       type: Object,
       required: true,
     },
+    isComment: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     ...mapState('default', ['lang']),
     linkObject() {
       return {
-        name: 'news-media-post',
+        name: this.isComment ? 'news-comments-post' : 'news-media-post',
         params: { post: this.review.slug },
       }
     },

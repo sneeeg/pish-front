@@ -21,7 +21,8 @@
           :to="to"
           class="section-head__link"
           :text="
-            lang['news.all'] !== title ? lang['news.all'] : lang['base.go']
+            arrowText ||
+            (lang['news.all'] !== title ? lang['news.all'] : lang['base.go'])
           "
         />
       </div>
@@ -76,6 +77,10 @@ export default {
     to: {
       type: [String, Object],
       default: null,
+    },
+    arrowText: {
+      type: String,
+      default: '',
     },
   },
   computed: {
