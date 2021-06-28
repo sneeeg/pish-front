@@ -125,7 +125,7 @@ module.exports = {
     year: '2021',
     activeStage: 2,
     items: [
-      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=0&rangeSize=1" target="_blank" rel="noopener"><p>13 мая 2021</p><p>Выход постановления Правительства Российской Федерации о программе «Приоритет-2030»</p></a>',
+      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=0&rangeSize=1" target="_blank" rel="noopener"><p>13 мая 2021</p><p>Выход постановления Правительства Российской Федерации о программе «Приоритет 2030»</p></a>',
       '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>Июнь 2021</p><p>Объявление Минобрнауки России о проведении отбора университетов для участия в программе «Приоритет 2030»</p></a>',
       '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>1 сентября 2021</p><p>Отбор университетов для предоставления базовой части гранта на программы развития</p></a>',
       '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=3&rangeSize=1 " target="_blank" rel="noopener"><p>1 октября 2021</p><p>Отбор университетов для предоставления специальной части гранта с целью повышения глобальной конкурентоспособности университетов-участников</p></a>',

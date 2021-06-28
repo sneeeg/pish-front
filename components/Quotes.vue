@@ -2,11 +2,11 @@
   <div class="quotes">
     <div v-view="$utils.scrollCenterDetection">
       <MarqueeText
-        v-if="quotes.length > 5"
+        v-if="quotes.length > 4"
         class="ticker"
         :paused="window.isDesktopSize && isPaused"
         :repeat="10"
-        :duration="30"
+        :duration="80"
         @mouseover="isPaused = true"
         @mouseleave="isPaused = false"
       >
