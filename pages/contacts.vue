@@ -31,6 +31,7 @@
     <Section background :title="page.common.title">
       <div class="contacts-common">
         <a
+          v-if="false"
           v-scroll-element
           :href="`tel:${page.common.tel.href}`"
           class="contact"
@@ -46,7 +47,11 @@
     </Section>
     <Section :title="page.press.title">
       <div class="contacts-press">
-        <a v-scroll-element :href="`tel:${page.press.tel.href}`" class="contact"
+        <a
+          v-if="false"
+          v-scroll-element
+          :href="`tel:${page.press.tel.href}`"
+          class="contact"
           ><SvgIcon name="tel" /> <span>{{ page.press.tel.text }}</span></a
         >
         <a

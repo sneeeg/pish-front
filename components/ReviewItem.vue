@@ -5,7 +5,7 @@
     </div>
 
     <div class="review-item__head">
-      <div v-if="isComment" class="review-item__image">
+      <div v-if="isComment && review.previewPicture" class="review-item__image">
         <img :src="review.previewPicture.src" :alt="review.title" />
       </div>
 

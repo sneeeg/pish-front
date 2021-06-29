@@ -90,7 +90,7 @@ export default {
   &__picture {
     position: relative;
     width: 100%;
-    height: 53.5rem;
+    //height: 53.5rem;
     margin-top: 3.2rem;
 
     @include --tablet {
@@ -120,7 +120,8 @@ export default {
     }
 
     img {
-      @include box(100%);
+      width: 100%;
+      height: auto;
       object-fit: cover;
     }
   }
