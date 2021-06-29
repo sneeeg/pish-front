@@ -21,8 +21,10 @@
           }}</span>
         </div>
         <SmartLink :to="linkObject" class="post-preview__title hover-opacity">
-          {{ post.title }}
+          <span>{{ post.title }}</span>
+          <span v-if="type === 'comments'">{{ post.description }}</span>
         </SmartLink>
+
         <ul v-if="post.tags && post.tags.length" class="post-preview__tags">
           <li v-for="tag in post.tags" :key="tag.id">
             <SmartLink class="hover-color-accent" :to="getTagLink(tag)"
@@ -165,6 +167,10 @@ export default {
     flex-grow: 1;
     margin: 2.4rem 0;
     line-height: 2.7rem;
+
+    span {
+      display: block;
+    }
 
     @include --mobile {
       margin-top: 1.6rem;
