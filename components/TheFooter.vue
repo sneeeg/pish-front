@@ -24,7 +24,10 @@
       </div>
       <div class="footer__row">
         <p class="footer__copyrights">
-          {{ lang['company.copyright'] }}
+          <span>{{ lang['company.copyright'] }}</span>
+          <SmartLink :to="settings.policyLink"
+            >Политика конфиденциальности</SmartLink
+          >
         </p>
         <SocIcons />
       </div>
@@ -35,14 +38,16 @@
 import { mapState } from 'vuex'
 
 import SocIcons from '~/components/SocIcons'
+import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'TheFooter',
   components: {
+    SmartLink,
     SocIcons,
   },
   computed: {
-    ...mapState('default', ['lang']),
+    ...mapState('default', ['lang', 'settings']),
   },
 }
 </script>
@@ -133,6 +138,12 @@ export default {
     @include --mobile {
       order: 1;
       margin-top: 2rem;
+    }
+
+    a {
+      @include hover-opacity;
+      margin-left: 8.2rem;
+      text-decoration: underline;
     }
   }
 }
