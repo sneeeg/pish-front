@@ -9,7 +9,7 @@
                 ? '/i/logo-white.svg'
                 : '/i/logo-white-en.svg'
             "
-            alt=""
+            :alt="$store.state.default.settings.siteName"
           />
         </nuxt-link>
 
@@ -144,6 +144,16 @@ export default {
       @include hover-opacity;
       margin-left: 8.2rem;
       text-decoration: underline;
+
+      @include --tablet {
+        margin: 1rem 0 0;
+      }
+    }
+
+    @include --tablet {
+      > * {
+        display: block;
+      }
     }
   }
 }

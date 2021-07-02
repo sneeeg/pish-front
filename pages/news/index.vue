@@ -1,14 +1,9 @@
 <template>
   <div>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      :title="page.mainNewsTitle"
-      :tag-title="$route.query.tag"
-    >
+    <Section :title="page.mainNewsTitle" :tag-title="$route.query.tag">
       <Posts all />
     </Section>
     <Section
-      v-view="$utils.scrollCenterDetection"
       to="/news/comments"
       background
       title="Комментарии"
@@ -16,15 +11,11 @@
     >
       <Reviews is-comments />
     </Section>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      to="/news/media"
-      :title="page.reviewsTitle"
-    >
+    <Section to="/news/media" :title="page.reviewsTitle">
       <Reviews />
     </Section>
     <!--    <Section-->
-    <!--      v-view="$utils.scrollCenterDetection"-->
+    <!--      -->
     <!--      to="/news/university"-->
     <!--      :title="page.universityNewsTitle"-->
     <!--    >-->

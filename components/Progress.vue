@@ -1,5 +1,5 @@
 <template>
-  <div class="progress">
+  <div v-view="$utils.scrollCenterDetection" class="progress">
     <div v-scroll-element class="progress__year">{{ year }}</div>
     <div class="progress__slider-block">
       <ul ref="slider" class="progress__slider">

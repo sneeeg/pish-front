@@ -24,50 +24,36 @@
         </div>
 
         <div v-scroll-element="'right'" class="contacts-first-screen__image">
-          <img src="/i/tasks/1.png" alt="" />
+          <img
+            src="/i/tasks/1.png"
+            :alt="$store.state.default.settings.siteName"
+          />
         </div>
       </div>
     </Section>
     <Section background :title="page.common.title">
       <div class="contacts-common">
-        <a
-          v-if="false"
-          v-scroll-element
-          :href="`tel:${page.common.tel.href}`"
-          class="contact"
+        <a v-if="false" :href="`tel:${page.common.tel.href}`" class="contact"
           ><SvgIcon name="tel" /> <span>{{ page.common.tel.text }}</span></a
         >
-        <a
-          v-scroll-element
-          :href="`mailto:${page.common.email.href}`"
-          class="contact"
+        <a :href="`mailto:${page.common.email.href}`" class="contact"
           ><SvgIcon name="email" /> <span>{{ page.common.email.text }}</span></a
         >
       </div>
     </Section>
     <Section :title="page.press.title">
       <div class="contacts-press">
-        <a
-          v-if="false"
-          v-scroll-element
-          :href="`tel:${page.press.tel.href}`"
-          class="contact"
+        <a v-if="false" :href="`tel:${page.press.tel.href}`" class="contact"
           ><SvgIcon name="tel" /> <span>{{ page.press.tel.text }}</span></a
         >
-        <a
-          v-scroll-element
-          :href="`mailto:${page.press.email.href}`"
-          class="contact"
+        <a :href="`mailto:${page.press.email.href}`" class="contact"
           ><SvgIcon name="email" /> <span>{{ page.press.email.text }}</span></a
         >
       </div>
     </Section>
     <Section background :title="page.center.title">
       <div class="contacts-center">
-        <a
-          v-scroll-element
-          :href="`tel:${page.center.tel.href}`"
-          class="contact"
+        <a :href="`tel:${page.center.tel.href}`" class="contact"
           ><SvgIcon name="tel" /> <span>{{ page.center.tel.text }}</span></a
         >
       </div>

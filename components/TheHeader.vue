@@ -17,7 +17,7 @@
                 ? '/i/min-science-full.svg'
                 : '/i/min-science-full-en.svg'
             "
-            alt=""
+            :alt="$store.state.default.settings.siteName"
           />
         </SmartLink>
 
@@ -38,7 +38,7 @@
       <SmartLink v-will-change to="/" class="header__logo--full hover-opacity">
         <img
           :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"
-          alt=""
+          :alt="$store.state.default.settings.siteName"
         />
       </SmartLink>
 

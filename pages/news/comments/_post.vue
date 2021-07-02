@@ -18,16 +18,10 @@
         />
         <HTMLContent
           v-if="page.description"
-          v-scroll-element
           :html="page.description"
           class="post__description"
         />
-        <HTMLContent
-          v-scroll-element
-          for-news
-          :html="page.content"
-          class="post__body"
-        />
+        <HTMLContent for-news :html="page.content" class="post__body" />
         <PostSource
           v-if="page.source && page.source.href"
           :source="page.source"
@@ -35,7 +29,6 @@
       </article>
     </Section>
     <Section
-      v-view="$utils.scrollCenterDetection"
       to="/news/comments"
       title="Другие комментарии"
       arrow-text="Все комментарии"

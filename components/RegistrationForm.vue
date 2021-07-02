@@ -1,8 +1,7 @@
 <template>
-  <Section v-view="$utils.scrollCenterDetection" background>
+  <Section background>
     <form class="registration-form" @submit.prevent="submit">
       <SearchSelect
-        v-scroll-element
         :value="university"
         :options="searchOptions"
         class="registration-form__field"
@@ -18,7 +17,6 @@
 
       <CustomInput
         v-model.trim.lazy="$v.rector.$model"
-        v-scroll-element
         class="registration-form__field"
         :label="lang['registration.rector.label']"
         :placeholder="lang['registration.rector.placeholder']"
@@ -32,7 +30,6 @@
 
       <CustomInput
         v-model.trim.lazy="$v.email.$model"
-        v-scroll-element
         type="email"
         class="registration-form__field"
         :label="lang['registration.email.label']"
@@ -47,7 +44,6 @@
 
       <CustomInput
         v-model.trim.lazy="$v.phone.$model"
-        v-scroll-element
         type="tel"
         class="registration-form__field"
         :label="lang['registration.phone.label']"
@@ -60,7 +56,7 @@
         name="phone"
       />
 
-      <p v-scroll-element class="registration-form__policy">
+      <p class="registration-form__policy">
         {{ lang['registration.policy.text'] }}
         <SmartLink class="hover-opacity" :to="settings.policyLink">{{
           lang['registration.policy.link.text']
@@ -68,7 +64,6 @@
       </p>
 
       <Btn
-        v-scroll-element
         class="registration-form__btn"
         type="submit"
         :text="lang['registration.action']"

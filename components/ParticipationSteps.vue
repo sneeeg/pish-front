@@ -1,9 +1,8 @@
 <template>
-  <div v-scroll-element class="participation-steps">
+  <div class="participation-steps">
     <div
       v-for="(step, index) in steps"
       :key="step.id"
-      v-scroll-element
       class="participation-steps-item"
     >
       <div class="participation-steps-item__index">

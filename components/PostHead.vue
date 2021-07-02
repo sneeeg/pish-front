@@ -1,7 +1,7 @@
 <template>
   <div class="post-head">
-    <h1 v-scroll-element class="post-head__title _visually-h2">{{ title }}</h1>
-    <div v-scroll-element class="post-head-info">
+    <h1 class="post-head__title _visually-h2">{{ title }}</h1>
+    <div class="post-head-info">
       <template v-if="category">
         <span class="post-head-info__category">{{ category.text }}</span>
         <span class="post-head-info__separator"> / </span>
@@ -10,14 +10,14 @@
         $dayjs(date).format($constants.POST_DATE_FORMAT)
       }}</span>
     </div>
-    <ul v-if="tags && tags.length" v-scroll-element class="post-tags">
+    <ul v-if="tags && tags.length" class="post-tags">
       <li v-for="tag in tags" :key="tag.id">
         <SmartLink class="hover-color-accent" :to="getTagLink(tag)"
           >#{{ tag }}</SmartLink
         >
       </li>
     </ul>
-    <div v-if="picture" v-scroll-element class="post-head__picture">
+    <div v-if="picture" class="post-head__picture">
       <img :src="picture.src" :alt="picture.alt" />
     </div>
     <div
@@ -90,15 +90,14 @@ export default {
   &__picture {
     position: relative;
     width: 100%;
-    //height: 53.5rem;
+    height: 53.5rem;
     margin-top: 3.2rem;
 
     @include --tablet {
-      height: 40rem;
+      height: auto;
     }
 
     @include --mobile {
-      height: 26rem;
       margin-top: 3.2rem;
     }
 
@@ -121,7 +120,7 @@ export default {
 
     img {
       width: 100%;
-      height: auto;
+      height: inherit;
       object-fit: cover;
     }
   }

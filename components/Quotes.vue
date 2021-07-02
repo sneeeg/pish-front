@@ -1,6 +1,6 @@
 <template>
   <div class="quotes">
-    <div v-view="$utils.scrollCenterDetection">
+    <div>
       <MarqueeText
         v-if="quotes.length > 5"
         class="ticker"
@@ -24,7 +24,7 @@
       </MarqueeText>
 
       <div v-else class="_ticker-container">
-        <div v-scroll-element="'right'" class="ticker _chips">
+        <div class="ticker _chips">
           <div
             v-for="({ id, author }, i) in quotes"
             :key="id"

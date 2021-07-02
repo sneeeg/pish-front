@@ -3,7 +3,6 @@
     <article
       v-for="{ title, text } in events"
       :key="title"
-      v-scroll-element
       class="history-item"
     >
       <h4 class="history-item__title">{{ title }}</h4>

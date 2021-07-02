@@ -5,7 +5,7 @@
       <!--        <div v-scroll-element class="main-first-screen-head__logo">-->
       <!--          <img-->
       <!--            :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"-->
-      <!--            alt=""-->
+      <!--            :alt="$store.state.default.settings.siteName"-->
       <!--          />-->
       <!--        </div>-->
       <!--        <div class="main-first-screen-head__content">-->

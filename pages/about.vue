@@ -23,12 +23,7 @@
       />
     </Section>
 
-    <Section
-      id="progress"
-      v-view="$utils.scrollCenterDetection"
-      background
-      :title="page.progress.title"
-    >
+    <Section id="progress" background :title="page.progress.title">
       <Progress
         :year="page.progress.year"
         :active-stage="page.progress.activeStage"
@@ -36,11 +31,7 @@
       />
     </Section>
 
-    <Section
-      id="priority"
-      v-view="$utils.scrollCenterDetection"
-      :title="page.priorities.title"
-    >
+    <Section id="priority" :title="page.priorities.title">
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
 
@@ -48,24 +39,19 @@
       <SupportBlock :title="page.tasks.title" :sections="page.tasks.sections" />
     </Section>
 
-    <Section v-if="false" v-view="$utils.scrollCenterDetection">
+    <Section v-if="false">
       <PagesSection :pages="page.links" />
     </Section>
 
-    <Section
-      v-if="false"
-      id="architecture"
-      v-view="$utils.scrollCenterDetection"
-      :title="page.architecture.title"
-    >
+    <Section v-if="false" id="architecture" :title="page.architecture.title">
       <ArchitectureBlock :architecture="page.architecture" />
     </Section>
 
     <!--    <Section-->
-    <!--      v-view="$utils.scrollCenterDetection"-->
+    <!--      -->
     <!--      :title="page.documents.title"-->
     <!--    >-->
-    <!--      <Documents v-scroll-element :documents="page.documents.items" />-->
+    <!--      <Documents  :documents="page.documents.items" />-->
     <!--    </Section>-->
   </div>
 </template>

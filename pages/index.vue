@@ -11,20 +11,15 @@
       <Quotes :quotes="page.quotes" />
     </Section>
 
-    <Section v-if="false" v-view="$utils.scrollCenterDetection">
+    <Section v-if="false">
       <PagesSection :pages="page.links" />
     </Section>
 
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      to="/news"
-      :arrow-text="lang['news.all']"
-      :title="page.newsTitle"
-    >
+    <Section to="/news" :arrow-text="lang['news.all']" :title="page.newsTitle">
       <Posts />
     </Section>
 
-    <!--    <Section v-view="$utils.scrollCenterDetection" :title="page.history.title">-->
+    <!--    <Section :title="page.history.title">-->
     <!--      <TheHistory :events="page.history.events" />-->
     <!--    </Section>-->
   </div>

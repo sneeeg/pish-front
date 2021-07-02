@@ -2,7 +2,6 @@
   <div class="reviews">
     <div
       ref="reviewsList"
-      v-scroll-element
       :class="[
         'reviews-list',
         {

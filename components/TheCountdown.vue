@@ -1,11 +1,11 @@
 <template>
   <Section v-view="scrollHandler" :title="title" background>
     <div class="countdown">
-      <p v-scroll-element class="countdown__subtitle _visually-h5">
+      <p class="countdown__subtitle _visually-h5">
         {{ subtitle }}
       </p>
 
-      <div v-scroll-element class="timer">
+      <div class="timer">
         <div class="timer__item">
           <span class="timer__number">{{ padStart(days, 2, '0') }}</span>
           <span class="timer__label">{{
@@ -31,7 +31,6 @@
       <!--   TODO    -->
       <Btn
         v-if="false"
-        v-scroll-element
         :text="lang['base.sendRequest']"
         class="countdown__btn"
         is-link

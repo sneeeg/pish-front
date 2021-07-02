@@ -1,17 +1,9 @@
 <template>
   <div>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      :title="page.universityNewsTitle"
-      :tag-title="$route.query.tag"
-    >
+    <Section :title="page.universityNewsTitle" :tag-title="$route.query.tag">
       <Posts all type="university" />
     </Section>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      to="/news"
-      :title="lang['news.all']"
-    >
+    <Section to="/news" :title="lang['news.all']">
       <OtherPosts />
     </Section>
   </div>

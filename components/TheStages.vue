@@ -1,5 +1,5 @@
 <template>
-  <div v-scroll-element class="stages">
+  <div class="stages">
     <div
       v-for="(stage, i) in stages"
       :key="i"

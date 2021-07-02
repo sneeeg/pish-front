@@ -1,7 +1,7 @@
 <template>
   <div class="accordion-block">
     <Accordion :tasks="tasks" @task-switch="switch3dModel" />
-    <div v-scroll-element class="accordion-block__image-wrapper">
+    <div class="accordion-block__image-wrapper">
       <img :src="model3d" />
     </div>
   </div>

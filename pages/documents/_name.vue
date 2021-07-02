@@ -1,8 +1,8 @@
 <template>
   <div class="page">
-    <Section v-view="$utils.scrollCenterDetection">
-      <h1 v-scroll-element>{{ page.title }}</h1>
-      <HTMLContent v-scroll-element :html="page.detailText || page.content" />
+    <Section>
+      <h1>{{ page.title }}</h1>
+      <HTMLContent :html="page.detailText || page.content" />
     </Section>
   </div>
 </template>

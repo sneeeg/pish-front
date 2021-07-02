@@ -1,5 +1,5 @@
 <template>
-  <div v-view="$utils.scrollCenterDetection" class="page">
+  <div class="page">
     <div v-if="false" class="page__back">
       <ArrowLink
         v-if="routing.hasHistory"

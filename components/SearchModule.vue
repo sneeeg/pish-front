@@ -1,5 +1,5 @@
 <template>
-  <div v-scroll-element class="search-module">
+  <div class="search-module">
     <SearchForm
       v-model="request"
       class="search-module__form"

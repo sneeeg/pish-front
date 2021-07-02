@@ -14,7 +14,7 @@
       <slot name="default" />
     </div>
     <div v-else class="section__inner">
-      <div v-if="title && !tagTitle" v-scroll-element :class="['section-head']">
+      <div v-if="title && !tagTitle" :class="['section-head']">
         <h2 class="section-head__title">{{ title }}</h2>
         <ArrowLink
           v-if="to"
@@ -26,7 +26,7 @@
           "
         />
       </div>
-      <div v-if="tagTitle" v-scroll-element :class="['section-head']">
+      <div v-if="tagTitle" :class="['section-head']">
         <h2 class="section-head__title">
           <span>{{ lang['news.tagTitle'] }}</span
           ><span class="_colored"> #{{ tagTitle }} </span>

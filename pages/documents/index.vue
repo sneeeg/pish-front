@@ -1,12 +1,8 @@
 <template>
   <div>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      :title="page.documents.title"
-    >
+    <Section :title="page.documents.title">
       <SingleTabs
         v-model="currentCategoryId"
-        v-scroll-element
         :items="categories"
         @change="show"
       />
@@ -28,7 +24,6 @@ import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import DocumentsItem from '~/components/DocumentsItem'
 import SingleTabs from '~/components/SingleTabs'
-import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
 
 export default {
   name: 'Documents',
@@ -57,11 +52,7 @@ export default {
   created() {
     this.currentCategoryId = this.categories[0].id
   },
-  methods: {
-    show() {
-      setTimeout(() => scrollAnimation(this.$refs.list))
-    },
-  },
+  methods: {},
 }
 </script>
 

@@ -3,49 +3,41 @@
     <Section is-layout>
       <FirstScreen adaptive-top video :title="page.pageTitle" />
     </Section>
-    <!--    <Section v-view="$utils.scrollCenterDetection" background>-->
+    <!--    <Section background>-->
     <!--      <div class="participation-advertisement">-->
     <!--        <img-->
-    <!--          v-scroll-element-->
+    <!--          -->
     <!--          class="participation-advertisement__img"-->
     <!--          :src="-->
     <!--            $i18n.locale === 'ru'-->
     <!--              ? '/i/min-science-full.svg'-->
     <!--              : '/i/min-science-full-en.svg'-->
     <!--          "-->
-    <!--          alt=""-->
+    <!--          :alt="$store.state.default.settings.siteName"-->
     <!--        />-->
-    <!--        <HTMLContent v-scroll-element :html="page.advertisement"></HTMLContent>-->
+    <!--        <HTMLContent  :html="page.advertisement"></HTMLContent>-->
     <!--      </div>-->
     <!--    </Section>-->
 
-    <Section v-view="$utils.scrollCenterDetection" background>
+    <Section background>
       <ParticipationSteps :steps="page.participationSteps" />
     </Section>
-    <Section
-      id="requirements"
-      v-view="$utils.scrollCenterDetection"
-      :title="page.requirements.title"
-    >
+    <Section id="requirements" :title="page.requirements.title">
       <div
         v-for="(requirement, index) in page.requirements.items"
         :key="index"
         class="participation-rules"
       >
-        <div v-scroll-element="'left'" class="participation-rules__icon">
+        <div class="participation-rules__icon">
           <img
             :class="{ _IE: $store.state.responsive.browser.isIE }"
             :src="`/i/participation/${index + 1}.svg`"
-            alt=""
+            :alt="$store.state.default.settings.siteName"
           />
         </div>
-        <HTMLContent
-          v-scroll-element="'right'"
-          :html="requirement.content"
-        ></HTMLContent>
+        <HTMLContent :html="requirement.content"></HTMLContent>
         <Tabs
           v-if="requirement.sections && requirement.sections.length"
-          v-scroll-element
           class="participation-rules__tabs"
           :sections="requirement.sections"
         />
@@ -53,7 +45,6 @@
     </Section>
     <Section
       id="steps"
-      v-view="$utils.scrollCenterDetection"
       class="_mb-0"
       :title="page.steps.title"
       :has-overflow="false"
@@ -61,11 +52,7 @@
       <TheStages :stages="page.steps.sections"></TheStages>
     </Section>
 
-    <Section
-      id="stats"
-      v-view="$utils.scrollCenterDetection"
-      :title="page.stats.title"
-    >
+    <Section id="stats" :title="page.stats.title">
       <Tasks :content="page.stats.content"></Tasks>
     </Section>
   </div>

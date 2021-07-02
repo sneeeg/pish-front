@@ -75,7 +75,7 @@
         <img
           v-if="browser.isMobileSafari"
           src="/videos/arm2-last-frame.jpg"
-          alt=""
+          :alt="$store.state.default.settings.siteName"
         />
         <video
           ref="video"

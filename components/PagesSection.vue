@@ -3,7 +3,6 @@
     <SmartLink
       v-for="{ href, text, icon } in pages"
       :key="text"
-      v-scroll-element="'right'"
       :to="href"
       :class="['page-item', { _large: pages.length === 1 }]"
     >

@@ -1,26 +1,23 @@
 <template>
-  <div v-view="$utils.scrollCenterDetection" class="support">
+  <div class="support">
     <div class="support__head">
-      <h2 v-scroll-element class="support__title">{{ title }}</h2>
-      <p v-if="subtitle" v-scroll-element class="support__subtitle">
+      <h2 class="support__title">{{ title }}</h2>
+      <p v-if="subtitle" class="support__subtitle">
         {{ subtitle }}
       </p>
     </div>
     <div class="support__content">
-      <Tabs
-        v-scroll-element
-        class="support__tabs"
-        :sections="sections"
-        @change="changeImage"
-      />
-      <div
-        v-show="window.isDesktopSize"
-        ref="images"
-        v-scroll-element="'right'"
-        class="support__images"
-      >
-        <img src="/i/tasks/1.png" :style="{ height: '27.3rem' }" alt="" />
-        <img src="/i/tasks/2.png" alt="" />
+      <Tabs class="support__tabs" :sections="sections" @change="changeImage" />
+      <div v-show="window.isDesktopSize" ref="images" class="support__images">
+        <img
+          src="/i/tasks/1.png"
+          :style="{ height: '27.3rem' }"
+          :alt="$store.state.default.settings.siteName"
+        />
+        <img
+          src="/i/tasks/2.png"
+          :alt="$store.state.default.settings.siteName"
+        />
       </div>
     </div>
   </div>

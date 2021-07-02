@@ -7,20 +7,16 @@
     <!--      alt="Логотип"-->
     <!--    />-->
     <HTMLContent v-scroll-element class="blockquote__text" :html="text" />
-    <footer>
-      <div v-scroll-element="'left'" class="blockquote__photo">
+    <footer v-scroll-element>
+      <div class="blockquote__photo">
         <img :src="author.image" />
       </div>
       <div class="blockquote__author-block">
-        <cite v-scroll-element class="blockquote__name">{{ author.name }}</cite>
-        <div
-          v-if="author.position"
-          v-scroll-element
-          class="blockquote__position"
-        >
+        <cite class="blockquote__name">{{ author.name }}</cite>
+        <div v-if="author.position" class="blockquote__position">
           {{ author.position }}
         </div>
-        <div v-if="author.source" v-scroll-element class="blockquote__source">
+        <div v-if="author.source" class="blockquote__source">
           {{ author.source }}
         </div>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <div v-scroll-element class="documents-item">
+  <div class="documents-item">
     <div class="documents-item__date">
       {{ $dayjs(document.activeFrom).format('D MMMM YYYY') }}
     </div>

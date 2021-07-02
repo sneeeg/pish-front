@@ -2,7 +2,6 @@
   <div class="other-posts">
     <div
       ref="otherPostsList"
-      v-scroll-element
       :class="[
         'other-posts-list',
         { _flex: !sliderStatus, '_flex-sb': !sliderStatus && posts.length > 2 },
