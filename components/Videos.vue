@@ -57,7 +57,7 @@ export default {
     flex: 1 1 40%;
     max-width: calc(50% - 7rem);
 
-    @include --mobile {
+    @include --tablet {
       flex: 1 1 100%;
       max-width: 100%;
     }

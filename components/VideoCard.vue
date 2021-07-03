@@ -61,7 +61,7 @@ export default {
   background-color: $color_white;
 
   @include --tablet {
-    min-height: 44rem;
+    min-height: 47.9rem;
   }
 
   @include --mobile {
@@ -74,12 +74,8 @@ export default {
     width: 100%;
     height: 31.8rem;
 
-    @include --tablet {
-      height: 22.4rem;
-    }
-
     @include --mobile {
-      height: 20rem;
+      height: 18.85rem;
     }
   }
 
