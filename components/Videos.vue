@@ -30,7 +30,7 @@ export default {
 
     this.videos = await this.$api.instructions
       .get()
-      .then(({ data }) => data?.posts || [])
+      .then(({ data }) => data?.posts.reverse() || [])
   },
 }
 </script>
