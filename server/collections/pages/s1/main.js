@@ -18,22 +18,22 @@ module.exports = {
     },
     cells: [
       {
-        icon: '',
-        text: 'Ход программы',
-        counter: true,
-        href: '/about#progress',
-      },
-      {
         icon: 'build',
         text: 'Приоритеты программы',
         counter: false,
         href: '/about#priority',
       },
       {
-        icon: 'page-screen',
-        text: 'Задачи программы',
+        icon: 'user',
+        text: 'Комментарии о программе',
         counter: false,
-        href: '/about#tasks',
+        href: '/news/comments/',
+      },
+      {
+        icon: 'page-screen',
+        text: 'Помощь в регистрации',
+        counter: false,
+        href: '/instructions',
       },
       {
         icon: 'page-docs',

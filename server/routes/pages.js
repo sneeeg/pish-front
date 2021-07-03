@@ -5,8 +5,8 @@ import participation from '~/server/collections/pages/s1/participation'
 import registration from '~/server/collections/pages/s1/registration'
 import documents from '~/server/collections/pages/s1/documents'
 import contacts from '~/server/collections/pages/s1/contacts'
-import participants from '~/server/collections/pages/s1/participants'
-import universities from '~/server/collections/pages/s1/universities'
+// import participants from '~/server/collections/pages/s1/participants'
+// import universities from '~/server/collections/pages/s1/universities'
 import instructions from '~/server/collections/pages/s1/instructions'
 
 import mainEn from '~/server/collections/pages/en/main'
@@ -16,8 +16,8 @@ import participationEn from '~/server/collections/pages/en/participation'
 import registrationEn from '~/server/collections/pages/en/registration'
 import documentsEn from '~/server/collections/pages/en/documents'
 import contactsEn from '~/server/collections/pages/en/contacts'
-import participantsEn from '~/server/collections/pages/en/participants'
-import universitiesEn from '~/server/collections/pages/en/universities'
+// import participantsEn from '~/server/collections/pages/en/participants'
+// import universitiesEn from '~/server/collections/pages/en/universities'
 import instructionsEn from '~/server/collections/pages/en/instructions'
 
 import document from '~/server/collections/document'
@@ -33,8 +33,8 @@ const pages = {
     registration,
     documents,
     contacts,
-    participants,
-    universities,
+    // participants,
+    // universities,
     instructions,
   },
   en: {
@@ -45,8 +45,8 @@ const pages = {
     registration: registrationEn,
     documents: documentsEn,
     contacts: contactsEn,
-    participants: participantsEn,
-    universities: universitiesEn,
+    // participants: participantsEn,
+    // universities: universitiesEn,
     instructions: instructionsEn,
   },
 }
