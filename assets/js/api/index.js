@@ -5,6 +5,8 @@ import reviews from '~/assets/js/api/modules/reviews'
 import search from '~/assets/js/api/modules/search'
 import registration from '~/assets/js/api/modules/registration'
 import comments from '~/assets/js/api/modules/comments'
+import participants from '~/assets/js/api/modules/participants'
+import instructions from '~/assets/js/api/modules/instructions'
 
 export default ($axios) => ({
   config: config($axios),
@@ -14,4 +16,6 @@ export default ($axios) => ({
   search: search($axios),
   registration: registration($axios),
   comments: comments($axios),
+  participants: participants($axios),
+  instructions: instructions($axios),
 })
