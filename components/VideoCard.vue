@@ -7,7 +7,7 @@
         :preview="post.previewPicture"
       />
       <div class="video-preview__content">
-        <div class="video-preview-head">
+        <div v-if="false" class="video-preview-head">
           <span class="video-preview-head__date">{{
             $dayjs(post.activeFrom).format($constants.POST_DATE_FORMAT)
           }}</span>
@@ -93,7 +93,7 @@ export default {
   &__title {
     display: block;
     flex-grow: 1;
-    margin: 2.4rem 0;
+    margin: 0 0 2.4rem;
     line-height: 2.7rem;
 
     span {
@@ -101,7 +101,6 @@ export default {
     }
 
     @include --mobile {
-      margin-top: 1.6rem;
       line-height: 2.2rem;
     }
   }
