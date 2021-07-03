@@ -13,7 +13,7 @@
           }}</span>
         </div>
         <SmartLink :to="link" class="video-preview__title hover-opacity">
-          <span>{{ post.title }}</span>
+          <span v-html="post.title"></span>
         </SmartLink>
 
         <ArrowLink
@@ -72,7 +72,7 @@ export default {
     display: block;
     flex-shrink: 0;
     width: 100%;
-    height: 32rem;
+    height: 31.8rem;
 
     @include --tablet {
       height: 22.4rem;

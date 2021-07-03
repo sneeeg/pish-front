@@ -51,11 +51,11 @@ export default {
 }
 
 .videos-list {
-  @include flexGap(3rem);
+  @include flexGap(7rem);
 
   &__item {
     flex: 1 1 40%;
-    max-width: calc(50% - 3rem);
+    max-width: calc(50% - 7rem);
 
     @include --mobile {
       flex: 1 1 100%;
