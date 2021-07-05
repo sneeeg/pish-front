@@ -21,8 +21,8 @@
           }}</span>
         </div>
         <SmartLink :to="linkObject" class="post-preview__title hover-opacity">
-          <span>{{ post.title }}</span>
-          <span v-if="type === 'comments'">{{ post.description }}</span>
+          <span v-html="post.title"></span>
+          <span v-if="type === 'comments'" v-html="post.description"></span>
         </SmartLink>
 
         <ul v-if="post.tags && post.tags.length" class="post-preview__tags">
