@@ -8,6 +8,7 @@ import contacts from '~/server/collections/pages/s1/contacts'
 // import participants from '~/server/collections/pages/s1/participants'
 // import universities from '~/server/collections/pages/s1/universities'
 import instructions from '~/server/collections/pages/s1/instructions'
+import faq from '~/server/collections/pages/s1/faq'
 
 import mainEn from '~/server/collections/pages/en/main'
 import aboutEn from '~/server/collections/pages/en/about'
@@ -19,6 +20,7 @@ import contactsEn from '~/server/collections/pages/en/contacts'
 // import participantsEn from '~/server/collections/pages/en/participants'
 // import universitiesEn from '~/server/collections/pages/en/universities'
 import instructionsEn from '~/server/collections/pages/en/instructions'
+import faqEn from '~/server/collections/pages/en/faq'
 
 import document from '~/server/collections/document'
 
@@ -36,6 +38,7 @@ const pages = {
     // participants,
     // universities,
     instructions,
+    faq,
   },
   en: {
     main: mainEn,
@@ -48,6 +51,7 @@ const pages = {
     // participants: participantsEn,
     // universities: universitiesEn,
     instructions: instructionsEn,
+    faq: faqEn,
   },
 }
 
@@ -123,6 +127,15 @@ export default (pretender) => {
       getResponse(
         pages[request.requestHeaders['X-Bitrix-Site-Id']].participants
       ),
+    ]
+  })
+
+  // FAQ page
+  pretender.get('/api/pages/faq', (request) => {
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse(pages[request.requestHeaders['X-Bitrix-Site-Id']].faq),
     ]
   })
 

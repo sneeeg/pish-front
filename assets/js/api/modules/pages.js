@@ -39,6 +39,11 @@ export default ($axios) => ({
     return $axios.$get('/api/pages/participants')
   },
 
+  /* Getting FAQ page */
+  faq() {
+    return $axios.$get('/api/pages/faq')
+  },
+
   /* Instructions */
   instructions() {
     return $axios.$get('/api/pages/instructions')

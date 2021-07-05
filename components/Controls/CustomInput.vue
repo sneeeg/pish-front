@@ -3,7 +3,9 @@
     <label v-if="label" :for="name" class="custom-input__label">{{
       label
     }}</label>
+
     <input
+      v-if="type !== 'textarea'"
       :id="name"
       ref="input"
       class="custom-input__input"
@@ -14,6 +16,22 @@
       :placeholder="placeholder"
       @input="$emit('input', $event.target.value)"
     />
+
+    <textarea
+      v-else
+      :id="name"
+      ref="input"
+      rows="10"
+      cols="20"
+      class="custom-input__input"
+      :value="value"
+      :name="name"
+      :aria-label="placeholder"
+      :placeholder="placeholder"
+      @input="$emit('input', $event.target.value)"
+    >
+    </textarea>
+
     <div v-if="errorText" class="custom-input__error">
       {{ errorText }}
     </div>
@@ -91,6 +109,7 @@ export default {
     background: transparent;
     transition: border-color 0.5s ease;
     appearance: none;
+    resize: none;
 
     //&:focus {
     //  border-color: $color_accent;

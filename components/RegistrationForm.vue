@@ -153,7 +153,6 @@ export default {
       const data = {
         rector: this.rector,
         university: this.university,
-        universityError: '',
         email: this.email,
         phone: this.phone,
       }

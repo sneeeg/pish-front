@@ -24,7 +24,7 @@ module.exports = {
         href: '/about#progress',
       },
       {
-        icon: 'page-screen',
+        icon: 'user',
         text: 'Задачи программы',
         counter: false,
         href: '/about#tasks',
@@ -36,10 +36,10 @@ module.exports = {
         href: '/faq',
       },
       {
-        icon: 'user',
-        text: 'О регистрации',
+        icon: 'page-screen',
+        text: 'Как зарегистрироваться?',
         counter: false,
-        href: '/contacts',
+        href: '/instructions',
       },
     ],
   },
