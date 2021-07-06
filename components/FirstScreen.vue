@@ -296,6 +296,7 @@ export default {
     position: absolute;
     top: 10rem;
     right: -10rem;
+    z-index: -1;
     width: 71.6rem;
     height: 43.5rem;
     background-repeat: no-repeat;

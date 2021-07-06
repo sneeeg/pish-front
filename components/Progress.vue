@@ -250,16 +250,16 @@ export default {
       @include --mobile {
         overflow: visible;
 
-        &::after {
-          position: absolute;
-          top: 0;
-          left: 100%;
-          z-index: 1;
-          width: 2rem;
-          height: 100%;
-          background: linear-gradient(to left, $color_background, transparent);
-          content: '';
-        }
+        //&::after {
+        //  position: absolute;
+        //  top: 0;
+        //  left: 100%;
+        //  z-index: 1;
+        //  width: 2rem;
+        //  height: 100%;
+        //  background: linear-gradient(to left, $color_background, transparent);
+        //  content: '';
+        //}
       }
     }
   }
