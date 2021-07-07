@@ -14,7 +14,7 @@
         </nuxt-link>
 
         <address class="footer__info">
-          <a :href="lang['footer.tel.href']"
+          <a :href="`tel:${lang['footer.tel.href']}`"
             ><span>{{ lang['footer.tel.text'] }}</span></a
           >
           <a :href="`mailto:${lang['footer.email']}`"
