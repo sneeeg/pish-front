@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         icon: 'user',
-        text: 'Комментарии о программе',
+        text: 'Комментарии о программе',
         counter: false,
         href: '/news/comments/',
       },

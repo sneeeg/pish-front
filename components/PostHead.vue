@@ -1,6 +1,6 @@
 <template>
   <div class="post-head">
-    <h1 class="post-head__title _visually-h2">{{ title }}</h1>
+    <h1 class="post-head__title _visually-h2" v-html="title"></h1>
     <div class="post-head-info">
       <template v-if="category">
         <span class="post-head-info__category">{{ category.text }}</span>

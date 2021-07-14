@@ -13,7 +13,7 @@
     >
       <div ref="firstScreen" class="first-screen__content">
         <div
-          v-if="!major || majorBackgroungJPG"
+          v-if="(!major || majorBackgroungJPG) && !about"
           v-scroll-element="'right'"
           :class="[
             'first-screen__background',
@@ -69,6 +69,17 @@
           is-link
           :to="settings.lkLink"
         />
+
+        <div
+          v-if="videoAbout"
+          v-scroll-element="'right'"
+          class="first-screen__video-about"
+        >
+          <MediaPlayer
+            :video-id="videoAbout.code"
+            :preview="videoAbout.preview"
+          />
+        </div>
       </div>
 
       <div v-if="video" :class="['first-screen__video', { _IE: browser.isIE }]">
@@ -108,10 +119,11 @@ import gsap from 'gsap'
 import HTMLContent from '~/components/utils/HTMLContent'
 import Btn from '~/components/controls/Btn'
 import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
+import MediaPlayer from '~/components/MediaPlayer'
 
 export default {
   name: 'FirstScreen',
-  components: { Btn, HTMLContent },
+  components: { MediaPlayer, Btn, HTMLContent },
   props: {
     title: {
       type: String,
@@ -156,6 +168,10 @@ export default {
     htmlContent: {
       type: String,
       default: '',
+    },
+    videoAbout: {
+      type: Object,
+      default: null,
     },
   },
   data() {
@@ -385,13 +401,13 @@ export default {
     max-width: 56rem;
 
     &._about {
-      @include --tablet {
-        margin-top: 30rem;
-      }
-
-      @include --mobile {
-        margin-top: 15rem;
-      }
+      //@include --tablet {
+      //  margin-top: 30rem;
+      //}
+      //
+      //@include --mobile {
+      //  margin-top: 15rem;
+      //}
     }
   }
 
@@ -449,6 +465,26 @@ export default {
 
     img {
       z-index: -1;
+    }
+  }
+
+  &__video-about {
+    position: absolute;
+    top: calc(50% - 10rem);
+    right: 0;
+    width: 58.3rem;
+    height: 32.8rem;
+
+    @include --tablet {
+      position: static;
+      width: 100%;
+      height: 38.9rem;
+      margin-top: 4.2rem;
+    }
+
+    @include --mobile {
+      height: 18.77rem;
+      margin-top: 3.2rem;
     }
   }
 

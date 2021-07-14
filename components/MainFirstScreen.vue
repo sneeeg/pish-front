@@ -56,9 +56,10 @@
 
               <Countdown v-else-if="cell.counter" />
 
-              <div class="main-first-screen-cell__title _visually-h4">
-                {{ cell.text }}
-              </div>
+              <div
+                class="main-first-screen-cell__title _visually-h4"
+                v-html="cell.text"
+              ></div>
 
               <ArrowLink
                 class="main-first-screen-cell__link"

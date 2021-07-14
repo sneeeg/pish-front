@@ -1,7 +1,7 @@
 <template>
   <div ref="player" class="media-player">
     <div :class="['media-player__preview', { _play: isPlay }]">
-      <img :src="preview.src" alt="preview.alt" />
+      <img :src="preview.src" :alt="preview.alt" />
     </div>
     <button
       :class="['media-player__play-btn', { _play: isPlay }]"
