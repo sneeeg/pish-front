@@ -25,9 +25,9 @@ module.exports = {
       },
       {
         icon: 'user',
-        text: 'Комментарии о программе',
+        text: 'Чек-лист для стратпроектов',
         counter: false,
-        href: '/news/comments/',
+        href: '/news/sotrudniki-sotsiotsentra-i-eks',
       },
       {
         icon: 'page-screen',
