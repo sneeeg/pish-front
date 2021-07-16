@@ -5,6 +5,11 @@ export default [
     text: 'Конкурсный отбор | bulb',
   },
   {
+    id: 62,
+    parent: 50,
+    text: 'Подкатегория',
+  },
+  {
     id: 51,
     parent: 0,
     text: 'Подача заявки | build-2',

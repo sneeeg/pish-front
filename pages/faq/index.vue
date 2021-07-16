@@ -20,7 +20,7 @@ import FaqForm from '~/components/FaqForm'
 import FaqCategories from '~/components/FaqCategories'
 
 export default {
-  name: 'Faq',
+  name: 'Index',
   components: { FaqCategories, FaqForm, Section },
   mixins: [pageDataFetch, pageHead, pageDefault],
 }

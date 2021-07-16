@@ -82,7 +82,11 @@ body {
   &__back {
     @include container;
     display: block;
-    margin: 3.8rem auto 0;
+    margin: 6rem auto 0;
+
+    @include --mobile {
+      margin-top: 4.2rem;
+    }
 
     > * {
       width: fit-content;

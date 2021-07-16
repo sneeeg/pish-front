@@ -3,7 +3,13 @@
     <TheHeader />
 
     <div id="main" v-will-change class="main _default">
-      <Nuxt :key="$route.fullPath" />
+      <Nuxt
+        :key="
+          $utils.getPageNameByRoute($route.name) === 'faq-categoryId'
+            ? $route.name
+            : $route.fullPath
+        "
+      />
     </div>
 
     <TheFooter />
@@ -15,6 +21,8 @@
     <transition name="fade">
       <DocPopup v-if="$store.state.default.popup.isShow" />
     </transition>
+
+    <portal-target name="popups"> </portal-target>
   </div>
 </template>
 

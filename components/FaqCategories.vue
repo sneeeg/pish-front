@@ -27,12 +27,15 @@ export default {
       .then(({ data }) => data?.categories || [])
 
     this.categories = categories.reduce((acc, item) => {
+      if (item.parent !== 0) return acc
+
       const itemFields = item.text.split('|')
       const category = {}
 
       category.id = item.id
       category.text = itemFields[0].trim()
       category.icon = itemFields[1].trim()
+      category.href = `/faq/${item.id}`
 
       acc.push(category)
       return acc

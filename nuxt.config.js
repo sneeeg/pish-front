@@ -85,6 +85,7 @@ export default {
     '@nuxtjs/dayjs',
     'vue-scrollto/nuxt',
     '@nuxtjs/yandex-metrika',
+    'portal-vue/nuxt',
   ],
 
   yandexMetrika: {
