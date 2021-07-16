@@ -30,8 +30,8 @@ export default {
 .faq {
   &__lead {
     max-width: 78.7rem;
-    line-height: 2.7rem;
     margin-bottom: 6.4rem;
+    line-height: 2.7rem;
 
     @include --mobile {
       margin-bottom: 4.2rem;

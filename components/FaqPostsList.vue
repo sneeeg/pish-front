@@ -49,8 +49,8 @@ export default {
   max-width: 89.3rem;
 
   &__title {
-    font-weight: bold;
     margin-bottom: 4rem;
+    font-weight: bold;
 
     @include --mobile {
       margin-bottom: 3.2rem;
@@ -67,10 +67,10 @@ export default {
 }
 
 .faq-posts-list-item {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
   padding: 2rem;
   background-color: $color_white;
 
@@ -81,9 +81,9 @@ export default {
 
   &__icon {
     @include box(1rem);
-    color: $color_accent;
-    margin-left: 1.6rem;
     flex-shrink: 0;
+    margin-left: 1.6rem;
+    color: $color_accent;
   }
 
   &._outlined {

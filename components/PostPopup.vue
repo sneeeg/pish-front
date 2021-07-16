@@ -81,11 +81,16 @@ export default {
 .post-popup {
   position: relative;
   max-width: $width_container;
+  max-height: calc(100vh - 8rem);
   margin: 4rem 2rem;
   padding: 7.2rem 3.2rem;
-  max-height: 70vh;
   overflow-y: scroll;
   background-color: $color_white;
+
+  @include --mobile {
+    max-height: 100vh;
+    margin: 0;
+  }
 
   &__close {
     @include btn-reset;
