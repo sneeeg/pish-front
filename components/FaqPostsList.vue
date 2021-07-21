@@ -15,7 +15,7 @@
         ]"
         :to="{ ...$route, ...{ query: { post: item.slug } } }"
       >
-        <div class="faq-posts-list-item__title">{{ item.title }}</div>
+        <div class="faq-posts-list-item__title" v-html="item.description"></div>
         <SvgIcon class="faq-posts-list-item__icon" name="arrow-right" />
       </SmartLink>
     </div>

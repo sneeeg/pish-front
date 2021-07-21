@@ -47,14 +47,15 @@ export default {
   display: flex;
   flex-direction: column;
   background-color: $color_white;
+  min-height: 25rem;
+
+  @include --mobile {
+    min-height: 20rem;
+  }
 
   &__content {
-    min-height: 25rem;
+    @include box(100%);
     padding: 2.4rem;
-
-    @include --mobile {
-      min-height: auto;
-    }
   }
 
   &__title {

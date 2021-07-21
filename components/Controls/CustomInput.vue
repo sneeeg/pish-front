@@ -14,7 +14,7 @@
       :name="name"
       :aria-label="placeholder"
       :placeholder="placeholder"
-      @input="$emit('input', $event.target.value)"
+      @input="update"
     />
 
     <textarea
@@ -82,6 +82,18 @@ export default {
 
   beforeDestroy() {
     this.phoneMask?.destroy()
+  },
+
+  methods: {
+    update(e) {
+      let value = e.target.value
+
+      if (this.phoneMask && value.length > 16) {
+        value = value.substr(0, value.length - 1)
+      }
+
+      this.$emit('input', value)
+    },
   },
 }
 </script>

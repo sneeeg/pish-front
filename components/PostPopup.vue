@@ -7,7 +7,7 @@
         aria-label="Закрыть"
         @click="closePopup"
       ></button>
-      <div class="post-popup__title _visually-h5">{{ title }}</div>
+      <div class="post-popup__title _visually-h5" v-html="title"></div>
       <HTMLContent class="post-popup__text" :html="content"></HTMLContent>
     </div>
   </div>

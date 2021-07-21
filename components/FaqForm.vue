@@ -144,7 +144,7 @@ export default {
         isShow: true,
         title: this.lang['faq.done.title'],
         text: this.lang['faq.done.text'],
-        to: '',
+        href: '',
       })
 
       this.$v.$reset()

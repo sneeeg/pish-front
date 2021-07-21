@@ -20,7 +20,9 @@ export default {
     }
   },
   async fetch() {
-    this.categories = this.$utils.fillEmptyArray({}, 4)
+    this.categories = this.$utils.fillEmptyArray({}, 6)
+
+    await this.$utils.delay(2000, true)
 
     const categories = await this.$api.faq
       .getCategories()

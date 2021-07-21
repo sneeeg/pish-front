@@ -37,9 +37,9 @@ module.exports = {
       },
       {
         icon: 'page-docs',
-        text: 'Информация для СМИ',
+        text: 'Ответы на вопросы',
         counter: false,
-        href: '/contacts',
+        href: '/faq',
       },
     ],
   },

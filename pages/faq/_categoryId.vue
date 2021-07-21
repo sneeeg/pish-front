@@ -30,7 +30,7 @@
       <transition name="fade">
         <PostPopup
           v-if="popupPost"
-          :title="popupPost.title"
+          :title="popupPost.description"
           :content="popupPost.content"
         />
       </transition>
@@ -96,22 +96,21 @@ export default {
       }
     },
     mainCategoryPosts() {
-      return this.posts.filter(
-        (post) => String(post.category.id) === String(this.mainCategory.id)
-      )
+      return this.posts
+        .filter(
+          (post) => String(post.category.id) === String(this.mainCategory.id)
+        )
+        .reverse()
     },
     isPageEmpty() {
       return !this.categories.length && !this.mainCategoryPosts.length
     },
   },
-  mounted() {
-    console.log(this.categories, this.posts)
-  },
   methods: {
     getPostsByCategoryId(id) {
-      return this.posts.filter(
-        (item) => String(item.category.id) === String(id)
-      )
+      return this.posts
+        .filter((item) => String(item.category.id) === String(id))
+        .reverse()
     },
   },
 }
