@@ -1,27 +1,36 @@
 <template>
   <div class="quotes">
     <div>
-      <MarqueeText
-        v-if="quotes.length > 5"
-        class="ticker"
-        :paused="window.isDesktopSize && isPaused"
-        :repeat="10"
-        :duration="80"
-        @mouseover="isPaused = true"
-        @mouseleave="isPaused = false"
-      >
-        <div
-          v-for="({ id, author }, i) in quotes"
-          :key="id"
-          class="ticker__item hover-opacity"
-          @click="selectSlide(i)"
+      <div v-if="quotes.length > 5" ref="container">
+        <MarqueeText
+          class="ticker"
+          :paused="window.isDesktopSize && isPaused"
+          :repeat="10"
+          :duration="80"
+          @mouseover="
+            $refs.container
+              .querySelectorAll('.marquee-text-text')
+              .forEach((item) => item.classList.add('_paused'))
+          "
+          @mouseleave="
+            $refs.container
+              .querySelectorAll('.marquee-text-text')
+              .forEach((item) => item.classList.remove('_paused'))
+          "
         >
-          <div class="ticker__photo">
-            <img :src="author.image" />
+          <div
+            v-for="({ id, author }, i) in quotes"
+            :key="id"
+            class="ticker__item hover-opacity"
+            @click="selectSlide(i)"
+          >
+            <div class="ticker__photo">
+              <img :src="author.image" />
+            </div>
+            <p class="ticker__name">{{ author.name }}</p>
           </div>
-          <p class="ticker__name">{{ author.name }}</p>
-        </div>
-      </MarqueeText>
+        </MarqueeText>
+      </div>
 
       <div v-else class="_ticker-container">
         <div class="ticker _chips">
@@ -65,6 +74,8 @@
 <script>
 import { mapState } from 'vuex'
 import MarqueeText from 'vue-marquee-text-component'
+import Impetus from 'impetus'
+import gsap from 'gsap'
 import Slider from '~/assets/js/modules/slider.js'
 
 import Blockquote from '~/components/Blockquote'
@@ -83,6 +94,7 @@ export default {
       slider: null,
       ticker: null,
       isPaused: false,
+      impetus: null,
     }
   },
   computed: {
@@ -98,9 +110,21 @@ export default {
     this.$watch('window.isTabletSize', () => {
       this.updateSlider()
     })
+
+    this.impetus = new Impetus({
+      source: this.$refs.container,
+      update: (x, y) => {
+        const items = this.$refs.container.querySelectorAll('.ticker__item')
+
+        items.forEach((item) => {
+          gsap.to(item, { x })
+        })
+      },
+    })
   },
   beforeDestroy() {
     this.destroySlider()
+    this.impetus?.destroy()
   },
   methods: {
     initSlider() {
@@ -137,6 +161,14 @@ export default {
 <style lang="scss">
 .quotes {
   @include padding-section;
+
+  .ticker {
+    .marquee-text-text {
+      &._paused {
+        animation-play-state: paused;
+      }
+    }
+  }
 
   &__slider-block {
     @include container;
