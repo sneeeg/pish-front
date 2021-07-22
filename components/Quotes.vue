@@ -7,16 +7,8 @@
           :paused="window.isDesktopSize && isPaused"
           :repeat="10"
           :duration="80"
-          @mouseover="
-            $refs.container
-              .querySelectorAll('.marquee-text-text')
-              .forEach((item) => item.classList.add('_paused'))
-          "
-          @mouseleave="
-            $refs.container
-              .querySelectorAll('.marquee-text-text')
-              .forEach((item) => item.classList.remove('_paused'))
-          "
+          @mouseover="isPaused = true"
+          @mouseleave="isPaused = false"
         >
           <div
             v-for="({ id, author }, i) in quotes"
@@ -117,7 +109,7 @@ export default {
         const items = this.$refs.container.querySelectorAll('.ticker__item')
 
         items.forEach((item) => {
-          gsap.to(item, { x })
+          gsap.set(item, { x })
         })
       },
     })
