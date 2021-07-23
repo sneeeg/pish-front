@@ -5,21 +5,23 @@
         <MarqueeText
           class="ticker"
           :paused="window.isDesktopSize && isPaused"
-          :repeat="10"
+          :repeat="20"
           :duration="80"
           @mouseover="isPaused = true"
           @mouseleave="isPaused = false"
         >
-          <div
-            v-for="({ id, author }, i) in quotes"
-            :key="id"
-            class="ticker__item hover-opacity"
-            @click="selectSlide(i)"
-          >
-            <div class="ticker__photo">
-              <img :src="author.image" />
+          <div class="ticker__items">
+            <div
+              v-for="({ id, author }, i) in quotes"
+              :key="id"
+              class="ticker__item hover-opacity"
+              @click="selectSlide(i)"
+            >
+              <div class="ticker__photo">
+                <img :src="author.image" />
+              </div>
+              <p class="ticker__name">{{ author.name }}</p>
             </div>
-            <p class="ticker__name">{{ author.name }}</p>
           </div>
         </MarqueeText>
       </div>
@@ -103,13 +105,21 @@ export default {
       this.updateSlider()
     })
 
+    setTimeout(() => {
+      const items = this.$refs.container.querySelectorAll('.ticker__items')
+
+      items.forEach((item) => {
+        gsap.set(item, { x: -12000 })
+      })
+    })
+
     this.impetus = new Impetus({
       source: this.$refs.container,
       update: (x, y) => {
-        const items = this.$refs.container.querySelectorAll('.ticker__item')
+        const items = this.$refs.container.querySelectorAll('.ticker__items')
 
         items.forEach((item) => {
-          gsap.set(item, { x })
+          gsap.set(item, { x: -12000 + x })
         })
       },
     })
@@ -155,6 +165,8 @@ export default {
   @include padding-section;
 
   .ticker {
+    cursor: grab;
+
     .marquee-text-text {
       &._paused {
         animation-play-state: paused;
@@ -250,6 +262,10 @@ export default {
   }
 
   .marquee-text-text {
+    display: flex;
+  }
+
+  &__items {
     display: flex;
   }
 
