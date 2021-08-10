@@ -29,7 +29,7 @@
             >{{ lang['base.lk'] }}</SmartLink
           >
 
-          <LangToggler v-if="false" />
+          <LangToggler v-if="window.isDesktopSize" />
         </div>
       </div>
     </div>

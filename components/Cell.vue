@@ -46,8 +46,8 @@ export default {
   @include skeletonContainer;
   display: flex;
   flex-direction: column;
-  background-color: $color_white;
   min-height: 25rem;
+  background-color: $color_white;
 
   @include --mobile {
     min-height: 20rem;
