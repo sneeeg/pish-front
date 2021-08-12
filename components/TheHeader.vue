@@ -29,7 +29,7 @@
             >{{ lang['base.lk'] }}</SmartLink
           >
 
-          <LangToggler v-if="window.isDesktopSize" />
+          <LangToggler v-show="false" v-if="window.isDesktopSize" />
         </div>
       </div>
     </div>
@@ -186,10 +186,6 @@ export default {
     align-items: center;
     //margin-right: 4rem;
     color: $color_red;
-
-    &:not(:last-child) {
-      margin-right: 4rem;
-    }
 
     &::before {
       @include box(2rem);
