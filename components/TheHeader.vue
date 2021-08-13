@@ -9,7 +9,11 @@
         <SmartLink
           v-will-change
           :to="settings.mainLink"
-          class="header__logo hover-opacity"
+          :class="[
+            'header__logo',
+            'hover-opacity',
+            { _en: $i18n.locale === 'en' },
+          ]"
         >
           <img
             :src="
@@ -35,7 +39,15 @@
     </div>
 
     <div v-will-change class="header__content gsap_header__content">
-      <SmartLink v-will-change to="/" class="header__logo--full hover-opacity">
+      <SmartLink
+        v-will-change
+        to="/"
+        :class="[
+          'header__logo--full',
+          'hover-opacity',
+          { _en: $i18n.locale === 'en' },
+        ]"
+      >
         <img
           :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"
           :alt="$store.state.default.settings.siteName"
@@ -151,16 +163,31 @@ export default {
       height: 3.2rem;
     }
 
+    &._en {
+      width: 16rem;
+      height: 4.5rem;
+
+      @include --tablet {
+        width: 14rem;
+        height: 3.9rem;
+      }
+
+      @include --mobile {
+        width: 12rem;
+        height: 3.3rem;
+      }
+    }
+
     &--full {
       position: relative;
       flex-shrink: 0;
       width: 38rem;
-      height: 7.3rem;
+      height: 7.46rem;
       margin-right: auto;
 
       @include --tablet {
         width: 32rem;
-        height: 6.2rem;
+        height: 6.28rem;
       }
 
       @include --mobile {
@@ -171,6 +198,21 @@ export default {
       img {
         width: 100%;
         height: 100%;
+      }
+
+      &._en {
+        width: 31.1rem;
+        height: 8rem;
+
+        @include --tablet {
+          width: 28rem;
+          height: 7.2rem;
+        }
+
+        @include --mobile {
+          width: 18rem;
+          height: 4.6rem;
+        }
       }
     }
 

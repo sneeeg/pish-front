@@ -2,7 +2,10 @@
   <footer class="footer">
     <div class="footer__content">
       <div class="footer__row">
-        <nuxt-link to="/" class="footer__logo">
+        <nuxt-link
+          to="/"
+          :class="['footer__logo', { _en: $i18n.locale === 'en' }]"
+        >
           <img
             :src="
               $i18n.locale === 'ru'
@@ -92,7 +95,7 @@ export default {
 
   &__logo {
     width: 24.6rem;
-    height: 4.7rem;
+    height: 4.83rem;
 
     @include --tablet {
       width: 18rem;
@@ -106,6 +109,20 @@ export default {
     img {
       width: 100%;
       height: 100%;
+    }
+
+    &._en {
+      width: 20.6rem;
+      height: 5.3rem;
+
+      @include --tablet {
+        width: 16rem;
+        height: 4.1rem;
+      }
+
+      @include --mobile {
+        margin-bottom: 3rem;
+      }
     }
   }
 
