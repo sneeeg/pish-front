@@ -5,6 +5,7 @@
     <div id="main" v-will-change class="main _default">
       <Nuxt
         :key="
+          $route.name &&
           $utils.getPageNameByRoute($route.name) === 'faq-categoryId'
             ? $route.name
             : $route.fullPath
