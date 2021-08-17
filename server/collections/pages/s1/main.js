@@ -37,9 +37,9 @@ module.exports = {
       },
       {
         icon: 'page-docs',
-        text: 'СМИ о программе',
+        text: 'Ответы на вопросы',
         counter: false,
-        href: '/news/media',
+        href: '/faq',
       },
     ],
   },

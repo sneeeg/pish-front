@@ -1,13 +1,13 @@
 module.exports = {
   id: 7, // id
-  title: 'Контакты | ПРИОРИТЕТ 2030', // Заголовок на вкладке
-  metaTitle: 'Контакты', // Мета заголовок
-  metaDescription: 'Контакты', // Мета описание
+  title: 'Contacts | Priority 2030', // Заголовок на вкладке
+  metaTitle: 'Contacts', // Мета заголовок
+  metaDescription: 'Contacts', // Мета описание
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
-  pageTitle: 'Контакты',
+  pageTitle: 'Contacts',
   press: {
-    title: 'Пресс-служба',
+    title: 'Press office',
     tel: {
       text: '+7 (499) 271-55-72',
       href: '74992715572',
@@ -18,7 +18,7 @@ module.exports = {
     },
   },
   common: {
-    title: 'По общим вопросам',
+    title: 'Contact information',
     tel: {
       text: '+7 (499) 271-55-72',
       href: '74992715572',
@@ -29,7 +29,7 @@ module.exports = {
     },
   },
   center: {
-    title: 'Колл-центр',
+    title: 'Call center',
     tel: {
       text: '+7 (499) 705-71-90',
       href: '74997057190',
@@ -43,9 +43,9 @@ module.exports = {
     },
   },
   reference: {
-    title: 'Оператор программы Приоритет 2030',
-    content: `<p>ФГАНУ &laquo;Социоцентр&raquo;&nbsp;&mdash; подведомственное учреждение Министерства науки и&nbsp;высшего образования Российской Федерации. Осуществляет организационно-техническое, информационное, методическое, экспертно-аналитическое сопровождение программы &laquo;Приоритет 2030&raquo; в&nbsp;соответствии с&nbsp;постановлением Правительства Российской Федерации &#8470;&nbsp;729 от&nbsp;13&nbsp;мая 2021&nbsp;года.</p>
-      <p>Адрес: 101000, г. Москва, Потаповский переулок 5с4. </br> Врио директора: Филиппов Борис Юрьевич
+    title: 'The management center of the Priority 2030 program',
+    content: `<p>The Federal state autonomous scientific institution ‘Sociocenter’ is subordinate to the Ministry of science and higher education of the Russian Federation.</p><p>It provides organizational, technical, informational, methodological, expert and analytical support to the Priority 2030 program in accordance with the decree of the Government of the Russian Federation No. 729, May 13, 2021.</p>
+      <p>Address: 5 building 4, Potapovsky lane, Moscow, Russia, 101000 </br> Acting Director: Boris Filippov
 
 </p>`,
   },
