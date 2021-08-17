@@ -1,103 +1,40 @@
 module.exports = {
   id: 2, // id
-  title: 'О программе | ПРИОРИТЕТ 2030', // Заголовок на вкладке
-  metaTitle: 'О программе', // Мета заголовок
-  metaDescription: 'О программе', // Мета описание
+  title: 'About the program | PRIORITY 2030', // Заголовок на вкладке
+  metaTitle: 'About the program', // Мета заголовок
+  metaDescription: 'About the program', // Мета описание
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
-  pageTitle: 'О программе',
-  lead: '<p><strong style="color: inherit">Цель программы Приоритет 2030 – сформировать широкую группу университетов, которые станут лидерами в создании нового научного знания, технологий и разработок для внедрения в российскую экономику и социальную сферу.</strong></p> <p>Университеты, ставшие участниками программы, будут вырабатывать и распространять по всей системе высшего образования лучшие практики научно-исследовательской, инновационной и образовательной деятельности, повысят привлекательность жизни и работы в регионах России, в том числе для иностранных студентов и зарубежных ученых. Они позволят сформировать у выпускников российских университетов навыки и умения, необходимые для их успеха на современном рынке труда и в будущем в условиях стремительного научно-технологического прогресса.</p>',
-  council: {
-    title: 'Совет по господдержке программы при Правительстве',
-    items: [
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-    ],
-  },
-  commission: {
-    title: 'Конкурсная комиссия',
-    items: [
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-      {
-        name: 'Фальков Валерий Николаевич',
-        description: 'Министр науки и высшего образования Российской Федерации',
-        image: '/i/persons/1.jpg',
-      },
-    ],
+  pageTitle: 'About the program',
+  lead: '<p><strong style="color: inherit">The goal of the Priority 2030 program is to form a large group of universities that will become the leaders in creating new scientific knowledge, technology, and developments for introduction into the economy and social sphere in Russia.</strong></p> <p>The participating universities will develop the best practices in scientific research, innovation, and education and promote them throughout the system of higher education. They will also improve the image of life and work in Russia and make them more attractive to both local and foreign students and scientists.</p> <p>These practices will help graduates of Russian universities get the knowledge and skills necessary for their success in today’s labor market and in future, in the fast scientific and technological progress.</p>',
+  video: {
+    preview: {
+      src: '/i/about/cover.jpg',
+      alt: 'Priority 2030: Leaders are made, not born',
+    },
+    code: 'rhITU3Tcjmg',
   },
   tasks: {
-    title: 'Задачи программы',
+    title: 'Goals of the program',
     sections: [
       {
-        title: 'Имидж науки и высшего образования',
+        title: 'Improving the image of science and higher education ',
         items: [
-          'Отбор и поддержка не менее 100 лучших университетов страны',
-          'Развитие сотрудничества университетов с научными организациями и предприятиями реального сектора экономики и социальной сферы',
-          'Создание передовых научно-исследовательских лабораторий, конструкторских центров, центров прототипирования, центров трансфера технологий и других научных и инновационных подразделений, привлечение в российские университеты ведущих мировых ученых',
-          'Создание условий для полноценного включения студентов и аспирантов в научно-исследовательскую и инновационную деятельность, реализацию творческих и социально ориентированных проектов',
-          'Привлечение иностранных граждан для обучения в университетах России',
+          'Selecting and supporting at least 100 best universities in the country',
+          'Intensifying the universities’ cooperation with scientific institutions and companies in the real economy and social sphere ',
+          'Establishing advanced research laboratories, design offices, prototyping centers, technology transfer centers, and other scientific and innovation departments, as well as bringing the world’s top scientists to Russian universities',
+          'Providing the necessary conditions for the full-scale participation of students and postgraduates in scientific research and innovation activity, and for the accomplishment of creative and socially beneficial projects',
+          'Raising the interest of foreigners in studying in Russian universities',
         ],
       },
       {
-        title: 'Развитие страны',
+        title: 'Developing the country',
         items: [
-          'Содействие трудоустройству лучших выпускников',
-          'Формирование у выпускников российских университетов компетенций, необходимых для работы в условиях экономики знаний, в т. ч. связанных с использованием цифровых технологий',
-          'Кадровое обеспечение приоритетных направлений науки, технологий, техники, отраслей экономики и социальной сферы',
-          'Развитие и внедрение высоких технологий в экономику и социальную сферу',
-          'Научно-технологическое и социально-экономическое развитие отраслей экономики и социальной сферы регионов, в которых расположены университеты-участники',
+          'Facilitating the employment of the best graduates',
+          'Building in the graduates of Russian universities the skills and competence necessary for work in the economy of knowledge, including those related to the use of digital technology',
+          'Educating highly skilled employees for the priority domains of science, technology, technics, economy, and social sphere',
+          'Developing high technology and implementing it in the country’s economy and social sphere',
+          'Scientific, technological, social, and economic development of the economy and social sphere in the regions where the participating universities are located',
         ],
       },
     ],
@@ -156,49 +93,48 @@ module.exports = {
     ],
   },
   priorities: {
-    title: 'Приоритеты программы',
+    title: 'Priorities of the program',
     items: [
       {
         icon: '/i/priorities/7.svg',
         content:
-          'Повышение конкурентоспособности России в области образования, науки и технологий',
+          'Improving Russia’s competitiveness in education, science, and technology',
       },
       {
         icon: '/i/priorities/4.svg',
         content:
-          'Трансформация существующих подходов к высшему образованию и создание в России большой группы университетов, успешно конкурирующих на мировом рынке образования, науки и технологий',
+          'Transforming the existing approaches to higher education and building a large group of Russian universities that will successfully compete in the worldwide market of education, science, and technology',
       },
       {
         icon: '/i/priorities/5.svg',
         content:
-          'Распространение лучших практик научно-исследовательской, образовательной и инновационной деятельности',
+          'Promoting the best practices in scientific research, education, and innovation',
       },
       {
         icon: '/i/priorities/6.svg',
         content:
-          'Интеграция образовательного процесса с научно- исследовательской, технологической и инновационной деятельностью университета',
+          'Integrating the educational process and science, technology, and innovation in the activity of universities',
       },
       {
         icon: '/i/priorities/3.svg',
         content:
-          'Создание благоприятных условий для развития и успешной реализации личностного потенциал',
+          'Building favorable environments for the development and successful fulfillment of one’s potential',
       },
       {
         icon: '/i/priorities/9.svg',
-        content:
-          'Повышение качества жизни и создание условий для самореализации',
+        content: 'Improving living standards and fostering self-realization',
       },
     ],
   },
   progress: {
-    title: 'Ход программы',
+    title: 'Schedule of the program',
     year: '2021',
     activeStage: 2,
     items: [
-      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=0&rangeSize=1" target="_blank" rel="noopener"><p>13 мая 2021</p><p>Выход постановления Правительства Российской Федерации о программе «Приоритет 2030»</p></a>',
-      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>Июнь 2021</p><p>Объявление Минобрнауки России о проведении отбора университетов для участия в программе «Приоритет 2030»</p></a>',
-      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>1 сентября 2021</p><p>Отбор университетов для предоставления базовой части гранта на программы развития</p></a>',
-      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=3&rangeSize=1 " target="_blank" rel="noopener"><p>1 октября 2021</p><p>Отбор университетов для предоставления специальной части гранта с целью повышения глобальной конкурентоспособности университетов-участников</p></a>',
+      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=0&rangeSize=1" target="_blank" rel="noopener"><p>May 13, 2021</p><p>The Government of the Russian Federation publishes the decree on the Priority 2030 program</p></a>',
+      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>June 2021</p><p>The Ministry of science and higher education of the Russian Federation announces the selection of Priority 2030 participants</p></a>',
+      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>September 1, 2021</p><p>Universities are selected to get the basic part of the grant aimed at their development</p></a>',
+      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=3&rangeSize=1 " target="_blank" rel="noopener"><p>October 1, 2021</p><p>Universities are selected to get the special part of the grant aimed at raising their global competitiveness</p></a>',
     ],
   },
   architecture: {
