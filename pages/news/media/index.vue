@@ -21,9 +21,11 @@ export default {
   name: 'Index',
   components: { Posts, Section, OtherPosts },
   mixins: [pageHead, pageDefault],
-  async asyncData({ store, $api }) {
-    const pageName = 'news'
+  async asyncData({ store, $api, error, i18n }) {
+    if (i18n.locale === 'en')
+      error({ statusCode: 404, message: 'page not found' })
 
+    const pageName = 'news'
     const apiMethod = $api.pages[pageName]
 
     if (!apiMethod) return { page: {} }

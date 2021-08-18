@@ -6,6 +6,6 @@ module.exports = {
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
   mainNewsTitle: 'News',
-  reviewsTitle: 'СМИ о программе',
+  reviewsTitle: 'Media about the program',
   universityNewsTitle: 'Новости университетов',
 }

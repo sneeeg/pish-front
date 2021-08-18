@@ -6,12 +6,16 @@
     <Section
       to="/news/comments"
       background
-      title="Комментарии"
-      arrow-text="Все комментарии"
+      :title="lang['news.comments']"
+      :arrow-text="lang['news.allComments']"
     >
       <Reviews is-comments />
     </Section>
-    <Section to="/news/media" :title="page.reviewsTitle">
+    <Section
+      v-if="$i18n.locale !== 'en'"
+      to="/news/media"
+      :title="page.reviewsTitle"
+    >
       <Reviews />
     </Section>
     <!--    <Section-->
