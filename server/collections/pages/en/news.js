@@ -1,8 +1,8 @@
 module.exports = {
   id: 3, // id
-  title: 'Новости', // Заголовок на вкладке
-  metaTitle: 'Новости', // Мета заголовок
-  metaDescription: 'Новости', // Мета описание
+  title: 'News', // Заголовок на вкладке
+  metaTitle: 'News', // Мета заголовок
+  metaDescription: 'News', // Мета описание
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
   mainNewsTitle: 'News',
