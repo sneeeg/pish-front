@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Section title="Комментарии" :tag-title="$route.query.tag">
+    <Section :title="lang['news.comments']" :tag-title="$route.query.tag">
       <Posts all type="comments" />
     </Section>
     <Section to="/news" :title="lang['news.all']">

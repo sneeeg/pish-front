@@ -30,8 +30,8 @@
     </Section>
     <Section
       to="/news/comments"
-      title="Другие комментарии"
-      arrow-text="Все комментарии"
+      :title="lang['news.otherComments']"
+      :arrow-text="lang['news.allComments']"
     >
       <OtherPosts type="comments" :slug="page.slug" :category="page.category" />
     </Section>

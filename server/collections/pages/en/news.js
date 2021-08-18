@@ -5,7 +5,7 @@ module.exports = {
   metaDescription: 'Новости', // Мета описание
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
-  mainNewsTitle: 'Новости',
-  reviewsTitle: 'СМИ о программе',
+  mainNewsTitle: 'News',
+  reviewsTitle: 'Media about the program',
   universityNewsTitle: 'Новости университетов',
 }

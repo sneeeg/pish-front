@@ -27,6 +27,7 @@
 
         <div class="header__wrapper">
           <SmartLink
+            v-if="$i18n.locale !== 'en'"
             v-will-change
             class="header__account hover-opacity"
             :to="settings.lkLink"
