@@ -53,6 +53,9 @@
     <!--    >-->
     <!--      <Documents  :documents="page.documents.items" />-->
     <!--    </Section>-->
+    <Section :title="page.history.title">
+      <TheHistory :events="page.history.events" />
+    </Section>
   </div>
 </template>
 
@@ -69,6 +72,7 @@ import ArchitectureBlock from '~/components/ArchitectureBlock'
 import Progress from '~/components/Progress'
 import RegistrationPreview from '~/components/RegistrationPreview'
 import PagesSection from '~/components/PagesSection'
+import TheHistory from '~/components/TheHistory'
 
 export default {
   name: 'About',
@@ -81,6 +85,7 @@ export default {
     ArchitectureBlock,
     Progress,
     PagesSection,
+    TheHistory,
   },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {

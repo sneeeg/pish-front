@@ -1,11 +1,13 @@
 <template>
   <div class="history">
     <article
-      v-for="{ title, text } in events"
+      v-for="{ title, text, icon, isActive } in events"
       :key="title"
       class="history-item"
+      :class="isActive"
     >
-      <h4 class="history-item__title">{{ title }}</h4>
+      <h2 class="history-item__title">{{ title }}</h2>
+      <SvgIcon :name="icon" />
       <HTMLContent :html="text" />
     </article>
   </div>
@@ -27,82 +29,123 @@ export default {
 </script>
 
 <style lang="scss">
-.history {
-}
-
 .history-item {
   position: relative;
+  display: flex;
+  align-items: center;
   margin-left: 1.4rem;
-  padding: 0 0 5.6rem 10rem;
-  border-left: 2px solid $color_grey_text;
+  padding-bottom: 8rem;
 
   @include --tablet {
-    padding-left: 5rem;
+    margin-left: 0;
+    padding-bottom: 5rem;
   }
 
   @include --mobile {
-    padding: 0 0 3rem 3rem;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  &::after {
+    position: absolute;
+    top: 3rem;
+    left: 16rem;
+    z-index: -1;
+    width: 2px;
+    height: 100%;
+    background: $color_grey_text;
+    transform: translateX(-50%) translateX(-1px);
+    content: '';
+
+    @include --tablet {
+      top: 7.7rem;
+      left: 14rem;
+      height: calc(100% - 1rem);
+    }
+
+    @include --mobile {
+      top: 1.5rem;
+      left: -3rem;
+      height: 100%;
+    }
   }
 
   &:last-child {
     padding-bottom: 0;
 
     &::after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: calc(100% + 8.4rem);
-      background: $color_grey_text;
-      transform: translateX(-50%) translateX(-1px);
-      content: '';
-
-      @include --mobile {
-        height: calc(100% + 6rem);
-      }
-    }
-  }
-
-  &:first-child {
-    border-color: $color_red;
-
-    &::before {
-      @include box(2.8rem);
-      top: 0;
-      background: $color_red;
-    }
-  }
-
-  &:nth-child(2) {
-    &::before {
-      background: $color_red;
-    }
-
-    &::after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2px;
-      height: 70%;
-      background: linear-gradient(to bottom, $color_red, transparent);
-      transform: translateX(-50%) translateX(-1px);
-      content: '';
+      height: 0;
     }
   }
 
   &::before {
     @include box(1.2rem);
     position: absolute;
-    top: 0.4em;
-    left: 0;
+    top: 2rem;
+    left: 16rem;
     border-radius: 50%;
     background: $color_grey_text;
     transform: translateX(-50%) translateX(-1px);
     content: '';
+
+    @include --tablet {
+      top: 6.7rem;
+      left: 14rem;
+    }
+
+    @include --mobile {
+      top: 1.5rem;
+      left: -3rem;
+    }
   }
 
   &__title {
-    margin-bottom: 1.6rem;
+    @include h2();
+
+    display: block;
+    min-width: 15rem;
+    color: $color_grey_text;
+    font-weight: 400;
+    letter-spacing: 1.05px;
+
+    @include --tablet {
+      font-size: 3.8rem;
+      line-height: 4;
+    }
+
+    @include --mobile() {
+      font-size: 3rem;
+      line-height: 1.5;
+    }
   }
+
+  .icon {
+    width: 12rem;
+    height: 5rem;
+    margin-right: 2rem;
+    margin-left: 5rem;
+
+    @include --tablet {
+      margin-right: 2rem;
+      margin-left: 3rem;
+    }
+
+    @include --mobile {
+      display: none;
+    }
+  }
+}
+
+.active {
+  &::after,
+  &::before {
+    background: $color_red;
+  }
+}
+
+.history-item.active:nth-child(4)::after {
+  background: $color_grey_text;
 }
 </style>
