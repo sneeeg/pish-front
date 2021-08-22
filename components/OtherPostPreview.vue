@@ -8,7 +8,7 @@
       />
     </SmartLink>
     <div class="other-post-preview__content">
-      <div class="other-post-preview-head">
+      <div v-if="!hideHead" class="other-post-preview-head">
         {{ $dayjs(post.activeFrom).format($constants.POST_DATE_FORMAT) }}
       </div>
       <SmartLink
@@ -42,6 +42,10 @@ export default {
     type: {
       type: String,
       default: 'all',
+    },
+    hideHead: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {

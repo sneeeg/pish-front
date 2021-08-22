@@ -8,7 +8,6 @@
         <PostHead
           :title="page.title"
           :category="page.category"
-          :date="page.activeFrom"
           :description="page.description"
           :picture="page.detailPicture"
           :source="page.pictureSource"
@@ -33,7 +32,12 @@
       :title="lang['news.otherComments']"
       :arrow-text="lang['news.allComments']"
     >
-      <OtherPosts type="comments" :slug="page.slug" :category="page.category" />
+      <OtherPosts
+        hide-head
+        type="comments"
+        :slug="page.slug"
+        :category="page.category"
+      />
     </Section>
   </div>
 </template>

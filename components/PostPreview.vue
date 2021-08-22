@@ -9,7 +9,7 @@
         />
       </SmartLink>
       <div class="post-preview__content">
-        <div class="post-preview-head">
+        <div v-if="!hideHead" class="post-preview-head">
           <template v-if="post.category && post.category.text">
             <span class="post-preview-head__category">{{
               post.category.text
@@ -62,6 +62,10 @@ export default {
       default: 'all',
     },
     colored: {
+      type: Boolean,
+      default: false,
+    },
+    hideHead: {
       type: Boolean,
       default: false,
     },

@@ -39,6 +39,7 @@
         <PostPreview
           v-for="post in posts"
           :key="post.id"
+          :hide-head="hideHead"
           class="posts-list__item"
           :post="post"
           :colored="colored"
@@ -80,6 +81,10 @@ export default {
       default: 'all',
     },
     colored: {
+      type: Boolean,
+      default: false,
+    },
+    hideHead: {
       type: Boolean,
       default: false,
     },

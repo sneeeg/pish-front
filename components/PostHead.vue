@@ -6,7 +6,7 @@
         <span class="post-head-info__category">{{ category.text }}</span>
         <span class="post-head-info__separator"> / </span>
       </template>
-      <span class="post-head-info__date">{{
+      <span v-if="date" class="post-head-info__date">{{
         $dayjs(date).format($constants.POST_DATE_FORMAT)
       }}</span>
     </div>
@@ -49,7 +49,7 @@ export default {
     },
     date: {
       type: String,
-      required: true,
+      default: '',
     },
     source: {
       type: Object,

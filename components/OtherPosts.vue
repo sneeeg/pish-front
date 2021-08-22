@@ -10,6 +10,7 @@
       <OtherPostPreview
         v-for="post in posts"
         :key="post.id"
+        :hide-head="hideHead"
         :type="type"
         class="other-posts-list__item"
         :post="post"
@@ -42,6 +43,10 @@ export default {
     slug: {
       type: String,
       default: '',
+    },
+    hideHead: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
