@@ -1,24 +1,26 @@
 <template>
   <div class="history">
-    <article
-      v-for="{ title, text, icon, isActive } in events"
+    <SmartLink
+      v-for="{ title, text, icon, isActive, href } in events"
       :key="title"
-      class="history-item"
+      :to="href"
+      class="history-item hover-opacity"
       :class="isActive"
     >
       <h2 class="history-item__title">{{ title }}</h2>
       <SvgIcon :name="icon" />
       <HTMLContent :html="text" />
-    </article>
+    </SmartLink>
   </div>
 </template>
 
 <script>
 import HTMLContent from '~/components/utils/HTMLContent'
+import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'TheHistory',
-  components: { HTMLContent },
+  components: { HTMLContent, SmartLink },
   props: {
     events: {
       type: Array,
