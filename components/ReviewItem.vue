@@ -1,6 +1,6 @@
 <template>
   <div class="review-item">
-    <div class="review-item__date">
+    <div v-if="!isComment" class="review-item__date">
       {{ $dayjs(review.activeFrom).format($constants.POST_DATE_FORMAT) }}
     </div>
 
