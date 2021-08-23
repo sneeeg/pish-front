@@ -15,7 +15,7 @@
     </div>
     <div v-else class="section__inner">
       <div v-if="title && !tagTitle" :class="['section-head']">
-        <h2 class="section-head__title">{{ title }}</h2>
+        <h2 class="section-head__title" v-html="title"></h2>
         <ArrowLink
           v-if="to"
           :to="to"
