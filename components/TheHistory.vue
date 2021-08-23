@@ -56,7 +56,7 @@ export default {
     left: 16rem;
     z-index: -1;
     width: 2px;
-    height: 100%;
+    height: calc(100% - 1rem);
     background: $color_grey_text;
     transform: translateX(-50%) translateX(-1px);
     content: '';
@@ -148,6 +148,6 @@ export default {
 }
 
 .history-item.active:nth-child(4)::after {
-  background: $color_grey_text;
+  background: linear-gradient(to bottom, $color_red, $color_grey_text);
 }
 </style>
