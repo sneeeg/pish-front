@@ -127,7 +127,7 @@ module.exports = {
     ],
   },
   progress: {
-    title: 'Schedule of the program',
+    title: 'Timeline of Priority 2030',
     year: '2021',
     activeStage: 2,
     items: [
