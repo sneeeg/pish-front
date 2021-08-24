@@ -12,7 +12,7 @@ module.exports = {
       src: '/i/about/cover.jpg',
       alt: 'Priority 2030: Leaders are made, not born',
     },
-    code: 'rhITU3Tcjmg',
+    code: 'egTc6nd2Vmo',
   },
   tasks: {
     title: 'Goals of the program',
