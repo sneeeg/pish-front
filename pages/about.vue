@@ -53,7 +53,7 @@
     <!--    >-->
     <!--      <Documents  :documents="page.documents.items" />-->
     <!--    </Section>-->
-    <Section v-if="$i18n.locale !== 'en'" :title="page.history.title">
+    <Section v-if="false">
       <TheHistory :events="page.history.events" />
     </Section>
   </div>

@@ -28,7 +28,7 @@
       <div class="footer__row">
         <p class="footer__copyrights">
           <span>{{ lang['company.copyright'] }}</span>
-          <SmartLink :to="settings.policyLink">{{
+          <SmartLink :to="lang['base.policyLink']">{{
             lang['footer.policy']
           }}</SmartLink>
         </p>

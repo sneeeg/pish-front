@@ -59,7 +59,7 @@
 
     <p class="faq-form__policy">
       {{ lang['registration.policy.text'] }}
-      <SmartLink class="hover-opacity" :to="settings.policyLink">{{
+      <SmartLink class="hover-opacity" :to="lang['base.policyLink']">{{
         lang['registration.policy.link.text']
       }}</SmartLink>
     </p>
