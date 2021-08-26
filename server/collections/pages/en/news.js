@@ -1,6 +1,6 @@
 module.exports = {
   id: 3, // id
-  title: 'News', // Заголовок на вкладке
+  title: 'News | Priority 2030', // Заголовок на вкладке
   metaTitle: 'News', // Мета заголовок
   metaDescription: 'News', // Мета описание
   ogVk: '', // Opengraph vk

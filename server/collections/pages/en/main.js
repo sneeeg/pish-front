@@ -1,11 +1,9 @@
 module.exports = {
   id: 1, // id
-  title:
-    'ПРИОРИТЕТ 2030 | Единая программа государственной поддержки университетов Российской Федерации', // Заголовок на вкладке
-  metaTitle:
-    'ПРИОРИТЕТ 2030 | Единая программа государственной поддержки университетов Российской Федерации', // Мета заголовок
+  title: 'Priority 2030', // Заголовок на вкладке
+  metaTitle: 'Priority 2030', // Мета заголовок
   metaDescription:
-    'Единая программа государственной поддержки университетов Россииской Федерации в целях реализации прорывных проектов, направленных на научно-технологическое развитие страны', // Мета описание
+    'The goal of the federal academic leadership program Priority 2030 is to form a large group of universities that will become the leaders in creating new scientific knowledge, technology, and developments for introduction into the economy and social sphere in Russia.', // Мета описание
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
   firstScreen: {

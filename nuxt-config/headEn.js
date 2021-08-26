@@ -1,6 +1,5 @@
 module.exports = {
-  title:
-    'Prioriry 2030',
+  title: 'Prioriry 2030',
   htmlAttrs: {
     lang: 'en',
   },
@@ -10,8 +9,7 @@ module.exports = {
     {
       hid: 'title',
       name: 'title',
-      content:
-        'Prioriry 2030',
+      content: 'Prioriry 2030',
     },
     {
       hid: 'description',
@@ -32,8 +30,7 @@ module.exports = {
     {
       hid: 'og:title',
       property: 'og:title',
-      content:
-        'Prioriry 2030',
+      content: 'Prioriry 2030',
     },
     {
       hid: 'og:description',
@@ -59,8 +56,7 @@ module.exports = {
     {
       hid: 'twitter:title',
       property: 'twitter:title',
-      content:
-        'Prioriry 2030',
+      content: 'Prioriry 2030',
     },
     {
       hid: 'twitter:description',

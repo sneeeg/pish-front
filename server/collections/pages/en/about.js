@@ -1,6 +1,6 @@
 module.exports = {
   id: 2, // id
-  title: 'About the program | PRIORITY 2030', // Заголовок на вкладке
+  title: 'About the program | Priority 2030', // Заголовок на вкладке
   metaTitle: 'About the program', // Мета заголовок
   metaDescription: 'About the program', // Мета описание
   ogVk: '', // Opengraph vk
