@@ -78,6 +78,7 @@ export default {
         ],
         defaultLocale: 'ru',
         detectBrowserLanguage: false,
+        baseUrl: 'https://priority2030.ru',
       },
     ],
     '@nuxtjs/axios',
