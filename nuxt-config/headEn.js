@@ -1,8 +1,8 @@
 module.exports = {
   title:
-    'ПРИОРИТЕТ 2030 | Единая программа государственной поддержки университетов Российской Федерации',
+    'Prioriry 2030',
   htmlAttrs: {
-    lang: 'ru',
+    lang: 'en',
   },
   meta: [
     { charset: 'utf-8' },
@@ -11,7 +11,7 @@ module.exports = {
       hid: 'title',
       name: 'title',
       content:
-        'ПРИОРИТЕТ 2030 | Единая программа государственной поддержки университетов Российской Федерации',
+        'Prioriry 2030',
     },
     {
       hid: 'description',
@@ -33,7 +33,7 @@ module.exports = {
       hid: 'og:title',
       property: 'og:title',
       content:
-        'ПРИОРИТЕТ 2030 | Единая программа государственной поддержки университетов Российской Федерации',
+        'Prioriry 2030',
     },
     {
       hid: 'og:description',
@@ -60,7 +60,7 @@ module.exports = {
       hid: 'twitter:title',
       property: 'twitter:title',
       content:
-        'ПРИОРИТЕТ 2030 | Единая программа государственной поддержки университетов Российской Федерации',
+        'Prioriry 2030',
     },
     {
       hid: 'twitter:description',
