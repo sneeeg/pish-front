@@ -36,13 +36,13 @@ export default {
             this.page?.metaDescription ||
             this.$store.state.default.settings.metaDescription,
         },
-        {
-          hid: 'og:image',
-          property: 'og:image',
-          content:
-            window.location.origin + this.page?.ogFb ||
-            this.$store.state.default.settings.ogFb,
-        },
+        // {
+        //   hid: 'og:image',
+        //   property: 'og:image',
+        //   content:
+        //     window.location.origin + this.page?.ogFb ||
+        //     this.$store.state.default.settings.ogFb,
+        // },
         {
           hid: 'twitter:url',
           property: 'twitter:url',
@@ -62,20 +62,20 @@ export default {
             this.page?.metaDescription ||
             this.$store.state.default.settings.metaDescription,
         },
-        {
-          hid: 'twitter:image',
-          property: 'og:image',
-          content:
-            window.location.origin + this.page?.ogFb ||
-            this.$store.state.default.settings.ogFb,
-        },
-        {
-          hid: 'vk:image',
-          property: 'og:image',
-          content:
-            window.location.origin + this.page?.ogVk ||
-            this.$store.state.default.settings.ogVk,
-        },
+        // {
+        //   hid: 'twitter:image',
+        //   property: 'og:image',
+        //   content:
+        //     window.location.origin + this.page?.ogFb ||
+        //     this.$store.state.default.settings.ogFb,
+        // },
+        // {
+        //   hid: 'vk:image',
+        //   property: 'og:image',
+        //   content:
+        //     window.location.origin + this.page?.ogVk ||
+        //     this.$store.state.default.settings.ogVk,
+        // },
       ],
     }
   },
