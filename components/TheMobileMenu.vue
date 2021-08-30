@@ -15,7 +15,7 @@
         </form>
 
         <nav class="menu__nav">
-          <LangToggler v-show="false" />
+          <LangToggler />
 
           <SmartLink
             v-for="{ text, href } in menus.header"

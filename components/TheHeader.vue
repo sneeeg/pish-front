@@ -34,7 +34,10 @@
             >{{ lang['base.lk'] }}</SmartLink
           >
 
-          <LangToggler v-show="false" v-if="window.isDesktopSize" />
+          <LangToggler
+            v-if="window.isDesktopSize"
+            class="header__lang-toggle"
+          />
         </div>
       </div>
     </div>
@@ -114,6 +117,10 @@ export default {
   &__wrapper {
     display: flex;
     align-items: center;
+  }
+
+  &__lang-toggle {
+    margin-left: 4rem;
   }
 
   &__info {
