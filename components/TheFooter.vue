@@ -3,7 +3,7 @@
     <div class="footer__content">
       <div class="footer__row">
         <nuxt-link
-          to="/"
+          :to="`/${$i18n.locale !== 'ru' ? $i18n.locale : ''}`"
           :class="['footer__logo', { _en: $i18n.locale === 'en' }]"
         >
           <img
