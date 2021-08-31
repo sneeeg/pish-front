@@ -136,8 +136,8 @@ module.exports = {
       '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>Июнь 2021</p><p>Объявление Минобрнауки России о проведении отбора университетов для участия в программе «Приоритет 2030»</p></a>',
       '<a href="https://priority2030.ru/upload/medialibrary/97f/q7vrbjhab2noge80u3yjyrck44hbj99i/09.08-Protokol_zayavki-_3_.pdf" target="_blank" rel="noopener"><p>Август 2021</p><p>Завершение приема заявок на участие в программе «Приоритет 2030»</p></a>',
       '<a style="pointer-events: none" href="#" target="_blank" rel="noopener"><p>Август 2021</p><p>Экспертиза программ развития университетов</p></a>',
-      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>1 сентября 2021</p><p>Отбор университетов для предоставления базовой части гранта на программы развития</p></a>',
-      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=3&rangeSize=1 " target="_blank" rel="noopener"><p>1 октября 2021</p><p>Отбор университетов для предоставления специальной части гранта с целью повышения глобальной конкурентоспособности университетов-участников</p></a>',
+      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>10 сентября 2021</p><p>Отбор университетов для предоставления базовой части гранта на программы развития</p></a>',
+      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=3&rangeSize=1 " target="_blank" rel="noopener"><p>Октябрь 2021</p><p>Отбор университетов для предоставления специальной части гранта с целью повышения глобальной конкурентоспособности университетов-участников</p></a>',
     ],
   },
   architecture: {
