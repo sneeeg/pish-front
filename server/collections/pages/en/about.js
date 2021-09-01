@@ -134,7 +134,7 @@ module.exports = {
       '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=0&rangeSize=1" target="_blank" rel="noopener"><p>May 13, 2021</p><p>The Government of the Russian Federation publishes the decree on the Priority 2030 program</p></a>',
       '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>June 2021</p><p>The Ministry of science and higher education of the Russian Federation announces the selection of Priority 2030 participants</p></a>',
       '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>September 10, 2021</p><p>Universities are selected to get the basic part of the grant aimed at their development</p></a>',
-      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=3&rangeSize=1 " target="_blank" rel="noopener"><p>October 2021</p><p>Universities are selected to get the special part of the grant aimed at raising their global competitiveness</p></a>',
+      '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=3&rangeSize=1 " target="_blank" rel="noopener"><p>September 30, 2021</p><p>Universities are selected to get the special part of the grant aimed at raising their global competitiveness</p></a>',
     ],
   },
   architecture: {
