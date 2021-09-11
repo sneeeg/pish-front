@@ -32,7 +32,11 @@
             lang['footer.policy']
           }}</SmartLink>
         </p>
-        <SocIcons />
+        <div class="footer__links">
+          <SocIcons />
+
+          <ITFCopyright />
+        </div>
       </div>
     </div>
   </footer>
@@ -42,10 +46,12 @@ import { mapState } from 'vuex'
 
 import SocIcons from '~/components/SocIcons'
 import SmartLink from '~/components/utils/SmartLink'
+import ITFCopyright from '~/components/ITFCopyright'
 
 export default {
   name: 'TheFooter',
   components: {
+    ITFCopyright,
     SmartLink,
     SocIcons,
   },
@@ -89,6 +95,23 @@ export default {
 
       @include --mobile {
         margin-bottom: 3rem;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+
+    @include --mobile {
+      display: block;
+    }
+
+    > *:first-child {
+      margin-right: 6rem;
+
+      @include --mobile {
+        margin: 0 0 2rem 0;
       }
     }
   }
