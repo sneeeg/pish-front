@@ -28,16 +28,16 @@ export default {
   align-items: center;
 
   &__logo {
-    color: #a2a2a2;
     width: 2.5rem;
     height: 1.8rem;
+    color: #a2a2a2;
   }
 
   &__link {
     position: relative;
-    margin-left: 1.6rem;
     display: flex;
     align-items: center;
+    margin-left: 1.6rem;
     color: #999999;
 
     span {
