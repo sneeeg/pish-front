@@ -2,6 +2,7 @@
 import * as constants from '~/assets/js/constants'
 
 /* Composables */
+import deleteLastBrs from '~/assets/js/composables/delete-last-brs'
 
 /* Utils */
 import delay from '~/assets/js/utils/delay'
@@ -20,7 +21,9 @@ import api from '~/assets/js/api/index'
 
 export default ({ $axios }, inject) => {
   inject('constants', constants)
-  inject('composables', {})
+  inject('composables', {
+    deleteLastBrs,
+  })
   inject('utils', {
     delay,
     cloneObject,

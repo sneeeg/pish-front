@@ -8,6 +8,8 @@
 
 <script>
 import { mapMutations } from 'vuex'
+import Blockquote from '~/assets/js/modules/snippets/Blockquote'
+
 export default {
   name: 'HTMLContent',
   props: {
@@ -21,6 +23,17 @@ export default {
     },
   },
   mounted() {
+    this.$composables.deleteLastBrs(this.$refs.HTMLContent)
+
+    const blockquoteSnippets = this.$refs.HTMLContent.querySelectorAll(
+      '.snippet-blockquote'
+    )
+
+    blockquoteSnippets.forEach((el) => {
+      // eslint-disable-next-line no-new
+      new Blockquote(el, this.$refs.HTMLContent)
+    })
+
     const $tables = this.$refs.HTMLContent.querySelectorAll('table')
     const $docLinks = this.$refs.HTMLContent.querySelectorAll('a.doc[title]')
     const wrapper = document.createElement('section')

@@ -22,6 +22,11 @@
           class="post__description"
         />
         <HTMLContent for-news :html="page.content" class="post__body" />
+        <Slider
+          v-if="page.slides && page.slides.length"
+          :class="['post__slider', { _mb: page.source && page.source.href }]"
+          :slides="page.slides"
+        />
         <PostSource
           v-if="page.source && page.source.href"
           :source="page.source"
@@ -45,6 +50,7 @@ import OtherPosts from '~/components/OtherPosts'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
 import PostSource from '~/components/PostSource'
+import Slider from '~/components/Slider'
 
 export default {
   name: 'Post',
@@ -55,6 +61,7 @@ export default {
     Section,
     ArrowLink,
     OtherPosts,
+    Slider,
   },
   mixins: [pageHead, pageDefault],
   async asyncData({ $nuxt, route, $api }) {
@@ -89,11 +96,29 @@ export default {
   }
 
   &__desription,
-  &__body {
+  &__body,
+  &__slider {
     @include containerInnerSmall;
   }
 
-  &__description {
+  &__slider {
+    margin-top: 5.6rem;
+
+    @include --mobile {
+      margin-top: 4.2rem;
+    }
+
+    &._mb {
+      margin-bottom: 4.2rem;
+
+      @include --mobile {
+        margin-bottom: 3.2rem;
+      }
+    }
+  }
+
+  &__description,
+  &__slider {
     margin-bottom: 4.8rem;
 
     @include --mobile {
