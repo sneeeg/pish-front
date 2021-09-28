@@ -31,14 +31,6 @@
       />
     </Section>
 
-    <Section v-if="page.council" :title="page.council.title">
-      <PersonsList :items="page.council.items" />
-    </Section>
-
-    <Section v-if="page.commission" background :title="page.commission.title">
-      <PersonsList colored :items="page.commission.items" />
-    </Section>
-
     <Section id="priority" :title="page.priorities.title">
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
@@ -81,7 +73,6 @@ import Progress from '~/components/Progress'
 import RegistrationPreview from '~/components/RegistrationPreview'
 import PagesSection from '~/components/PagesSection'
 import TheHistory from '~/components/TheHistory'
-import PersonsList from '~/components/PersonsList'
 
 export default {
   name: 'About',
@@ -95,7 +86,6 @@ export default {
     Progress,
     PagesSection,
     TheHistory,
-    PersonsList,
   },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
