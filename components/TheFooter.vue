@@ -35,7 +35,7 @@
         <div class="footer__links">
           <SocIcons />
 
-          <ITFCopyright />
+          <ITFCopyright v-if="false" />
         </div>
       </div>
     </div>
@@ -107,13 +107,13 @@ export default {
       display: block;
     }
 
-    > *:first-child {
-      margin-right: 6rem;
-
-      @include --mobile {
-        margin: 0 0 2rem 0;
-      }
-    }
+    //> *:first-child {
+    //  margin-right: 6rem;
+    //
+    //  @include --mobile {
+    //    margin: 0 0 2rem 0;
+    //  }
+    //}
   }
 
   &__logo {
