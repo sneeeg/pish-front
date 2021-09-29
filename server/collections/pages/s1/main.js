@@ -18,13 +18,13 @@ module.exports = {
     },
     cells: [
       {
-        icon: 'page-screen',
+        icon: 'council',
         text: 'Совет',
         counter: false,
         href: '/council',
       },
       {
-        icon: 'page-docs',
+        icon: 'commission',
         text: 'Комиссия',
         counter: false,
         href: '/commission',
