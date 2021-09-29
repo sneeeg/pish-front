@@ -138,7 +138,7 @@ module.exports = {
     ],
   },
   commissionMembers: {
-    title: 'Конкурсная комиссия',
+    title: 'Комиссия Минобрнауки РФ по отбору в программу',
     items: [],
   },
   councilMembers: {
