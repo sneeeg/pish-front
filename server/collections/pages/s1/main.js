@@ -18,6 +18,18 @@ module.exports = {
     },
     cells: [
       {
+        icon: 'page-screen',
+        text: 'Совет',
+        counter: false,
+        href: '/council',
+      },
+      {
+        icon: 'page-docs',
+        text: 'Комиссия',
+        counter: false,
+        href: '/commission',
+      },
+      {
         icon: 'build',
         text: 'Приоритеты программы',
         counter: false,
@@ -28,18 +40,6 @@ module.exports = {
         text: 'Задачи программы',
         counter: false,
         href: '/about#tasks',
-      },
-      {
-        icon: 'page-screen',
-        text: 'Комментарии',
-        counter: false,
-        href: '/news/comments',
-      },
-      {
-        icon: 'page-docs',
-        text: 'Ответы на вопросы',
-        counter: false,
-        href: '/faq',
       },
     ],
   },

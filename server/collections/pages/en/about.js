@@ -137,6 +137,14 @@ module.exports = {
       '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=3&rangeSize=1 " target="_blank" rel="noopener"><p>September 30, 2021</p><p>Universities are selected to get the special part of the grant aimed at raising their global competitiveness</p></a>',
     ],
   },
+  commissionMembers: {
+    title: 'Конкурсная комиссия',
+    items: [],
+  },
+  councilMembers: {
+    title: 'Совет по поддержке программ развития',
+    items: [],
+  },
   architecture: {
     title: 'Финансирование программы',
     left: {

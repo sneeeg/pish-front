@@ -9,6 +9,8 @@ import contacts from '~/server/collections/pages/s1/contacts'
 // import universities from '~/server/collections/pages/s1/universities'
 import instructions from '~/server/collections/pages/s1/instructions'
 import faq from '~/server/collections/pages/s1/faq'
+import commission from '~/server/collections/pages/s1/commission'
+import council from '~/server/collections/pages/s1/council'
 
 import mainEn from '~/server/collections/pages/en/main'
 import aboutEn from '~/server/collections/pages/en/about'
@@ -21,6 +23,8 @@ import contactsEn from '~/server/collections/pages/en/contacts'
 // import universitiesEn from '~/server/collections/pages/en/universities'
 import instructionsEn from '~/server/collections/pages/en/instructions'
 import faqEn from '~/server/collections/pages/en/faq'
+import commissionEn from '~/server/collections/pages/en/commission'
+import councilEn from '~/server/collections/pages/en/council'
 
 import document from '~/server/collections/document'
 
@@ -39,6 +43,8 @@ const pages = {
     // universities,
     instructions,
     faq,
+    commission,
+    council,
   },
   en: {
     main: mainEn,
@@ -52,6 +58,8 @@ const pages = {
     // universities: universitiesEn,
     instructions: instructionsEn,
     faq: faqEn,
+    commission: commissionEn,
+    council: councilEn,
   },
 }
 
@@ -165,6 +173,24 @@ export default (pretender) => {
       200,
       { 'Content-Type': 'application/json' },
       getResponse(pages[request.requestHeaders['X-Bitrix-Site-Id']].contacts),
+    ]
+  })
+
+  // Commission page
+  pretender.get('/api/pages/commission', (request) => {
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse(pages[request.requestHeaders['X-Bitrix-Site-Id']].commission),
+    ]
+  })
+
+  // Council page
+  pretender.get('/api/pages/council', (request) => {
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse(pages[request.requestHeaders['X-Bitrix-Site-Id']].council),
     ]
   })
 

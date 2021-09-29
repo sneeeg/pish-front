@@ -140,6 +140,14 @@ module.exports = {
       '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=3&rangeSize=1 " target="_blank" rel="noopener"><p>30 сентября 2021</p><p>Отбор университетов для предоставления специальной части гранта с целью повышения глобальной конкурентоспособности университетов-участников</p></a>',
     ],
   },
+  commissionMembers: {
+    title: 'Конкурсная комиссия',
+    items: [],
+  },
+  councilMembers: {
+    title: 'Совет по поддержке программ развития',
+    items: [],
+  },
   architecture: {
     title: 'Финансирование программы',
     left: {

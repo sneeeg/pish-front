@@ -54,6 +54,16 @@ export default ($axios) => ({
     return $axios.$get('/api/pages/universities')
   },
 
+  /* Getting commission */
+  commission() {
+    return $axios.$get('/api/pages/commission')
+  },
+
+  /* Getting council */
+  council() {
+    return $axios.$get('/api/pages/council')
+  },
+
   /* Get document page by name */
   getDocumentPageByName(name) {
     return $axios.$get('/api/documents', { params: { name } })
