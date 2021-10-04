@@ -132,7 +132,7 @@ module.exports = {
     year: '2021',
     activeStage: 2,
     items: [
-      '<a href="#" disabled target="_blank" rel="noopener"><p>3 октября 2021</p><p>Завершение отбора. Объявлен список вузов, номинированных на предоставление специальной части гранта для достижения глобального научного, территориального и отраслевого лидерства»</p></a>',
+      '<a href="#" disabled target="_blank" rel="noopener"><p>3 октября 2021</p><p>Завершение отбора вузов на предоставление специальной части гранта для достижения глобального научного, территориального и (или) отраслевого лидерства»</p></a>',
       '<a href="https://priority2030.ru/upload/medialibrary/290/925yylpwvxsax2kbwjdrx1jy2e7i28a2/Grafiki-zasedaniy-Soveta-_1_2_3_oktyabrya-2021_.pdf " target="_blank" rel="noopener"><p>1 октября 2021</p><p>Начало отбора университетов для предоставления специальной части гранта</p></a>',
       '<a href="https://minobrnauki.gov.ru/%D0%BF%D1%80%D0%B8%D0%BE%D1%80%D0%B8%D1%82%D0%B5%D1%82.pdf " target="_blank" rel="noopener"><p>27 сентября 2021</p><p>Завершение отбора. Объявлен список вузов, ставших участниками программы «Приоритет 2030»</p></a>',
       '<a href="http://publication.pravo.gov.ru/Document/View/0001202105210040?index=2&rangeSize=1" target="_blank" rel="noopener"><p>10 сентября 2021</p><p>Начало отбора университетов для участия в программе «Приоритет 2030»</p></a>',
