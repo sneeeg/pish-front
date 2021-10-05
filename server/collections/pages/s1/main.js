@@ -37,9 +37,9 @@ module.exports = {
       },
       {
         icon: 'user',
-        text: 'Задачи программы',
+        text: 'Комментарии',
         counter: false,
-        href: '/about#tasks',
+        href: '/news/comments',
       },
     ],
   },
