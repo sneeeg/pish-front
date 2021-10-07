@@ -47,6 +47,7 @@
     "vue-marquee-text-component": "^1.2.0",
     "vue-scrollto": "^2.20.0",
     "vue-select": "^3.11.2",
+    "vue2-datepicker": "^3.10.2",
     "vuejs-paginate": "^2.1.0",
     "vuelidate": "^0.7.6"
   },

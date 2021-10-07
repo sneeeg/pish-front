@@ -31,6 +31,7 @@
 
     <CustomInput
       v-model.trim.lazy="$v.phone.$model"
+      mask-type="tel"
       type="tel"
       class="faq-form__field"
       :label="lang['registration.phone.label']"

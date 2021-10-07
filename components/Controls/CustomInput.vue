@@ -4,35 +4,47 @@
       >{{ label }}<sup v-if="required">*</sup></label
     >
 
-    <input
-      v-if="type !== 'textarea'"
-      :id="name"
-      ref="input"
-      v-imask="mask"
-      class="custom-input__input"
-      :type="type"
-      :value="value"
-      :name="name"
-      :aria-label="placeholder"
+    <DatePicker
+      v-if="calendar"
       :placeholder="placeholder"
+      :value="value"
+      :type="calendar"
       @input="update"
-      @accept="accept"
-    />
-
-    <textarea
-      v-else
-      :id="name"
-      ref="input"
-      rows="10"
-      cols="20"
-      class="custom-input__input"
-      :value="value"
-      :name="name"
-      :aria-label="placeholder"
-      :placeholder="placeholder"
-      @input="$emit('input', $event.target.value)"
     >
-    </textarea>
+    </DatePicker>
+
+    <template v-else>
+      <input
+        v-if="type !== 'textarea'"
+        :id="name"
+        ref="input"
+        v-imask="mask"
+        class="custom-input__input"
+        :type="type"
+        :accept="type === 'file' ? acceptFormats : false"
+        :value="value"
+        :name="name"
+        :aria-label="placeholder"
+        :placeholder="placeholder"
+        @input="update"
+        @accept="accept"
+      />
+
+      <textarea
+        v-else
+        :id="name"
+        ref="input"
+        rows="10"
+        cols="20"
+        class="custom-input__input"
+        :value="value"
+        :name="name"
+        :aria-label="placeholder"
+        :placeholder="placeholder"
+        @input="$emit('input', $event.target.value)"
+      >
+      </textarea>
+    </template>
 
     <div v-if="errorText" class="custom-input__error">
       {{ errorText }}
@@ -42,12 +54,16 @@
 
 <script>
 import { IMaskDirective } from 'vue-imask'
+import DatePicker from 'vue2-datepicker'
+import 'vue2-datepicker/index.css'
+import 'vue2-datepicker/locale/ru'
 
 export default {
   name: 'CustomInput',
   directives: {
     imask: IMaskDirective,
   },
+  components: { DatePicker },
   props: {
     label: {
       type: String,
@@ -62,8 +78,8 @@ export default {
       default: '',
     },
     value: {
-      type: String,
-      required: true,
+      type: [String, Date],
+      default: '',
     },
     name: {
       type: String,
@@ -85,6 +101,18 @@ export default {
       type: String,
       default: '',
     },
+    calendar: {
+      type: String,
+      default: '',
+    },
+    acceptFormats: {
+      type: String,
+      default: '.jpg, .jpeg, .png',
+    },
+    maxFileSize: {
+      type: Number,
+      default: 10000000,
+    },
   },
   computed: {
     mask() {
@@ -95,10 +123,12 @@ export default {
           result = { mask: '+{7}(000)000-00-00' }
           break
 
-        case 'year':
-          result = {
-            mask: '0000',
-          }
+        case 'age':
+          result = { mask: Number, min: 0, max: 99 }
+          break
+
+        case 'count':
+          result = { mask: Number, min: 0, max: 999 }
           break
       }
 
@@ -110,9 +140,35 @@ export default {
     update(e) {
       if (this.maskType) return
 
-      const value = e.target.value
+      const value = e?.target?.value ?? e ?? ''
 
       this.$emit('input', value)
+
+      if (this.type === 'file') {
+        const files = this.$refs.input.files || []
+        const file = files[0] ?? null
+
+        if (!file) {
+          this.$emit('onFileChange', file)
+
+          return
+        }
+
+        const types = this.acceptFormats.split(',').reduce((acc, item) => {
+          const str = item.trim().slice(1, item.length)
+          acc.push('image/' + str)
+
+          return acc
+        }, [])
+
+        if (!types.includes(file.type)) {
+          this.$emit('onFileError', 'Неверный формат')
+        } else if (file.size > this.maxFileSize) {
+          this.$emit('onFileError', 'Превышен допустимы размер файла')
+        } else {
+          this.$emit('onFileChange', file)
+        }
+      }
     },
 
     accept(e) {
@@ -140,14 +196,24 @@ export default {
 
     sup {
       position: relative;
-      top: -4px;
+      top: -3px;
       left: 2px;
       color: $color_accent;
       font-size: 1.3rem;
     }
   }
 
-  &__input {
+  .mx-datepicker {
+    width: 100%;
+  }
+
+  .mx-icon-calendar {
+    right: 1.6rem;
+    color: $color_accent;
+  }
+
+  &__input,
+  .mx-input {
     @include text-small;
     padding: 1.8rem 1.2rem;
     border: 1px solid #e1e4e8;
@@ -155,6 +221,7 @@ export default {
     background: transparent;
     transition: border-color 0.5s ease;
     appearance: none;
+    height: auto;
     resize: none;
 
     //&:focus {

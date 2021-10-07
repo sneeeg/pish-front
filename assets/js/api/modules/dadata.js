@@ -24,6 +24,23 @@ export default ($axios) => ({
     )
   },
 
+  /* Getting industries */
+  getIndustries(query) {
+    const URL =
+      'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/okved2'
+
+    return $axios.$post(
+      URL,
+      {
+        query,
+      },
+      {
+        mode: 'cors',
+        headers,
+      }
+    )
+  },
+
   /* Getting cities */
   getCities(query, country = '*') {
     const URL =

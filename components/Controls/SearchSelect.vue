@@ -1,11 +1,16 @@
 <template>
   <div :class="['search-select', { _disabled: disabled }]">
-    <div v-if="label" class="search-select__label">
+    <div
+      v-if="label"
+      class="search-select__label"
+      @click="$refs.select.$el.querySelector('input').focus()"
+    >
       {{ label }}<sup v-if="required">*</sup>
     </div>
 
     <div class="search-select__input">
       <v-select
+        ref="select"
         :searchable="searchable"
         autocomplete="on"
         :options="options"
@@ -52,7 +57,7 @@ export default {
     },
     value: {
       type: String,
-      required: true,
+      default: '',
     },
     options: {
       type: Array,
@@ -104,10 +109,11 @@ export default {
     color: $color_grey_text;
     font-weight: 400;
     text-transform: uppercase;
+    cursor: pointer;
 
     sup {
       position: relative;
-      top: -4px;
+      top: -3px;
       left: 2px;
       color: $color_accent;
       font-size: 1.3rem;
