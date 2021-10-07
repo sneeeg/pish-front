@@ -5645,6 +5645,11 @@ imask@^6.0.7:
   resolved "https://registry.yarnpkg.com/imask/-/imask-6.0.7.tgz#20a626a80e277231d7d5c27cf45d816c035b748e"
   integrity sha512-zyiKRSzuocb2adasVSz0ku9xxejDRs5wME7Dt5Uk1l83HGBFUP7A8y8Z6TytLCtCiS/A1aArlCTqLcOkoVNbNQ==
 
+imask@^6.1.0:
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/imask/-/imask-6.2.2.tgz#c72c0ce9a52f57539ecdc264eccc2407d20e13b5"
+  integrity sha512-oREITqngsjD0YxO62UpVQSxLNjIcb/mNO9hX2F8xQ282Kj3X9KXEAobipbUXz5R5NgtiL6nOPrWwo+AnLuz5AQ==
+
 impetus@^0.8.8:
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/impetus/-/impetus-0.8.8.tgz#8848c56ac8ccdd375fa541bfe62533c3cc472050"
@@ -10807,6 +10812,13 @@ vue-i18n@^8.24.4:
   version "8.24.4"
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.24.4.tgz#b158614c1df7db183d9cadddbb73e1d540269492"
   integrity sha512-RZE94WUAGxEiBAANxQ0pptbRwDkNKNSXl3fnJslpFOxVMF6UkUtMDSuYGuW2blDrVgweIXVpethOVkYoNNT9xw==
+
+vue-imask@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/vue-imask/-/vue-imask-6.1.0.tgz#589a4781ab8629e776dc93527d321466b9f9a907"
+  integrity sha512-7qaJ1wfQ2uesYQg0qsfnd3zxhvyy2tlld+h3byjKRryh1KInRrSNHp6g6xzFK28fVutIBG/lOJsX+YJMsJrOBw==
+  dependencies:
+    imask "^6.1.0"
 
 vue-loader@^15.9.7:
   version "15.9.7"

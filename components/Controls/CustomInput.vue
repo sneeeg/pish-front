@@ -1,13 +1,14 @@
 <template>
-  <div class="custom-input">
-    <label v-if="label" :for="name" class="custom-input__label">{{
-      label
-    }}</label>
+  <div :class="['custom-input', { _disabled: disabled }]">
+    <label v-if="label" :for="name" class="custom-input__label"
+      >{{ label }}<sup v-if="required">*</sup></label
+    >
 
     <input
       v-if="type !== 'textarea'"
       :id="name"
       ref="input"
+      v-imask="mask"
       class="custom-input__input"
       :type="type"
       :value="value"
@@ -15,6 +16,7 @@
       :aria-label="placeholder"
       :placeholder="placeholder"
       @input="update"
+      @accept="accept"
     />
 
     <textarea
@@ -39,10 +41,13 @@
 </template>
 
 <script>
-import IMask from 'imask'
+import { IMaskDirective } from 'vue-imask'
 
 export default {
   name: 'CustomInput',
+  directives: {
+    imask: IMaskDirective,
+  },
   props: {
     label: {
       type: String,
@@ -68,29 +73,50 @@ export default {
       type: String,
       default: 'text',
     },
+    required: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    maskType: {
+      type: String,
+      default: '',
+    },
   },
-  data() {
-    return {
-      phoneMask: null,
-    }
-  },
-  mounted() {
-    if (this.type === 'tel') {
-      this.phoneMask = IMask(this.$refs.input, { mask: '+{7}(000)000-00-00' })
-    }
-  },
+  computed: {
+    mask() {
+      let result = null
 
-  beforeDestroy() {
-    this.phoneMask?.destroy()
+      switch (this.maskType) {
+        case 'tel':
+          result = { mask: '+{7}(000)000-00-00' }
+          break
+
+        case 'year':
+          result = {
+            mask: '0000',
+          }
+          break
+      }
+
+      return result
+    },
   },
 
   methods: {
     update(e) {
-      let value = e.target.value
+      if (this.maskType) return
 
-      if (this.phoneMask && value.length > 16) {
-        value = value.substr(0, value.length - 1)
-      }
+      const value = e.target.value
+
+      this.$emit('input', value)
+    },
+
+    accept(e) {
+      const value = e.target.value
 
       this.$emit('input', value)
     },
@@ -111,6 +137,14 @@ export default {
     color: $color_grey_text;
     font-weight: 400;
     text-transform: uppercase;
+
+    sup {
+      position: relative;
+      top: -4px;
+      left: 2px;
+      color: $color_accent;
+      font-size: 1.3rem;
+    }
   }
 
   &__input {

@@ -8,6 +8,7 @@ import comments from '~/assets/js/api/modules/comments'
 // import participants from '~/assets/js/api/modules/participants'
 import instructions from '~/assets/js/api/modules/instructions'
 import faq from '~/assets/js/api/modules/faq'
+import dadata from '~/assets/js/api/modules/dadata'
 
 export default ($axios) => ({
   config: config($axios),
@@ -20,4 +21,5 @@ export default ($axios) => ({
   // participants: participants($axios),
   instructions: instructions($axios),
   faq: faq($axios),
+  dadata: dadata($axios),
 })

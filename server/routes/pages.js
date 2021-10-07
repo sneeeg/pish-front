@@ -11,6 +11,7 @@ import instructions from '~/server/collections/pages/s1/instructions'
 import faq from '~/server/collections/pages/s1/faq'
 import commission from '~/server/collections/pages/s1/commission'
 import council from '~/server/collections/pages/s1/council'
+import questionnaire from '~/server/collections/pages/s1/questionnaire'
 
 import mainEn from '~/server/collections/pages/en/main'
 import aboutEn from '~/server/collections/pages/en/about'
@@ -25,6 +26,7 @@ import instructionsEn from '~/server/collections/pages/en/instructions'
 import faqEn from '~/server/collections/pages/en/faq'
 import commissionEn from '~/server/collections/pages/en/commission'
 import councilEn from '~/server/collections/pages/en/council'
+import questionnaireEn from '~/server/collections/pages/en/questionnaire'
 
 import document from '~/server/collections/document'
 
@@ -45,6 +47,7 @@ const pages = {
     faq,
     commission,
     council,
+    questionnaire,
   },
   en: {
     main: mainEn,
@@ -60,6 +63,7 @@ const pages = {
     faq: faqEn,
     commission: commissionEn,
     council: councilEn,
+    questionnaire: questionnaireEn,
   },
 }
 
@@ -144,6 +148,17 @@ export default (pretender) => {
       200,
       { 'Content-Type': 'application/json' },
       getResponse(pages[request.requestHeaders['X-Bitrix-Site-Id']].faq),
+    ]
+  })
+
+  // Questionnaire page
+  pretender.get('/api/pages/questionnaire', (request) => {
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse(
+        pages[request.requestHeaders['X-Bitrix-Site-Id']].questionnaire
+      ),
     ]
   })
 

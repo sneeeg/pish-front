@@ -6,6 +6,10 @@ export default ({ app, $axios, store, $constants }) => {
 
   // Axios interceptors init
   $axios.interceptors.request.use((config) => {
+    if (config.mode === 'cors') {
+      return config
+    }
+
     config.baseURL = `${window.location.origin}/`
 
     if (config.params) {

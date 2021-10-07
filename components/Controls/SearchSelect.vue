@@ -1,19 +1,36 @@
 <template>
-  <div class="search-select">
-    <div v-if="label" class="search-select__label">{{ label }}</div>
-    <v-select
-      autocomplete="on"
-      :options="options"
-      :value="value"
-      :placeholder="placeholder"
-      @input="$emit('input', $event)"
-      @search="onSearch"
-      @option:selected="$emit('selected', $event)"
-    >
-      <template #no-options>
-        {{ lang['search.empty'] }}
-      </template>
-    </v-select>
+  <div :class="['search-select', { _disabled: disabled }]">
+    <div v-if="label" class="search-select__label">
+      {{ label }}<sup v-if="required">*</sup>
+    </div>
+
+    <div class="search-select__input">
+      <v-select
+        :searchable="searchable"
+        autocomplete="on"
+        :options="options"
+        :value="value"
+        :readonly="disabled"
+        :placeholder="placeholder"
+        @input="$emit('input', $event)"
+        @search="onSearch"
+        @option:selected="$emit('selected', $event)"
+        @focus="$emit('focus')"
+        @open="isOpen = true"
+        @close="isOpen = false"
+      >
+        <template #no-options>
+          {{ lang['search.empty'] }}
+        </template>
+      </v-select>
+
+      <SvgIcon
+        v-if="!searchable"
+        :class="['search-select__caret', { _open: isOpen }]"
+        name="caret-down"
+      />
+    </div>
+
     <div v-if="errorText" class="search-select__error">
       {{ errorText }}
     </div>
@@ -45,6 +62,23 @@ export default {
       type: String,
       default: '',
     },
+    required: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    searchable: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      isOpen: false,
+    }
   },
   computed: {
     ...mapState('default', ['lang']),
@@ -60,7 +94,6 @@ export default {
 <style lang="scss">
 .search-select {
   position: relative;
-  z-index: 1;
   display: flex;
   flex-direction: column;
   margin-bottom: 3.2rem;
@@ -71,23 +104,30 @@ export default {
     color: $color_grey_text;
     font-weight: 400;
     text-transform: uppercase;
+
+    sup {
+      position: relative;
+      top: -4px;
+      left: 2px;
+      color: $color_accent;
+      font-size: 1.3rem;
+    }
   }
 
   &__input {
-    @include text-small;
-    padding: 1.8rem 1.2rem;
-    border: 1px solid #e1e4e8;
-    border-radius: 5px;
-    background: transparent;
-    transition: border-color 0.5s ease;
-    appearance: none;
+    position: relative;
+  }
 
-    &:focus {
-      border-color: $color_accent;
-    }
+  &__caret {
+    @include box(2.2rem);
+    top: calc(50% - 1.1rem);
+    right: 1.2rem;
+    position: absolute;
+    fill: $color_accent;
+    transition: transform 0.3s ease;
 
-    &::placeholder {
-      color: $color_grey_text;
+    &._open {
+      transform: rotate(180deg);
     }
   }
 
@@ -112,7 +152,6 @@ export default {
 
   .vs__dropdown-toggle {
     padding: 1.8rem 1.2rem;
-
     border: 1px solid #e1e4e8;
     border-radius: 5px;
   }
@@ -141,6 +180,7 @@ export default {
     border: 1px solid #e1e4e8;
     border-radius: 0 0 5px 5px;
     box-shadow: none;
+    z-index: 10;
   }
 }
 </style>
