@@ -1256,8 +1256,17 @@ export default {
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then(() => {
-          this.isDone = true
+        .then(({ errors }) => {
+          if (errors.length > 0) {
+            this.changePopupState({
+              isShow: true,
+              title: 'Ошибка',
+              text: errors[0].message,
+              to: '',
+            })
+          } else {
+            this.isDone = true
+          }
         })
         .catch((e) => {
           this.changePopupState({
