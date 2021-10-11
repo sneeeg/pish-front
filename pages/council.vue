@@ -1,5 +1,8 @@
 <template>
   <div class="council">
+    <div class="page__back">
+      <ArrowLink :text="lang['base.back']" to="/about" arrow-left />
+    </div>
     <Section>
       <h1 class="council__title _visually-h2">{{ page.pageTitle }}</h1>
 
@@ -34,20 +37,25 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import PersonCard from '~/components/PersonCard'
+import ArrowLink from '~/components/controls/ArrowLink'
 
 export default {
   name: 'Commission',
-  components: { Section, PersonCard },
+  components: { Section, PersonCard, ArrowLink },
   mixins: [pageDataFetch, pageHead, pageDefault],
   data() {
     return {
       mainMember: null,
     }
+  },
+  computed: {
+    ...mapState('default', ['lang']),
   },
   created() {
     if (process.env.NODE_ENV !== 'production') {

@@ -60,7 +60,9 @@ export default {
   methods: {
     ...mapActions('menu', { closeMenu: 'close' }),
     onSubmit() {
-      this.$router.push({ name: 'search', query: { request: this.search } })
+      this.$router.push(
+        this.localePath({ name: 'search', query: { request: this.search } })
+      )
     },
   },
 }
