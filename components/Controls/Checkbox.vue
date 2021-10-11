@@ -71,13 +71,13 @@ export default {
 <style lang="scss">
 .checkbox {
   @include text-button-small;
-  font-weight: 400;
   position: relative;
   display: flex;
   align-items: center;
   padding-left: 3rem;
-  user-select: none;
   color: $color_grey_text;
+  font-weight: 400;
+  user-select: none;
 
   input {
     position: absolute;
@@ -92,9 +92,9 @@ export default {
 
   span {
     position: absolute;
+    top: calc(50% - 1rem);
     left: 0;
     display: flex;
-    top: calc(50% - 1rem);
     align-items: center;
     justify-content: center;
     border: 1px solid $color_grey_text;
@@ -103,9 +103,9 @@ export default {
 
     svg {
       @include box(70%);
+      color: $color_accent;
       transform: scale(0);
       transition: transform 0.15s;
-      color: $color_accent;
     }
   }
 }

@@ -8,7 +8,7 @@
           $route.name &&
           $utils.getPageNameByRoute($route.name) === 'faq-categoryId'
             ? $route.name
-            : $route.fullPath
+            : $route.path
         "
       />
     </div>
@@ -23,13 +23,19 @@
       <DocPopup v-if="$store.state.default.popup.isShow" />
     </transition>
 
+    <transition name="fade-from-right" appear>
+      <ScrollBtn v-if="window.isMobileSize && scrollY >= 700" />
+    </transition>
+
     <portal-target name="popups"> </portal-target>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import TheHeader from '~/components/TheHeader.vue'
 import TheFooter from '~/components/TheFooter.vue'
+import ScrollBtn from '~/components/ScrollBtn'
 
 export default {
   components: {
@@ -37,6 +43,11 @@ export default {
     TheFooter,
     TheMobileMenu: () => import('~/components/TheMobileMenu'),
     DocPopup: () => import('~/components/DocPopup'),
+    ScrollBtn,
+  },
+  computed: {
+    ...mapState('scroll', { scrollY: 'y' }),
+    ...mapState('responsive', ['window']),
   },
   head() {
     return {

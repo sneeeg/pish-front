@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="page__back">
+      <ArrowLink :text="lang['base.back']" to="/news" arrow-left />
+    </div>
     <Section :title="page.reviewsTitle" :tag-title="$route.query.tag">
       <Posts all type="media" />
     </Section>
@@ -16,10 +19,11 @@ import Section from '~/components/layout/Section'
 import Posts from '~/components/Posts'
 import OtherPosts from '~/components/OtherPosts'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
+import ArrowLink from '~/components/controls/ArrowLink'
 
 export default {
   name: 'Index',
-  components: { Posts, Section, OtherPosts },
+  components: { Posts, Section, OtherPosts, ArrowLink },
   mixins: [pageHead, pageDefault],
   async asyncData({ store, $api, error, i18n }) {
     if (i18n.locale === 'en')

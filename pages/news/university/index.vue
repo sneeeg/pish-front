@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="page__back">
+      <ArrowLink :text="lang['base.back']" to="/news" arrow-left />
+    </div>
     <Section :title="page.universityNewsTitle" :tag-title="$route.query.tag">
       <Posts all type="university" />
     </Section>

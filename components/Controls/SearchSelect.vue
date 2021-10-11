@@ -126,11 +126,11 @@ export default {
 
   &__caret {
     @include box(2.2rem);
+    position: absolute;
     top: calc(50% - 1.1rem);
     right: 1.2rem;
-    position: absolute;
-    fill: $color_accent;
     transition: transform 0.3s ease;
+    fill: $color_accent;
 
     &._open {
       transform: rotate(180deg);
@@ -183,10 +183,10 @@ export default {
   .vs__dropdown-menu {
     @include text-small;
     @include scrollbar($color_accent);
+    z-index: 10;
     border: 1px solid #e1e4e8;
     border-radius: 0 0 5px 5px;
     box-shadow: none;
-    z-index: 10;
   }
 }
 </style>

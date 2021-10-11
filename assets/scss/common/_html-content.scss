@@ -32,11 +32,9 @@ $listPadding: 2rem;
   a {
     @include hover-opacity;
     color: $color_accent;
+    text-decoration: underline;
   }
 
-  b {
-    color: $color_accent;
-  }
 
   > :not([class]),
   > a.doc {

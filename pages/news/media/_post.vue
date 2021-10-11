@@ -1,7 +1,7 @@
 <template>
   <div class="page">
-    <div v-if="false" class="page__back">
-      <ArrowLink :text="lang['news.all']" to="/news" arrow-left />
+    <div class="page__back">
+      <ArrowLink :text="lang['base.back']" to="/news/media" arrow-left />
     </div>
     <Section :background-absolute="!!page.detailPicture"
       ><article ref="post" class="post">

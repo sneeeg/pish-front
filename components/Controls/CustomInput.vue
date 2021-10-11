@@ -215,13 +215,13 @@ export default {
   &__input,
   .mx-input {
     @include text-small;
+    height: auto;
     padding: 1.8rem 1.2rem;
     border: 1px solid #e1e4e8;
     border-radius: 5px;
     background: transparent;
     transition: border-color 0.5s ease;
     appearance: none;
-    height: auto;
     resize: none;
 
     //&:focus {
