@@ -35,6 +35,20 @@
       />
 
       <CustomInput
+        v-model.trim.lazy="$v.secondName.$model"
+        class="questionnaire-form__field"
+        label="Отчество на русском языке"
+        placeholder="Отчество на русском языке"
+        required
+        :error-text="
+          $v.secondName.$dirty && !$v.secondName.required
+            ? 'Это поле необходимо заполнить'
+            : ''
+        "
+        name="secondName"
+      />
+
+      <CustomInput
         v-model.trim.lazy="$v.phone.$model"
         mask-type="tel"
         type="tel"
@@ -961,6 +975,7 @@ export default {
       industries: [],
       lastName: '',
       name: '',
+      secondName: '',
       phone: '',
       email: '',
       country: '',
@@ -1055,6 +1070,7 @@ export default {
     const result = {
       lastName: { required },
       name: { required },
+      secondName: { required },
       country: { required },
       city: { required },
       relocation: { required },
@@ -1205,6 +1221,7 @@ export default {
       const personal = {
         lastName: this.lastName,
         name: this.name,
+        secondName: this.secondName,
         phone: this.phone,
         email: this.email,
         country: this.country,
