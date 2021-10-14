@@ -22,6 +22,10 @@ $listPadding: 2rem;
     blockquote {
       @include p;
     }
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   p {
@@ -32,7 +36,6 @@ $listPadding: 2rem;
   a {
     @include hover-opacity;
     color: $color_accent;
-    text-decoration: underline;
   }
 
 
