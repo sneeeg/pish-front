@@ -793,7 +793,7 @@
         required
         :error-text="
           $v.esse.first.$dirty && $v.esse.first.$invalid
-            ? 'Минимальный объем – 500 символов, максимальный – 1000'
+            ? 'Минимальный объем – 2500 символов, максимальный – 5000'
             : ''
         "
         :name="`esseFirst`"
@@ -808,7 +808,7 @@
         required
         :error-text="
           $v.esse.second.$dirty && $v.esse.second.$invalid
-            ? 'Минимальный объем – 500 символов, максимальный – 1000'
+            ? 'Минимальный объем – 2500 символов, максимальный – 5000'
             : ''
         "
         :name="`esseSecond`"
@@ -1084,13 +1084,13 @@ export default {
       esse: {
         first: {
           required,
-          maxLength: maxLength(1000),
-          minLength: minLength(500),
+          maxLength: maxLength(5000),
+          minLength: minLength(2500),
         },
         second: {
           required,
-          maxLength: maxLength(1000),
-          minLength: minLength(500),
+          maxLength: maxLength(5000),
+          minLength: minLength(2500),
         },
       },
       files: {
