@@ -5,10 +5,7 @@
       :key="i"
       :class="['stage', { _last: i === stages.length - 1 }]"
     >
-      <span class="stage__index">
-        <template v-if="$i18n.locale === 'ru'"> {{ i + 1 }} ЭТАП </template>
-        <template v-else> STAGE {{ i + 1 }} </template>
-      </span>
+      <span class="stage__index"> {{ stage.date }} </span>
       <!-- eslint-disable vue/no-v-html -->
       <h3 class="stage__title">
         <HTMLContent v-html="stage.title" />
@@ -22,7 +19,7 @@
             :class="{ _active: isActive(i, j) }"
             @click="toggle(i, j)"
           >
-            {{ substage.title }}
+            <span v-html="substage.title"></span>
           </h4>
           <div class="substage__content">
             <TransitionExpand>
@@ -35,6 +32,8 @@
             </TransitionExpand>
           </div>
         </template>
+
+        <HTMLContent v-else-if="substage.title" :html="substage.title" />
       </div>
     </div>
   </div>
@@ -88,6 +87,10 @@ export default {
   @include --mobile {
     padding-left: 0;
   }
+
+  strong {
+    color: $color_accent;
+  }
 }
 
 .stage {
@@ -95,15 +98,15 @@ export default {
   padding: 3.7rem 0 0 7rem;
 
   &._last {
-    padding: 3.7rem 0 8.4rem 7rem;
+    padding: 2.4rem 0 4rem 7rem;
 
     @include --mobile {
-      padding: 1rem 0 6rem;
+      padding-left: 0;
     }
   }
 
   @include --mobile {
-    padding: 1rem 0 0 0;
+    padding-left: 0;
   }
 
   @include --from-mobile {
@@ -162,12 +165,12 @@ export default {
       z-index: -2;
       width: 120vw;
       height: 100%;
-      background: #e1e4e8;
+      //background: #e1e4e8;
       content: '';
     }
 
     .stage__index {
-      background: #e1e4e8;
+      //background: #e1e4e8;
     }
 
     .substage__content::before {
@@ -183,15 +186,14 @@ export default {
     display: inline-block;
     color: $color_accent;
     font-weight: 500;
-    font-size: 1.8rem;
-    line-height: 5rem;
     background-color: $color_light_grey;
 
     @include --from-mobile {
+      @include text-small;
       position: absolute;
       left: 0;
       z-index: 3;
-      padding: 0 1.5rem;
+      padding: 2rem 1.5rem;
       transform: translate(-50%, -3px);
     }
   }
@@ -216,6 +218,10 @@ export default {
     font-size: 2rem;
     line-height: 2.3rem;
     cursor: pointer;
+
+    @include --mobile {
+      @include text;
+    }
 
     &::before {
       position: relative;
