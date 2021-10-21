@@ -10,7 +10,9 @@
         <template v-else> STAGE {{ i + 1 }} </template>
       </span>
       <!-- eslint-disable vue/no-v-html -->
-      <h3 class="stage__title" v-html="stage.title"></h3>
+      <h3 class="stage__title">
+        <HTMLContent v-html="stage.title" />
+      </h3>
       <!--eslint-enable-->
 
       <div v-for="(substage, j) in stage.items" :key="j" class="substage">
@@ -197,7 +199,6 @@ export default {
   &__title {
     position: relative;
     padding: 1rem 0;
-    font-weight: 700;
     font-size: 2rem;
     line-height: 2.3rem;
   }

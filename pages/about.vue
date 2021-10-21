@@ -79,11 +79,21 @@
       />
     </Section>
 
-    <Section id="priority" :title="page.priorities.title">
+    <Section
+      v-if="isDev"
+      id="steps"
+      class="_mb-0"
+      :title="page.steps.title"
+      :has-overflow="false"
+    >
+      <TheStages :stages="page.steps.sections"></TheStages>
+    </Section>
+
+    <Section id="priority" background :title="page.priorities.title">
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
 
-    <Section id="tasks" background>
+    <Section id="tasks">
       <SupportBlock :title="page.tasks.title" :sections="page.tasks.sections" />
     </Section>
 
@@ -127,6 +137,7 @@ import RegistrationPreview from '~/components/RegistrationPreview'
 import PagesSection from '~/components/PagesSection'
 import TheHistory from '~/components/TheHistory'
 import PersonCard from '~/components/PersonCard'
+import TheStages from '~/components/TheStages'
 
 export default {
   name: 'About',
@@ -141,10 +152,14 @@ export default {
     Progress,
     PagesSection,
     TheHistory,
+    TheStages,
   },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
+    isDev() {
+      return process.env.NODE_ENV === 'development'
+    },
   },
   created() {
     if (process.env.NODE_ENV !== 'production') {
