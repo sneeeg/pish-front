@@ -174,7 +174,7 @@ export default {
     }
 
     .substage__content::before {
-      background: #f0f3f8;
+      //background: #f0f3f8;
     }
 
     a.lk-link::before {

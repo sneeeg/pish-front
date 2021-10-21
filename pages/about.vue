@@ -80,7 +80,7 @@
     </Section>
 
     <Section
-      v-if="isDev"
+      v-if="false"
       id="steps"
       class="_mb-0"
       :title="page.steps.title"
@@ -89,11 +89,11 @@
       <TheStages :stages="page.steps.sections"></TheStages>
     </Section>
 
-    <Section id="priority" background :title="page.priorities.title">
+    <Section id="priority" :title="page.priorities.title">
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
 
-    <Section id="tasks">
+    <Section id="tasks" background>
       <SupportBlock :title="page.tasks.title" :sections="page.tasks.sections" />
     </Section>
 
