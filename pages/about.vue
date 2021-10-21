@@ -80,7 +80,7 @@
     </Section>
 
     <Section
-      v-if="false"
+      v-if="isDev"
       id="steps"
       class="_mb-0"
       :title="page.steps.title"
