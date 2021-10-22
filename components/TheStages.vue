@@ -7,12 +7,16 @@
     >
       <span class="stage__index"> {{ stage.date }} </span>
       <!-- eslint-disable vue/no-v-html -->
-      <h3 class="stage__title">
+      <h3 v-if="stage.title" class="stage__title">
         <HTMLContent v-html="stage.title" />
       </h3>
       <!--eslint-enable-->
 
-      <div v-for="(substage, j) in stage.items" :key="j" class="substage">
+      <div
+        v-for="(substage, j) in stage.items"
+        :key="j"
+        :class="['substage', { _noContent: !substage.content }]"
+      >
         <template v-if="substage.content !== 'kek'">
           <h4
             class="substage__title"
@@ -97,8 +101,13 @@ export default {
   position: relative;
   padding: 3.7rem 0 0 7rem;
 
+  &:first-child {
+    padding-top: 0;
+  }
+
   &._last {
-    padding: 2.4rem 0 4rem 7rem;
+    display: none;
+    padding: 5.6rem 0 4rem 7rem;
 
     @include --mobile {
       padding-left: 0;
@@ -106,6 +115,7 @@ export default {
   }
 
   @include --mobile {
+    padding-top: 2.4rem;
     padding-left: 0;
   }
 
@@ -148,7 +158,7 @@ export default {
     &::before {
       top: 0;
       bottom: auto;
-      height: 14rem;
+      height: 8rem;
     }
 
     &::after {
@@ -212,12 +222,20 @@ export default {
   &__title {
     display: flex;
     align-items: flex-start;
-    padding: 2.4rem 0 2.4rem 0;
+    padding: 1.2rem 0 2.4rem 0;
     color: #000;
     font-weight: 400;
     font-size: 2rem;
     line-height: 2.3rem;
     cursor: pointer;
+
+    ._noContent & {
+      pointer-events: none;
+
+      &::before {
+        visibility: hidden;
+      }
+    }
 
     @include --mobile {
       @include text;
