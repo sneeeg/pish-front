@@ -135,8 +135,7 @@ export default {
     }
 
     // точка
-    &:first-child .stage__index::after,
-    &:nth-last-child(2)::after {
+    &:first-child .stage__index::after {
       @include box(1.6rem);
       position: absolute;
       top: 100%;

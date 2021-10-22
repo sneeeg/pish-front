@@ -79,21 +79,15 @@
       />
     </Section>
 
-    <Section
-      v-if="isDev"
-      id="steps"
-      class="_mb-0"
-      :title="page.steps.title"
-      :has-overflow="false"
-    >
+    <Section id="steps" :title="page.steps.title" :has-overflow="false">
       <TheStages :stages="page.steps.sections"></TheStages>
     </Section>
 
-    <Section id="priority" :title="page.priorities.title">
+    <Section id="priority" background :title="page.priorities.title">
       <PriorityBlock :priorities="page.priorities.items" />
     </Section>
 
-    <Section id="tasks" background>
+    <Section id="tasks">
       <SupportBlock :title="page.tasks.title" :sections="page.tasks.sections" />
     </Section>
 
