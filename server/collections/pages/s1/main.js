@@ -37,9 +37,9 @@ module.exports = {
       },
       {
         icon: 'user',
-        text: 'Комментарии',
+        text: 'Этапы отбора в&nbsp;2021&nbsp;году',
         counter: false,
-        href: '/news/comments',
+        href: '/about#steps',
       },
     ],
   },
