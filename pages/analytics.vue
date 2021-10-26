@@ -4,13 +4,33 @@
   <div v-else-if="data" class="analytics">
     <Section>
       <h1 class="council__title _visually-h2">{{ page.pageTitle }}</h1>
+
+      <div v-if="data.files && !!data.files.length" class="analytics-files">
+        <div class="analytics-files__title">
+          {{ lang['base.files'] }}
+        </div>
+
+        <div class="analytics-files__items">
+          <File
+            v-for="(file, index) in data.files"
+            :key="index"
+            v-bind="file"
+          />
+        </div>
+      </div>
     </Section>
 
-    <Section background :title="page.participants.title"> </Section>
+    <Section small-head background :title="page.participants.title">
+      <template #head>
+        <Btn :text="lang['base.resetFilter']" :arrow="false" small grey />
+      </template>
 
-    <Section :title="page.candidates.title"></Section>
+      <template #default>
+        <ParticipantsFilter />
+      </template>
+    </Section>
 
-    <Section background :title="page.summary.title"></Section>
+    <Section small-head :title="page.summary.title"></Section>
   </div>
 </template>
 
@@ -21,10 +41,13 @@ import pageHead from '~/assets/js/vue-mixins/page-head'
 import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import Section from '~/components/layout/Section'
 import Loader from '~/components/Loader'
+import File from '~/components/utils/File'
+import Btn from '~/components/controls/Btn'
+import ParticipantsFilter from '~/components/ParticipantsFilter'
 
 export default {
-  name: 'Commission',
-  components: { Loader, Section },
+  name: 'Analytics',
+  components: { ParticipantsFilter, Btn, File, Loader, Section },
   mixins: [pageDataFetch, pageHead, pageDefault],
   data() {
     return {
@@ -54,4 +77,14 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.analytics-files {
+  margin-top: 5.6rem;
+
+  &__items {
+    @include flexGap(3rem);
+
+    padding-top: 2.4rem;
+  }
+}
+</style>

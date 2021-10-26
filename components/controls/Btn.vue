@@ -2,7 +2,10 @@
   <button
     v-if="!isLink"
     :aria-label="text"
-    :class="['btn', { _disabled: disabled || loading }]"
+    :class="[
+      'btn',
+      { _disabled: disabled || loading, _small: small, _grey: grey },
+    ]"
   >
     <SvgIcon
       v-if="icon"
@@ -21,7 +24,7 @@
     v-else
     :to="to"
     :aria-label="text"
-    :class="['btn', { _disabled: disabled }]"
+    :class="['btn', { _disabled: disabled, _small: small, _grey: grey }]"
   >
     <SvgIcon v-if="icon" class="btn__icon" :name="icon" />
     <span class="btn__text">{{ text }}</span>
@@ -50,7 +53,7 @@ export default {
       default: '',
     },
     arrow: {
-      type: String,
+      type: [String, Boolean],
       default: 'arrow-right',
     },
     to: {
@@ -62,6 +65,14 @@ export default {
       default: false,
     },
     disabled: {
+      type: Boolean,
+      default: false,
+    },
+    small: {
+      type: Boolean,
+      default: false,
+    },
+    grey: {
       type: Boolean,
       default: false,
     },
@@ -85,6 +96,21 @@ export default {
 
   @include --mobile {
     height: 4.4rem;
+  }
+
+  &._small {
+    @include text-button-small;
+
+    height: 4.7rem;
+    padding: 1.6rem 2rem;
+
+    @include --mobile {
+      height: 4.2rem;
+    }
+  }
+
+  &._grey {
+    background-color: $color_grey_text;
   }
 
   &::before {

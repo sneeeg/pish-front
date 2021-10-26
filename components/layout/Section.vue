@@ -14,10 +14,18 @@
       <slot name="default" />
     </div>
     <div v-else class="section__inner">
-      <div v-if="title && !tagTitle" :class="['section-head']">
+      <div
+        v-if="title && !tagTitle"
+        :class="['section-head', { _smallHead: smallHead }]"
+      >
         <h2 class="section-head__title" v-html="title"></h2>
+
+        <div v-if="$slots.head" class="section-head__slot">
+          <slot name="head" />
+        </div>
+
         <ArrowLink
-          v-if="to"
+          v-if="to && !$slots.head"
           :to="to"
           class="section-head__link"
           :text="
@@ -81,6 +89,10 @@ export default {
     arrowText: {
       type: String,
       default: '',
+    },
+    smallHead: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
