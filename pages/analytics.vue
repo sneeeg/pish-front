@@ -16,19 +16,17 @@
 import { mapState } from 'vuex'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
+import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import Section from '~/components/layout/Section'
 
 export default {
   name: 'Commission',
   components: { Section },
-  mixins: [pageHead, pageDefault],
-  async asyncData({ store, $api }) {
-    const page = await $api.pages.analytics().then(({ data }) => data)
-
-    return { page }
-  },
+  mixins: [pageDataFetch, pageHead, pageDefault],
   data() {
-    return {}
+    return {
+      isLoading: true,
+    }
   },
   computed: {
     ...mapState('default', ['lang']),
