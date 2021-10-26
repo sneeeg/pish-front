@@ -71,7 +71,9 @@ body {
 }
 
 .main {
-  flex: 1 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 
   //&._default {
   //  padding-top: 14rem;
