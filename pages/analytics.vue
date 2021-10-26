@@ -22,11 +22,16 @@
 
     <Section small-head background :title="page.participants.title">
       <template #head>
-        <Btn :text="lang['base.resetFilter']" :arrow="false" grey />
+        <Btn
+          :text="lang['base.resetFilter']"
+          :arrow="false"
+          grey
+          @click.native="resetFilter"
+        />
       </template>
 
       <template #default>
-        <ParticipantsFilter :items="data.participants" />
+        <ParticipantsFilter ref="filter" :items="data.participants" />
       </template>
     </Section>
 
@@ -74,6 +79,11 @@ export default {
   computed: {
     ...mapState('default', ['lang']),
   },
+  methods: {
+    resetFilter() {
+      this.$refs.filter.resetFilter()
+    },
+  },
 }
 </script>
 
@@ -81,10 +91,21 @@ export default {
 .analytics-files {
   margin-top: 5.6rem;
 
+  &__title {
+    margin-bottom: 3.2rem;
+    color: #000;
+  }
+
   &__items {
     @include flexGap(3rem);
 
-    padding-top: 2.4rem;
+    @include --mobile {
+      @include flexGap(2rem);
+
+      > * {
+        flex: 1 1 100%;
+      }
+    }
   }
 }
 </style>

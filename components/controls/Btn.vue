@@ -99,8 +99,8 @@ export default {
   }
 
   &._grey {
-    background-color: $color_grey_text;
     font-weight: 500;
+    background-color: $color_grey_text;
   }
 
   &::before {

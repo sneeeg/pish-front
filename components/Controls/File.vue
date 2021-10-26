@@ -65,7 +65,7 @@ export default {
 
     > * {
       &:last-child {
-        margin-top: 0.6rem;
+        margin-top: 0.5rem;
       }
     }
   }

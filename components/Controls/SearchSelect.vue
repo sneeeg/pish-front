@@ -11,12 +11,14 @@
     <div class="search-select__input">
       <v-select
         ref="select"
+        :selectable="selectable"
         :multiple="multiple"
         :close-on-select="!multiple"
         :searchable="searchable"
         autocomplete="on"
         :options="options"
         :value="value"
+        :deselect-from-dropdown="multiple"
         :readonly="disabled"
         :placeholder="placeholder"
         @input="$emit('input', $event)"
@@ -44,16 +46,20 @@
           </div>
         </template>
 
-        <template v-if="multiple" #selected-option-container="option">
-          {{ option }}
+        <template v-if="multiple" #selected-option-container>
+          {{ '' }}
         </template>
       </v-select>
 
       <button
-        :class="['search-select__caret', { _open: isOpen }]"
+        v-if="!searchable"
+        :class="[
+          'search-select__caret',
+          { _open: isOpen, _greyArrow: greyArrow },
+        ]"
         @click="toggleDropdown"
       >
-        <SvgIcon v-if="!searchable" name="caret-down" />
+        <SvgIcon name="caret-down" />
       </button>
     </div>
 
@@ -104,6 +110,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    greyArrow: {
+      type: Boolean,
+      default: false,
+    },
+    selectable: {
+      type: Function,
+      default: (option) => true,
+    },
   },
   data() {
     return {
@@ -112,6 +126,11 @@ export default {
   },
   computed: {
     ...mapState('default', ['lang']),
+  },
+  watch: {
+    value() {
+      this.getMultipleValue()
+    },
   },
   methods: {
     onSearch(str, loading) {
@@ -125,7 +144,36 @@ export default {
         return true
     },
     toggleDropdown(e) {
-      this.$refs.select.toggleDropdown(e)
+      if (
+        this.$refs.select.$el.querySelector('ul').style.visibility === 'hidden'
+      ) {
+        this.$refs.select.toggleDropdown(e)
+      }
+    },
+    getMultipleValue() {
+      this.$nextTick(() => {
+        const text = this.$refs.select.$el.querySelector(
+          '.vs__selected-options'
+        )
+        let span = text.querySelector('span')
+
+        if (!span) {
+          span = document.createElement('span')
+          text.prepend(span)
+        }
+
+        if (!this.multiple) return
+
+        if (this.value.length > 1) {
+          span.innerHTML = `${
+            this.value[0].label ? this.value[0].label : this.value[0]
+          } <b>+ ${this.value.length - 1}</b>`
+        } else if (this.value.length) {
+          span.innerHTML = this.value[0].label || this.value[0]
+        } else {
+          span.innerHTML = ''
+        }
+      })
     },
   },
 }
@@ -173,6 +221,12 @@ export default {
       fill: $color_accent;
     }
 
+    &._greyArrow {
+      svg {
+        fill: $color_grey_text;
+      }
+    }
+
     &._open {
       svg {
         transform: rotate(180deg);
@@ -204,6 +258,11 @@ export default {
 
     span {
       background-color: transparent;
+
+      b {
+        color: $color_accent;
+        font-weight: 400;
+      }
 
       button {
         display: none;
@@ -250,21 +309,21 @@ export default {
   align-items: center;
 
   &__box {
-    flex-shrink: 0;
     position: relative;
-    @include box(1.6rem);
+    flex-shrink: 0;
     border: 1px solid $color_accent;
+    @include box(1.8rem);
 
     &::before {
-      @include box(1rem);
-      top: calc(50% - 0.5rem);
-      left: calc(50% - 0.5rem);
-      background-color: $color_accent;
+      @include box(1.2rem);
       position: absolute;
-      content: '';
-      transition: transform 0.3s ease;
-      will-change: transform;
+      top: calc(50% - 0.6rem);
+      left: calc(50% - 0.6rem);
+      background-color: $color_accent;
       transform: scale(0);
+      transition: transform 0.2s;
+      content: '';
+      will-change: transform;
     }
 
     &._active {
@@ -275,6 +334,8 @@ export default {
   }
 
   &__label {
+    position: relative;
+    top: 1px;
     margin-left: 1.2rem;
   }
 }
