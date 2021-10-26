@@ -9,6 +9,7 @@ import comments from '~/assets/js/api/modules/comments'
 import instructions from '~/assets/js/api/modules/instructions'
 import faq from '~/assets/js/api/modules/faq'
 import dadata from '~/assets/js/api/modules/dadata'
+import analytics from '~/assets/js/api/modules/analytics'
 
 export default ($axios) => ({
   config: config($axios),
@@ -22,4 +23,5 @@ export default ($axios) => ({
   instructions: instructions($axios),
   faq: faq($axios),
   dadata: dadata($axios),
+  analytics: analytics($axios),
 })
