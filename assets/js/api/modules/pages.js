@@ -69,6 +69,11 @@ export default ($axios) => ({
     return $axios.$get('/api/pages/questionnaire')
   },
 
+  /* Getting analytics */
+  analytics() {
+    return $axios.$get('/api/pages/analytics')
+  },
+
   /* Get document page by name */
   getDocumentPageByName(name) {
     return $axios.$get('/api/documents', { params: { name } })
