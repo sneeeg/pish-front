@@ -65,7 +65,7 @@ export default {
 
     > * {
       &:last-child {
-        margin-top: 4px;
+        margin-top: 0.6rem;
       }
     }
   }
@@ -74,6 +74,7 @@ export default {
     width: 13rem;
     color: $color_dark_grey;
     font-weight: 600;
+    line-height: 1;
   }
 
   &__size {

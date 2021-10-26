@@ -22,11 +22,11 @@
 
     <Section small-head background :title="page.participants.title">
       <template #head>
-        <Btn :text="lang['base.resetFilter']" :arrow="false" small grey />
+        <Btn :text="lang['base.resetFilter']" :arrow="false" grey />
       </template>
 
       <template #default>
-        <ParticipantsFilter />
+        <ParticipantsFilter :items="data.participants" />
       </template>
     </Section>
 
@@ -41,7 +41,7 @@ import pageHead from '~/assets/js/vue-mixins/page-head'
 import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import Section from '~/components/layout/Section'
 import Loader from '~/components/Loader'
-import File from '~/components/utils/File'
+import File from '~/components/controls/File'
 import Btn from '~/components/controls/Btn'
 import ParticipantsFilter from '~/components/ParticipantsFilter'
 

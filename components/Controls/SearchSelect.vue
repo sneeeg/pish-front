@@ -11,6 +11,8 @@
     <div class="search-select__input">
       <v-select
         ref="select"
+        :multiple="multiple"
+        :close-on-select="!multiple"
         :searchable="searchable"
         autocomplete="on"
         :options="options"
@@ -27,13 +29,32 @@
         <template #no-options>
           {{ lang['search.empty'] }}
         </template>
+
+        <template v-if="multiple" #option="option">
+          <div class="search-select-option">
+            <div
+              :class="[
+                'search-select-option__box',
+                { _active: valueHasOption(option) },
+              ]"
+            ></div>
+            <div class="search-select-option__label">
+              {{ option.label }}
+            </div>
+          </div>
+        </template>
+
+        <template v-if="multiple" #selected-option-container="option">
+          {{ option }}
+        </template>
       </v-select>
 
-      <SvgIcon
-        v-if="!searchable"
+      <button
         :class="['search-select__caret', { _open: isOpen }]"
-        name="caret-down"
-      />
+        @click="toggleDropdown"
+      >
+        <SvgIcon v-if="!searchable" name="caret-down" />
+      </button>
     </div>
 
     <div v-if="errorText" class="search-select__error">
@@ -56,7 +77,7 @@ export default {
       default: '',
     },
     value: {
-      type: String,
+      type: [String, Array],
       default: '',
     },
     options: {
@@ -79,6 +100,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    multiple: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -91,6 +116,16 @@ export default {
   methods: {
     onSearch(str, loading) {
       this.$emit('search', { str, loading })
+    },
+    valueHasOption(option) {
+      const code = option.code || option.label
+
+      if (typeof this.value === 'string' && code === this.value) return true
+      if (typeof this.value !== 'string' && this.value.includes(code))
+        return true
+    },
+    toggleDropdown(e) {
+      this.$refs.select.toggleDropdown(e)
     },
   },
 }
@@ -125,15 +160,23 @@ export default {
   }
 
   &__caret {
-    @include box(2.2rem);
+    @include btn-reset;
+
     position: absolute;
     top: calc(50% - 1.1rem);
     right: 1.2rem;
-    transition: transform 0.3s ease;
-    fill: $color_accent;
+    z-index: 1;
+
+    svg {
+      @include box(2.2rem);
+      transition: transform 0.3s ease;
+      fill: $color_accent;
+    }
 
     &._open {
-      transform: rotate(180deg);
+      svg {
+        transform: rotate(180deg);
+      }
     }
   }
 
@@ -154,6 +197,18 @@ export default {
     margin: 0;
     padding: 0;
     border: 0;
+  }
+
+  .vs__selected-options {
+    flex-wrap: nowrap;
+
+    span {
+      background-color: transparent;
+
+      button {
+        display: none;
+      }
+    }
   }
 
   .vs__dropdown-toggle {
@@ -187,6 +242,40 @@ export default {
     border: 1px solid #e1e4e8;
     border-radius: 0 0 5px 5px;
     box-shadow: none;
+  }
+}
+
+.search-select-option {
+  display: flex;
+  align-items: center;
+
+  &__box {
+    flex-shrink: 0;
+    position: relative;
+    @include box(1.6rem);
+    border: 1px solid $color_accent;
+
+    &::before {
+      @include box(1rem);
+      top: calc(50% - 0.5rem);
+      left: calc(50% - 0.5rem);
+      background-color: $color_accent;
+      position: absolute;
+      content: '';
+      transition: transform 0.3s ease;
+      will-change: transform;
+      transform: scale(0);
+    }
+
+    &._active {
+      &::before {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__label {
+    margin-left: 1.2rem;
   }
 }
 </style>
