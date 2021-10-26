@@ -37,7 +37,7 @@ export default class LoadingManager {
 
       model = models[model]
 
-      needModelsWarning = true
+      needModelsWarning = false
 
       /* Add model textures to load */
       model.textures.forEach((texture) => {
