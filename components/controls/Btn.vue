@@ -88,8 +88,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 4.8rem;
-  padding: 2rem;
+  height: 4.7rem;
+  padding: 1.6rem 2rem;
   color: $color_white;
   font-weight: 400;
   background-color: $color_accent;
@@ -98,19 +98,9 @@ export default {
     height: 4.4rem;
   }
 
-  &._small {
-    @include text-button-small;
-
-    height: 4.7rem;
-    padding: 1.6rem 2rem;
-
-    @include --mobile {
-      height: 4.2rem;
-    }
-  }
-
   &._grey {
     background-color: $color_grey_text;
+    font-weight: 500;
   }
 
   &::before {
