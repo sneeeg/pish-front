@@ -52,6 +52,7 @@ export default {
   @include text-button;
   display: flex;
   align-items: center;
+  width: fit-content;
   color: $color_accent;
 
   span {

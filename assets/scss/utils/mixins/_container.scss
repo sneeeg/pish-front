@@ -23,3 +23,13 @@
     max-width: calc(#{$width_container_small} - 10rem);
   }
 }
+
+@mixin containerInnerSmall2 {
+  width: 100%;
+  max-width: $width_container_small2;
+
+  @media (max-width: 1320px) {
+    max-width: calc(#{$width_container_small2} - 10rem);
+  }
+}
+

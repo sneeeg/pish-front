@@ -55,7 +55,7 @@ import ParticipantsFilter from '~/components/ParticipantsFilter'
 import Statistics from '~/components/statistics/Statistics'
 
 export default {
-  name: 'Analytics',
+  name: 'Index',
   components: { ParticipantsFilter, Btn, File, Loader, Section, Statistics },
   mixins: [pageDataFetch, pageHead, pageDefault],
   data() {

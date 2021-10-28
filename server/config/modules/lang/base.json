@@ -23,5 +23,6 @@
   "allList": "Весь список",
   "loading": "Загрузка",
   "files": "Файлы для скачивания",
-  "resetFilter": "Сбросить фильтр"
+  "resetFilter": "Сбросить фильтр",
+  "additionTabLabel": "| Приоритет 2030"
 }

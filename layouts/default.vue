@@ -8,7 +8,7 @@
           $route.name &&
           $utils.getPageNameByRoute($route.name) === 'faq-categoryId'
             ? $route.name
-            : $route.path
+            : $route.matched[0].path
         "
       />
     </div>
