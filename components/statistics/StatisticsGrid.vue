@@ -50,6 +50,12 @@ export default {
     &._full-width {
       width: 100%;
       margin-top: 0;
+
+      &:first-child {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: 0;
+      }
     }
 
     @include --mobile {

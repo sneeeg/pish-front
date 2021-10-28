@@ -17,6 +17,13 @@
       :items="info"
       :full-width="true"
     ></StatisticsGrid>
+
+    <StatisticsList
+      v-if="list && list.items.length"
+      :items="list.items"
+      :icon="list.icon"
+    ></StatisticsList>
+
     <!--    <ul v-else class="statistics-card__list">-->
     <!--      <li v-for="(label, index) in dataset.label" :key="index">-->
     <!--        <div class="statistics-card__list-label">-->
@@ -32,6 +39,7 @@
 import SmallChartController from '~/components/small-charts/SmallChartController'
 import SmallChartLegend from '~/components/small-charts/SmallChartLegend'
 import StatisticsGrid from '~/components/statistics/StatisticsGrid'
+import StatisticsList from '~/components/statistics/StatisticsList'
 
 export default {
   name: 'StatisticsCard',
@@ -39,6 +47,7 @@ export default {
     SmallChartController,
     SmallChartLegend,
     StatisticsGrid,
+    StatisticsList,
   },
   props: {
     title: {
@@ -56,6 +65,10 @@ export default {
     info: {
       type: Array,
       default: () => [],
+    },
+    list: {
+      type: Object,
+      default: null,
     },
   },
   computed: {
