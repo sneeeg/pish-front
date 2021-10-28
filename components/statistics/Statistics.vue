@@ -29,8 +29,12 @@ export default {
   column-count: 2;
   column-gap: 3rem;
 
-  @include --mobile {
+  @include --tablet {
     column-count: auto;
+
+    > * {
+      width: 100%;
+    }
   }
 
   > * {

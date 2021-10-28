@@ -63,6 +63,7 @@ export default {
   &__chart-wrap {
     position: relative;
     width: 33.2rem;
+    max-width: 100%;
 
     @include --mobile {
       width: 24rem;
