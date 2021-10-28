@@ -39,6 +39,7 @@ export default {
     '~/plugins/vue-check-view',
     '~/plugins/vue-select',
     '~/plugins/router-processing.js',
+    '~/plugins/charts.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
