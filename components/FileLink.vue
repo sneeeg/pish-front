@@ -45,6 +45,10 @@ export default {
     height: 2.5rem;
     margin-right: 1.6rem;
     color: $color_accent;
+
+    @include --mobile {
+      margin-right: 1.2rem;
+    }
   }
 }
 </style>

@@ -1,5 +1,8 @@
 <template>
-  <div :style="{ background }" class="person-card-lg">
+  <div
+    :style="{ background: !window.isMobileSize ? background : false }"
+    class="person-card-lg"
+  >
     <div class="person-card-lg__photo">
       <img :src="photoUrl" :alt="name" />
     </div>
@@ -13,6 +16,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'PersonCardLg',
   props: {
@@ -33,6 +38,9 @@ export default {
       required: true,
     },
   },
+  computed: {
+    ...mapState('responsive', ['window']),
+  },
 }
 </script>
 
@@ -40,6 +48,10 @@ export default {
 .person-card-lg {
   display: flex;
   width: 100%;
+
+  @include --mobile {
+    flex-direction: column;
+  }
 
   &__photo {
     flex-shrink: 0;
@@ -51,6 +63,11 @@ export default {
 
       object-fit: cover;
     }
+
+    @include --mobile {
+      width: 12rem;
+      height: 14.7rem;
+    }
   }
 
   &__content {
@@ -59,6 +76,11 @@ export default {
     justify-content: center;
     width: 100%;
     padding: 3.2rem;
+
+    @include --mobile {
+      margin-top: 2.4rem;
+      padding: 0;
+    }
   }
 
   &__name {
@@ -67,6 +89,10 @@ export default {
 
   &__text {
     margin: 1.6rem 0 0;
+
+    @include --mobile {
+      margin-top: 0.6rem;
+    }
   }
 }
 </style>
