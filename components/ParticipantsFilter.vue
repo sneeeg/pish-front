@@ -10,7 +10,8 @@
         grey-arrow
         :options="options[key]"
         :placeholder="filterPlaceholders[key]"
-        @input="getOptions(true)"
+        :selectable="isOptionSelectable(key)"
+        @input="activateFilter($event, key), getOptions(true)"
       />
     </div>
 
@@ -66,6 +67,7 @@ export default {
         direction: [],
       },
       filterPlaceholders: {},
+      activeFilters: [],
     }
   },
   computed: {
@@ -99,7 +101,7 @@ export default {
       const result = this.items.reduce((acc, item) => {
         const matched = Object.keys(this.filter).reduce((acc, key) => {
           const filter = this.filter[key]
-          const isMatched = this.filtersAreEmpty || filter.includes(item[key])
+          const isMatched = !filter.length || filter.includes(item[key])
 
           if (isMatched) {
             acc += 1
@@ -108,7 +110,7 @@ export default {
           return acc
         }, 0)
 
-        if (matched >= 1) {
+        if (matched === Object.keys(this.filter).length) {
           acc.push(item)
         }
 
@@ -141,21 +143,35 @@ export default {
       }
 
       this.getOptions(true)
+      this.activeFilters = []
+    },
+    activateFilter(e, filterName) {
+      const index = this.activeFilters.findIndex((item) => item === filterName)
+
+      if (!e.length && index !== -1) {
+        this.activeFilters.splice(index, 1)
+      } else if (index === -1) {
+        this.activeFilters.push(filterName)
+      }
     },
     getOptions(selectable = false) {
       Object.keys(this.selectableOptions).forEach((filterName) => {
-        const itemsArr =
-          this.filtersAreEmpty || !selectable ? this.items : this.selectedItems
+        const itemsArr = !selectable ? this.items : this.selectedItems
 
-        const result = itemsArr.reduce((acc, item) => {
-          acc.push(item[filterName])
+        if (selectable && this.activeFilters[0] === filterName) {
+          this.selectableOptions[this.activeFilters[0]] =
+            this.options[this.activeFilters[0]]
+        } else {
+          const result = itemsArr.reduce((acc, item) => {
+            acc.push(item[filterName])
 
-          return acc
-        }, [])
+            return acc
+          }, [])
 
-        this[selectable ? 'selectableOptions' : 'options'][filterName] = [
-          ...new Set(result),
-        ]
+          this[selectable ? 'selectableOptions' : 'options'][filterName] = [
+            ...new Set(result),
+          ]
+        }
       })
     },
     isOptionSelectable(filterName) {
