@@ -1,20 +1,24 @@
 <template>
   <div class="organization-program">
-    <Section tag="div" class="_mb-0">
-      <Breadcrumbs :items="breadcrumbs" />
-    </Section>
+    <Loader v-show="isLoading" />
 
-    <Section :title="lang['analytics.program']">
-      <template #prehead>
-        <div class="organization-program__name">
-          {{ organization.shortName }}
-        </div>
-      </template>
+    <div v-show="!isLoading">
+      <Section tag="div" class="_mb-0">
+        <Breadcrumbs :items="breadcrumbs" />
+      </Section>
 
-      <template #default>
-        <ProgramView />
-      </template>
-    </Section>
+      <Section :title="lang['analytics.program']">
+        <template #prehead>
+          <div class="organization-program__name">
+            {{ organization.shortName }}
+          </div>
+        </template>
+
+        <template #default>
+          <ProgramView @load="isLoading = false" />
+        </template>
+      </Section>
+    </div>
   </div>
 </template>
 
@@ -25,10 +29,11 @@ import pageDefault from '~/assets/js/vue-mixins/page-default'
 import Section from '~/components/layout/Section'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import ProgramView from '~/components/ProgramView'
+import Loader from '~/components/Loader'
 
 export default {
   name: 'Program',
-  components: { ProgramView, Section, Breadcrumbs },
+  components: { ProgramView, Section, Breadcrumbs, Loader },
   mixins: [pageHead, pageDefault],
   async asyncData({ store, route, $nuxt, $api }) {
     try {
@@ -42,6 +47,11 @@ export default {
       }
     } catch (e) {
       return $nuxt.error({ statusCode: 404, message: 'Organization not found' })
+    }
+  },
+  data() {
+    return {
+      isLoading: true,
     }
   },
   computed: {
