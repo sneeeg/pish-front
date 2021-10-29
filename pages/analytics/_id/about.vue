@@ -82,11 +82,11 @@ export default {
       return [
         {
           text: this.parent.pageTitle,
-          href: '/analytics',
+          to: '/analytics',
         },
         {
           text: this.organization.shortName,
-          href: '',
+          to: '',
         },
       ]
     },

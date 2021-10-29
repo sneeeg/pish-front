@@ -6,15 +6,15 @@
       itemtype="http://schema.org/BreadcrumbList"
     >
       <li
-        v-for="({ href, text }, index) in items"
+        v-for="({ to, text }, index) in items"
         :key="index"
         itemscope=""
         itemtype="http://schema.org/ListItem"
       >
         <component
           :is="'SmartLink'"
-          :class="{ _disabled: !href, 'hover-opacity': href }"
-          :to="href || ''"
+          :class="{ _disabled: !to, 'hover-opacity': to }"
+          :to="to || ''"
         >
           {{ text }}
         </component>
@@ -47,13 +47,12 @@ export default {
   text-transform: none;
 
   &__list {
-    display: flex;
-
-    @include --mobile {
-      flex-direction: column;
-    }
+    display: inline-flex;
+    flex-flow: row wrap;
+    margin-bottom: -0.6rem;
 
     li {
+      margin-bottom: 0.6rem;
       vertical-align: middle;
 
       a {
@@ -66,19 +65,11 @@ export default {
       }
 
       &:not(:last-child) {
-        @include --mobile {
-          margin-bottom: 0.6rem;
-        }
-
         &::after {
           margin: 0 1rem 0 0.5rem;
           color: $color_grey_text;
           vertical-align: middle;
           content: '/';
-
-          @include --mobile {
-            margin-right: 0;
-          }
         }
       }
     }

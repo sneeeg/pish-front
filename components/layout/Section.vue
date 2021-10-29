@@ -14,6 +14,8 @@
       <slot name="default" />
     </div>
     <div v-else class="section__inner">
+      <slot v-if="$slots.prehead" name="prehead" />
+
       <div
         v-if="title && !tagTitle"
         :class="['section-head', { _smallHead: smallHead }]"
