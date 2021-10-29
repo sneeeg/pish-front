@@ -1,6 +1,6 @@
 import { getResponse } from '~/server/utils'
 import analytics from '~/server/collections/analytics'
-import university from '~/server/collections/university'
+import organization from '~/server/collections/organization'
 
 /**
  * Analytics routes
@@ -16,7 +16,7 @@ export default (pretender) => {
     return [
       200,
       { 'Content-Type': 'application/json' },
-      getResponse(university),
+      getResponse(organization),
     ]
   })
 }

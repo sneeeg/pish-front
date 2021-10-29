@@ -1,3 +1,5 @@
+import program from '~/server/collections/program'
+
 export default {
   id: '123',
   name: 'Национальный исследовательский технологический университет «МИСИС», Москва',
@@ -30,4 +32,5 @@ export default {
       headPhoto: '/i/analytics/rector.jpg',
     },
   ],
+  program,
 }

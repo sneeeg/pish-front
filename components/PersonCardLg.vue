@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="{ background: !window.isMobileSize ? background : false }"
+    :style="{ background: !window.isMobileSize ? background : 'transparent' }"
     class="person-card-lg"
   >
     <div class="person-card-lg__photo">

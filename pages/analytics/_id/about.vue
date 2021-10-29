@@ -26,7 +26,7 @@ import OrganizationHead from '~/components/OrganizationHead'
 import SingleTabs from '~/components/SingleTabs'
 
 export default {
-  name: 'Id',
+  name: 'About',
   components: { SingleTabs, OrganizationHead, Section, Breadcrumbs },
   mixins: [pageHead, pageDefault],
   async asyncData({ store, route, $nuxt, $api }) {
@@ -95,7 +95,7 @@ export default {
     changeTab(id) {
       this.$router.push(
         this.localeRoute({
-          name: `analytics-id${id === 'about' ? '' : `-${id}`}`,
+          name: `analytics-id-about${id === 'about' ? '' : `-${id}`}`,
           params: { id: this.$route.params.id },
         })
       )

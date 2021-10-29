@@ -28,7 +28,7 @@ export default {
         acc.push({
           label: item.name,
           text: `${item.region}, ${item.location}`,
-          to: `/analytics/${item.id}`,
+          to: `/analytics/${item.id}/about`,
         })
 
         return acc
