@@ -315,80 +315,105 @@
         Необходимо указать информацию за последние 5 лет
       </p>
 
-      <CustomInput
-        v-model.trim="additionalEducation.universityName"
-        class="questionnaire-form__field"
-        label="Название учебного заведения"
-        placeholder="Название учебного заведения"
-        :name="`additionalEducation-universityName`"
-      />
+      <div class="questionnaire-form__blocks">
+        <div
+          v-for="(item, index) in additionalEducation"
+          :key="index"
+          class="questionnaire-form-block"
+        >
+          <CustomInput
+            v-model.trim="additionalEducation[index].universityName"
+            class="questionnaire-form__field"
+            label="Название учебного заведения"
+            placeholder="Название учебного заведения"
+            :name="`additionalEducation-universityName-${index}`"
+          />
 
-      <CustomInput
-        v-model.trim="additionalEducation.program"
-        class="questionnaire-form__field"
-        label="Название программы"
-        placeholder="Название программы"
-        :name="`additionalEducation-program`"
-      />
+          <CustomInput
+            v-model.trim="additionalEducation[index].program"
+            class="questionnaire-form__field"
+            label="Название программы"
+            placeholder="Название программы"
+            :name="`additionalEducation-program-${index}`"
+          />
 
-      <SearchSelect
-        v-model.trim="additionalEducation.format"
-        :options="additionalEducationFormats"
-        class="questionnaire-form__field"
-        label="Формат"
-        placeholder="Формат"
-      />
+          <SearchSelect
+            v-model.trim="additionalEducation[index].format"
+            :options="additionalEducationFormats"
+            class="questionnaire-form__field"
+            label="Формат"
+            placeholder="Формат"
+          />
 
-      <CustomInput
-        v-model.trim="additionalEducation.begin"
-        calendar="year"
-        class="questionnaire-form__field"
-        label="Начало обучения (год)"
-        placeholder="Начало обучения"
-        :name="`additionalEducation-begin`"
-      />
+          <CustomInput
+            v-model.trim="additionalEducation[index].begin"
+            calendar="year"
+            class="questionnaire-form__field"
+            label="Начало обучения (год)"
+            placeholder="Начало обучения"
+            :name="`additionalEducation-begin-${index}`"
+          />
 
-      <CustomInput
-        v-model.trim="additionalEducation.end"
-        calendar="month"
-        class="questionnaire-form__field"
-        label="Окончание обучения (месяц, год)"
-        placeholder="Окончание обучения"
-        :name="`additionalEducation-end`"
-      />
+          <CustomInput
+            v-model.trim="additionalEducation[index].end"
+            calendar="month"
+            class="questionnaire-form__field"
+            label="Окончание обучения (месяц, год)"
+            placeholder="Окончание обучения"
+            :name="`additionalEducation-end-${index}`"
+          />
 
-      <SearchSelect
-        v-model.trim="additionalEducation.country"
-        searchable
-        :options="countries"
-        class="questionnaire-form__field"
-        label="Страна обучения"
-        placeholder="Начните вводить"
-        @search="searchCountry"
-        @focus="countries = []"
-        @selected="additionalEducation.city = ''"
-      />
+          <SearchSelect
+            v-model.trim="additionalEducation[index].country"
+            searchable
+            :options="countries"
+            class="questionnaire-form__field"
+            label="Страна обучения"
+            placeholder="Начните вводить"
+            @search="searchCountry"
+            @focus="countries = []"
+            @selected="additionalEducation.city = ''"
+          />
 
-      <SearchSelect
-        v-model.trim="additionalEducation.city"
-        searchable
-        :options="cities"
-        :disabled="!additionalEducation.country"
-        class="questionnaire-form__field"
-        label="Город обучения"
-        placeholder="Начните вводить"
-        @search="searchCity($event, additionalEducation.country)"
-        @focus="cities = []"
-      />
+          <SearchSelect
+            v-model.trim="additionalEducation[index].city"
+            searchable
+            :options="cities"
+            :disabled="!additionalEducation.country"
+            class="questionnaire-form__field"
+            label="Город обучения"
+            placeholder="Начните вводить"
+            @search="searchCity($event, additionalEducation.country)"
+            @focus="cities = []"
+          />
 
-      <CustomInput
-        v-model.trim="additionalEducation.reason"
-        type="textarea"
-        class="questionnaire-form__field"
-        label="Почему они были полезны для вас"
-        placeholder="Введите текст"
-        name="additionalEducation-reason"
-      />
+          <CustomInput
+            v-model.trim="additionalEducation[index].reason"
+            type="textarea"
+            class="questionnaire-form__field"
+            label="Почему они были полезны для вас"
+            placeholder="Введите текст"
+            :name="`additionalEducation-reason-${index}`"
+          />
+
+          <a
+            v-if="additionalEducation.length > 1"
+            class="questionnaire-form-block__delete"
+            href=""
+            @click.prevent="additionalEducation.splice(index, 1)"
+            >Удалить</a
+          >
+        </div>
+
+        <Btn
+          class="questionnaire-form__btn _small"
+          arrow=""
+          type="button"
+          text="Добавить"
+          @click.native="addAdditionalEducation"
+        >
+        </Btn>
+      </div>
 
       <div class="questionnaire-form__title _visually-h4">Языки</div>
 
@@ -1178,6 +1203,19 @@ export default {
       })
     },
 
+    addAdditionalEducation() {
+      this.additionalEducation.push({
+        universityName: '',
+        program: '',
+        format: '',
+        begin: '',
+        end: '',
+        country: '',
+        city: '',
+        reason: '',
+      })
+    },
+
     addLanguage() {
       this.languages.push({
         name: '',
@@ -1241,7 +1279,7 @@ export default {
 
       formData.append(
         'additionalEducation',
-        JSON.stringify(this.additionalEducation[0])
+        JSON.stringify(this.additionalEducation)
       )
 
       formData.append('languages', JSON.stringify(this.languages))

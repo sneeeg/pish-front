@@ -87,7 +87,12 @@
       <SupportBlock :title="page.tasks.title" :sections="page.tasks.sections" />
     </Section>
 
-    <Section id="steps" :title="page.steps.title" :has-overflow="false">
+    <Section
+      v-if="$i18n.locale === 'ru'"
+      id="steps"
+      :title="page.steps.title"
+      :has-overflow="false"
+    >
       <TheStages :stages="page.steps.sections"></TheStages>
     </Section>
 
