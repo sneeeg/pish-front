@@ -10,7 +10,6 @@
         grey-arrow
         :options="options[key]"
         :placeholder="filterPlaceholders[key]"
-        :selectable="isOptionSelectable(key)"
         @input="activateFilter($event, key), getOptions(true)"
       />
     </div>

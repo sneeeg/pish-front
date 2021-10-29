@@ -10,6 +10,10 @@
           {{ organization.shortName }}
         </div>
       </template>
+
+      <template #default>
+        <ProgramView />
+      </template>
     </Section>
   </div>
 </template>
@@ -20,10 +24,11 @@ import pageHead from '~/assets/js/vue-mixins/page-head'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import Section from '~/components/layout/Section'
 import Breadcrumbs from '~/components/Breadcrumbs'
+import ProgramView from '~/components/ProgramView'
 
 export default {
   name: 'Program',
-  components: { Section, Breadcrumbs },
+  components: { ProgramView, Section, Breadcrumbs },
   mixins: [pageHead, pageDefault],
   async asyncData({ store, route, $nuxt, $api }) {
     try {
