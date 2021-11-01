@@ -313,6 +313,7 @@ export default {
     const [{ data }] = await Promise.all([this.$api.analytics.get()])
 
     this.data = data
+
     this.isLoading = false
   },
   computed: {

@@ -1,5 +1,6 @@
 import { getResponse } from '~/server/utils'
 import analytics from '~/server/collections/analytics'
+import indicators from '~/server/collections/analytics-indicators'
 import organization from '~/server/collections/organization'
 
 /**
@@ -17,6 +18,15 @@ export default (pretender) => {
       200,
       { 'Content-Type': 'application/json' },
       getResponse(organization),
+    ]
+  })
+
+  // Getting university indicators
+  pretender.get('/api/v0/priority/asda/indicators', () => {
+    return [
+      200,
+      { 'Content-Type': 'application/json' },
+      getResponse(indicators),
     ]
   })
 }
