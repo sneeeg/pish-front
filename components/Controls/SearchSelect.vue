@@ -257,6 +257,8 @@ export default {
     flex-wrap: nowrap;
 
     span {
+      max-width: 90%;
+      @include lineClamp(1);
       background-color: transparent;
 
       b {

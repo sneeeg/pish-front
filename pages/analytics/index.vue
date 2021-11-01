@@ -310,16 +310,9 @@ export default {
   async fetch() {
     this.isLoading = true
 
-    // TODO добавить показаьели
     const [{ data }] = await Promise.all([this.$api.analytics.get()])
 
-    await this.$utils.delay(500, true)
-
     this.data = data
-
-    // TODO доюавить показаьели
-    // this.summary = summary
-
     this.isLoading = false
   },
   computed: {
