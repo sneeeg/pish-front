@@ -8,9 +8,12 @@
         v-model="filter[key]"
         multiple
         grey-arrow
-        :options="options[key]"
+        :disabled="key === 'location' && !filter.region.length"
+        :options="key === 'location' ? locations : options[key]"
         :placeholder="filterPlaceholders[key]"
-        @input="activateFilter($event, key), getOptions(true)"
+        @input="
+          activateFilter($event, key), getOptions(true), filterLocation(key)
+        "
       />
     </div>
 
@@ -56,7 +59,7 @@ export default {
         location: [],
         group: [],
         founder: [],
-        direction: [],
+        direction: ['Базовая часть', 'Специальная часть'],
       },
       selectableOptions: {
         region: [],
@@ -71,6 +74,20 @@ export default {
   },
   computed: {
     ...mapState('responsive', ['window']),
+
+    locations() {
+      return [
+        ...new Set(
+          this.items.reduce((acc, item) => {
+            if (this.filter.region.includes(item.region)) {
+              acc.push(item.location)
+            }
+
+            return acc
+          }, [])
+        ),
+      ]
+    },
 
     filtersAreEmpty() {
       return !Object.keys(this.filter).find((key) => !!this.filter[key].length)
@@ -98,9 +115,25 @@ export default {
 
     selectedItems() {
       const result = this.items.reduce((acc, item) => {
+        item.direction = this.options.direction.reduce((acc, i, index) => {
+          if (item.isBase && !index) {
+            acc.push(i)
+          }
+
+          if (item.isSpecial && index === 1) {
+            acc.push(i)
+          }
+
+          return acc
+        }, [])
+
         const matched = Object.keys(this.filter).reduce((acc, key) => {
           const filter = this.filter[key]
-          const isMatched = !filter.length || filter.includes(item[key])
+          const isMatched =
+            !filter.length ||
+            (typeof item[key] === 'string'
+              ? filter.includes(item[key])
+              : item[key].filter((val) => filter.includes(val)).length)
 
           if (isMatched) {
             acc += 1
@@ -132,6 +165,16 @@ export default {
     this.getOptions(true)
   },
   methods: {
+    filterLocation(filterName) {
+      if (filterName !== 'region') return
+
+      this.filter.location = this.filter.location.filter(
+        (item) =>
+          this.filter.region.length &&
+          this.selectableOptions.location.includes(item)
+      )
+    },
+
     resetFilter() {
       this.filter = {
         region: [],
@@ -155,22 +198,18 @@ export default {
     },
     getOptions(selectable = false) {
       Object.keys(this.selectableOptions).forEach((filterName) => {
+        if (filterName === 'direction') return
+
         const itemsArr = !selectable ? this.items : this.selectedItems
+        const result = itemsArr.reduce((acc, item) => {
+          acc.push(item[filterName])
 
-        if (selectable && this.activeFilters[0] === filterName) {
-          this.selectableOptions[this.activeFilters[0]] =
-            this.options[this.activeFilters[0]]
-        } else {
-          const result = itemsArr.reduce((acc, item) => {
-            acc.push(item[filterName])
+          return acc
+        }, [])
 
-            return acc
-          }, [])
-
-          this[selectable ? 'selectableOptions' : 'options'][filterName] = [
-            ...new Set(result),
-          ]
-        }
+        this[selectable ? 'selectableOptions' : 'options'][filterName] = [
+          ...new Set(result),
+        ]
       })
     },
     isOptionSelectable(filterName) {

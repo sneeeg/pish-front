@@ -1,7 +1,11 @@
 export default ($axios) => ({
   /* Getting analytics */
   get() {
-    return $axios.$get('/api/analytics')
+    return process.env.NODE_ENV === 'production'
+      ? $axios.get('https://lk.priority2030.ru/api/v0/priority/list', {
+          mode: 'cors',
+        })
+      : $axios.$get('/api/analytics')
   },
 
   /* Get university by id */
