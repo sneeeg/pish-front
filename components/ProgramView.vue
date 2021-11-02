@@ -23,5 +23,13 @@ export default {
 <style lang="scss">
 .program-view {
   position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.program-view-constructor {
+  max-width: calc(100% - 41rem);
+  padding: 3.2rem;
+  background-color: $color_white;
 }
 </style>

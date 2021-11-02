@@ -23,6 +23,7 @@ export default {
     },
   },
   mounted() {
+    this.$composables.removeEmptyNodes(this.$refs.HTMLContent)
     this.$composables.deleteLastBrs(this.$refs.HTMLContent)
 
     const blockquoteSnippets = this.$refs.HTMLContent.querySelectorAll(

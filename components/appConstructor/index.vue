@@ -55,27 +55,23 @@ export default {
   },
   computed: {
     _models() {
-      return this.$utils.cloneObject(this.models)
+      return this.$utils.cloneObject(this.models).reduce((acc, item) => {
+        if (item.component === 'Array') item.component = 'ArrayGroup'
+        else if (item.component === 'Text') item.component = 'TextContent'
+        else if (item.component === 'Table' && item.props.fixed)
+          item.component = 'FixedTable'
+
+        acc.push(item)
+        return acc
+      }, [])
     },
     componentsToLoad() {
       if (this.modelsToLoad) {
         return this.$utils.cloneObject(this.modelsToLoad)
       } else {
-        const items = this.$utils.cloneObject(this.models)
+        const items = this._models
 
-        return [
-          ...new Set(
-            items.map((model) => {
-              if (model.component === 'Array') model.component = 'ArrayGroup'
-              else if (model.component === 'Text')
-                model.component = 'TextContent'
-              else if (model.component === 'Table' && model.props.fixed)
-                model.component = 'FixedTable'
-
-              return model.component
-            })
-          ),
-        ]
+        return [...new Set(items.map((model) => model.component))]
       }
     },
   },

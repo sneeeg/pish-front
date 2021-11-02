@@ -3,6 +3,7 @@ import * as constants from '~/assets/js/constants'
 
 /* Composables */
 import deleteLastBrs from '~/assets/js/composables/delete-last-brs'
+import removeEmptyNodes from '~/assets/js/composables/remove-empty-nodes'
 
 /* Utils */
 import delay from '~/assets/js/utils/delay'
@@ -24,6 +25,7 @@ export default ({ $axios }, inject) => {
   inject('constants', constants)
   inject('composables', {
     deleteLastBrs,
+    removeEmptyNodes,
   })
   inject('utils', {
     delay,

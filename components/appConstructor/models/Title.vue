@@ -1,5 +1,5 @@
 <template>
-  <h2 class="constructor-title">
+  <h2 class="constructor-title _visually-h3">
     {{ title }}
   </h2>
 </template>
@@ -16,4 +16,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss"></style>
