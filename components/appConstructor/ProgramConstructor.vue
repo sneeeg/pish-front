@@ -8,26 +8,32 @@
       <div
         v-for="(model, index) in constructorModels"
         :key="index"
-        :data-title="model.id"
+        v-view="isChild ? false : viewHandler"
+        :data-title="
+          (model.title || model.props.title) && !isChild
+            ? `title_${index + 1}`
+            : false
+        "
         class="program-constructor-model"
       >
-        <div class="program-constructor-model__head">
+        <div
+          v-if="model.title || model.description"
+          class="program-constructor-model__head"
+        >
           <div
             v-if="model.title"
             :class="[
               'program-constructor-model__title',
               `_visually-h${isChild ? 6 : 4}`,
             ]"
-          >
-            {{ model.title }}
-          </div>
+            v-html="model.title"
+          ></div>
 
           <div
             v-if="model.description"
             class="program-constructor-model__description"
-          >
-            {{ model.description }}
-          </div>
+            v-html="model.description"
+          ></div>
         </div>
 
         <component
@@ -56,6 +62,11 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      titleIndex: 0,
+    }
+  },
   computed: {
     _items() {
       return this.$utils.cloneObject(this.items).reduce((acc, item) => {
@@ -71,6 +82,17 @@ export default {
         acc.push(item)
         return acc
       }, [])
+    },
+  },
+  methods: {
+    viewHandler(e) {
+      if (e.type !== 'enter') return
+
+      const title = e.target.element.parentElement.dataset.title
+
+      if (title) {
+        this.$emit('change', title)
+      }
     },
   },
 }

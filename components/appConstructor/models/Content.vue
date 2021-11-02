@@ -1,5 +1,5 @@
 <template>
-  <HTMLContent :html="content" />
+  <HTMLContent ref="content" class="constructor-content" :html="content" />
 </template>
 
 <script>
@@ -13,11 +13,25 @@ export default {
       required: true,
     },
   },
+  mounted() {
+    this.$refs.content.$el.innerHTML = this.$refs.content.$el.innerHTML.replace(
+      /&nbsp;|•/g,
+      ' '
+    )
+  },
 }
 </script>
 
 <style lang="scss">
-h1 {
-  font-size: 2rem;
+.constructor-content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include text();
+    font-weight: 500;
+  }
 }
 </style>

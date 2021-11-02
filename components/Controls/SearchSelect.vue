@@ -9,7 +9,7 @@
     </div>
 
     <div class="search-select__input">
-      <v-select
+      <vue-select
         ref="select"
         :selectable="selectable"
         :multiple="multiple"
@@ -49,7 +49,7 @@
         <template v-if="multiple" #selected-option-container>
           {{ '' }}
         </template>
-      </v-select>
+      </vue-select>
 
       <button
         v-if="!searchable"

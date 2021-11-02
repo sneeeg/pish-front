@@ -3,14 +3,7 @@
     <TheHeader />
 
     <div id="main" v-will-change class="main _default">
-      <Nuxt
-        :key="
-          $route.name &&
-          $utils.getPageNameByRoute($route.name) === 'faq-categoryId'
-            ? $route.name
-            : $route.matched[0].path
-        "
-      />
+      <Nuxt :key="key" />
     </div>
 
     <TheFooter />
@@ -48,6 +41,14 @@ export default {
   computed: {
     ...mapState('scroll', { scrollY: 'y' }),
     ...mapState('responsive', ['window']),
+    key() {
+      const pageName = this.$utils.getPageNameByRoute(this.$route.name)
+
+      return this.$route.name &&
+        (pageName === 'faq-categoryId' || pageName === 'analytics-id-program')
+        ? this.$route.name
+        : this.$route.matched[0].path
+    },
   },
   head() {
     return {

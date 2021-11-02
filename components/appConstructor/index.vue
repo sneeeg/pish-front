@@ -60,6 +60,8 @@ export default {
         else if (item.component === 'Text') item.component = 'TextContent'
         else if (item.component === 'Table' && item.props.fixed)
           item.component = 'FixedTable'
+        else if (item.component === 'Checkbox')
+          item.component = 'ConstructorCheckbox'
 
         acc.push(item)
         return acc

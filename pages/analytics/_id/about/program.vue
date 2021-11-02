@@ -17,17 +17,17 @@
       <div class="analytics-program-preview-parts">
         <div class="analytics-program-preview-parts__titles">
           <CardLink
-            v-for="(item, index) in programTitles"
-            :key="item.id"
+            v-for="({ id, text }, index) in programTitles"
+            :key="id"
             :to="{
               name: 'analytics-id-program',
               params: { id: $route.params.id },
-              query: { titleId: item.id },
+              hash: '#' + id,
             }"
           >
             <div class="analytics-program-preview-parts__title">
               <span>{{ index + 1 }}.</span>
-              <span>{{ item.title }}</span>
+              <span>{{ text }}</span>
             </div>
           </CardLink>
         </div>

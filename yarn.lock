@@ -1097,6 +1097,11 @@
     js-yaml "^3.13.1"
     json5 "^2.1.1"
 
+"@mdi/font@^6.4.95":
+  version "6.4.95"
+  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-6.4.95.tgz#d3b7a615c4c82ba2a9c29b2b59b158dced4f9b0e"
+  integrity sha512-jCQdXCD339EXirWYFbZv1Ansthm9j6O3FSQLsfi/mKamnGYxqbUBm5D4UjcVr6HVYIPNwTQQ46HNHlswPD8RcQ==
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npmjs.org/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz"
@@ -2996,6 +3001,11 @@ caller-path@^2.0.0:
   dependencies:
     caller-callsite "^2.0.0"
 
+callsite@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/callsite/-/callsite-1.0.0.tgz#280398e5d664bd74038b6f0905153e6e8af1bc20"
+  integrity sha1-KAOY5dZkvXQDi28JBRU+borxvCA=
+
 callsites@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/callsites/-/callsites-2.0.0.tgz"
@@ -3923,6 +3933,13 @@ debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1:
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
   dependencies:
     ms "2.1.2"
+
+decache@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/decache/-/decache-4.6.0.tgz#87026bc6e696759e82d57a3841c4e251a30356e8"
+  integrity sha512-PppOuLiz+DFeaUvFXEYZjLxAkKiMYH/do/b/MxpDe/8AgKBi5GhZxridoVIbBq72GDbL36e4p0Ce2jTGUwwU+w==
+  dependencies:
+    callsite "^1.0.0"
 
 decamelize-keys@^1.0.0, decamelize-keys@^1.1.0:
   version "1.1.0"
@@ -6396,6 +6413,11 @@ locate-path@^6.0.0:
   integrity sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==
   dependencies:
     p-locate "^5.0.0"
+
+lodash-es@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
@@ -10814,6 +10836,11 @@ vue-no-ssr@^1.1.1:
   resolved "https://registry.npmjs.org/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz"
   integrity sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==
 
+vue-observe-visibility@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vue-observe-visibility/-/vue-observe-visibility-1.0.0.tgz#17cf1b2caf74022f0f3c95371468ddf2b9573152"
+  integrity sha512-s5TFh3s3h3Mhd3jaz3zGzkVHKHnc/0C/gNr30olO99+yw2hl3WBhK3ng3/f9OF+qkW4+l7GkmwfAzDAcY3lCFg==
+
 vue-router@^3.5.1:
   version "3.5.1"
   resolved "https://registry.npmjs.org/vue-router/-/vue-router-3.5.1.tgz"
@@ -10887,6 +10914,20 @@ vuelidate@^0.7.6:
   version "0.7.6"
   resolved "https://registry.npmjs.org/vuelidate/-/vuelidate-0.7.6.tgz"
   integrity sha512-suzIuet1jGcyZ4oUSW8J27R2tNrJ9cIfklAh63EbAkFjE380iv97BAiIeolRYoB9bF9usBXCu4BxftWN1Dkn3g==
+
+vuetify-loader@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/vuetify-loader/-/vuetify-loader-1.7.3.tgz#404657f4925c828f400fe3269003421d586835c6"
+  integrity sha512-1Kt6Rfvuw3i9BBlxC9WTMnU3WEU7IBWQmDX+fYGAVGpzWCX7oHythUIwPCZGShHSYcPMKSDbXTPP8UvT5RNw8Q==
+  dependencies:
+    decache "^4.6.0"
+    file-loader "^6.2.0"
+    loader-utils "^2.0.0"
+
+vuetify@^2.5.10:
+  version "2.5.10"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.5.10.tgz#165cb3de9dbffbc94bc775aa2f698eb9fa89eabe"
+  integrity sha512-UODZQrib36l7i1WGg0MUvurczLspYTe0nKAmfbwyMs6dC2lG1Q1VV9caqPbCAB9zgG6QIJaOmRQKSKduw9eZTw==
 
 vuex@^3.6.2:
   version "3.6.2"

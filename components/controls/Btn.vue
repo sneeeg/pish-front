@@ -90,7 +90,7 @@ export default {
   justify-content: center;
   height: 4.7rem;
   padding: 1.6rem 2rem;
-  color: $color_white;
+  color: $color_white !important;
   font-weight: 400;
   background-color: $color_accent;
 

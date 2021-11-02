@@ -1,5 +1,5 @@
 <template>
-  <label class="checkbox">
+  <label :class="['checkbox', { _readonly: readonly, _black: black }]">
     {{ label }}
     <input
       type="checkbox"
@@ -37,6 +37,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
+    black: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     isChecked() {
@@ -48,6 +56,8 @@ export default {
   },
   methods: {
     update(event) {
+      if (this.readonly) return
+
       const isChecked = event.target.checked
 
       if (Array.isArray(this.modelValue)) {
@@ -78,6 +88,14 @@ export default {
   color: $color_grey_text;
   font-weight: 400;
   user-select: none;
+
+  &._readonly {
+    pointer-events: none;
+  }
+
+  &._black {
+    color: $color_black;
+  }
 
   input {
     position: absolute;

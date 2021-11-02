@@ -13,7 +13,7 @@ export default () => {
 
   const tl = gsap.timeline({ delay: 0.25 })
 
-  tl.set(appMain, { opacity: 1 })
+  tl.set(appMain, { opacity: 1, willChange: 'auto' })
   tl.set(appPreloader, { display: 'none' })
   // tl.fromTo(
   //   appHeaderInfo,

@@ -27,12 +27,25 @@ export const actions = {
 
 export const getters = {
   programTitles(state) {
-    return state.program.reduce((acc, item) => {
+    const result = state.program.reduce((acc, item, index) => {
       if (item.component === 'Title') {
-        acc.push(item)
+        const result = {
+          id: `title_${index + 1}`,
+          text: item.title || item.props.title,
+          children: [],
+        }
+
+        acc.push(result)
+      } else if (item.title && acc[acc.length - 1]) {
+        acc[acc.length - 1].children.push({
+          id: `title_${index + 1}`,
+          text: item.title,
+        })
       }
 
       return acc
     }, [])
+
+    return result
   },
 }
