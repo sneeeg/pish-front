@@ -2,13 +2,13 @@
   <AppConstructor
     :class="['program-constructor', { _child: isChild }]"
     :models="_items"
+    :models-to-load="modelsToLoad"
     @load="$emit('load')"
   >
     <template #default="{ constructorModels }">
       <div
         v-for="(model, index) in constructorModels"
         :key="index"
-        v-view="isChild ? false : viewHandler"
         :data-title="
           (model.title || model.props.title) && !isChild
             ? `title_${index + 1}`
@@ -65,6 +65,16 @@ export default {
   data() {
     return {
       titleIndex: 0,
+      modelsToLoad: [
+        'ArrayGroup',
+        'ConstructorCheckbox',
+        'CheckboxGroup',
+        'Content',
+        'FixedTable',
+        'Table',
+        'TextContent',
+        'Title',
+      ],
     }
   },
   computed: {
@@ -82,17 +92,6 @@ export default {
         acc.push(item)
         return acc
       }, [])
-    },
-  },
-  methods: {
-    viewHandler(e) {
-      if (e.type !== 'enter') return
-
-      const title = e.target.element.parentElement.dataset.title
-
-      if (title) {
-        this.$emit('change', title)
-      }
     },
   },
 }
