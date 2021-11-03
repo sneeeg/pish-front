@@ -9,11 +9,7 @@
       <div
         v-for="(model, index) in constructorModels"
         :key="index"
-        :data-title="
-          (model.title || model.props.title) && !isChild
-            ? `title_${index + 1}`
-            : false
-        "
+        :data-title="getTitle(model, index)"
         class="program-constructor-model"
       >
         <div
@@ -92,6 +88,13 @@ export default {
         acc.push(item)
         return acc
       }, [])
+    },
+  },
+  methods: {
+    getTitle(model, index) {
+      return (model.title || model.props.title) && !this.isChild
+        ? `title_${index + 1}`
+        : false
     },
   },
 }

@@ -17,7 +17,7 @@
     </transition>
 
     <transition name="fade-from-right" appear>
-      <ScrollBtn v-if="window.isMobileSize && scrollY >= 700" />
+      <FloatBtn v-if="scrollBtnExist" @click="scrollToTop" />
     </transition>
 
     <portal-target name="popups"> </portal-target>
@@ -28,7 +28,7 @@
 import { mapState } from 'vuex'
 import TheHeader from '~/components/TheHeader.vue'
 import TheFooter from '~/components/TheFooter.vue'
-import ScrollBtn from '~/components/ScrollBtn'
+import FloatBtn from '~/components/FloatBtn'
 
 export default {
   components: {
@@ -36,7 +36,7 @@ export default {
     TheFooter,
     TheMobileMenu: () => import('~/components/TheMobileMenu'),
     DocPopup: () => import('~/components/DocPopup'),
-    ScrollBtn,
+    FloatBtn,
   },
   computed: {
     ...mapState('scroll', { scrollY: 'y' }),
@@ -49,6 +49,15 @@ export default {
         ? this.$route.name
         : this.$route.matched[0].path
     },
+    scrollBtnExist() {
+      const pageName = this.$utils.getPageNameByRoute(this.$route.name)
+
+      return (
+        pageName !== 'analytics-id-program' &&
+        this.window.isMobileSize &&
+        this.scrollY >= 700
+      )
+    },
   },
   head() {
     return {
@@ -56,6 +65,14 @@ export default {
         lang: this.$i18n.locale,
       },
     }
+  },
+  methods: {
+    scrollToTop() {
+      this.$scrollTo('body', 500, {
+        easing: 'ease-out',
+        cancelable: true,
+      })
+    },
   },
 }
 </script>

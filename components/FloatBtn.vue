@@ -1,28 +1,27 @@
 <template>
-  <a href="" class="scroll-btn" @click.prevent="scrollToTop">
-    <SvgIcon name="caret-top" />
+  <a href="" class="float-btn" @click.prevent="$emit('click')">
+    <SvgIcon :name="icon" />
   </a>
 </template>
 
 <script>
 export default {
-  name: 'ScrollBtn',
-  methods: {
-    scrollToTop() {
-      this.$scrollTo('body', 500, {
-        easing: 'ease-out',
-        cancelable: true,
-      })
+  name: 'FloatBtn',
+  props: {
+    icon: {
+      type: String,
+      default: 'caret-top',
     },
   },
 }
 </script>
 
 <style lang="scss">
-.scroll-btn {
+.float-btn {
   position: fixed;
   right: 1.6rem;
   bottom: 1.6rem;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;

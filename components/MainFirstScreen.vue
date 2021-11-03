@@ -222,6 +222,12 @@ export default {
   flex-direction: column;
   background-color: $color_white;
 
+  &__title,
+  &__link {
+    position: relative;
+    z-index: 1;
+  }
+
   &__title {
     font-weight: 700;
 

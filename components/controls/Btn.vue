@@ -98,6 +98,16 @@ export default {
     height: 4.4rem;
   }
 
+  &._small {
+    @include text-button-small;
+    height: 4rem;
+    padding: 1.2rem 1.6rem;
+
+    @include --mobile {
+      height: 3.6rem;
+    }
+  }
+
   &._grey {
     font-weight: 500;
     background-color: $color_grey_text;

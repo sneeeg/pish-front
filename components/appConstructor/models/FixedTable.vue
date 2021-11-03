@@ -26,11 +26,7 @@
       </template>
     </v-simple-table>
 
-    <v-simple-table
-      ref="main"
-      :style="{ width: 'calc(100% - 200px)' }"
-      class="fixed-table__section _main"
-    >
+    <v-simple-table ref="main" class="fixed-table__section _main">
       <template #default>
         <thead>
           <tr>
@@ -144,13 +140,24 @@ export default {
 <style lang="scss">
 .fixed-table {
   display: flex;
-  margin-right: 2.4rem;
 
   &__section {
     &._fixed {
       flex-shrink: 0;
       width: 20rem;
       background: #f4f4f6 !important;
+
+      @include --mobile {
+        width: 14rem;
+      }
+    }
+
+    &._main {
+      width: calc(100% - 20rem);
+
+      @include --mobile {
+        width: calc(100% - 14rem);
+      }
     }
   }
 

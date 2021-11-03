@@ -112,6 +112,7 @@ export default {
   background: #fff;
 
   &__header {
+    @include text-small();
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
