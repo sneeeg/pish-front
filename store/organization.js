@@ -1,14 +1,12 @@
+import cloneObject from '~/assets/js/utils/clone-object'
+
 export const state = () => ({
   data: null,
-  program: [],
 })
 
 export const mutations = {
   SET_ORGANIZATION_DATA(state, data) {
     state.data = data
-  },
-  SET_PROGRAM(state, program) {
-    state.program = program
   },
 }
 
@@ -20,17 +18,39 @@ export const actions = {
       throw new Error('Not found')
     } else {
       commit('SET_ORGANIZATION_DATA', data)
-      commit('SET_PROGRAM', data.program)
     }
   },
 }
 
 export const getters = {
-  programTitles(state) {
-    const result = state.program.reduce((acc, item, index) => {
+  program(state) {
+    const program = cloneObject(state.data.program)
+
+    const change = (items, parentId = '') => {
+      items.forEach((item, index) => {
+        item.id = (parentId ? `${parentId}__` : '') + `item_${index}`
+
+        if (item.component === 'Title' && !item.props.title) {
+          const title = item.title || ''
+          item.title = ''
+          item.props.title = title
+        }
+
+        if (item.component === 'Array' && item.props?.items) {
+          change(item.props.items, item.id)
+        }
+      })
+    }
+
+    change(program)
+    return program
+  },
+
+  programTitles(state, getters) {
+    const result = getters.program.reduce((acc, item) => {
       if (item.component === 'Title') {
         const result = {
-          id: `title_${index + 1}`,
+          id: item.id,
           text: item.title || item.props.title,
           children: [],
         }
@@ -38,7 +58,7 @@ export const getters = {
         acc.push(result)
       } else if (item.title && acc[acc.length - 1]) {
         acc[acc.length - 1].children.push({
-          id: `title_${index + 1}`,
+          id: item.id,
           text: item.title,
         })
       }

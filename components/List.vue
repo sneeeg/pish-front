@@ -106,23 +106,20 @@ export default {
   align-items: center;
 
   ul {
-    @include --from-tablet {
-      column-count: 2;
+    @include flexGap(4rem, 2.4rem);
 
-      li {
-        page-break-inside: avoid;
-        break-inside: avoid;
+    li {
+      flex: 1 1 40%;
+      max-width: calc(100% / 2 - 4rem);
 
-        &:not(:last-child) {
-          margin-bottom: 2.4rem;
-        }
+      @include --tablet {
+        flex: 1 1 100%;
+        max-width: 100%;
       }
     }
 
-    li {
-      &:not(:last-child) {
-        margin-bottom: 2.2rem;
-      }
+    @include --mobile {
+      @include flexGap(2.2rem);
     }
   }
 
@@ -152,15 +149,25 @@ export default {
   }
 
   &__icon {
+    flex-shrink: 0;
+
     svg {
       @include box(1.8rem);
 
       transition: transform 0.3s ease-in-out;
+
+      @include --mobile {
+        @include box(1.5rem);
+      }
     }
   }
 
   &__content {
     margin-left: 1.2rem;
+
+    @include --mobile {
+      margin-left: 1rem;
+    }
   }
 
   &__label {

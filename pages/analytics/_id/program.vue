@@ -1,8 +1,6 @@
 <template>
   <div class="organization-program">
-    <Loader v-show="isLoading" />
-
-    <div v-show="!isLoading">
+    <div>
       <Section tag="div" class="_mb-0">
         <Breadcrumbs :items="breadcrumbs" />
       </Section>
@@ -15,7 +13,7 @@
         </template>
 
         <template #default>
-          <ProgramView @load="isLoading = false" />
+          <ProgramComponent />
         </template>
       </Section>
     </div>
@@ -28,12 +26,11 @@ import pageHead from '~/assets/js/vue-mixins/page-head'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import Section from '~/components/layout/Section'
 import Breadcrumbs from '~/components/Breadcrumbs'
-import ProgramView from '~/components/ProgramView'
-import Loader from '~/components/Loader'
+import ProgramComponent from '~/components/ProgramComponent'
 
 export default {
   name: 'Program',
-  components: { ProgramView, Section, Breadcrumbs, Loader },
+  components: { Section, Breadcrumbs, ProgramComponent },
   mixins: [pageHead, pageDefault],
   async asyncData({ store, route, $nuxt, $api }) {
     try {
@@ -49,13 +46,8 @@ export default {
       return $nuxt.error({ statusCode: 404, message: 'Organization not found' })
     }
   },
-  data() {
-    return {
-      isLoading: true,
-    }
-  },
   computed: {
-    ...mapState('organization', { organization: 'data', program: 'program' }),
+    ...mapState('organization', { organization: 'data' }),
     ...mapState('default', ['lang']),
     page() {
       return {
@@ -72,10 +64,8 @@ export default {
         },
         {
           text: this.organization.shortName,
-          to: {
-            name: 'analytics-id-about',
-            params: { id: this.$route.params.id },
-          },
+          to: `/analytics/${this.$route.params.id}/about`,
+          force: true,
         },
         {
           text: this.lang['analytics.program'],

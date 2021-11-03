@@ -54,6 +54,13 @@ import ParticipantsFilter from '~/components/ParticipantsFilter'
 
 import Statistics from '~/components/statistics/Statistics'
 
+const GROUPS = [
+  'Группа 1 - участники программы (основной трек)',
+  'Группа 2 - университеты творческой направленности',
+  'Группа 3 - кандидаты на участие в программе',
+  'Группа 4 - участники программы (реорганизация)',
+]
+
 export default {
   name: 'Index',
   components: { ParticipantsFilter, Btn, File, Loader, Section, Statistics },
@@ -311,6 +318,10 @@ export default {
     this.isLoading = true
 
     const [{ data }] = await Promise.all([this.$api.analytics.get()])
+
+    data.participants.forEach((participant) => {
+      participant.group = GROUPS[+participant.group - 1]
+    })
 
     this.data = data
 

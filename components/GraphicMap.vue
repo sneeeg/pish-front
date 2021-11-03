@@ -450,6 +450,8 @@
 </template>
 
 <script>
+import * as chroma from 'chroma-js'
+
 export default {
   name: 'GraphicMap',
   props: {
@@ -473,9 +475,14 @@ export default {
         const count = this.regions[key]
         const proportion = count / maxCount.toFixed(1)
 
-        const color = !proportion
-          ? '#EBEBEC'
-          : `rgba(0, 27, 113, ${proportion < 0.1 ? 0.1 : proportion})`
+        let color = ''
+
+        if (!proportion) {
+          color = '#EBEBEC'
+        } else {
+          const diff = 1 - (proportion < 0.1 ? 0.1 : proportion)
+          color = chroma.mix('#001B71', '#97A8DF', diff).hex()
+        }
 
         result[key] = {
           count,

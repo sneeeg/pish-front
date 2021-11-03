@@ -6,15 +6,16 @@
       itemtype="http://schema.org/BreadcrumbList"
     >
       <li
-        v-for="({ to, text }, index) in items"
+        v-for="({ to, text, force }, index) in items"
         :key="index"
         itemscope=""
         itemtype="http://schema.org/ListItem"
       >
         <component
-          :is="'SmartLink'"
+          :is="force ? 'a' : 'SmartLink'"
           :class="{ _disabled: !to, 'hover-opacity': to }"
-          :to="to || ''"
+          :to="!force ? to || '' : false"
+          :href="force ? to || '' : false"
         >
           {{ text }}
         </component>
@@ -57,6 +58,7 @@ export default {
 
       a {
         color: $color_accent;
+        cursor: pointer;
 
         &._disabled {
           color: $color_grey_text;

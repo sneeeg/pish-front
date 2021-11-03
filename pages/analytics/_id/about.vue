@@ -28,7 +28,17 @@ import SingleTabs from '~/components/SingleTabs'
 export default {
   name: 'About',
   components: { SingleTabs, OrganizationHead, Section, Breadcrumbs },
+
   mixins: [pageHead, pageDefault],
+
+  middleware({ app, route, $utils, redirect }) {
+    const pageName = $utils.getPageNameByRoute(route.name)
+
+    if (pageName === 'analytics-id-about') {
+      redirect(app.localePath(`/analytics/${route.params.id}/about/program`))
+    }
+  },
+
   async asyncData({ store, route, $nuxt, $api }) {
     try {
       const [{ data }] = await Promise.all([
@@ -64,10 +74,10 @@ export default {
     },
     tabs() {
       return [
-        {
-          id: 'about',
-          text: this.lang['analytics.about'],
-        },
+        // {
+        //   id: 'about',
+        //   text: this.lang['analytics.about'],
+        // },
         {
           id: 'program',
           text: this.lang['analytics.program'],

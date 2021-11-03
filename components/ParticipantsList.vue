@@ -27,8 +27,8 @@ export default {
       return this.items.reduce((acc, item) => {
         acc.push({
           label: item.name,
-          text: `${item.region}, ${item.location}`,
-          to: `/analytics/${item.id}/about`,
+          text: `${item.region} ${this.lang['analytics.region']} , ${item.location}`,
+          to: `/analytics/${item.id}/about/program`,
         })
 
         return acc
