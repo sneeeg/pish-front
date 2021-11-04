@@ -8,5 +8,10 @@
   "projectHead": "Руководитель проекта",
   "projects": "Стратегические проекты",
   "contents": "Оглавление",
-  "region": "Федеральный округ"
+  "region": "Федеральный округ",
+  "participation": "Участие в программах",
+  "programName": "Название программы",
+  "organizationParticipation": "участие университета",
+  "hasParticipation": "Участвовал",
+  "hasNoParticipation": "Не участвовал"
 }

@@ -90,9 +90,6 @@ export default {
   @include containerInnerSmall2;
 }
 
-.analytics-program-preview {
-}
-
 .analytics-program-preview-parts {
   &__link {
     margin-top: 4rem;
