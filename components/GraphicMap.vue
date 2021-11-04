@@ -450,7 +450,16 @@
 </template>
 
 <script>
-import * as chroma from 'chroma-js'
+const MAP_COLORS = [
+  '#001B71',
+  '#203883',
+  '#405494',
+  '#6071A6',
+  '#808DB8',
+  '#9FAACA',
+  '#BFC6DB',
+  '#DFE3ED',
+]
 
 export default {
   name: 'GraphicMap',
@@ -459,6 +468,19 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  data() {
+    return {
+      intervals: (() => {
+        const result = []
+
+        for (let i = 0; i < MAP_COLORS.length; i++) {
+          result.push((1 / MAP_COLORS.length) * (i + 1))
+        }
+
+        return result.reverse()
+      })(),
+    }
   },
   computed: {
     localRegions() {
@@ -474,14 +496,17 @@ export default {
       Object.keys(this.regions).forEach((key) => {
         const count = this.regions[key]
         const proportion = count / maxCount.toFixed(1)
-
         let color = ''
 
-        if (!proportion) {
-          color = '#EBEBEC'
-        } else {
-          const diff = 1 - (proportion < 0.1 ? 0.1 : proportion)
-          color = chroma.mix('#001B71', '#E2E9FE', diff).hex()
+        for (let i = 0; i < this.intervals.length; i++) {
+          if (
+            proportion >= this.intervals[i] ||
+            i === this.intervals.length - 1
+          ) {
+            color = MAP_COLORS[i]
+
+            break
+          }
         }
 
         result[key] = {
