@@ -32,6 +32,10 @@ export default {
   mixins: [pageHead, pageDefault],
 
   middleware({ app, route, $utils, redirect }) {
+    window.scrollTo({
+      top: 0,
+    })
+
     const pageName = $utils.getPageNameByRoute(route.name)
 
     if (pageName === 'analytics-id-about') {

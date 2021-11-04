@@ -481,7 +481,7 @@ export default {
           color = '#EBEBEC'
         } else {
           const diff = 1 - (proportion < 0.1 ? 0.1 : proportion)
-          color = chroma.mix('#001B71', '#97A8DF', diff).hex()
+          color = chroma.mix('#001B71', '#E2E9FE', diff).hex()
         }
 
         result[key] = {

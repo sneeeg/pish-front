@@ -44,8 +44,7 @@ export default {
     key() {
       const pageName = this.$utils.getPageNameByRoute(this.$route.name)
 
-      return this.$route.name &&
-        (pageName === 'faq-categoryId' || pageName === 'analytics-id-program')
+      return this.$route.name && pageName === 'faq-categoryId'
         ? this.$route.name
         : this.$route.matched[0].path
     },
