@@ -17,9 +17,11 @@ import getUniqueArrayOfObjects from '~/assets/js/utils/get-unique-array-of-objec
 import getPageNameByRoute from '~/assets/js/utils/get-page-name-by-route'
 import scrollCenterDetection from '~/assets/js/utils/scroll-center-detection'
 import formatBytes from '~/assets/js/utils/format-bytes'
+import hexToRgb from '~/assets/js/utils/hex-to-rgb'
 
 /* API */
 import api from '~/assets/js/api/index'
+import getRandomInteger from '~/assets/js/utils/get-random-integer'
 
 export default ({ $axios }, inject) => {
   inject('constants', constants)
@@ -39,6 +41,8 @@ export default ({ $axios }, inject) => {
     getPageNameByRoute,
     scrollCenterDetection,
     formatBytes,
+    getRandomInteger,
+    hexToRgb,
   })
   inject('api', api($axios))
 }

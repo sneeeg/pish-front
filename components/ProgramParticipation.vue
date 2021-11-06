@@ -1,34 +1,48 @@
 <template>
   <div class="program-participation">
-    <VuetifyTable :headers="headers" :items="items"></VuetifyTable>
+    <VuetifyTable :headers="headers" :items="items">
+      <template #value="{ value }">
+        <div class="program-participation__chip">
+          <Chip :color="value ? '#F32735' : '#6B6B74'">
+            {{
+              value
+                ? lang['analytics.hasParticipation']
+                : lang['analytics.hasNoParticipation']
+            }}
+          </Chip>
+        </div>
+      </template>
+    </VuetifyTable>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import VuetifyTable from '~/components/VuetifyTable'
+import Chip from '~/components/Chip'
 
 export default {
   name: 'ProgramParticipation',
 
-  components: { VuetifyTable },
+  components: { VuetifyTable, Chip },
 
   computed: {
     ...mapState('default', ['lang']),
     ...mapState('organization', {
-      items: (state) => state.data.programsParticipation,
+      items: (state) => state.data.programsList,
     }),
     headers() {
       return [
         {
           text: this.lang['analytics.programName'],
-          value: 'text',
+          value: 'name',
           sortable: false,
         },
         {
           text: this.lang['analytics.organizationParticipation'],
-          value: 'value',
+          value: 'isParticipated',
           sortable: false,
+          align: 'end',
         },
       ]
     },
@@ -36,4 +50,15 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss">
+.program-participation {
+  &__chip {
+    display: flex;
+    justify-content: flex-end;
+
+    > * {
+      width: 17rem;
+    }
+  }
+}
+</style>

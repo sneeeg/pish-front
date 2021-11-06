@@ -4,11 +4,7 @@
       <template #default>
         <thead>
           <tr>
-            <th
-              v-for="header in fixed.headers"
-              :key="header.id"
-              class="body-1 font-weight-bold"
-            >
+            <th v-for="header in fixed.headers" :key="header.id">
               {{ header }}
             </th>
           </tr>
@@ -33,8 +29,7 @@
             <th
               v-for="header in main.headers"
               :key="header.id"
-              :style="{ textAlign: 'right' }"
-              class="body-1 font-weight-bold"
+              :style="{ textAlign: 'center' }"
             >
               {{ header }}
             </th>

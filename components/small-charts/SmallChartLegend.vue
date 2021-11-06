@@ -10,7 +10,7 @@
         <strong class="small-chart-legend__text">{{ item.label }}</strong>
       </div>
 
-      <div class="small-chart-legend__value">
+      <div v-if="showLegendValue" class="small-chart-legend__value">
         <span>
           {{ item.value }}
         </span>
@@ -30,6 +30,14 @@ export default {
       type: Array,
       default: () => [],
     },
+    showPercent: {
+      type: Boolean,
+      default: false,
+    },
+    showLegendValue: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -37,15 +45,48 @@ export default {
     }
   },
   computed: {
+    sum() {
+      return this.items.reduce((acc, item) => {
+        acc += +item.value
+
+        return acc
+      }, 0)
+    },
+
     formattedItems() {
       // когда линейный график лейблы и значения представлены массивами
       const lastItem = this.items[this.items.length - 1]
-      if (typeof lastItem.label === 'object' && Array.isArray(lastItem.label)) {
+
+      /* Logic for constructor line chart */
+      if (lastItem.values) {
+        return this.items.reduce((acc, item) => {
+          acc.push({
+            label: item.label,
+            value: item.values.slice(-1)[0],
+          })
+
+          return acc
+        }, [])
+      }
+
+      const isLineChart =
+        typeof lastItem.label === 'object' && Array.isArray(lastItem.label)
+
+      if (isLineChart) {
         return lastItem.label.map((label, index) => ({
           label,
           value: lastItem.value[index],
           postfix: lastItem.postfix || '',
         }))
+      } else if (this.showPercent && !isNaN(this.sum)) {
+        return this.items.reduce((acc, item) => {
+          acc.push({
+            label: item.label,
+            value: Math.round((item.value / this.sum) * 100) + '%',
+          })
+
+          return acc
+        }, [])
       } else {
         return this.items
       }

@@ -1,6 +1,9 @@
 <template>
   <div class="analytics-program-preview">
-    <Section class="_mb-0">
+    <Section
+      v-if="organization.rectorName"
+      :class="[{ '_mb-0': programTitles && programTitles.length }]"
+    >
       <div class="analytics-program-preview__rector">
         <PersonCardLg
           :name="organization.rectorName"
@@ -11,6 +14,7 @@
     </Section>
 
     <Section
+      v-if="programTitles && programTitles.length"
       small-head
       :title="lang['analytics.program'] + ' ' + organization.shortName"
     >
@@ -33,6 +37,7 @@
         </div>
 
         <FileLink
+          v-if="organization.programLink"
           class="analytics-program-preview-parts__link"
           :href="organization.programLink"
           :text="programLinkText"
@@ -40,7 +45,12 @@
       </div>
     </Section>
 
-    <Section background small-head :title="lang['analytics.projects']">
+    <Section
+      v-if="organization.projects && organization.projects.length"
+      background
+      small-head
+      :title="lang['analytics.projects']"
+    >
       <div class="analytics-program-preview-projects">
         <ProjectCard
           v-for="(

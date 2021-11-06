@@ -1,4 +1,45 @@
-.v-data-table > .v-data-table__wrapper > table > tbody > tr > td, .v-data-table > .v-data-table__wrapper > table > thead > tr > td, .v-data-table > .v-data-table__wrapper > table > tfoot > tr > td {
-  height: 48px;
-  font-size: 1.2rem !important;
+.v-data-table > .v-data-table__wrapper > table {
+
+  > thead {
+    > tr {
+      > th {
+        @include text-button-small;
+        height: 4.8rem;
+        color: $color_dark_grey !important;
+        font-weight: normal;
+      }
+    }
+  }
+
+  > tbody {
+    > tr {
+      &:not(.v-row-group__header) {
+        background-color: transparent !important;
+      }
+
+      &.v-row-group__header {
+        font-weight: 700;
+      }
+
+      td {
+        @include text-button-small;
+        height: 4.8rem;
+        font-weight: normal;
+        text-transform: none;
+      }
+    }
+  }
+}
+
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-end {
+  text-align: right !important;
+}
+
+.text-start {
+  text-align: left !important;
 }

@@ -36,7 +36,7 @@ export default {
       top: 0,
     })
 
-    // Redirect to pragram
+    // Redirect to program
     // const pageName = $utils.getPageNameByRoute(route.name)
     //
     // if (pageName === 'analytics-id-about') {
@@ -48,7 +48,7 @@ export default {
     try {
       const [{ data }] = await Promise.all([
         $api.pages.analytics(),
-        store.dispatch('organization/getOrganization'),
+        store.dispatch('organization/getOrganization', { id: route.params.id }),
       ])
 
       return {

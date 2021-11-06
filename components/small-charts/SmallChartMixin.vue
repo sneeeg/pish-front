@@ -8,12 +8,40 @@ import { COLORS, GET_OPACITY_COLORS } from '~/assets/js/constants'
 export default {
   name: 'SmallChartMixin',
   props: {
+    type: {
+      type: String,
+      default: '',
+    },
+    serverType: {
+      type: String,
+      default: '',
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    content: {
+      type: String,
+      default: '',
+    },
+    reference: {
+      type: Boolean,
+      default: false,
+    },
+    chartLabels: {
+      type: Array,
+      default: () => [],
+    },
     items: {
       required: true,
       type: Array,
     },
     summary: {
       type: Object,
+      default: null,
+    },
+    reverse: {
+      type: Boolean,
       default: null,
     },
   },
@@ -29,6 +57,39 @@ export default {
       return this.items
     },
     labels() {
+      if (this.type === 'radar') {
+        return this.items.reduce((acc, item) => {
+          const words = item.label.split(' ')
+
+          if (words.length > 1) {
+            const result = words.reduce((acc, item) => {
+              const prevIndex = acc.length - 1 !== -1 ? acc.length - 1 : 0
+
+              if (
+                item.length < 6 &&
+                acc[prevIndex] &&
+                acc[prevIndex].length < 12
+              ) {
+                acc[prevIndex] = acc[prevIndex] + ' ' + item
+              } else {
+                acc.push(item)
+              }
+
+              return acc
+            }, [])
+
+            acc.push(result)
+          } else {
+            acc.push(item.label)
+          }
+
+          return acc
+        }, [])
+      }
+      if (this.chartLabels.length) {
+        return this.chartLabels
+      }
+
       return this._items.reduce((acc, item, index) => {
         const isLineChart = typeof item.label === 'object'
         if (isLineChart) {
