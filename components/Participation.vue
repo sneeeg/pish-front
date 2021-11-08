@@ -6,9 +6,9 @@
     :title="title"
   >
     <div class="participation">
-      <h3 v-scroll-element class="participation__title">{{ subtitle }}</h3>
-      <p v-scroll-element class="participation__text">{{ text }}</p>
-      <ArrowLink v-scroll-element :to="href" text="подробнее" />
+      <h3 class="participation__title">{{ subtitle }}</h3>
+      <p class="participation__text">{{ text }}</p>
+      <ArrowLink :to="href" text="подробнее" />
     </div>
   </Section>
 </template>

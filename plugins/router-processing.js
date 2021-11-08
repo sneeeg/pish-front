@@ -13,7 +13,8 @@ export default ({ app, store, $motion }) => {
 
     store.commit('default/changeRoutingState', { to, from })
 
-    const hasHistory = store.state.default.routing.hasHistory
+    const hasHistory =
+      store.state.default.routing.hasHistory && document.getElementById('app')
 
     if (hasHistory || store.state.default.onErrorPage) {
       store.commit('default/changeErrorPageState', false)
@@ -21,7 +22,19 @@ export default ({ app, store, $motion }) => {
       appContentDisappear()
         .then(() => {
           const toLocale = to.name.slice(-2, to.name.length)
-          const fromLocale = from.name.slice(-2, from.name.length)
+          const fromLocale = from?.name?.slice(-2, from.name.length) || toLocale
+
+          const toNames = to.name.split('___')[0].split('-')
+          if (
+            toLocale !== fromLocale &&
+            toNames[0] === 'news' &&
+            toNames[toNames.length - 1] === 'post'
+          ) {
+            const redirectName =
+              toNames.slice(0, -1).join('-') + `___${toLocale}`
+
+            app.router.replace({ name: redirectName })
+          }
 
           const localeSwitch =
             toLocale !== fromLocale

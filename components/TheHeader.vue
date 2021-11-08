@@ -6,32 +6,57 @@
   >
     <div v-will-change class="header__info gsap_header__info">
       <div class="header__content">
-        <SmartLink to="/" class="header__logo--full">
+        <SmartLink
+          v-will-change
+          :to="settings.mainLink"
+          :class="[
+            'header__logo',
+            'hover-opacity',
+            { _en: $i18n.locale === 'en' },
+          ]"
+        >
           <img
             :src="
               $i18n.locale === 'ru'
                 ? '/i/min-science-full.svg'
                 : '/i/min-science-full-en.svg'
             "
-            alt=""
+            :alt="$store.state.default.settings.siteName"
           />
         </SmartLink>
 
         <div class="header__wrapper">
-          <!--  TODO      -->
-          <!--          <a href="#" class="header__account">Личный кабинет</a>-->
-          <LangToggler v-if="false" />
+          <SmartLink
+            v-if="$i18n.locale !== 'en'"
+            v-will-change
+            class="header__account hover-opacity"
+            :to="settings.lkLink"
+            >{{ lang['base.lk'] }}</SmartLink
+          >
+
+          <LangToggler
+            v-if="window.isDesktopSize"
+            class="header__lang-toggle"
+          />
         </div>
       </div>
     </div>
 
     <div v-will-change class="header__content gsap_header__content">
-      <nuxt-link to="/" class="header__logo">
+      <SmartLink
+        v-will-change
+        to="/"
+        :class="[
+          'header__logo--full',
+          'hover-opacity',
+          { _en: $i18n.locale === 'en' },
+        ]"
+      >
         <img
           :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"
-          alt=""
+          :alt="$store.state.default.settings.siteName"
         />
-      </nuxt-link>
+      </SmartLink>
 
       <nav class="header__nav">
         <SmartLink
@@ -56,8 +81,8 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 
-import LangToggler from '~/components/Controls/LangToggler'
-import SearchHeader from '~/components/Controls/SearchHeader'
+import LangToggler from '~/components/controls/LangToggler'
+import SearchHeader from '~/components/controls/SearchHeader'
 import SmartLink from '~/components/utils/SmartLink'
 
 export default {
@@ -68,7 +93,8 @@ export default {
     SmartLink,
   },
   computed: {
-    ...mapState('default', ['menus']),
+    ...mapState('default', ['menus', 'settings', 'lang']),
+    ...mapState('responsive', ['window']),
     hasBackground() {
       return this.$store.state.scroll.y > 50
     },
@@ -88,12 +114,21 @@ export default {
     background-color: #fff;
   }
 
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__lang-toggle {
+    margin-left: 4rem;
+  }
+
   &__info {
     background-color: #fff;
 
     .header__content {
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-between;
       padding: 1.4rem 0;
 
       @include --tablet {
@@ -109,10 +144,10 @@ export default {
   &__content {
     @include container;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 3rem 0 0 0;
+    padding: 2rem 0 0 0;
 
     @include --tablet {
       padding: 1.7rem 0;
@@ -121,38 +156,71 @@ export default {
 
   &__logo {
     position: relative;
+    display: block;
     flex-shrink: 0;
-    width: 24.6rem;
-    height: 4.8rem;
-    margin-top: -0.9rem;
+    width: 16rem;
+    height: 4.2rem;
 
     @include --tablet {
-      width: 19.7rem;
-      height: 3.9rem;
+      width: 14rem;
+      height: 3.7rem;
     }
 
     @include --mobile {
-      width: 14.4rem;
-      height: 2.8rem;
-      margin-top: 0;
+      width: 12rem;
+      height: 3.2rem;
+    }
+
+    &._en {
+      width: 16rem;
+      height: 4.5rem;
+
+      @include --tablet {
+        width: 14rem;
+        height: 3.9rem;
+      }
+
+      @include --mobile {
+        width: 12rem;
+        height: 3.3rem;
+      }
     }
 
     &--full {
       position: relative;
       flex-shrink: 0;
-      width: 14.2rem;
-      height: 4rem;
+      width: 38rem;
+      height: 7.46rem;
       margin-right: auto;
 
+      @include --tablet {
+        width: 32rem;
+        height: 6.28rem;
+      }
+
       @include --mobile {
-        width: 11.3rem;
-        height: 2.8rem;
-        margin: 0 0 0 auto;
+        width: 18rem;
+        height: 3.5rem;
       }
 
       img {
         width: 100%;
         height: 100%;
+      }
+
+      &._en {
+        width: 31.1rem;
+        height: 8rem;
+
+        @include --tablet {
+          width: 28rem;
+          height: 7.2rem;
+        }
+
+        @include --mobile {
+          width: 18rem;
+          height: 4.6rem;
+        }
       }
     }
 
@@ -166,11 +234,8 @@ export default {
     @include text-button-small;
     display: flex;
     align-items: center;
+    //margin-right: 4rem;
     color: $color_red;
-
-    &:not(:last-child) {
-      margin-right: 4rem;
-    }
 
     &::before {
       @include box(2rem);
@@ -189,7 +254,7 @@ export default {
   }
 
   &__nav {
-    @include text-small;
+    //@include text-small;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

@@ -1,26 +1,29 @@
 <template>
-  <div v-scroll-element class="stages">
+  <div class="stages">
     <div
       v-for="(stage, i) in stages"
       :key="i"
       :class="['stage', { _last: i === stages.length - 1 }]"
     >
-      <span class="stage__index">
-        <template v-if="$i18n.locale === 'ru'"> {{ i + 1 }} ЭТАП </template>
-        <template v-else> STAGE {{ i + 1 }} </template>
-      </span>
+      <span class="stage__index"> {{ stage.date }} </span>
       <!-- eslint-disable vue/no-v-html -->
-      <h3 class="stage__title" v-html="stage.title"></h3>
+      <h3 v-if="stage.title" class="stage__title">
+        <HTMLContent v-html="stage.title" />
+      </h3>
       <!--eslint-enable-->
 
-      <div v-for="(substage, j) in stage.items" :key="j" class="substage">
+      <div
+        v-for="(substage, j) in stage.items"
+        :key="j"
+        :class="['substage', { _noContent: !substage.content }]"
+      >
         <template v-if="substage.content !== 'kek'">
           <h4
             class="substage__title"
             :class="{ _active: isActive(i, j) }"
             @click="toggle(i, j)"
           >
-            {{ substage.title }}
+            <span v-html="substage.title"></span>
           </h4>
           <div class="substage__content">
             <TransitionExpand>
@@ -33,6 +36,8 @@
             </TransitionExpand>
           </div>
         </template>
+
+        <HTMLContent v-else-if="substage.title" :html="substage.title" />
       </div>
     </div>
   </div>
@@ -86,22 +91,32 @@ export default {
   @include --mobile {
     padding-left: 0;
   }
+
+  strong {
+    color: $color_accent;
+  }
 }
 
 .stage {
   position: relative;
   padding: 3.7rem 0 0 7rem;
 
+  &:first-child {
+    padding-top: 0;
+  }
+
   &._last {
-    padding: 3.7rem 0 8.4rem 7rem;
+    display: none;
+    padding: 5.6rem 0 4rem 7rem;
 
     @include --mobile {
-      padding: 1rem 0 6rem;
+      padding-left: 0;
     }
   }
 
   @include --mobile {
-    padding: 1rem 0 0 0;
+    padding-top: 2.4rem;
+    padding-left: 0;
   }
 
   @include --from-mobile {
@@ -120,8 +135,7 @@ export default {
     }
 
     // точка
-    &:first-child .stage__index::after,
-    &:nth-last-child(2)::after {
+    &:first-child .stage__index::after {
       @include box(1.6rem);
       position: absolute;
       top: 100%;
@@ -143,7 +157,7 @@ export default {
     &::before {
       top: 0;
       bottom: auto;
-      height: 14rem;
+      height: 8rem;
     }
 
     &::after {
@@ -160,16 +174,16 @@ export default {
       z-index: -2;
       width: 120vw;
       height: 100%;
-      background: #e1e4e8;
+      //background: #e1e4e8;
       content: '';
     }
 
     .stage__index {
-      background: #e1e4e8;
+      //background: #e1e4e8;
     }
 
     .substage__content::before {
-      background: #f0f3f8;
+      //background: #f0f3f8;
     }
 
     a.lk-link::before {
@@ -181,15 +195,14 @@ export default {
     display: inline-block;
     color: $color_accent;
     font-weight: 500;
-    font-size: 1.8rem;
-    line-height: 5rem;
     background-color: $color_light_grey;
 
     @include --from-mobile {
+      @include text-small;
       position: absolute;
       left: 0;
       z-index: 3;
-      padding: 0 1.5rem;
+      padding: 2rem 1.5rem;
       transform: translate(-50%, -3px);
     }
   }
@@ -197,7 +210,6 @@ export default {
   &__title {
     position: relative;
     padding: 1rem 0;
-    font-weight: 700;
     font-size: 2rem;
     line-height: 2.3rem;
   }
@@ -209,12 +221,24 @@ export default {
   &__title {
     display: flex;
     align-items: flex-start;
-    padding: 2.4rem 0 2.4rem 0;
+    padding: 1.2rem 0 2.4rem 0;
     color: #000;
     font-weight: 400;
     font-size: 2rem;
     line-height: 2.3rem;
     cursor: pointer;
+
+    ._noContent & {
+      pointer-events: none;
+
+      &::before {
+        visibility: hidden;
+      }
+    }
+
+    @include --mobile {
+      @include text;
+    }
 
     &::before {
       position: relative;

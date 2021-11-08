@@ -1,17 +1,12 @@
 <template>
   <div>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      :title="page.universityNewsTitle"
-      :tag-title="$route.query.tag"
-    >
+    <div class="page__back">
+      <ArrowLink :text="lang['base.back']" to="/news" arrow-left />
+    </div>
+    <Section :title="page.universityNewsTitle" :tag-title="$route.query.tag">
       <Posts all type="university" />
     </Section>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      to="/news"
-      :title="lang['news.all']"
-    >
+    <Section to="/news" :title="lang['news.all']">
       <OtherPosts />
     </Section>
   </div>

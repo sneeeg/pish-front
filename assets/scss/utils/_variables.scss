@@ -4,6 +4,7 @@
 
 // regular font family
 $font-main: 'Geometria', sans-serif !default;
+$font-monospaced: 'Azerit', sans-serif !default;
 
 // colors
 $color_accent: #F32735;
@@ -19,7 +20,7 @@ $color_light_grey: #F4F4F6;
 $color_background: #F4F4F6;
 $color_mid_grey: #e9eef5;
 $color_grey_text: #A2A2A2;
-$color_grey_border: #D9D9D9;
+$color_grey_border: #E1E4E8;
 
 // container
 $width_container: 120rem;
@@ -27,6 +28,8 @@ $width_container_tablet: calc(100% - 8rem);
 $width_container_mobile: calc(100% - 4rem);
 
 $width_container_small: 99.4rem;
+$width_container_small2: 89.3rem;
+
 
 // section
 

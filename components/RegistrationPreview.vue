@@ -1,20 +1,18 @@
 <template>
-  <Section v-view="$utils.scrollCenterDetection" class="_registration-preview">
+  <Section background class="_registration-preview">
     <div class="registration-preview">
       <div
-        v-scroll-element
         class="registration-preview__image"
         :style="{ backgroundImage: 'url(/i/registration.png)' }"
       ></div>
       <div class="registration-preview__content">
-        <div v-scroll-element class="registration-preview__forehead">
+        <div class="registration-preview__forehead">
           {{ forehead }}
         </div>
-        <div v-scroll-element class="registration-preview__title _visually-h3">
+        <div class="registration-preview__title _visually-h3">
           {{ title }}
         </div>
         <Btn
-          v-scroll-element
           class="registration-preview__btn"
           :text="lang['registration.action']"
           is-link

@@ -1,17 +1,17 @@
 <template>
-  <div class="slider-controls">
+  <div class="slider-controls-component">
     <ControlBtn
-      class="slider-controls__btn"
+      class="slider-controls-component__btn"
       :disabled="!slideIndex"
       @click.native="changeSlide(slideIndex - 1)"
     />
-    <div class="slider-controls-dots">
+    <div class="slider-controls-component-dots">
       <button
         v-for="(btn, index) in total"
         :key="btn.id"
         type="button"
         :class="[
-          'slider-controls-dots__btn',
+          'slider-controls-component-dots__btn',
           'accent-color-by-active',
           { _active: slideIndex === index },
         ]"
@@ -19,7 +19,7 @@
       ></button>
     </div>
     <ControlBtn
-      class="slider-controls__btn"
+      class="slider-controls-component__btn"
       :disabled="slideIndex === total - 1"
       type="next"
       @click.native="changeSlide(slideIndex + 1)"
@@ -62,12 +62,12 @@ export default {
 </script>
 
 <style lang="scss">
-.slider-controls {
+.slider-controls-component {
   display: flex;
   align-items: center;
 }
 
-.slider-controls-dots {
+.slider-controls-component-dots {
   display: flex;
   margin: 0 4.8rem;
 

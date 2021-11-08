@@ -2,7 +2,6 @@
   <div class="other-posts">
     <div
       ref="otherPostsList"
-      v-scroll-element
       :class="[
         'other-posts-list',
         { _flex: !sliderStatus, '_flex-sb': !sliderStatus && posts.length > 2 },
@@ -11,6 +10,7 @@
       <OtherPostPreview
         v-for="post in posts"
         :key="post.id"
+        :hide-head="hideHead"
         :type="type"
         class="other-posts-list__item"
         :post="post"
@@ -43,6 +43,10 @@ export default {
     slug: {
       type: String,
       default: '',
+    },
+    hideHead: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -95,6 +99,8 @@ export default {
           ? this.$api.posts.get
           : this.type === 'university'
           ? this.$api.posts.getUniversityPosts
+          : this.type === 'comments'
+          ? this.$api.comments.get
           : this.$api.reviews.get
 
       this.posts = await apiMethod(this.category?.id, 1, 10).then(

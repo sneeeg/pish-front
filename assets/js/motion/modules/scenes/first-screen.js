@@ -1,7 +1,8 @@
 import gsap from 'gsap'
 import * as THREE from 'three'
+import { isMobileOnly } from 'mobile-device-detect'
 import AbstractScene from '~/assets/js/motion/modules/scenes/abstract-scene'
-import firstScreenSceneAppear from '~/assets/js/motion/composables/first-screen-scene-appear'
+// import firstScreenSceneAppear from '~/assets/js/motion/composables/first-screen-scene-appear'
 
 /**
  * Scene on the first screen of the main page
@@ -66,7 +67,7 @@ export default class FirstScreen extends AbstractScene {
     this.wholeGroup = new THREE.Group()
 
     // // Add specific params to three scene
-    // this.scene.background = new THREE.Color(COLOR_GREY)
+    this.scene.background = new THREE.Color(0xffffff)
 
     /* Adding lights */
     this.#addDirectionalLight()
@@ -91,7 +92,11 @@ export default class FirstScreen extends AbstractScene {
     /* Adding vectors */
     this.#addArrowVector()
 
-    this.wholeGroup.position.set(0.2, -0.15, 0)
+    this.wholeGroup.position.set(
+      !isMobileOnly ? -Math.PI * 0.19 : -Math.PI * 0.25,
+      Math.PI * 0.225,
+      0
+    )
 
     this.scene.add(this.wholeGroup)
 
@@ -102,7 +107,7 @@ export default class FirstScreen extends AbstractScene {
     // this.#satelliteModelAnimation()
     this.#mouseMotion()
     //
-    this.models.satellite.position.y = Math.sin(time * 0.35 - 0.21) * 0.09 + 0.5
+    this.models.satellite.position.y = Math.sin(time * 0.35 - 0.21) * 0.09 + 0.2
 
     this.models.molecule.rotation.x += 0.005
     this.models.molecule.rotation.z += 0.005
@@ -117,11 +122,11 @@ export default class FirstScreen extends AbstractScene {
     this.startMainEventsHandling()
     gsap.ticker.add(this.render)
 
-    if (!this.firstStart) {
-      this.firstStart = true
-
-      firstScreenSceneAppear(this.models, this.vectors)
-    }
+    // if (!this.firstStart) {
+    //   this.firstStart = true
+    //
+    //   firstScreenSceneAppear(this.models, this.vectors)
+    // }
   }
 
   freeze() {
@@ -155,16 +160,16 @@ export default class FirstScreen extends AbstractScene {
     this.group.position.x +=
       0.003 * (this.mouseTarget.x - this.group.position.x)
 
-    Object.keys(this.models).forEach((key, index) => {
-      if (key === 'satellite') return
-
-      const model = this.models[key]
-
-      model.rotation.y +=
-        (0.035 / (index + 1)) * (this.mouseTarget.x - model.rotation.y)
-      model.rotation.x +=
-        (0.035 / (index + 1)) * (this.mouseTarget.y - model.rotation.x)
-    })
+    // Object.keys(this.models).forEach((key, index) => {
+    //   if (key === 'satellite') return
+    //
+    //   const model = this.models[key]
+    //
+    //   model.rotation.y +=
+    //     (0.035 / (index + 1)) * (this.mouseTarget.x - model.rotation.y)
+    //   model.rotation.x +=
+    //     (0.035 / (index + 1)) * (this.mouseTarget.y - model.rotation.x)
+    // })
   }
 
   /* Lights */
@@ -175,14 +180,14 @@ export default class FirstScreen extends AbstractScene {
   }
 
   #addDirectionalLight() {
-    this.lights.directional = new THREE.DirectionalLight(0xffffff, 0.1)
-    this.lights.directional.position.set(1, 1, 1)
+    this.lights.directional = new THREE.DirectionalLight(0xffffff, 0.2)
+    this.lights.directional.position.set(2, 0, 1)
 
     this.scene.add(this.lights.directional)
   }
 
   #addDirectional2Light() {
-    this.lights.directional2 = new THREE.DirectionalLight(0xe2e2e2, 0.5)
+    this.lights.directional2 = new THREE.DirectionalLight(0xe2e2e2, 0.515)
     this.lights.directional2.position.set(-1, 1, 1)
 
     this.scene.add(this.lights.directional2)
@@ -191,14 +196,14 @@ export default class FirstScreen extends AbstractScene {
   /* Models */
   #addDavidModel() {
     this.models.david = this.context.models.david.clone()
-    this.models.david.scale.set(0.2, 0.2, 0.2)
+    this.models.david.scale.set(0.3, 0.3, 0.3)
 
     /* Positioning */
     this.models.david.geometry.rotateY(-Math.PI * 0.25)
 
-    this.models.david.position.x = 1.15
-    this.models.david.position.y = 0.1
-    this.models.david.position.z = 0.31
+    this.models.david.position.x = 1.6
+    this.models.david.position.y = -0.4
+    this.models.david.position.z = -0.15
 
     // this.models.david.rotation.z = -0.15
 
@@ -207,11 +212,11 @@ export default class FirstScreen extends AbstractScene {
 
   #addSatelliteModel() {
     this.models.satellite = this.context.models.satellite.clone()
-    this.models.satellite.scale.set(0.28, 0.28, 0.28)
+    this.models.satellite.scale.set(0.3, 0.3, 0.3)
 
     /* Positioning */
-    this.models.satellite.position.x = 0.8
-    this.models.satellite.position.y = 0.5
+    this.models.satellite.position.x = 1.1
+    this.models.satellite.position.y = -0.3
     this.models.satellite.position.z = -0.35
 
     this.models.satellite.rotation.x = 6.16
@@ -223,11 +228,11 @@ export default class FirstScreen extends AbstractScene {
 
   #addNumbersModel() {
     this.models.numbers = this.context.models.numbers.clone()
-    this.models.numbers.scale.set(0.25, 0.25, 0.25)
+    this.models.numbers.scale.set(0.3, 0.3, 0.3)
 
     /* Positioning */
-    this.models.numbers.position.x = 0
-    this.models.numbers.position.y = 0.2
+    this.models.numbers.position.x = 0.25
+    this.models.numbers.position.y = 0
     this.models.numbers.position.z = -0.35
 
     this.group.add(this.models.numbers)
@@ -235,22 +240,22 @@ export default class FirstScreen extends AbstractScene {
 
   #addBooksModel() {
     this.models.books = this.context.models.books.clone()
-    this.models.books.scale.set(0.28, 0.28, 0.28)
+    this.models.books.scale.set(0.32, 0.32, 0.32)
     //
     /* Positioning */
-    this.models.books.position.x = -0.3
-    this.models.books.position.y = -0.45
+    this.models.books.position.x = 0.25
+    this.models.books.position.y = -1.05
 
     this.group.add(this.models.books)
   }
 
   #addMoleculeModel() {
     this.models.molecule = this.context.models.molecule.clone()
-    this.models.molecule.scale.set(0.25, 0.25, 0.25)
+    this.models.molecule.scale.set(0.26, 0.26, 0.26)
 
     /* Positioning */
-    this.models.molecule.position.x = 0.48
-    this.models.molecule.position.y = -0.4
+    this.models.molecule.position.x = 1.15
+    this.models.molecule.position.y = -0.9
     this.models.molecule.position.z = 0.2
 
     this.models.molecule.rotation.x = -10
@@ -262,12 +267,12 @@ export default class FirstScreen extends AbstractScene {
 
   #addMolecule2Model() {
     this.models.molecule2 = this.context.models.molecule2.clone()
-    this.models.molecule2.scale.set(0.34, 0.34, 0.34)
+    this.models.molecule2.scale.set(0.35, 0.35, 0.35)
 
     /* Positioning */
-    this.models.molecule2.position.x = 1.1
-    this.models.molecule2.position.y = -0.3
-    this.models.molecule2.position.z = -0.7
+    this.models.molecule2.position.x = 0.8
+    this.models.molecule2.position.y = -0.7
+    this.models.molecule2.position.z = -0.25
 
     this.models.molecule2.rotation.x = -1.02
     this.models.molecule2.rotation.y = 2.3
@@ -283,7 +288,7 @@ export default class FirstScreen extends AbstractScene {
 
     /* Positioning */
 
-    this.vectors.arrow.position.x = 0.48
+    this.vectors.arrow.position.x = 0
 
     this.wholeGroup.add(this.vectors.arrow)
   }

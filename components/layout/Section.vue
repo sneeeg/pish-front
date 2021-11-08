@@ -14,18 +14,29 @@
       <slot name="default" />
     </div>
     <div v-else class="section__inner">
-      <div v-if="title && !tagTitle" v-scroll-element :class="['section-head']">
-        <h2 class="section-head__title">{{ title }}</h2>
+      <slot v-if="$slots.prehead" name="prehead" />
+
+      <div
+        v-if="title && !tagTitle"
+        :class="['section-head', { _smallHead: smallHead }]"
+      >
+        <h2 class="section-head__title" v-html="title"></h2>
+
+        <div v-if="$slots.head" class="section-head__slot">
+          <slot name="head" />
+        </div>
+
         <ArrowLink
-          v-if="to"
+          v-if="to && !$slots.head"
           :to="to"
           class="section-head__link"
           :text="
-            lang['news.all'] !== title ? lang['news.all'] : lang['base.go']
+            arrowText ||
+            (lang['news.all'] !== title ? lang['news.all'] : lang['base.go'])
           "
         />
       </div>
-      <div v-if="tagTitle" v-scroll-element :class="['section-head']">
+      <div v-if="tagTitle" :class="['section-head']">
         <h2 class="section-head__title">
           <span>{{ lang['news.tagTitle'] }}</span
           ><span class="_colored"> #{{ tagTitle }} </span>
@@ -76,6 +87,14 @@ export default {
     to: {
       type: [String, Object],
       default: null,
+    },
+    arrowText: {
+      type: String,
+      default: '',
+    },
+    smallHead: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {

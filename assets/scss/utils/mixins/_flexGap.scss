@@ -1,10 +1,10 @@
-@mixin flexGap ($gap: 1.6rem, $width: 100%) {
+@mixin flexGap ($gap: 1.6rem, $gapBottom: $gap, $width: 100%) {
   display: inline-flex;
   flex-flow: row wrap;
   width: calc(#{$width} + #{$gap});
-  margin: calc(-1 * #{$gap}) 0 0 calc(-1 * #{$gap});
+  margin: calc(-1 * #{$gapBottom}) 0 0 calc(-1 * #{$gap});
 
   > * {
-    margin: $gap 0 0 $gap;
+    margin: $gapBottom 0 0 $gap;
   }
 }

@@ -70,8 +70,8 @@ export const state = () => ({
 
 export const mutations = {
   updateWindowParams(state) {
-    const width = document.body.clientWidth
-    const height = document.body.clientHeight
+    const width = window.innerWidth
+    const height = window.innerHeight
 
     state.window.width = width
     state.window.height = height

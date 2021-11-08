@@ -1,15 +1,33 @@
 <template>
-  <div v-view="$utils.scrollCenterDetection" class="support">
+  <div class="support">
     <div class="support__head">
-      <h2 v-scroll-element class="support__title">{{ title }}</h2>
-      <p v-scroll-element class="support__subtitle">{{ subtitle }}</p>
+      <h2 class="support__title">{{ title }}</h2>
+      <p v-if="subtitle" class="support__subtitle">
+        {{ subtitle }}
+      </p>
     </div>
-    <Tabs v-scroll-element :sections="sections" />
+    <div class="support__content">
+      <Tabs class="support__tabs" :sections="sections" @change="changeImage" />
+      <div v-show="window.isDesktopSize" ref="images" class="support__images">
+        <img
+          src="/i/tasks/1.png"
+          :style="{ height: '27.3rem' }"
+          :alt="$store.state.default.settings.siteName"
+        />
+        <img
+          src="/i/tasks/2.png"
+          :alt="$store.state.default.settings.siteName"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import gsap from 'gsap'
+import { mapState } from 'vuex'
 import Tabs from '~/components/Tabs'
+
 export default {
   name: 'SupportBlock',
   components: { Tabs },
@@ -27,11 +45,31 @@ export default {
       required: true,
     },
   },
+  computed: {
+    ...mapState('responsive', ['window']),
+  },
+  mounted() {
+    const images = this.$refs.images.querySelectorAll('img')
+
+    gsap.set(images[1], { opacity: 0, visibility: 'hidden' })
+  },
+  methods: {
+    changeImage(val) {
+      const images = this.$refs.images.querySelectorAll('img')
+      const now = images[val]
+      const then = images[!val ? 1 : 0]
+
+      gsap.to(now, { opacity: 0, visibility: 'hidden', duration: 1 })
+      gsap.to(then, { opacity: 1, visibility: 'visible', duration: 1 })
+    },
+  },
 }
 </script>
 
 <style lang="scss">
 .support {
+  position: relative;
+
   &__head {
     margin-bottom: 6.2rem;
 
@@ -41,6 +79,30 @@ export default {
 
     @include --mobile {
       margin-bottom: 3rem;
+    }
+  }
+
+  &__tabs {
+    margin-right: 45rem;
+
+    @include --tablet {
+      margin-right: 0;
+    }
+  }
+
+  &__images {
+    position: absolute;
+    top: 15rem;
+    right: 0;
+    width: 36rem;
+    height: 31.6rem;
+    margin-left: 10rem;
+
+    img {
+      @include box(100%);
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
 

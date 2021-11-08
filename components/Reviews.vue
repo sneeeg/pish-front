@@ -2,7 +2,6 @@
   <div class="reviews">
     <div
       ref="reviewsList"
-      v-scroll-element
       :class="[
         'reviews-list',
         {
@@ -16,6 +15,7 @@
         :key="review.id"
         class="reviews-list__item"
         :review="review"
+        :is-comment="isComments"
       />
     </div>
     <div class="reviews__controls">
@@ -33,6 +33,12 @@ import SliderControls from '~/components/SliderControls'
 export default {
   name: 'Reviews',
   components: { SliderControls, ReviewItem },
+  props: {
+    isComments: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       reviews: [],
@@ -78,9 +84,15 @@ export default {
   },
   methods: {
     async fetchReviews() {
-      this.reviews = await this.$api.reviews
-        .get(undefined, 1, 9)
-        .then(({ data }) => data.posts || [])
+      if (this.isComments) {
+        this.reviews = await this.$api.comments
+          .get(undefined, 1, 9)
+          .then(({ data }) => data.posts || [])
+      } else {
+        this.reviews = await this.$api.reviews
+          .get(undefined, 1, 9)
+          .then(({ data }) => data.posts || [])
+      }
     },
   },
 }

@@ -15,6 +15,8 @@
         </form>
 
         <nav class="menu__nav">
+          <LangToggler />
+
           <SmartLink
             v-for="{ text, href } in menus.header"
             :key="text"
@@ -30,11 +32,13 @@
 import { mapActions, mapState } from 'vuex'
 
 import SmartLink from '~/components/utils/SmartLink'
+import LangToggler from '~/components/controls/LangToggler'
 
 export default {
   name: 'TheMenu',
   components: {
     SmartLink,
+    LangToggler,
   },
   data() {
     return {
@@ -56,7 +60,9 @@ export default {
   methods: {
     ...mapActions('menu', { closeMenu: 'close' }),
     onSubmit() {
-      this.$router.push({ path: 'search', query: { q: this.search } })
+      this.$router.push(
+        this.localePath({ name: 'search', query: { request: this.search } })
+      )
     },
   },
 }
@@ -64,11 +70,11 @@ export default {
 <style lang="scss">
 .menu {
   position: absolute;
-  top: 12.3rem;
+  top: 15.1rem;
   left: 0;
   z-index: 9;
   width: 100%;
-  height: calc(100% - 12.3rem);
+  height: calc(100% - 15.1rem);
   background-color: #fff;
 
   @include --from-tablet {
@@ -76,8 +82,8 @@ export default {
   }
 
   @include --mobile {
-    top: 11rem;
-    height: calc(100% - 11rem);
+    top: 11.9rem;
+    height: calc(100% - 11.9rem);
   }
 
   &__scroll-wrap {

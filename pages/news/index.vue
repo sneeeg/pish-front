@@ -1,22 +1,25 @@
 <template>
   <div>
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      :title="page.mainNewsTitle"
-      :tag-title="$route.query.tag"
-    >
+    <Section :title="page.mainNewsTitle" :tag-title="$route.query.tag">
       <Posts all />
     </Section>
     <Section
-      v-view="$utils.scrollCenterDetection"
-      to="/news/media"
+      to="/news/comments"
       background
+      :title="lang['news.comments']"
+      :arrow-text="lang['news.allComments']"
+    >
+      <Reviews is-comments />
+    </Section>
+    <Section
+      v-if="$i18n.locale !== 'en'"
+      to="/news/media"
       :title="page.reviewsTitle"
     >
       <Reviews />
     </Section>
     <!--    <Section-->
-    <!--      v-view="$utils.scrollCenterDetection"-->
+    <!--      -->
     <!--      to="/news/university"-->
     <!--      :title="page.universityNewsTitle"-->
     <!--    >-->

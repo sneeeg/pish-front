@@ -1,6 +1,7 @@
 /* eslint-disable nuxt/no-cjs-in-config */
 
 /* Imports */
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const head = require('./nuxt-config/head')
 
 export default {
@@ -39,6 +40,8 @@ export default {
     '~/plugins/vue-check-view',
     '~/plugins/vue-select',
     '~/plugins/router-processing.js',
+    '~/plugins/charts.js',
+    '~/plugins/vuetify.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -77,6 +80,8 @@ export default {
           },
         ],
         defaultLocale: 'ru',
+        detectBrowserLanguage: false,
+        baseUrl: 'https://priority2030.ru',
       },
     ],
     '@nuxtjs/axios',
@@ -84,6 +89,7 @@ export default {
     '@nuxtjs/dayjs',
     'vue-scrollto/nuxt',
     '@nuxtjs/yandex-metrika',
+    'portal-vue/nuxt',
   ],
 
   yandexMetrika: {
@@ -116,6 +122,9 @@ export default {
     analyze: false,
     babel: {
       plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
+    },
+    extend(config, ctx) {
+      config.plugins.push(new VuetifyLoaderPlugin())
     },
   },
 

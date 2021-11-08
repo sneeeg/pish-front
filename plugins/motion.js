@@ -1,7 +1,8 @@
 export default (context, inject) => {
   if (
     !context.store.state.responsive.browser.hasWebGLSupport ||
-    context.store.state.responsive.browser.isIE
+    context.store.state.responsive.browser.isIE ||
+    context.route.query.prerender
   ) {
     return inject('motion', null)
   }
@@ -10,10 +11,6 @@ export default (context, inject) => {
     const motionInstance = new Motion(context)
     inject('motion', motionInstance)
 
-    return motionInstance.changePreset(
-      context.route.name
-        ? context.$utils.getPageNameByRoute(context.route.name)
-        : ''
-    )
+    return motionInstance.changePreset('main')
   })
 }

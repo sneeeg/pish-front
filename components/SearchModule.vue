@@ -1,5 +1,5 @@
 <template>
-  <div v-scroll-element class="search-module">
+  <div class="search-module">
     <SearchForm
       v-model="request"
       class="search-module__form"
@@ -99,6 +99,11 @@ export default {
   methods: {
     search(request) {
       request && (this.request = request)
+
+      this.$router.replace({
+        name: this.$route.name,
+        query: { request: this.request },
+      })
 
       this.pagination = { current: 1, total: 1 }
 

@@ -1,51 +1,27 @@
 <template>
   <div>
-    <Section has-overflow is-layout>
-      <FirstScreen
-        background="/3d/i/main.png"
-        :titles="page.mainScreenTitles"
-        link
-        major
-      />
-    </Section>
-    <Section background>
-      <Blockquote :text="page.quote.content" :author="page.quote.author" />
-    </Section>
-
-    <Participation
-      :title="page.participation.title"
-      :subtitle="page.participation.subtitle"
-      :text="page.participation.text"
-      :href="page.participation.href"
+    <MainFirstScreen
+      :title="page.firstScreen.title"
+      :subtitle="page.firstScreen.subtitle"
+      :main-cell="page.firstScreen.mainCell"
+      :cells="page.firstScreen.cells"
     />
 
-    <TheCountdown
-      :section-title="page.request.title"
-      :title="page.request.title"
-      :subtitle="page.request.subtitle"
-      :date-to="page.request.dateTo"
-    ></TheCountdown>
+    <Section background is-layout>
+      <Quotes :quotes="page.quotes" />
+    </Section>
 
-    <RegistrationPreview
-      :forehead="page.registration.forehead"
-      :title="page.registration.title"
-    />
-
-    <Section>
+    <Section v-if="false">
       <PagesSection :pages="page.links" />
     </Section>
 
-    <Section
-      v-view="$utils.scrollCenterDetection"
-      background
-      :title="page.newsTitle"
-    >
-      <Posts colored />
+    <Section to="/news" :arrow-text="lang['news.all']" :title="page.newsTitle">
+      <Posts />
     </Section>
 
-    <Section v-view="$utils.scrollCenterDetection" :title="page.history.title">
-      <TheHistory :events="page.history.events" />
-    </Section>
+    <!--    <Section :title="page.history.title">-->
+    <!--      <TheHistory :events="page.history.events" />-->
+    <!--    </Section>-->
   </div>
 </template>
 
@@ -55,40 +31,26 @@ import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
-import Blockquote from '~/components/Blockquote'
+import Quotes from '~/components/Quotes'
 import Posts from '~/components/Posts'
-import Participation from '~/components/Participation'
-import FirstScreen from '~/components/FirstScreen'
-import TheCountdown from '~/components/TheCountdown'
-import RegistrationPreview from '~/components/RegistrationPreview'
 import PagesSection from '~/components/PagesSection'
-import TheHistory from '~/components/TheHistory'
+// import TheHistory from '~/components/TheHistory'
+import MainFirstScreen from '~/components/MainFirstScreen'
 
 export default {
   components: {
+    MainFirstScreen,
     PagesSection,
-    RegistrationPreview,
-    FirstScreen,
-    TheCountdown,
     Posts,
     Section,
-    Blockquote,
-    Participation,
-    TheHistory,
+    Quotes,
+    // TheHistory,
   },
   mixins: [pageDataFetch, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
   },
-  created() {
-    /* TODO */
-    if (!this.page.registration) {
-      this.page.registration = {
-        forehead: 'Регистрация на мероприятие',
-        title: 'Примите участие в очном мероприятии программы «ПРИОРИТЕТ-2О3О»',
-      }
-    }
-  },
+  created() {},
 }
 </script>
 

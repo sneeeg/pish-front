@@ -7,7 +7,7 @@ export default (models, vectors) => {
 
   tl.fromTo(
     vectors.arrow.position,
-    { y: -1 },
+    { y: -0.5 },
     { y: 0, duration: 1, ease: 'power2.out' },
     'main'
   )

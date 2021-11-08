@@ -1,27 +1,30 @@
 <template>
   <div class="post-head">
-    <h1 v-scroll-element class="post-head__title _visually-h2">{{ title }}</h1>
-    <div v-scroll-element class="post-head-info">
+    <h1 class="post-head__title _visually-h2" v-html="title"></h1>
+    <div class="post-head-info">
       <template v-if="category">
         <span class="post-head-info__category">{{ category.text }}</span>
         <span class="post-head-info__separator"> / </span>
       </template>
-      <span class="post-head-info__date">{{
+      <span v-if="date" class="post-head-info__date">{{
         $dayjs(date).format($constants.POST_DATE_FORMAT)
       }}</span>
     </div>
-    <ul v-if="tags && tags.length" v-scroll-element class="post-tags">
+    <ul v-if="tags && tags.length" class="post-tags">
       <li v-for="tag in tags" :key="tag.id">
         <SmartLink class="hover-color-accent" :to="getTagLink(tag)"
           >#{{ tag }}</SmartLink
         >
       </li>
     </ul>
-    <div v-if="picture" v-scroll-element class="post-head__picture">
+    <div v-if="picture" class="post-head__picture">
       <img :src="picture.src" :alt="picture.alt" />
-      <a v-if="source && source.href" class="hover-opacity" :href="source.text"
-        >© {{ source.text }}</a
-      >
+    </div>
+    <div
+      v-if="source && (source.text || source.href)"
+      class="post-head__source"
+    >
+      © {{ source.text || source.href }}
     </div>
   </div>
 </template>
@@ -46,7 +49,7 @@ export default {
     },
     date: {
       type: String,
-      required: true,
+      default: '',
     },
     source: {
       type: Object,
@@ -78,6 +81,12 @@ export default {
     @include containerInnerSmall;
   }
 
+  &__source {
+    @include text-small;
+    margin-top: 1.2rem;
+    text-align: right;
+  }
+
   &__picture {
     position: relative;
     width: 100%;
@@ -85,11 +94,10 @@ export default {
     margin-top: 3.2rem;
 
     @include --tablet {
-      height: 40rem;
+      height: auto;
     }
 
     @include --mobile {
-      height: 26rem;
       margin-top: 3.2rem;
     }
 
@@ -111,7 +119,8 @@ export default {
     }
 
     img {
-      @include box(100%);
+      width: 100%;
+      height: inherit;
       object-fit: cover;
     }
   }

@@ -62,3 +62,26 @@
 .slide-from-left-leave-to {
   transform: translateX(-100%);
 }
+
+// fade from  right
+
+.fade-from-right-enter-active,
+.fade-from-right-leave-active {
+  transition: transform .4s ease, opacity .4s ease;
+  will-change: transform, opacity;
+}
+
+.fade-from-right-enter-active {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.fade-from-right-enter-to {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.fade-from-right-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="progress">
+  <div v-view="$utils.scrollCenterDetection" class="progress">
     <div v-scroll-element class="progress__year">{{ year }}</div>
     <div class="progress__slider-block">
       <ul ref="slider" class="progress__slider">
@@ -168,6 +168,16 @@ export default {
     padding-bottom: 1.6rem;
   }
 
+  a {
+    display: block;
+    @include hover-opacity;
+    color: $color_black;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
   &__year {
     margin-bottom: 4.8rem;
     color: $color_red;
@@ -240,16 +250,16 @@ export default {
       @include --mobile {
         overflow: visible;
 
-        &::after {
-          position: absolute;
-          top: 0;
-          left: 100%;
-          z-index: 1;
-          width: 2rem;
-          height: 100%;
-          background: linear-gradient(to left, $color_background, transparent);
-          content: '';
-        }
+        //&::after {
+        //  position: absolute;
+        //  top: 0;
+        //  left: 100%;
+        //  z-index: 1;
+        //  width: 2rem;
+        //  height: 100%;
+        //  background: linear-gradient(to left, $color_background, transparent);
+        //  content: '';
+        //}
       }
     }
   }

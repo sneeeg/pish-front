@@ -1,13 +1,12 @@
 <template>
   <div class="architecture-block">
     <Architecture
-      v-scroll-element
       :left="architecture.left"
       :center="architecture.center"
       :right="architecture.right"
     />
     <Principles
-      v-scroll-element
+      v-if="architecture.principles"
       :title="architecture.principles.title"
       :content="architecture.principles.content"
     />
@@ -32,17 +31,17 @@ export default {
 
 <style lang="scss">
 .architecture-block {
-  @include --from-mobile {
-    padding-bottom: 3.2rem;
-  }
+  //@include --from-mobile {
+  //  padding-bottom: 3.2rem;
+  //}
 
-  > .architecture {
-    margin-bottom: 9.8rem;
-
-    @include --mobile {
-      margin-bottom: 5.2rem;
-    }
-  }
+  //> .architecture {
+  //  margin-bottom: 9.8rem;
+  //
+  //  @include --mobile {
+  //    margin-bottom: 5.2rem;
+  //  }
+  //}
 
   > .principles {
     @include --from-mobile {

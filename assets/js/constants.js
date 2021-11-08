@@ -7,6 +7,25 @@ const CSRF_ERROR_CODE = 'invalid_csrf'
 
 const POST_DATE_FORMAT = 'D MMMM'
 
+const COLORS = [
+  '#F32735',
+  '#001B71',
+  '#7B91D7',
+  '#383A3F',
+  '#A6101A',
+  '#3B57AF',
+  '#6C6E75',
+  '#B3B2B2',
+]
+
+const GET_OPACITY_COLORS = (alpha = 0.5) =>
+  COLORS.map(
+    (hex) =>
+      `${hex}${Math.floor(alpha * 255)
+        .toString(16)
+        .padStart(2, 0)}`
+  )
+
 export {
   RESIZE_DEBOUNCE,
   SCROLL_THROTTLE,
@@ -14,4 +33,6 @@ export {
   MOBILE_WIDTH,
   CSRF_ERROR_CODE,
   POST_DATE_FORMAT,
+  COLORS,
+  GET_OPACITY_COLORS,
 }

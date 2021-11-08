@@ -13,9 +13,12 @@
     >
       <div ref="firstScreen" class="first-screen__content">
         <div
-          v-if="!major || majorBackgroungJPG"
+          v-if="(!major || majorBackgroungJPG) && !about"
           v-scroll-element="'right'"
-          :class="['first-screen__background', { _major: majorBackgroungJPG }]"
+          :class="[
+            'first-screen__background',
+            { _major: majorBackgroungJPG, _about: about },
+          ]"
           :style="{
             backgroundImage: background ? `url(${background})` : false,
           }"
@@ -23,7 +26,10 @@
         <h1
           v-if="!titles.length"
           v-scroll-element
-          :class="['first-screen__title', { '_visually-h2': !major }]"
+          :class="[
+            'first-screen__title',
+            { '_visually-h2': !major, _about: about },
+          ]"
         >
           {{ title }}
         </h1>
@@ -63,13 +69,24 @@
           is-link
           :to="settings.lkLink"
         />
+
+        <div
+          v-if="videoAbout"
+          v-scroll-element="'right'"
+          class="first-screen__video-about"
+        >
+          <MediaPlayer
+            :video-id="videoAbout.code"
+            :preview="videoAbout.preview"
+          />
+        </div>
       </div>
 
       <div v-if="video" :class="['first-screen__video', { _IE: browser.isIE }]">
         <img
           v-if="browser.isMobileSafari"
           src="/videos/arm2-last-frame.jpg"
-          alt=""
+          :alt="$store.state.default.settings.siteName"
         />
         <video
           ref="video"
@@ -102,10 +119,11 @@ import gsap from 'gsap'
 import HTMLContent from '~/components/utils/HTMLContent'
 import Btn from '~/components/controls/Btn'
 import scrollAnimation from '~/assets/js/composables/animations/scroll-animation'
+import MediaPlayer from '~/components/MediaPlayer'
 
 export default {
   name: 'FirstScreen',
-  components: { Btn, HTMLContent },
+  components: { MediaPlayer, Btn, HTMLContent },
   props: {
     title: {
       type: String,
@@ -124,6 +142,10 @@ export default {
       default: false,
     },
     major: {
+      type: Boolean,
+      default: false,
+    },
+    about: {
       type: Boolean,
       default: false,
     },
@@ -146,6 +168,10 @@ export default {
     htmlContent: {
       type: String,
       default: '',
+    },
+    videoAbout: {
+      type: Object,
+      default: null,
     },
   },
   data() {
@@ -260,10 +286,10 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 13.7rem);
+  min-height: calc(100vh - 16.3rem);
 
   &._IE {
-    height: calc(100vh - 13.7rem);
+    height: calc(100vh - 16.3rem);
   }
 
   &__html-content {
@@ -284,12 +310,26 @@ export default {
 
   &__background {
     position: absolute;
-    top: 0;
-    right: -6rem;
+    top: 10rem;
+    right: -10rem;
+    z-index: -1;
     width: 71.6rem;
     height: 43.5rem;
     background-repeat: no-repeat;
     background-size: contain;
+
+    &._about {
+      @include --tablet {
+        top: 0;
+        right: -20rem;
+      }
+
+      @include --mobile {
+        right: -30rem;
+        width: 58rem;
+        height: 22rem;
+      }
+    }
 
     ._registration & {
       top: -15rem;
@@ -305,21 +345,15 @@ export default {
 
       @include --mobile {
         top: -25rem;
+        display: block;
         width: 42rem;
         height: 37rem;
       }
     }
 
-    @include --tablet {
-      width: 40rem;
-      height: 24.3rem;
-    }
-
-    @include --mobile {
-      top: -10vh;
-      width: 26rem;
-      height: 15.8rem;
-    }
+    //@include --tablet {
+    //  display: none;
+    //}
 
     &._major {
       top: calc(50% - 36.5rem);
@@ -344,11 +378,11 @@ export default {
 
   @include --tablet {
     justify-content: flex-end;
-    min-height: calc(100vh - 12.2rem);
+    min-height: calc(100vh - 15.1rem);
   }
 
   @include --mobile {
-    min-height: calc(100vh - 10.8rem);
+    min-height: calc(100vh - 11.9rem);
   }
 
   &._adaptive-top {
@@ -365,6 +399,16 @@ export default {
 
   &__title {
     max-width: 56rem;
+
+    &._about {
+      //@include --tablet {
+      //  margin-top: 30rem;
+      //}
+      //
+      //@include --mobile {
+      //  margin-top: 15rem;
+      //}
+    }
   }
 
   &-titles h2 {
@@ -421,6 +465,26 @@ export default {
 
     img {
       z-index: -1;
+    }
+  }
+
+  &__video-about {
+    position: absolute;
+    top: calc(50% - 10rem);
+    right: 0;
+    width: 58.3rem;
+    height: 32.8rem;
+
+    @include --tablet {
+      position: static;
+      width: 100%;
+      height: 38.9rem;
+      margin-top: 4.2rem;
+    }
+
+    @include --mobile {
+      height: 18.77rem;
+      margin-top: 3.2rem;
     }
   }
 

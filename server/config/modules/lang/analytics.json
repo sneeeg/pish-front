@@ -1,0 +1,17 @@
+{
+  "selected": "Выбрано университетов",
+  "website": "Сайт университета",
+  "about": "Об университете",
+  "program": "Программа развития",
+  "indicators": "Показатели программы",
+  "rector": "Ректор",
+  "projectHead": "Руководитель проекта",
+  "projects": "Стратегические проекты",
+  "contents": "Оглавление",
+  "region": "Федеральный округ",
+  "participation": "Участие в программах",
+  "programName": "Название программы",
+  "organizationParticipation": "Участие университета",
+  "hasParticipation": "Участвовал",
+  "hasNoParticipation": "Не участвовал"
+}

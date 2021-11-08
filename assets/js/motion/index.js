@@ -5,7 +5,7 @@ import presets from '~/assets/js/motion/composables/presets'
 /* Scenes */
 import Warming from '~/assets/js/motion/modules/scenes/warming'
 import FirstScreen from '~/assets/js/motion/modules/scenes/first-screen'
-import Dna from '~/assets/js/motion/modules/scenes/dna'
+// import Dna from '~/assets/js/motion/modules/scenes/dna'
 
 /**
  * Motion module
@@ -38,7 +38,7 @@ export default class Motion {
     this.scenes = {
       warming: new Warming(this),
       firstScreen: new FirstScreen(this),
-      dna: new Dna(this),
+      // dna: new Dna(this),
     }
   }
 

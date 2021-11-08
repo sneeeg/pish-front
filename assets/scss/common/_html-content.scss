@@ -22,6 +22,10 @@ $listPadding: 2rem;
     blockquote {
       @include p;
     }
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   p {
@@ -34,9 +38,6 @@ $listPadding: 2rem;
     color: $color_accent;
   }
 
-  strong, b {
-    color: $color_accent;
-  }
 
   > :not([class]),
   > a.doc {
@@ -50,7 +51,7 @@ $listPadding: 2rem;
   img:not([class]) {
     display: block;
     max-width: 100%;
-    max-height: 80rem;
+    height: auto;
   }
 
   > .attention {

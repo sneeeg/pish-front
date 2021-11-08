@@ -2,14 +2,10 @@
   <div class="tabs">
     <ul v-if="!window.isMobileSize" class="tabs__list">
       <li
-        v-for="{ id, title } in items"
+        v-for="({ id, title }, index) in items"
         :key="id"
-        :class="[
-          'tabs__item',
-          '_visually-h4',
-          { _selected: id === currentTabID },
-        ]"
-        @click="toggleTab(id)"
+        :class="['tabs__item', { _selected: id === currentTabID }]"
+        @click="toggleTab(id, index)"
       >
         {{ title }}
       </li>
@@ -55,7 +51,7 @@ export default {
       id: `${section.title + ' #' + i}`,
     }))
     return {
-      currentTabID: items[0].id,
+      currentTabID: items[1].id,
       items,
       tabsContentHeight: null,
       heightAnimation: null,
@@ -70,10 +66,13 @@ export default {
   },
   mounted() {
     this.tabsContentHeight = this.$refs.content.scrollHeight
+
+    // this.toggleTab(this.items[0].id, 0)
   },
   methods: {
-    toggleTab(id) {
+    toggleTab(id, index) {
       this.currentTabID = id
+      this.$emit('change', index)
     },
     appearContent(el, done) {
       gsap.to(el, {
@@ -157,13 +156,17 @@ export default {
 
   &__item {
     position: relative;
-    flex: 0 1 auto;
+    flex: 1 1 40%;
     padding: 3px 2.4rem;
     font-weight: bold;
     text-align: center;
     cursor: pointer;
     opacity: 0.3;
     transition: all 300ms ease;
+
+    &:nth-child(2) {
+      order: -1;
+    }
 
     @include --tablet {
       padding: 3px 0;
@@ -197,20 +200,20 @@ export default {
 
   &__content-list {
     min-height: 17.8rem;
-    column-count: 3;
+    //column-count: 3;
 
     li {
-      page-break-inside: avoid;
-      break-inside: avoid;
+      //page-break-inside: avoid;
+      //break-inside: avoid;
     }
 
     @include --tablet {
       min-height: 9.2rem;
-      column-count: 2;
+      //column-count: 2;
     }
 
     @include --mobile {
-      column-count: auto;
+      //column-count: auto;
     }
   }
 
