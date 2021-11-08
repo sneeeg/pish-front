@@ -18,7 +18,7 @@ export default {
       data: {
         labels: this.labels,
         datasets: this.items.map((item, index) => ({
-          data: item.value,
+          data: item.values || item.value,
           borderColor: this.colors[index],
           backgroundColor: this.getOpacityColors()[index],
           tension: 0.4,
@@ -36,6 +36,7 @@ export default {
         },
         scales: {
           y: {
+            reverse: this.reverse,
             title: {
               display: '',
               text: '',

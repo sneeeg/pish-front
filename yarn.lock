@@ -1099,7 +1099,7 @@
 
 "@mdi/font@^6.4.95":
   version "6.4.95"
-  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-6.4.95.tgz#d3b7a615c4c82ba2a9c29b2b59b158dced4f9b0e"
+  resolved "https://registry.npmjs.org/@mdi/font/-/font-6.4.95.tgz"
   integrity sha512-jCQdXCD339EXirWYFbZv1Ansthm9j6O3FSQLsfi/mKamnGYxqbUBm5D4UjcVr6HVYIPNwTQQ46HNHlswPD8RcQ==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
@@ -3003,7 +3003,7 @@ caller-path@^2.0.0:
 
 callsite@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/callsite/-/callsite-1.0.0.tgz#280398e5d664bd74038b6f0905153e6e8af1bc20"
+  resolved "https://registry.npmjs.org/callsite/-/callsite-1.0.0.tgz"
   integrity sha1-KAOY5dZkvXQDi28JBRU+borxvCA=
 
 callsites@^2.0.0:
@@ -3075,10 +3075,10 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228:
-  version "1.0.30001271"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001271.tgz"
-  integrity sha512-BBruZFWmt3HFdVPS8kceTBIguKxu4f99n5JNp06OlPD/luoAMIaIK5ieV5YjnBLH3Nysai9sxj9rpJj4ZisXOA==
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001276:
+  version "1.0.30001276"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001276.tgz"
+  integrity sha512-psUNoaG1ilknZPxi8HuhQWobuhLqtYSRUxplfVkEJdgZNB9TETVYGSBtv4YyfAdGvE6gn2eb0ztiXqHoWJcGnw==
 
 ccount@^1.0.0:
   version "1.1.0"
@@ -3140,17 +3140,17 @@ chardet@^0.7.0:
 
 chart.js@^3.0.0, chart.js@^3.6.0:
   version "3.6.0"
-  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.6.0.tgz#a87fce8431d4e7c5523d721f487f53aada1e42fe"
+  resolved "https://registry.npmjs.org/chart.js/-/chart.js-3.6.0.tgz"
   integrity sha512-iOzzDKePL+bj+ccIsVAgWQehCXv8xOKGbaU2fO/myivH736zcx535PGJzQGanvcSGVOqX6yuLZsN3ygcQ35UgQ==
 
 chartjs-plugin-datalabels@^2.0.0:
   version "2.0.0"
-  resolved "https://registry.yarnpkg.com/chartjs-plugin-datalabels/-/chartjs-plugin-datalabels-2.0.0.tgz#caacefb26803d968785071eab012dde8746c5939"
+  resolved "https://registry.npmjs.org/chartjs-plugin-datalabels/-/chartjs-plugin-datalabels-2.0.0.tgz"
   integrity sha512-WBsWihphzM0Y8fmQVm89+iy99mmgejmj5/jcsYqwxSioLRL/zqJ4Scv/eXq5ZqvG3TpojlGzZLeaOaSvDm7fwA==
 
 chartjs-plugin-stacked100@^1.0.4:
   version "1.0.4"
-  resolved "https://registry.yarnpkg.com/chartjs-plugin-stacked100/-/chartjs-plugin-stacked100-1.0.4.tgz#ca8ae84c6c98532581f5aa2f69beda2fbebe68a2"
+  resolved "https://registry.npmjs.org/chartjs-plugin-stacked100/-/chartjs-plugin-stacked100-1.0.4.tgz"
   integrity sha512-LKTTA3/xYKd2qQfpU5v1KnGsnOGOak5S/sDBLbKnKkaiMNtVgPMLeeQvCoXGrfpqD9IwPZPwUlYrEaWJ8lx+1Q==
   dependencies:
     chart.js "^3.0.0"
@@ -3201,7 +3201,7 @@ chownr@^2.0.0:
 
 chroma-js@^2.1.2:
   version "2.1.2"
-  resolved "https://registry.yarnpkg.com/chroma-js/-/chroma-js-2.1.2.tgz#1075cb9ae25bcb2017c109394168b5cf3aa500ec"
+  resolved "https://registry.npmjs.org/chroma-js/-/chroma-js-2.1.2.tgz"
   integrity sha512-ri/ouYDWuxfus3UcaMxC1Tfp3IE9K5iQzxc2hSxbBRVNQFut1UuGAsZmiAf2mOUubzGJwgMSv9lHg+XqLaz1QQ==
   dependencies:
     cross-env "^6.0.3"
@@ -3652,7 +3652,7 @@ create-require@^1.1.1:
 
 cross-env@^6.0.3:
   version "6.0.3"
-  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-6.0.3.tgz#4256b71e49b3a40637a0ce70768a6ef5c72ae941"
+  resolved "https://registry.npmjs.org/cross-env/-/cross-env-6.0.3.tgz"
   integrity sha512-+KqxF6LCvfhWvADcDPqo64yVIB31gv/jQulX2NGzKS/g3GEVz6/pt4wjHFtFWsHMddebWD/sDthJemzM4MaAag==
   dependencies:
     cross-spawn "^7.0.0"
@@ -3950,7 +3950,7 @@ debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1:
 
 decache@^4.6.0:
   version "4.6.0"
-  resolved "https://registry.yarnpkg.com/decache/-/decache-4.6.0.tgz#87026bc6e696759e82d57a3841c4e251a30356e8"
+  resolved "https://registry.npmjs.org/decache/-/decache-4.6.0.tgz"
   integrity sha512-PppOuLiz+DFeaUvFXEYZjLxAkKiMYH/do/b/MxpDe/8AgKBi5GhZxridoVIbBq72GDbL36e4p0Ce2jTGUwwU+w==
   dependencies:
     callsite "^1.0.0"
@@ -6430,7 +6430,7 @@ locate-path@^6.0.0:
 
 lodash-es@^4.17.21:
   version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
 lodash._reinterpolate@^3.0.0:
@@ -10864,7 +10864,7 @@ vue-scrollto@^2.20.0:
 
 vue-select@^3.16.0:
   version "3.16.0"
-  resolved "https://registry.yarnpkg.com/vue-select/-/vue-select-3.16.0.tgz#db2ee2ddf80bd8876ce57738107b8a1a741862f4"
+  resolved "https://registry.npmjs.org/vue-select/-/vue-select-3.16.0.tgz"
   integrity sha512-F0x7HXTUc5eq7YSjR0uX77RGA+Yk2+I8aMW+NePyPqRX9OPSiDtKpezFIFhnhxqrOvMh4uVR0jHkXIDmzs6nYQ==
 
 vue-server-renderer@^2.6.12:
@@ -10926,7 +10926,7 @@ vuelidate@^0.7.6:
 
 vuetify-loader@^1.7.3:
   version "1.7.3"
-  resolved "https://registry.yarnpkg.com/vuetify-loader/-/vuetify-loader-1.7.3.tgz#404657f4925c828f400fe3269003421d586835c6"
+  resolved "https://registry.npmjs.org/vuetify-loader/-/vuetify-loader-1.7.3.tgz"
   integrity sha512-1Kt6Rfvuw3i9BBlxC9WTMnU3WEU7IBWQmDX+fYGAVGpzWCX7oHythUIwPCZGShHSYcPMKSDbXTPP8UvT5RNw8Q==
   dependencies:
     decache "^4.6.0"
@@ -10935,7 +10935,7 @@ vuetify-loader@^1.7.3:
 
 vuetify@^2.5.10:
   version "2.5.10"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.5.10.tgz#165cb3de9dbffbc94bc775aa2f698eb9fa89eabe"
+  resolved "https://registry.npmjs.org/vuetify/-/vuetify-2.5.10.tgz"
   integrity sha512-UODZQrib36l7i1WGg0MUvurczLspYTe0nKAmfbwyMs6dC2lG1Q1VV9caqPbCAB9zgG6QIJaOmRQKSKduw9eZTw==
 
 vuex@^3.6.2:

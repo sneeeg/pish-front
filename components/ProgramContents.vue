@@ -124,7 +124,7 @@ export default {
         this.$scrollTo(el, 250, {
           container: list,
           offset: -150,
-          cancelable: true,
+          cancelable: false,
         })
       })
     },

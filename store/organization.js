@@ -68,4 +68,8 @@ export const getters = {
 
     return result
   },
+
+  sections(state) {
+    return state.data.sections
+  },
 }

@@ -36,11 +36,12 @@ export default {
       top: 0,
     })
 
-    const pageName = $utils.getPageNameByRoute(route.name)
-
-    if (pageName === 'analytics-id-about') {
-      redirect(app.localePath(`/analytics/${route.params.id}/about/program`))
-    }
+    // Redirect to program
+    // const pageName = $utils.getPageNameByRoute(route.name)
+    //
+    // if (pageName === 'analytics-id-about') {
+    //   redirect(app.localePath(`/analytics/${route.params.id}/about/program`))
+    // }
   },
 
   async asyncData({ store, route, $nuxt, $api }) {
@@ -78,10 +79,10 @@ export default {
     },
     tabs() {
       return [
-        // {
-        //   id: 'about',
-        //   text: this.lang['analytics.about'],
-        // },
+        {
+          id: 'about',
+          text: this.lang['analytics.about'],
+        },
         {
           id: 'program',
           text: this.lang['analytics.program'],

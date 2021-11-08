@@ -1,6 +1,14 @@
 <template>
-  <div class="statistics-card">
-    <div class="statistics-card__header">
+  <div
+    :class="[
+      'statistics-card',
+      {
+        _hasBorder: hasBorder,
+        _single: indicator && indicator.type === 'doughnut' && single,
+      },
+    ]"
+  >
+    <div v-if="title || subtitle" class="statistics-card__header">
       <p>{{ title }}</p>
       <span v-if="subtitle" class="statistics-card__subtitle">{{
         subtitle
@@ -9,7 +17,12 @@
 
     <div v-if="hasChart" class="statistics-card__chart">
       <SmallChartController :indicator="indicator"></SmallChartController>
-      <SmallChartLegend :items="indicator.items"></SmallChartLegend>
+      <SmallChartLegend
+        v-if="!['data-table', 'radar', 'content'].includes(indicator.type)"
+        :items="indicator.items"
+        :show-percent="indicator.showPercent"
+        :show-legend-value="showLegendValue"
+      ></SmallChartLegend>
     </div>
 
     <StatisticsGrid
@@ -70,6 +83,18 @@ export default {
       type: Object,
       default: null,
     },
+    hasBorder: {
+      type: Boolean,
+      default: false,
+    },
+    single: {
+      type: Boolean,
+      default: false,
+    },
+    showLegendValue: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     hasIndicator() {
@@ -110,6 +135,10 @@ export default {
 .statistics-card {
   padding: 2.4rem;
   background: #fff;
+
+  &._hasBorder {
+    border: 1px solid #e1e4e8;
+  }
 
   &__header {
     @include text-small();
@@ -166,6 +195,23 @@ export default {
   }
 
   &__chart {
+    @include --from-tablet {
+      ._single & {
+        display: flex;
+        align-items: center;
+
+        > * {
+          &:first-child {
+            margin: 0 14rem 0 12rem;
+          }
+
+          &:last-child {
+            margin-right: 6rem;
+          }
+        }
+      }
+    }
+
     > :not(:last-child) {
       margin-bottom: 4rem;
 

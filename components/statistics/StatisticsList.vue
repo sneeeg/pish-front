@@ -3,7 +3,7 @@
     <div
       v-for="(item, index) in items"
       :key="index"
-      class="statistics-list__item"
+      :class="['statistics-list__item', { _lg: items.length < 2 }]"
     >
       <div class="statistics-list__label">
         <SvgIcon :name="icon"></SvgIcon>
@@ -45,6 +45,12 @@ export default {
     align-items: center;
     justify-content: space-between;
 
+    &._lg {
+      svg {
+        @include box(2.8rem);
+      }
+    }
+
     svg {
       width: 2.2rem;
       min-width: 2.2rem;
@@ -60,6 +66,10 @@ export default {
   &__label {
     display: flex;
     align-items: center;
+
+    ._lg & {
+      @include h5();
+    }
   }
 
   &__value {

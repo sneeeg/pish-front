@@ -3,7 +3,7 @@
     :style="{ background: !window.isMobileSize ? background : 'transparent' }"
     class="person-card-lg"
   >
-    <div class="person-card-lg__photo">
+    <div v-if="photoUrl" class="person-card-lg__photo">
       <img :src="photoUrl" :alt="name" />
     </div>
 
@@ -67,6 +67,7 @@ export default {
     @include --mobile {
       width: 12rem;
       height: 14.7rem;
+      margin-bottom: 2.4rem;
     }
   }
 
@@ -78,7 +79,6 @@ export default {
     padding: 3.2rem;
 
     @include --mobile {
-      margin-top: 2.4rem;
       padding: 0;
     }
   }
