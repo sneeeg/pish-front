@@ -65,35 +65,39 @@ export default {
 </script>
 
 <style lang="scss">
-.constructor-data-table .v-data-table__wrapper > table {
-  .v-data-table-header {
-    th {
-      &:first-child {
-        padding-left: 0 !important;
-      }
+.constructor-data-table {
+  @include vuetifyTable();
 
-      span {
-        white-space: nowrap;
-        text-transform: uppercase;
-      }
-    }
-  }
-
-  tbody {
-    tr:not(.v-row-group__header) {
-      td {
+  > .v-data-table__wrapper > table {
+    .v-data-table-header {
+      th {
         &:first-child {
           padding-left: 0 !important;
+        }
+
+        span {
+          white-space: nowrap;
+          text-transform: uppercase;
         }
       }
     }
 
-    tr {
-      td {
-        @include text-small;
+    tbody {
+      tr:not(.v-row-group__header) {
+        td {
+          &:first-child {
+            padding-left: 0 !important;
+          }
+        }
+      }
 
-        padding-top: 0.8rem !important;
-        padding-bottom: 0.8rem !important;
+      tr {
+        td {
+          @include text-small;
+
+          padding-top: 0.8rem !important;
+          padding-bottom: 0.8rem !important;
+        }
       }
     }
   }

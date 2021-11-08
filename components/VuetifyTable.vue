@@ -43,11 +43,13 @@ export default {
 
 <style lang="scss">
 .vuetify-table {
+  @include vuetifyTable();
+
   > .v-data-table__wrapper > table {
     > thead {
       > tr {
         > th {
-          padding-bottom: 2rem;
+          padding-bottom: 1.8rem;
           border-bottom: thin solid $color_grey_border !important;
           font-weight: 500;
 
@@ -86,7 +88,7 @@ export default {
           &.v-data-table__mobile-row {
             display: flex;
             flex-direction: column;
-            align-items: start;
+            align-items: flex-start;
             height: auto;
 
             .v-data-table__mobile-row__header {

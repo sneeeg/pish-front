@@ -47,6 +47,8 @@ export default {
 
 <style lang="scss">
 .table {
+  @include vuetifyTable();
+
   &__item {
     padding: 1.6rem !important;
 

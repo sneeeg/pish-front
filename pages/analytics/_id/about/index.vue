@@ -142,6 +142,12 @@ export default {
     @include flexGap(3rem);
   }
 
+  &__cards {
+    > * {
+      max-width: calc(100% / 2 - 3rem);
+    }
+  }
+
   &__row {
     &:not(:last-child) {
       padding-bottom: 3rem;

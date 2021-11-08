@@ -137,6 +137,8 @@ export default {
   display: flex;
 
   &__section {
+    @include vuetifyTable();
+
     &._fixed {
       flex-shrink: 0;
       width: 20rem;

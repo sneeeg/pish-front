@@ -37,7 +37,7 @@ export default {
   justify-content: center;
   padding: 0.8rem 1.2rem;
   border-radius: 3rem;
-  font-weight: 500;
+  font-weight: 700;
 
   &__slot {
     width: fit-content;
