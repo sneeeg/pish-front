@@ -26,6 +26,24 @@ const GET_OPACITY_COLORS = (alpha = 0.5) =>
         .padStart(2, 0)}`
   )
 
+const PAGES = [
+  'main',
+  'about',
+  'news',
+  'participation',
+  'registration',
+  'documents',
+  'contacts',
+  'participants',
+  'faq',
+  'instructions',
+  'universities',
+  'commission',
+  'council',
+  'questionnaire',
+  'analytics',
+]
+
 export {
   RESIZE_DEBOUNCE,
   SCROLL_THROTTLE,
@@ -34,5 +52,6 @@ export {
   CSRF_ERROR_CODE,
   POST_DATE_FORMAT,
   COLORS,
+  PAGES,
   GET_OPACITY_COLORS,
 }
