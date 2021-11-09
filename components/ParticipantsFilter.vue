@@ -155,7 +155,7 @@ export default {
   created() {
     this.filterPlaceholders = {
       region: 'Федеральный округ',
-      location: 'Область нахождения организации',
+      location: 'Субъект РФ',
       group: 'Группа критериев',
       founder: 'Учредитель организации',
       direction: 'Направление гранта',
