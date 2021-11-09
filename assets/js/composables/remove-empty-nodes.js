@@ -3,7 +3,7 @@
  * @param el {HTMLElement}
  */
 export default (el) => {
-  const children = el.children
+  const children = Array.from(el.children)
 
   children.forEach((child) => {
     if (!child.innerHTML || child.innerHTML === '&nbsp;') {

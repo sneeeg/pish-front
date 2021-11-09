@@ -32,12 +32,10 @@ export default {
   mixins: [pageHead, pageDefault],
 
   middleware({ app, route, $utils, redirect }) {
-    app.router.afterEach((to, from, next) => {
+    app.router.afterEach((to, from) => {
       window.scrollTo({
         top: 0,
       })
-
-      next()
     })
 
     // Redirect to program

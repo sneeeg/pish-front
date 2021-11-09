@@ -66,6 +66,14 @@ export const getters = {
       return acc
     }, [])
 
+    // Clean item children if their length < 2
+    // result.forEach((item) => {
+    //   if (item.children.length < 2) {
+    //     item.id = item.children[0].id
+    //     item.children = []
+    //   }
+    // })
+
     return result
   },
 

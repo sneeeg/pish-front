@@ -121,10 +121,10 @@ export default {
 
         const el = list.querySelector(`#title-${id}`)
 
-        this.$scrollTo(el, 250, {
+        this.$vuetify.goTo(el, {
           container: list,
-          offset: -150,
-          cancelable: false,
+          duration: 250,
+          offset: 150,
         })
       })
     },
@@ -174,12 +174,12 @@ export default {
   top: 0;
   left: 0;
   width: 38rem;
-  background-color: $color_white;
 
   @include --tablet {
     z-index: 1000;
     width: 100%;
     height: 100vh;
+    background-color: $color_white;
   }
 
   &__content {
@@ -193,11 +193,11 @@ export default {
   &__list {
     @include scrollbarHidden;
 
-    max-height: calc(100vh - 81px - 6rem);
+    height: calc(100vh - 81px - 6rem);
     overflow-y: scroll;
 
     @include --tablet {
-      max-height: calc(100% - 1px - 6rem);
+      height: calc(100% - 1px - 6rem);
     }
   }
 }
@@ -207,6 +207,7 @@ export default {
   border-bottom: 1px solid rgba($color_grey_border, 0.4);
   color: #000;
   font-weight: 700;
+  background-color: $color_white;
 
   &__content {
     display: flex;
@@ -219,6 +220,7 @@ export default {
 
 .program-contents-item {
   @include text-small;
+  background-color: $color_white;
 
   &__children {
     border-bottom: 1px solid rgba($color_grey_border, 0.5);

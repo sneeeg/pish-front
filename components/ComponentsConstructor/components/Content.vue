@@ -15,7 +15,7 @@ export default {
   },
   mounted() {
     this.$refs.content.$el.innerHTML = this.$refs.content.$el.innerHTML.replace(
-      /&nbsp;|•/g,
+      /&nbsp;|•|●/g,
       ' '
     )
   },

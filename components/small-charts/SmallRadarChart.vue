@@ -120,8 +120,6 @@ export default {
         this.canvasHeight =
           this.$refs.canvasContainer.offsetHeight *
           (this.window.isDesktopSize ? 0.825 : 0.9)
-
-        console.log(this.canvasHeight)
       }, 500)
     },
   },

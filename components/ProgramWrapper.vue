@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'ProgramWrapper',
 
@@ -48,9 +50,20 @@ export default {
     },
   },
 
+  computed: {
+    ...mapGetters('organization', ['programTitles']),
+  },
+
   methods: {
     getItemId(item) {
-      return (item.title || item.props.title) && !this.isChild ? item.id : false
+      const isInContents = this.programTitles.find(
+        (i) =>
+          item.id === i.id || i.children.find((child) => child.id === item.id)
+      )
+
+      return (item.title || item.props.title) && !this.isChild && isInContents
+        ? item.id
+        : false
     },
   },
 }
