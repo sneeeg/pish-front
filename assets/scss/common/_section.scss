@@ -17,7 +17,6 @@
       position: absolute;
       top: 70vh;
       left: 0;
-      z-index: -1;
       width: 100%;
       height: calc(100% - 70vh);
       background-color: $color_white;
@@ -28,6 +27,8 @@
   &__inner {
     @include container;
     @include padding-section;
+    position: relative;
+    z-index: 1;
     display: block;
     margin: 0 auto;
 

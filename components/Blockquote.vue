@@ -64,7 +64,7 @@ export default {
     z-index: 1;
     width: 12.8rem;
     height: 9.6rem;
-    background: url('static/qoute.svg') no-repeat center / auto;
+    background: url('~/assets/i/sprite/svg/quote.svg') no-repeat center / auto;
     content: '';
 
     @include --tablet {
