@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isDesktop" class="menu">
+  <div v-if="!isDesktop" ref="menu" class="menu">
     <div class="menu__scroll-wrap">
       <div class="menu__content">
         <form @submit.prevent="onSubmit">
@@ -30,6 +30,7 @@
 </template>
 <script>
 import { mapActions, mapState } from 'vuex'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 import SmartLink from '~/components/utils/SmartLink'
 import LangToggler from '~/components/controls/LangToggler'
@@ -65,6 +66,12 @@ export default {
       )
     },
   },
+  mounted() {
+    disableBodyScroll(this.$refs.menu)
+  },
+  beforeDestroy() {
+    enableBodyScroll(this.$refs.menu)
+  },
 }
 </script>
 <style lang="scss">
@@ -74,7 +81,7 @@ export default {
   left: 0;
   z-index: 9;
   width: 100%;
-  height: calc(100% - 15.1rem);
+  height: calc(100vh - 15.1rem);
   background-color: #fff;
 
   @include --from-tablet {
@@ -83,7 +90,7 @@ export default {
 
   @include --mobile {
     top: 11.9rem;
-    height: calc(100% - 11.9rem);
+    height: calc(100vh - 11.9rem);
   }
 
   &__scroll-wrap {

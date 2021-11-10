@@ -321,6 +321,15 @@ export default {
 
     data.participants.forEach((participant) => {
       participant.group = GROUPS[+participant.group - 1]
+      participant.direction = []
+
+      if (participant.isBase) {
+        participant.direction.push('Базовая часть')
+      }
+
+      if (participant.special) {
+        participant.direction.push(participant.special)
+      }
     })
 
     this.data = data

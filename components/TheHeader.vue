@@ -107,7 +107,6 @@ export default {
 <style lang="scss">
 .header {
   position: relative;
-  z-index: 11;
   transition: background-color 0.3s ease;
 
   ._menu-active & {

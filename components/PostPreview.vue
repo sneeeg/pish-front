@@ -112,7 +112,7 @@ export default {
     }
 
     @include --tablet {
-      @include flexGap(2px, 100%);
+      @include flexGap(2px, 2px, 100%);
     }
 
     li {

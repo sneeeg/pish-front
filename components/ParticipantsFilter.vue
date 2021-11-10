@@ -59,7 +59,7 @@ export default {
         location: [],
         group: [],
         founder: [],
-        direction: ['Базовая часть', 'Специальная часть'],
+        direction: [],
       },
       selectableOptions: {
         region: [],
@@ -115,18 +115,6 @@ export default {
 
     selectedItems() {
       const result = this.items.reduce((acc, item) => {
-        item.direction = this.options.direction.reduce((acc, i, index) => {
-          if (item.isBase && !index) {
-            acc.push(i)
-          }
-
-          if (item.isSpecial && index === 1) {
-            acc.push(i)
-          }
-
-          return acc
-        }, [])
-
         const matched = Object.keys(this.filter).reduce((acc, key) => {
           const filter = this.filter[key]
           const isMatched =
@@ -198,11 +186,13 @@ export default {
     },
     getOptions(selectable = false) {
       Object.keys(this.selectableOptions).forEach((filterName) => {
-        if (filterName === 'direction') return
-
         const itemsArr = !selectable ? this.items : this.selectedItems
         const result = itemsArr.reduce((acc, item) => {
-          acc.push(item[filterName])
+          if (typeof item[filterName] === 'object') {
+            acc = acc.concat(item[filterName])
+          } else {
+            acc.push(item[filterName])
+          }
 
           return acc
         }, [])
