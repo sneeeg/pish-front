@@ -97,6 +97,15 @@ export default {
             display: false,
           },
         },
+        scales: {
+          r:
+            this.scales.length === 2
+              ? {
+                  suggestedMin: this.scales[0],
+                  suggestedMax: this.scales[1],
+                }
+              : undefined,
+        },
         animation: {
           duration: 0,
         },

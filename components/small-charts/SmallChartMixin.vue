@@ -24,6 +24,10 @@ export default {
       type: String,
       default: '',
     },
+    scales: {
+      type: Array,
+      default: () => [],
+    },
     reference: {
       type: Boolean,
       default: false,

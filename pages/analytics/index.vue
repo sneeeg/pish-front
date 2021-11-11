@@ -3,7 +3,9 @@
 
   <div v-else-if="data" class="analytics">
     <Section>
-      <h1 class="council__title _visually-h2">{{ page.pageTitle }}</h1>
+      <h1 class="analytics__title _visually-h2">{{ page.pageTitle }}</h1>
+
+      <HTMLContent class="analytics__description" :html="page.description" />
 
       <div v-if="data.files && !!data.files.length" class="analytics-files">
         <div class="analytics-files__title">
@@ -53,6 +55,7 @@ import Btn from '~/components/controls/Btn'
 import ParticipantsFilter from '~/components/ParticipantsFilter'
 
 import Statistics from '~/components/statistics/Statistics'
+import HTMLContent from '~/components/utils/HTMLContent'
 
 const GROUPS = [
   'Группа 1 - участники программы (основной трек)',
@@ -63,7 +66,15 @@ const GROUPS = [
 
 export default {
   name: 'Index',
-  components: { ParticipantsFilter, Btn, File, Loader, Section, Statistics },
+  components: {
+    HTMLContent,
+    ParticipantsFilter,
+    Btn,
+    File,
+    Loader,
+    Section,
+    Statistics,
+  },
   mixins: [pageDataFetch, pageHead, pageDefault],
   data() {
     return {
@@ -208,13 +219,13 @@ export default {
               },
               {
                 label:
-                  'Программы подготовки кадров высшей квалификации, человек (аспирантура, адъюнктура, ассистентура)',
+                  'Программы подготовки кадров высшей квалификации (аспирантура, адъюнктура, ассистентура)',
                 value: 4.2,
                 postfix: '%',
               },
               {
                 label:
-                  'Программы подготовки кадров высшей квалификации, человек (ординатура)',
+                  'Программы подготовки кадров высшей квалификации (ординатура)',
                 value: 1.7,
                 postfix: '%',
               },
@@ -348,12 +359,33 @@ export default {
 </script>
 
 <style lang="scss">
+.analytics {
+  &__description {
+    @include containerInnerSmall2;
+    @include text-small;
+
+    margin-top: 3.2rem;
+
+    @include --mobile {
+      margin-top: 2.4rem;
+    }
+  }
+}
+
 .analytics-files {
-  margin-top: 5.6rem;
+  margin-top: 4.2rem;
+
+  @include --mobile {
+    margin-top: 3.2rem;
+  }
 
   &__title {
     margin-bottom: 3.2rem;
     color: #000;
+
+    @include --mobile {
+      margin-bottom: 2.4rem;
+    }
   }
 
   &__items {
