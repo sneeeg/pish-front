@@ -52,8 +52,8 @@ export default {
       const pageName = this.$utils.getPageNameByRoute(this.$route.name)
 
       return (
-        pageName !== 'analytics-id-program' &&
-        this.window.isMobileSize &&
+        ((pageName === 'analytics-id-program' && this.window.isDesktopSize) ||
+          (pageName !== 'analytics-id-program' && this.window.isMobileSize)) &&
         this.scrollY >= 700
       )
     },

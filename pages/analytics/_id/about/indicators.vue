@@ -3,7 +3,7 @@
     <div class="indicators-tabs-controls">
       <template v-if="window.isDesktopSize">
         <button
-          v-if="!!sections['base']"
+          v-if="!!sections['base'] && !!sections['base'].length"
           type="button"
           class="indicators-tabs-btn"
           :class="{ _active: tab === 'base' }"
@@ -12,7 +12,7 @@
           БАЗОВАЯ ЧАСТЬ ГРАНТА
         </button>
         <button
-          v-if="!!sections['special']"
+          v-if="!!sections['special'] && !!sections['special'].length"
           type="button"
           class="indicators-tabs-btn"
           :class="{ _active: tab === 'special' }"
@@ -21,7 +21,7 @@
           СПЕЦИАЛЬНАЯ ЧАСТЬ ГРАНТА
         </button>
         <button
-          v-if="!!sections['grant']"
+          v-if="!!sections['grant'] && !!sections['grant'].length"
           type="button"
           class="indicators-tabs-btn"
           :class="{ _active: tab === 'grant' }"
