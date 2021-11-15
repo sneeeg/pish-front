@@ -2,8 +2,9 @@
 $listPadding: 2rem;
 
 .html-content {
-  @include containerInnerSmall;
   color: $color_black;
+  @include containerInnerSmall;
+
 
   //p,
   //h1,

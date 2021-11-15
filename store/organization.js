@@ -5,19 +5,25 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_ORGANIZATION_DATA(state, data) {
+  SET_ORGANIZATION_DATA(state, { data, parent }) {
+    if (data.sections && data.sections.length && parent?.detailInterlineation) {
+      data.sections[data.sections.length - 1].rows[
+        data.sections[data.sections.length - 1].rows.length - 1
+      ].postContent = parent.detailInterlineation
+    }
+
     state.data = data
   },
 }
 
 export const actions = {
-  async getOrganization({ commit }, { id } = {}) {
+  async getOrganization({ commit }, { id, parent } = {}) {
     const { data, errors } = await this.$api.analytics.getOrganizationById(id)
 
     if (errors.length) {
       throw new Error('Not found')
     } else {
-      commit('SET_ORGANIZATION_DATA', data)
+      commit('SET_ORGANIZATION_DATA', { data, parent })
     }
   },
 }
@@ -65,14 +71,6 @@ export const getters = {
 
       return acc
     }, [])
-
-    // Clean item children if their length < 2
-    // result.forEach((item) => {
-    //   if (item.children.length < 2) {
-    //     item.id = item.children[0].id
-    //     item.children = []
-    //   }
-    // })
 
     return result
   },

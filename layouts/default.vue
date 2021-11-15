@@ -42,6 +42,10 @@ export default {
     ...mapState('scroll', { scrollY: 'y' }),
     ...mapState('responsive', ['window']),
     key() {
+      if (this.$route.query.tag) {
+        return this.$route.fullPath
+      }
+
       const pageName = this.$utils.getPageNameByRoute(this.$route.name)
 
       return this.$route.name && pageName === 'faq-categoryId'

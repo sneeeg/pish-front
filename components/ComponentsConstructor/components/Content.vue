@@ -1,5 +1,5 @@
 <template>
-  <HTMLContent ref="content" class="constructor-content" :html="content" />
+  <HTMLContent ref="content" :class="['constructor-content']" :html="content" />
 </template>
 
 <script>

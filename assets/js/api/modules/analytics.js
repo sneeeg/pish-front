@@ -20,7 +20,7 @@ export default ($axios) => ({
   /* Get university indicators by id */
   getIndicatorsById(id) {
     if (process.env.NODE_ENV === 'development') {
-      return $axios.$get(`/api/v0/priority/${id}/indicators`)
+      return $axios.$get('/api/indicators', { params: { id } })
     }
 
     return $axios.$get(

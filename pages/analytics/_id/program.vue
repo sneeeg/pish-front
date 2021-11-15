@@ -32,7 +32,7 @@ export default {
   name: 'Program',
   components: { Section, Breadcrumbs, ProgramComponent },
   mixins: [pageHead, pageDefault],
-  async asyncData({ store, route, $nuxt, $api }) {
+  async asyncData({ store, route, error, $api }) {
     try {
       const [{ data }] = await Promise.all([
         $api.pages.analytics(),
@@ -43,7 +43,7 @@ export default {
         parent: data,
       }
     } catch (e) {
-      return $nuxt.error({ statusCode: 404, message: 'Organization not found' })
+      return error({ statusCode: 404, message: 'Organization not found' })
     }
   },
   computed: {
