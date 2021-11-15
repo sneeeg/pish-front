@@ -22,7 +22,7 @@ export default (pretender) => {
   })
 
   // Getting university indicators
-  pretender.get('/api/v0/priority/asda/indicators', () => {
+  pretender.get('/api/indicators', () => {
     return [
       200,
       { 'Content-Type': 'application/json' },

@@ -78,6 +78,12 @@
               >
               </StatisticsCard>
             </template>
+
+            <HTMLContent
+              v-if="row.postContent"
+              class="statistics__post-content"
+              :html="row.postContent"
+            />
           </div>
         </div>
       </component>
@@ -88,10 +94,12 @@
 import { mapState } from 'vuex'
 import StatisticsCard from '~/components/statistics/StatisticsCard'
 import Section from '~/components/layout/Section'
+import HTMLContent from '~/components/utils/HTMLContent'
 
 export default {
   name: 'Statistics',
   components: {
+    HTMLContent,
     StatisticsCard,
     Section,
   },
@@ -314,6 +322,18 @@ export default {
   &__row {
     &:not(:last-child) {
       padding-bottom: 3rem;
+    }
+  }
+
+  &__post-content {
+    &:not(.fluid) {
+      @include containerInnerSmall2;
+    }
+
+    > p {
+      @include text-button-small;
+      text-transform: none;
+      font-weight: normal;
     }
   }
 }

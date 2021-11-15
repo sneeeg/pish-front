@@ -62,7 +62,6 @@
 
 <script>
 import { mapState } from 'vuex'
-// import ArrowLink from '~/components/controls/ArrowLink'
 import findCategoryText from '~/assets/js/utils/find-category-text'
 import PostPreview from '~/components/PostPreview'
 import Btn from '~/components/controls/Btn'

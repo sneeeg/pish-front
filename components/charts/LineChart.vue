@@ -6,12 +6,16 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 import { Chart } from 'chart.js'
 import ChartMixin from '~/components/charts/ChartMixin'
 
 export default {
   name: 'LineChart',
   mixins: [ChartMixin],
+  computed: {
+    ...mapState('responsive', ['window']),
+  },
   mounted() {
     this.chart = new Chart(this.$refs.chart.getContext('2d'), {
       type: 'line',
@@ -27,6 +31,15 @@ export default {
       options: {
         responsive: true,
         plugins: {
+          datalabels: {
+            display: this.window.isDesktopSize,
+            font: {
+              family: 'Geometria, sans-serif',
+              size: 10,
+            },
+            formatter: (value) => Math.round(value),
+            align: 'end',
+          },
           tooltip: {
             enabled: true,
             callbacks: {
@@ -54,6 +67,7 @@ export default {
         },
         scales: {
           y: {
+            display: false,
             title: {
               display: '',
               text: '',

@@ -39,18 +39,19 @@ export default {
     })
   },
 
-  async asyncData({ store, route, $nuxt, $api }) {
+  async asyncData({ store, route, error, $api }) {
     try {
-      const [{ data }] = await Promise.all([
-        $api.pages.analytics(),
-        store.dispatch('organization/getOrganization', { id: route.params.id }),
-      ])
+      const { data } = await $api.pages.analytics()
+      await store.dispatch('organization/getOrganization', {
+        id: route.params.id,
+        parent: data,
+      })
 
       return {
         parent: data,
       }
     } catch (e) {
-      return $nuxt.error({ statusCode: 404, message: 'Organization not found' })
+      return error({ statusCode: 404, message: 'Organization not found' })
     }
   },
   data() {

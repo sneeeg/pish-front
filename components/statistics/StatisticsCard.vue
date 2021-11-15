@@ -6,7 +6,8 @@
         _hasBorder: hasBorder,
         _single: indicator && indicator.type === 'doughnut' && single,
         _reverse: reverse,
-        _flexStart: (list && list.items.length > 1) || noCardAppearance,
+        _flexStart:
+          (list && (list.items.length > 1 || reverse)) || noCardAppearance,
         _noCardAppearance: noCardAppearance,
         _faint: faint,
       },
