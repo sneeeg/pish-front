@@ -59,7 +59,7 @@ module.exports = {
                     {
                       label: 'Субъекты РФ, в которых расположены университеты',
                       icon: 'build-2',
-                      text: '46',
+                      text: '52',
                       reverse: true,
                     },
                     {
