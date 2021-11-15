@@ -12,7 +12,10 @@
       class="small-chart-legend__item"
     >
       <div class="small-chart-legend__label">
-        <i :style="{ backgroundColor: colors[index] }"></i>
+        <i
+          v-if="indicatorType !== 'radar'"
+          :style="{ backgroundColor: colors[index] }"
+        ></i>
         <strong class="small-chart-legend__text">{{ item.label }}</strong>
       </div>
 
@@ -33,6 +36,10 @@ import { COLORS } from '~/assets/js/constants'
 export default {
   name: 'SmallChartLegend',
   props: {
+    indicatorType: {
+      type: String,
+      default: '',
+    },
     items: {
       type: Array,
       default: () => [],
@@ -59,6 +66,7 @@ export default {
   },
   computed: {
     ...mapState('responsive', ['window']),
+    ...mapState('default', ['lang']),
 
     sum() {
       return this.items.reduce((acc, item) => {
@@ -93,17 +101,22 @@ export default {
           value: lastItem.value[index],
           postfix: lastItem.postfix || '',
         }))
-      } else if (this.showPercent && !isNaN(this.sum)) {
-        return this.items.reduce((acc, item) => {
+      } else {
+        return this.items.reduce((acc, item, index) => {
           acc.push({
-            label: item.label,
-            value: ((item.value / this.sum) * 100).toFixed(1) + ' %',
+            label:
+              item.label +
+              (this.indicatorType === 'radar'
+                ? ` (${this.lang['analytics.value']} ${index + 1})`
+                : ''),
+            value:
+              this.showPercent && !isNaN(this.sum)
+                ? ((item.value / this.sum) * 100).toFixed(1) + ' %'
+                : item.value,
           })
 
           return acc
         }, [])
-      } else {
-        return this.items
       }
     },
   },

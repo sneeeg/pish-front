@@ -1,10 +1,7 @@
 <template>
-  <div
-    :style="{ height: canvasHeight + 'px', position: 'relative' }"
-    class="small-radar-chart"
-  >
+  <div ref="parent" class="small-radar-chart">
     <div ref="canvasContainer" class="small-radar-chart__chart-wrap">
-      <canvas ref="chart" width="100" height="100"></canvas>
+      <canvas ref="chart"></canvas>
     </div>
   </div>
 </template>
@@ -129,10 +126,11 @@ export default {
   methods: {
     updateCanvasHeight() {
       setTimeout(() => {
-        this.canvasHeight =
-          this.$refs.canvasContainer.offsetHeight *
-          (this.window.isDesktopSize ? 0.825 : 0.9)
-      }, 500)
+        const canvasHeight = this.$refs.canvasContainer.offsetHeight
+        this.$refs.parent.style = `height: ${
+          canvasHeight * (!this.window.isMobileSize ? 0.8 : 0.7)
+        }px; top: ${!this.window.isMobileSize ? 0 : -canvasHeight * 0.1}px`
+      }, 100)
     },
   },
 }
@@ -140,6 +138,8 @@ export default {
 
 <style lang="scss">
 .small-radar-chart {
+  position: relative;
+
   &__chart-wrap {
     position: absolute;
     top: 0;

@@ -13,5 +13,6 @@
   "programName": "Название программы",
   "organizationParticipation": "Участие университета",
   "hasParticipation": "Участвовал",
-  "hasNoParticipation": "Не участвовал"
+  "hasNoParticipation": "Не участвовал",
+  "value": "Значение"
 }
