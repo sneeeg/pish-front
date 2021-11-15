@@ -34,11 +34,7 @@
       <CustomSelect
         v-else
         :value="tab"
-        :items="[
-          { id: 'base', text: 'БАЗОВАЯ ЧАСТЬ ГРАНТА' },
-          { id: 'special', text: 'СПЕЦИАЛЬНАЯ ЧАСТЬ ГРАНТА' },
-          { id: 'grant', text: 'показатели результата' },
-        ]"
+        :items="selectItems"
         @input="tab = $event"
       />
     </div>
@@ -71,13 +67,41 @@ export default {
       sections: data,
     }
   },
+
   data() {
     return {
       tab: 'base',
     }
   },
+
   computed: {
     ...mapState('responsive', ['window']),
+    selectItems() {
+      return Object.keys(this.sections).reduce((acc, key) => {
+        const id = key
+        let text = ''
+
+        switch (key) {
+          case 'base':
+            text = 'БАЗОВАЯ ЧАСТЬ ГРАНТА'
+            break
+
+          case 'special':
+            text = 'СПЕЦИАЛЬНАЯ ЧАСТЬ ГРАНТА'
+            break
+
+          case 'grant':
+            text = 'показатели результата'
+            break
+        }
+
+        if (this.sections[key]?.length) {
+          acc.push({ id, text })
+        }
+
+        return acc
+      }, [])
+    },
   },
 }
 </script>
@@ -86,7 +110,11 @@ export default {
 .indicators-container {
   @include container;
   margin: 0 auto;
-  padding: 3.2rem 0;
+  padding: 3.2rem 0 6rem;
+
+  @include --mobile {
+    padding-bottom: 4.2rem;
+  }
 }
 
 .indicators {
