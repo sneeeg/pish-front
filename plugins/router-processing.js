@@ -1,7 +1,21 @@
 import appContentDisappear from '~/assets/js/composables/animations/app-content-disappear'
 
-export default ({ app, store, $motion }) => {
+export default ({ app, store, $motion, $utils, $constants }) => {
   app.router.beforeEach((to, from, next) => {
+    // Activate page loading
+    const toMatchedPath = $utils.getPageNameByRoute(to?.matched[0]?.path || '')
+    const fromMatchedPath = $utils.getPageNameByRoute(
+      from?.matched[0]?.path || ''
+    )
+
+    if (
+      toMatchedPath &&
+      toMatchedPath !== fromMatchedPath &&
+      $constants.PAGE_PATHS_WITH_LOADING.includes(toMatchedPath)
+    ) {
+      store.dispatch('default/togglePageLoading', true)
+    }
+
     if (store.state.menu.isActive) {
       store.dispatch('menu/close')
     }
@@ -54,5 +68,10 @@ export default ({ app, store, $motion }) => {
     } else {
       next()
     }
+  })
+
+  app.router.afterEach((to) => {
+    // Deactivate page loading
+    store.dispatch('default/togglePageLoading', false)
   })
 }

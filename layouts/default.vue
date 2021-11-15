@@ -3,7 +3,9 @@
     <TheHeader />
 
     <div id="main" v-will-change class="main _default">
-      <Nuxt :key="key" />
+      <Loader v-show="pageLoading" />
+
+      <Nuxt v-show="!pageLoading" :key="key" />
     </div>
 
     <TheFooter />
@@ -29,9 +31,11 @@ import { mapState } from 'vuex'
 import TheHeader from '~/components/TheHeader.vue'
 import TheFooter from '~/components/TheFooter.vue'
 import FloatBtn from '~/components/FloatBtn'
+import Loader from '~/components/Loader'
 
 export default {
   components: {
+    Loader,
     TheHeader,
     TheFooter,
     TheMobileMenu: () => import('~/components/TheMobileMenu'),
@@ -41,6 +45,8 @@ export default {
   computed: {
     ...mapState('scroll', { scrollY: 'y' }),
     ...mapState('responsive', ['window']),
+    ...mapState('default', ['pageLoading']),
+
     key() {
       if (this.$route.query.tag) {
         return this.$route.fullPath
