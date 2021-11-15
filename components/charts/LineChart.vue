@@ -37,7 +37,7 @@ export default {
               family: 'Geometria, sans-serif',
               size: 10,
             },
-            formatter: (value) => (value > 1000 ? Math.round(value) : value),
+            formatter: (value) => (value > 100 ? Math.round(value) : value),
             align: 'start',
           },
           tooltip: {
