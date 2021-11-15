@@ -38,7 +38,7 @@ export default {
               size: 10,
             },
             formatter: (value) => Math.round(value),
-            align: 'end',
+            align: 'start',
           },
           tooltip: {
             enabled: true,
