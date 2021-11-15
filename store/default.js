@@ -15,9 +15,14 @@ export const state = () => ({
     text: '',
     href: '',
   },
+  pageLoading: false,
 })
 
 export const mutations = {
+  SET_PAGE_LOADING_STATE(state, val) {
+    state.pageLoading = val
+  },
+
   setSiteId(state, siteId) {
     state.siteId = siteId
   },
@@ -64,5 +69,9 @@ export const actions = {
       commit('setLang', data.lang)
       commit('setMenus', data.menus)
     })
+  },
+
+  togglePageLoading({ state, commit }, val) {
+    commit('SET_PAGE_LOADING_STATE', val)
   },
 }

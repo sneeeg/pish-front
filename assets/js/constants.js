@@ -44,6 +44,11 @@ const PAGES = [
   'analytics',
 ]
 
+const PAGE_PATHS_WITH_LOADING = [
+  '/analytics/:id/program',
+  '/analytics/:id/about',
+]
+
 export {
   RESIZE_DEBOUNCE,
   SCROLL_THROTTLE,
@@ -53,5 +58,6 @@ export {
   POST_DATE_FORMAT,
   COLORS,
   PAGES,
+  PAGE_PATHS_WITH_LOADING,
   GET_OPACITY_COLORS,
 }
