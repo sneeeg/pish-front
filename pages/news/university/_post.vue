@@ -68,13 +68,13 @@ export default {
     Slider,
   },
   mixins: [pageHead, pageDefault],
-  async asyncData({ $nuxt, route, $api }) {
+  async asyncData({ error, route, $api }) {
     const page = await $api.posts
       .getUniversityPostBySlug(route.params.post)
       .then(({ data }) => data)
 
     if (!page) {
-      return $nuxt.error({ statusCode: 404, message: 'Post not found' })
+      return error({ statusCode: 404, message: 'Post not found' })
     }
 
     return { page }
