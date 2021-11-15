@@ -37,6 +37,9 @@ export default {
           tooltip: {
             enabled: false,
           },
+          datalabels: {
+            display: false,
+          },
           legend: {
             display: false,
           },

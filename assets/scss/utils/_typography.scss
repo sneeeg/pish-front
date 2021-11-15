@@ -104,6 +104,17 @@
   }
 }
 
+@mixin text-subtitle {
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 3.4rem;
+
+  @include --mobile {
+    font-size: 2rem;
+    line-height: 2.8rem;
+  }
+}
+
 @mixin text-button {
   font-weight: 700;
   font-size: 1.4rem;

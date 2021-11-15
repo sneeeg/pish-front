@@ -31,9 +31,9 @@ module.exports = {
       },
       {
         icon: 'build',
-        text: 'Приоритеты программы',
+        text: 'Аналитика программы',
         counter: false,
-        href: '/about#priority',
+        href: '/analytics',
       },
       {
         icon: 'user',

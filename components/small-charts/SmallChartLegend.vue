@@ -1,5 +1,11 @@
 <template>
-  <div class="small-chart-legend mt-5">
+  <div
+    :class="[
+      'small-chart-legend',
+      'mt-5',
+      { _horizontal: !showLegendValue && !window.isMobileSize },
+    ]"
+  >
     <div
       v-for="(item, index) in formattedItems"
       :key="index"
@@ -21,6 +27,7 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 import { COLORS } from '~/assets/js/constants'
 
 export default {
@@ -41,10 +48,18 @@ export default {
   },
   data() {
     return {
-      colors: COLORS,
+      colors: this.items[0].color
+        ? this.items.reduce((acc, item) => {
+            acc.push(item.color)
+
+            return acc
+          }, [])
+        : COLORS,
     }
   },
   computed: {
+    ...mapState('responsive', ['window']),
+
     sum() {
       return this.items.reduce((acc, item) => {
         acc += +item.value
@@ -82,7 +97,7 @@ export default {
         return this.items.reduce((acc, item) => {
           acc.push({
             label: item.label,
-            value: Math.round((item.value / this.sum) * 100) + '%',
+            value: ((item.value / this.sum) * 100).toFixed(1) + ' %',
           })
 
           return acc
@@ -99,13 +114,23 @@ export default {
   font-size: 1.4rem;
   line-height: 1.8rem;
 
+  &._horizontal {
+    @include flexGap(5.6rem, 1.6rem);
+
+    .small-chart-legend__item {
+      &:not(:last-child) {
+        padding-bottom: 0;
+      }
+    }
+  }
+
   &__item {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     &:not(:last-child) {
-      margin-bottom: 1.6rem;
+      padding-bottom: 1.6rem;
     }
 
     i {

@@ -14,27 +14,27 @@ export default [
                   label:
                     'Удельный вес финансового обеспечения университета от НИОКР в общих доходах университета за последний отчетный период',
                   icon: 'book-open-blank-variant',
-                  text: '7,7 %',
+                  text: '36,2 %',
                 },
                 {
                   label: 'Общее число публикаций за период 2016-2020 (Scopus)',
                   icon: 'book-open-blank-variant',
-                  text: '207 шт.',
+                  text: '3138 шт.',
                 },
                 {
                   label: 'Общее число цитирований за период 2016-2020 (Scopus)',
                   icon: 'book-open-blank-variant',
-                  text: '255 шт.',
+                  text: '11926 шт.',
                 },
                 {
                   label: 'Число публикаций отнесенных к QI и QII (Scopus)',
                   icon: 'book-open-blank-variant',
-                  text: '11.938 шт.',
+                  text: '210.976 шт.',
                 },
                 {
                   label: 'Число публикаций типов «Article» и «Review» (Scopus)',
                   icon: 'book-open-blank-variant',
-                  text: '33.895 шт.',
+                  text: '583.611 шт.',
                 },
               ],
             },
@@ -58,11 +58,11 @@ export default [
               items: [
                 {
                   label: 'Бюджет',
-                  value: 52.61,
+                  value: 88.51,
                 },
                 {
                   label: 'Контракт',
-                  value: 47.39,
+                  value: 11.49,
                 },
               ],
             },
@@ -75,11 +75,11 @@ export default [
               items: [
                 {
                   label: 'Иностранные граждане',
-                  value: 37.43,
+                  value: 3.93,
                 },
                 {
                   label: 'Граждане РФ',
-                  value: 62.57,
+                  value: 96.07,
                 },
               ],
             },
@@ -98,11 +98,11 @@ export default [
               items: [
                 {
                   label: 'Средний балл ЕГЭ – студенты (Бюджет)',
-                  values: [60.76, 61.82, 64.12, 63.47, 64.91],
+                  values: [74.17, 75.88, 77.9, 81.39, 79.44],
                 },
                 {
                   label: ' Средний балл ЕГЭ – студенты (Контракт)',
-                  values: [55.46, 55.22, 57.03, 57.25, 59.19],
+                  values: [62.13, 62.81, 64.55, 66.36, 70.33],
                 },
               ],
             },
@@ -120,19 +120,19 @@ export default [
               items: [
                 {
                   label: 'Бакалавриат',
-                  value: 90.9,
+                  value: 46.63,
                 },
                 {
                   label: 'Специалитет',
-                  value: 0.56,
+                  value: 41.38,
                 },
                 {
                   label: 'Магистратура',
-                  value: 7.55,
+                  value: 8.11,
                 },
                 {
                   label: 'Кадры высшей квалификации',
-                  value: 0.99,
+                  value: 3.88,
                 },
               ],
             },
@@ -146,19 +146,19 @@ export default [
               items: [
                 {
                   label: 'Бакалавриат',
-                  value: 95.32,
+                  value: 48.48,
                 },
                 {
                   label: 'Специалитет',
-                  value: 0,
-                },
-                {
-                  label: 'Магистратура',
-                  value: 4.27,
+                  value: 39.09,
                 },
                 {
                   label: 'Кадры высшей квалификации ',
-                  value: 0.4,
+                  value: 1.52,
+                },
+                {
+                  label: 'Магистратура',
+                  value: 10.91,
                 },
               ],
             },
@@ -180,31 +180,31 @@ export default [
                 },
                 {
                   label: 'Искусство и культура',
-                  value: 1.11,
-                },
-                {
-                  label: 'Образование и педагогические науки',
-                  value: 39.59,
+                  value: 0,
                 },
                 {
                   label: 'Инженерные науки',
-                  value: 6.9,
+                  value: 94.5,
                 },
                 {
                   label: 'Здравоохранение и медицинские науки',
                   value: 0,
                 },
                 {
+                  label: 'Образование и педагогические науки',
+                  value: 0,
+                },
+                {
                   label: 'Гуманитарные науки',
-                  value: 12.23,
+                  value: 0,
                 },
                 {
                   label: 'Математические и естественные науки',
-                  value: 11.33,
+                  value: 1.64,
                 },
                 {
                   label: 'Науки об обществе',
-                  value: 28.84,
+                  value: 3.87,
                 },
               ],
             },
@@ -223,15 +223,15 @@ export default [
               items: [
                 {
                   label: 'Доктора наук',
-                  value: 15.52,
+                  value: 16.85,
                 },
                 {
                   label: 'Кандидаты наук',
-                  value: 71.84,
+                  value: 76.4,
                 },
                 {
                   label: 'Без степени',
-                  value: 12.64,
+                  value: 6.74,
                 },
               ],
             },
@@ -244,11 +244,11 @@ export default [
               items: [
                 {
                   label: 'Иностранные граждане',
-                  value: 0,
+                  value: 11.4,
                 },
                 {
                   label: 'Граждане РФ',
-                  value: 100,
+                  value: 88.6,
                 },
               ],
             },
@@ -264,10 +264,130 @@ export default [
       {
         models: [
           {
-            component: 'Content',
+            component: 'ChartLine',
             props: {
-              content:
-                '<strong>Университет не представлен в международных рейтингах QS, THE, ARWU.</strong>',
+              showPercent: false,
+              showLegendValue: false,
+              reverse: true,
+              title:
+                'Динамика университета в международных институциональных рейтингах',
+              labels: [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+              items: [
+                {
+                  label: 'THE',
+                  values: [
+                    'NaN',
+                    'NaN',
+                    'NaN',
+                    'NaN',
+                    'NaN',
+                    'NaN',
+                    801,
+                    401,
+                    401,
+                  ],
+                },
+                {
+                  label: 'QS',
+                  values: [
+                    'NaN',
+                    'NaN',
+                    'NaN',
+                    'NaN',
+                    'NaN',
+                    'NaN',
+                    'NaN',
+                    'NaN',
+                    1001,
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        models: [
+          {
+            component: 'DataTable',
+            props: {
+              title:
+                'Динамика университета в международных институциональных рейтингах',
+              headers: [
+                {
+                  text: 'Рейтинг',
+                  value: 'rating',
+                },
+                {
+                  text: 2013,
+                  value: 'Y2013',
+                },
+                {
+                  text: 2014,
+                  value: 'Y2014',
+                },
+                {
+                  text: 2015,
+                  value: 'Y2015',
+                },
+                {
+                  text: 2016,
+                  value: 'Y2016',
+                },
+                {
+                  text: 2017,
+                  value: 'Y2017',
+                },
+                {
+                  text: 2018,
+                  value: 'Y2018',
+                },
+                {
+                  text: 2019,
+                  value: 'Y2019',
+                },
+                {
+                  text: 2020,
+                  value: 'Y2020',
+                },
+                {
+                  text: 2021,
+                  value: 'Y2021',
+                },
+              ],
+              items: [
+                {
+                  Y2016: 51,
+                  Y2017: 15,
+                  Y2018: 16,
+                  Y2019: 19,
+                  Y2020: 18,
+                  rating: 'Engineering - Mineral & Mining',
+                  category: 'QS',
+                },
+                {
+                  Y2021: 12,
+                  rating: 'Engineering, Mineral & Mining',
+                  category: 'QS',
+                },
+                {
+                  Y2021: 101,
+                  rating: 'Engineering, Petroleum',
+                  category: 'QS',
+                },
+                {
+                  Y2019: 601,
+                  Y2020: 301,
+                  rating: 'Engineering & Technology',
+                  category: 'THE',
+                },
+                {
+                  Y2019: 501,
+                  Y2020: 251,
+                  rating: 'Physical Sciences',
+                  category: 'THE',
+                },
+              ],
             },
           },
         ],
@@ -288,7 +408,7 @@ export default [
               items: [
                 {
                   label: 'Федеральный бюджет',
-                  value: 60.04,
+                  value: 47.7,
                 },
                 {
                   label: 'Бюджет субъекта РФ',
@@ -296,7 +416,7 @@ export default [
                 },
                 {
                   label: 'Местный бюджет и внебюджетные средства',
-                  value: 39.96,
+                  value: 52.3,
                 },
               ],
             },
@@ -313,17 +433,17 @@ export default [
               items: [
                 {
                   label: 'Бюджетное финансирование',
-                  value: 47.51,
+                  value: 59.85,
                 },
                 {
                   label:
                     'Внебюджетные доходы, связанные с выполнением НИР и ОКР, а также оказания услуг',
-                  value: 2.33,
+                  value: 34.35,
                 },
                 {
                   label:
                     'Внебюджетные доходы от образовательной деятельности (внебюджетные)',
-                  value: 50.16,
+                  value: 5.8,
                 },
               ],
             },
@@ -333,20 +453,19 @@ export default [
             props: {
               title:
                 'Численность работников университета по категориям персонала',
-              scales: [0, 100],
               items: [
                 {
                   label: 'НР и инженерно-технический персонал',
-                  value: 4.25,
+                  value: 11.7,
                 },
                 {
                   label: 'ППС',
-                  value: 51.03,
+                  value: 34.53,
                 },
                 {
                   label:
                     'Административно-хозяйственный, производственный и прочий персонал',
-                  value: 44.72,
+                  value: 53.77,
                 },
               ],
             },

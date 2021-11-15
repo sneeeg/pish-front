@@ -61,7 +61,7 @@ export default {
       return this.items
     },
     labels() {
-      if (this.type === 'radar') {
+      if (this.type === 'radar' || this.type === 'doughnut') {
         return this.items.reduce((acc, item) => {
           const words = item.label.split(' ')
 

@@ -5,6 +5,10 @@
       {
         _hasBorder: hasBorder,
         _single: indicator && indicator.type === 'doughnut' && single,
+        _reverse: reverse,
+        _flexStart: (list && list.items.length > 1) || noCardAppearance,
+        _noCardAppearance: noCardAppearance,
+        _faint: faint,
       },
     ]"
   >
@@ -18,7 +22,9 @@
     <div v-if="hasChart" class="statistics-card__chart">
       <SmallChartController :indicator="indicator"></SmallChartController>
       <SmallChartLegend
-        v-if="!['data-table', 'radar', 'content'].includes(indicator.type)"
+        v-if="
+          !['data-table', 'radar', 'content', 'groups'].includes(indicator.type)
+        "
         :items="indicator.items"
         :show-percent="indicator.showPercent"
         :show-legend-value="showLegendValue"
@@ -36,16 +42,6 @@
       :items="list.items"
       :icon="list.icon"
     ></StatisticsList>
-
-    <!--    <ul v-else class="statistics-card__list">-->
-    <!--      <li v-for="(label, index) in dataset.label" :key="index">-->
-    <!--        <div class="statistics-card__list-label">-->
-    <!--          <SvgIcon class="statistics-card__list-icon"></SvgIcon>-->
-    <!--          <span>{{ label }}</span>-->
-    <!--        </div>-->
-    <!--        <span>{{ dataset.value[index] || '' }}</span>-->
-    <!--      </li>-->
-    <!--    </ul>-->
   </div>
 </template>
 <script>
@@ -91,9 +87,21 @@ export default {
       type: Boolean,
       default: false,
     },
+    faint: {
+      type: Boolean,
+      default: false,
+    },
     showLegendValue: {
       type: Boolean,
       default: true,
+    },
+    reverse: {
+      type: Boolean,
+      default: false,
+    },
+    noCardAppearance: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -133,19 +141,42 @@ export default {
 </script>
 <style lang="scss">
 .statistics-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 2.4rem;
   background: #fff;
+
+  &._flexStart {
+    justify-content: flex-start;
+  }
 
   &._hasBorder {
     border: 1px solid #e1e4e8;
   }
 
+  &._noCardAppearance {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
   &__header {
     @include text-small();
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     margin-bottom: 4rem;
+
+    ._faint & {
+      color: $color_grey_text;
+    }
+
+    ._reverse & {
+      order: 2;
+      margin: 4rem 0 0;
+
+      @include --mobile {
+        margin: 2.4rem 0 0;
+      }
+    }
 
     @include --mobile {
       margin-bottom: 2.4rem;
@@ -157,7 +188,13 @@ export default {
   }
 
   &__subtitle {
-    margin-top: 1.8rem;
+    display: block;
+    margin-top: 1.2rem;
+    color: $color_grey_text;
+
+    @include --mobile {
+      margin-top: 0.8rem;
+    }
   }
 
   &__head {
@@ -195,10 +232,16 @@ export default {
   }
 
   &__chart {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+
     @include --from-tablet {
       ._single & {
-        display: flex;
+        flex-direction: row;
         align-items: center;
+        justify-content: flex-start;
 
         > * {
           &:first-child {

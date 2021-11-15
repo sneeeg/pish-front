@@ -96,6 +96,12 @@ export default {
           legend: {
             display: false,
           },
+          tooltip: {
+            display: false,
+          },
+          datalabels: {
+            display: false,
+          },
         },
         scales: {
           r:

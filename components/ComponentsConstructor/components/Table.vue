@@ -1,5 +1,5 @@
 <template>
-  <v-simple-table class="table">
+  <v-simple-table class="v-data-table-custom table">
     <template #default>
       <thead>
         <tr>
@@ -47,8 +47,6 @@ export default {
 
 <style lang="scss">
 .table {
-  @include vuetifyTable();
-
   &__item {
     padding: 1.6rem !important;
 

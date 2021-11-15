@@ -38,8 +38,26 @@ export default {
       },
       options: {
         plugins: {
+          datalabels: {
+            display: false,
+          },
           tooltip: {
-            enabled: false,
+            enabled: true,
+            callbacks: {
+              label: (e) => {
+                const label = this.$utils.cloneObject(e.label)
+
+                if (typeof label === 'string') {
+                  return `${label} - ${e.dataset.data[e.dataIndex]}`
+                }
+
+                label[label.length - 1] = [
+                  `${label[label.length - 1]} - ${e.dataset.data[e.dataIndex]}`,
+                ]
+
+                return label
+              },
+            },
           },
           legend: {
             display: false,

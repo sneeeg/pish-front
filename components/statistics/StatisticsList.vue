@@ -1,12 +1,12 @@
 <template>
-  <div class="statistics-list">
+  <div :class="['statistics-list', { _list: items.length > 1 }]">
     <div
       v-for="(item, index) in items"
       :key="index"
       :class="['statistics-list__item', { _lg: items.length < 2 }]"
     >
       <div class="statistics-list__label">
-        <SvgIcon :name="icon"></SvgIcon>
+        <SvgIcon v-if="icon" :name="icon"></SvgIcon>
         <strong class="statistics-list__text">{{ item.label }}</strong>
       </div>
 
@@ -39,6 +39,13 @@ export default {
 .statistics-list {
   font-size: 1.4rem;
   line-height: 1.8rem;
+
+  &._list {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   &__item {
     display: flex;

@@ -37,13 +37,6 @@ export default {
         top: 0,
       })
     })
-
-    // Redirect to program
-    // const pageName = $utils.getPageNameByRoute(route.name)
-    //
-    // if (pageName === 'analytics-id-about') {
-    //   redirect(app.localePath(`/analytics/${route.params.id}/about/program`))
-    // }
   },
 
   async asyncData({ store, route, $nuxt, $api }) {
@@ -85,10 +78,10 @@ export default {
           id: 'about',
           text: this.lang['analytics.about'],
         },
-        {
-          id: 'program',
-          text: this.lang['analytics.program'],
-        },
+        // {
+        //   id: 'program',
+        //   text: this.lang['analytics.program'],
+        // },
         {
           id: 'indicators',
           text: this.lang['analytics.indicators'],

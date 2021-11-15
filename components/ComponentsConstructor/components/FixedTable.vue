@@ -1,6 +1,9 @@
 <template>
   <div class="fixed-table">
-    <v-simple-table ref="fixed" class="fixed-table__section _fixed">
+    <v-simple-table
+      ref="fixed"
+      class="v-data-table-custom fixed-table__section _fixed"
+    >
       <template #default>
         <thead>
           <tr>
@@ -22,7 +25,10 @@
       </template>
     </v-simple-table>
 
-    <v-simple-table ref="main" class="fixed-table__section _main">
+    <v-simple-table
+      ref="main"
+      class="v-data-table-custom fixed-table__section _main"
+    >
       <template #default>
         <thead>
           <tr>
@@ -137,8 +143,6 @@ export default {
   display: flex;
 
   &__section {
-    @include vuetifyTable();
-
     &._fixed {
       flex-shrink: 0;
       width: 20rem;

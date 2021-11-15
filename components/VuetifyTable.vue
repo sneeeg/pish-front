@@ -4,7 +4,7 @@
     :items-per-page="-1"
     :headers="headers"
     :items="items"
-    class="vuetify-table"
+    class="v-data-table-custom vuetify-table"
   >
     <template #[`item.isParticipated`]="{ item }">
       <slot name="value" :value="item.isParticipated" />
@@ -43,8 +43,6 @@ export default {
 
 <style lang="scss">
 .vuetify-table {
-  @include vuetifyTable();
-
   > .v-data-table__wrapper > table {
     > thead {
       > tr {
@@ -67,10 +65,16 @@ export default {
     > tbody {
       > tr {
         > td {
-          @include text-small;
 
           padding-top: 2.4rem;
           padding-bottom: 2.4rem;
+          font-size: 1.5rem !important;
+          line-height: 1.8rem !important;
+
+          @include --mobile {
+            font-size: 1.4rem !important;
+            line-height: 1.6rem !important;
+          }
 
           &:first-child {
             padding-left: 0;
@@ -89,7 +93,7 @@ export default {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            height: auto;
+            height: auto !important;
 
             .v-data-table__mobile-row__header {
               margin-bottom: 1.2rem;

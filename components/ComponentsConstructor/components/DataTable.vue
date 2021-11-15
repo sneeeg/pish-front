@@ -2,7 +2,7 @@
   <v-data-table
     v-if="hasCategories"
     ref="table"
-    class="constructor-data-table"
+    class="v-data-table-custom constructor-data-table"
     :headers="_headers"
     :items="items"
     group-by="category"
@@ -13,7 +13,7 @@
   <v-data-table
     v-else
     ref="table"
-    class="constructor-data-table"
+    class="v-data-table-custom constructor-data-table"
     :headers="_headers"
     :items="items"
     :items-per-page="-1"
@@ -66,8 +66,6 @@ export default {
 
 <style lang="scss">
 .constructor-data-table {
-  @include vuetifyTable();
-
   > .v-data-table__wrapper > table {
     .v-data-table-header {
       th {
@@ -93,10 +91,16 @@ export default {
 
       tr {
         td {
-          @include text-small;
 
           padding-top: 0.8rem !important;
           padding-bottom: 0.8rem !important;
+          font-size: 1.5rem !important;
+          line-height: 1.8rem !important;
+
+          @include --mobile {
+            font-size: 1.4rem !important;
+            line-height: 1.6rem !important;
+          }
         }
       }
     }
