@@ -150,8 +150,10 @@ export default {
         ({ data }) => {
           if (concat) {
             this.posts = this.posts.concat(data.posts || [])
+          } else if (!data.posts || !data.posts.length) {
+            this.$nuxt.error({ statusCode: 404, message: 'Posts not found' })
           } else {
-            this.posts = data.posts || []
+            this.posts = data.posts
           }
 
           if (!this.categories.length) {
