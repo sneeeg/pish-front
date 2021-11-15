@@ -57,11 +57,12 @@ export default {
   },
   computed: {
     ...mapState('responsive', ['window']),
+    ...mapState('default', ['lang']),
     _items() {
       return this.items
     },
     labels() {
-      if (this.type === 'radar' || this.type === 'doughnut') {
+      if (this.type === 'doughnut') {
         return this.items.reduce((acc, item) => {
           const words = item.label.split(' ')
 
@@ -96,12 +97,18 @@ export default {
 
       return this._items.reduce((acc, item, index) => {
         const isLineChart = typeof item.label === 'object'
+        const isRadarChart = this.type === 'radar'
+
         if (isLineChart) {
           if (index === 0) {
             acc.push(...item.label)
           }
         } else {
-          acc.push(item.label)
+          acc.push(
+            isRadarChart
+              ? `${this.lang['analytics.value']} ${index + 1}`
+              : item.label
+          )
         }
 
         return acc
