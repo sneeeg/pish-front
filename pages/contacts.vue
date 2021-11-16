@@ -132,6 +132,8 @@ export default {
         {
           type: 'file-dropzone',
           name: 'file',
+          placeholder:
+            'Выберите файл для загрузки. Размер файла не должен превышать 10мб.',
         },
       ],
     }

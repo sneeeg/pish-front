@@ -130,8 +130,6 @@ export default {
 
       if (!file) return
 
-      console.log(file, this.$utils.getFileFormat(file.name))
-
       if (fileList.length > 1 || !this.$utils.getFileFormat(file.name)) {
         this.localError = this.lang['base.invalidFileFormat']
 
