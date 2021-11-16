@@ -237,7 +237,7 @@ export default {
   &__error {
     @include text-button-small;
     position: absolute;
-    bottom: -2rem;
+    top: calc(100% + 0.6rem);
     color: red;
     font-weight: 400;
     text-transform: none;

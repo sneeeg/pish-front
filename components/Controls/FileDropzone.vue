@@ -177,7 +177,7 @@ export default {
   &__placeholder {
     @include text-button-small;
     position: absolute;
-    bottom: -2rem;
+    top: calc(100% + 0.6rem);
     color: $color_grey_text;
     font-weight: 400;
     text-transform: none;

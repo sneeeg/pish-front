@@ -201,14 +201,6 @@ export default {
 
 <style lang="scss">
 .form {
-  &__field {
-    &:last-child {
-      > * {
-        margin-bottom: 0;
-      }
-    }
-  }
-
   &__policy {
     @include text-button;
     margin: 6.4rem 0 0;
