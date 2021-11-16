@@ -15,10 +15,10 @@
     </div>
 
     <p v-if="showPolicy" class="form__policy">
-      {{ lang['registration.policy.text'] }}
-      <SmartLink class="hover-opacity" :to="lang['base.policyLink']">{{
-        lang['registration.policy.link.text']
-      }}</SmartLink>
+      Нажимая кнопку «Отправить» Я соглашаюсь
+      <SmartLink class="hover-opacity" :to="lang['base.policyLink']">
+        с политикой безопасности и конфиденциальности</SmartLink
+      >
     </p>
 
     <Btn
