@@ -332,8 +332,8 @@ export default {
 
     > p {
       @include text-button-small;
-      text-transform: none;
       font-weight: normal;
+      text-transform: none;
     }
   }
 }

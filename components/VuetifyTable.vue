@@ -65,7 +65,6 @@ export default {
     > tbody {
       > tr {
         > td {
-
           padding-top: 2.4rem;
           padding-bottom: 2.4rem;
           font-size: 1.5rem !important;

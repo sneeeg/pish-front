@@ -189,10 +189,13 @@ export default {
 
   &__label {
     @include text-button-small;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
     color: $color_grey_text;
     font-weight: 400;
-    text-transform: uppercase;
+
+    @include --mobile {
+      margin-bottom: 0.6rem;
+    }
 
     sup {
       position: relative;
