@@ -35,10 +35,10 @@ import { validationMixin } from 'vuelidate'
 import { required, email } from 'vuelidate/lib/validators'
 import { mapState, mapMutations } from 'vuex'
 import Vue from 'vue'
-import CustomInput from '~/components/Controls/CustomInput'
-import FileDropzone from '~/components/Controls/FileDropzone'
+import CustomInput from '~/components/controls/CustomInput'
+import FileDropzone from '~/components/controls/FileDropzone'
 import SmartLink from '~/components/utils/SmartLink'
-import Btn from '~/components/Controls/Btn'
+import Btn from '~/components/controls/Btn'
 
 export default {
   name: 'Form',

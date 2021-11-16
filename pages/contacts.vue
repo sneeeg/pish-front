@@ -58,7 +58,7 @@
       </div>
     </Section>
 
-    <Section :title="page.center.title">
+    <Section :background="$i18n.locale === 'en'" :title="page.center.title">
       <div class="contacts-center">
         <a :href="`tel:${page.center.tel.href}`" class="contact"
           ><SvgIcon name="tel" /> <span>{{ page.center.tel.text }}</span></a
