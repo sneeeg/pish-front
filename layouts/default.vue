@@ -54,6 +54,8 @@ export default {
 
       const pageName = this.$utils.getPageNameByRoute(this.$route.name)
 
+      if (!pageName) return this.$route.fullPath
+
       return this.$route.name && pageName === 'faq-categoryId'
         ? this.$route.name
         : this.$route.matched[0].path
