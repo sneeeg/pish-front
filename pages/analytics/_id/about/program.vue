@@ -36,8 +36,10 @@
           </CardLink>
         </div>
 
+        <SvgIcon class="analytics-program-preview-parts__seal" name="seal" />
+
         <FileLink
-          v-if="organization.programLink"
+          v-if="false && organization.programLink"
           class="analytics-program-preview-parts__link"
           :href="organization.programLink"
           :text="programLinkText"
@@ -101,11 +103,33 @@ export default {
 }
 
 .analytics-program-preview-parts {
+  position: relative;
+
   &__link {
     margin-top: 4rem;
 
     @include --mobile {
       margin-top: 3.2rem;
+    }
+  }
+
+  &__seal {
+    @include box(14.4rem);
+
+    transform: rotate(-20deg);
+
+    @include --from-tablet {
+      position: absolute;
+      right: -22rem;
+      bottom: 0;
+    }
+
+    @include --tablet {
+      margin-top: 2.4rem;
+    }
+
+    @include --mobile {
+      @include box(12rem);
     }
   }
 
