@@ -40,6 +40,8 @@ export default {
   },
 
   async asyncData({ store, route, error, $api }) {
+    console.log(route)
+
     try {
       const { data } = await $api.pages.analytics()
       await store.dispatch('organization/getOrganization', {

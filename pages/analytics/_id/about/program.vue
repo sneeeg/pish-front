@@ -36,7 +36,9 @@
           </CardLink>
         </div>
 
-        <SvgIcon class="analytics-program-preview-parts__seal" name="seal" />
+        <div class="analytics-program-preview-parts__seal">
+          <SvgIcon name="seal" />
+        </div>
 
         <FileLink
           v-if="false && organization.programLink"
@@ -116,20 +118,32 @@ export default {
   &__seal {
     @include box(14.4rem);
 
-    transform: rotate(-20deg);
+    position: absolute;
+
+    svg {
+      @include box(100%);
+    }
 
     @include --from-tablet {
-      position: absolute;
       right: -22rem;
       bottom: 0;
+
+      svg {
+        transform: rotate(-20deg);
+      }
     }
 
     @include --tablet {
-      margin-top: 2.4rem;
+      padding: 4px;
+      background-color: #fff;
+      border-radius: 50%;
+      right: -1rem;
+      bottom: 1rem;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
     @include --mobile {
-      @include box(12rem);
+      @include box(7.6rem);
     }
   }
 
