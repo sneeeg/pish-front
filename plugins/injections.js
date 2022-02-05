@@ -18,6 +18,7 @@ import getPageNameByRoute from '~/assets/js/utils/get-page-name-by-route'
 import scrollCenterDetection from '~/assets/js/utils/scroll-center-detection'
 import formatBytes from '~/assets/js/utils/format-bytes'
 import hexToRgb from '~/assets/js/utils/hex-to-rgb'
+import getFileFormat from '~/assets/js/utils/get-file-format'
 
 /* API */
 import api from '~/assets/js/api/index'
@@ -43,6 +44,7 @@ export default ({ $axios }, inject) => {
     formatBytes,
     getRandomInteger,
     hexToRgb,
+    getFileFormat,
   })
   inject('api', api($axios))
 }

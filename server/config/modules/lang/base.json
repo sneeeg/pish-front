@@ -24,5 +24,7 @@
   "loading": "Загрузка",
   "files": "Файлы для скачивания",
   "resetFilter": "Сбросить фильтр",
-  "additionTabLabel": "| Приоритет 2030"
+  "additionTabLabel": "| Приоритет 2030",
+  "invalidFileSize": "Превышен допустимы размер файла",
+  "invalidFileFormat": "Неверный формат файла"
 }

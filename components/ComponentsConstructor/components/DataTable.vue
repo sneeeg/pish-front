@@ -91,7 +91,6 @@ export default {
 
       tr {
         td {
-
           padding-top: 0.8rem !important;
           padding-bottom: 0.8rem !important;
           font-size: 1.5rem !important;

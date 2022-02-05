@@ -51,7 +51,14 @@
         >
       </div>
     </Section>
-    <Section background :title="page.center.title">
+
+    <Section v-if="page.feedback" background :title="page.feedback.title">
+      <div class="contacts-form">
+        <Form :submit-handler="feedbackFormHandler" :fields="formFields" />
+      </div>
+    </Section>
+
+    <Section :background="$i18n.locale === 'en'" :title="page.center.title">
       <div class="contacts-center">
         <a :href="`tel:${page.center.tel.href}`" class="contact"
           ><SvgIcon name="tel" /> <span>{{ page.center.tel.text }}</span></a
@@ -68,11 +75,89 @@ import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import HTMLContent from '~/components/utils/HTMLContent'
 import ArrowLink from '~/components/controls/ArrowLink'
+import Form from '~/components/Form'
 
 export default {
   name: 'Documents',
-  components: { ArrowLink, HTMLContent, Section },
+  components: { Form, ArrowLink, HTMLContent, Section },
   mixins: [pageDataFetch, pageHead, pageDefault],
+
+  data() {
+    return {
+      formFields: [
+        {
+          type: 'text',
+          required: true,
+          label: 'ФИО',
+          placeholder: 'ФИО',
+          name: 'fio',
+          errors: {
+            required: 'Это поле необходимо заполнить',
+          },
+        },
+        {
+          type: 'text',
+          required: true,
+          label: 'Организация',
+          placeholder: 'Организация',
+          name: 'organization',
+          errors: {
+            required: 'Это поле необходимо заполнить',
+          },
+        },
+        {
+          type: 'email',
+          required: true,
+          label: 'Электронная почта',
+          placeholder: 'Электронная почта',
+          name: 'email',
+          errors: {
+            required: 'Это поле необходимо заполнить',
+            email: 'Введите действительный адрес электронной почты',
+          },
+        },
+        {
+          type: 'text',
+          maskType: 'tel',
+          label: 'Телефон',
+          placeholder: 'Телефон',
+          name: 'tel',
+        },
+        {
+          type: 'textarea',
+          label: 'Комментарий',
+          placeholder: 'Комментарий',
+          name: 'comment',
+        },
+        {
+          type: 'file-dropzone',
+          name: 'file',
+          placeholder:
+            'Выберите файл для загрузки. Размер файла не должен превышать 10мб.',
+        },
+      ],
+    }
+  },
+
+  methods: {
+    async feedbackFormHandler(model) {
+      const formData = new FormData()
+
+      Object.keys(model).forEach((key) => {
+        formData.append(key, model[key])
+      })
+
+      try {
+        const { errors } = await this.$api.feedback.send(formData)
+
+        if (errors.length) {
+          throw new Error(errors[0])
+        }
+      } catch (e) {
+        throw new Error(e)
+      }
+    },
+  },
 }
 </script>
 
@@ -150,5 +235,9 @@ export default {
   span {
     @include hover-opacity();
   }
+}
+
+.contacts-form {
+  max-width: 68.8rem;
 }
 </style>

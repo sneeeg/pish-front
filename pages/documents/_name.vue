@@ -18,7 +18,7 @@ export default {
   components: { HTMLContent, Section },
   mixins: [pageHead, pageDefault],
   async asyncData({ $api, route, error }) {
-    const page = await $api.pages
+    const page = await $api.documents
       .getDocumentPageByName(route.params.name || '')
       .then(({ data }) => data)
 

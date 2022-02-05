@@ -49,6 +49,25 @@ const PAGE_PATHS_WITH_LOADING = [
   '/analytics/:id/about',
 ]
 
+const YANDEX_FORMS = {
+  module: 'https://yastatic.net/s3/frontend/forms/_/embed.js',
+
+  items: [
+    {
+      src: 'https://forms.yandex.ru/cloud/61f237c18140b677042b3ca1/?iframe=1',
+      name: 'ya-form-61f237c18140b677042b3ca1',
+      title: 'Анкета обратной связи для участников',
+      pageName: 'feedback-participants',
+    },
+    {
+      src: 'https://forms.yandex.ru/cloud/61f24c73d5d1807c8980cb01/?iframe=1',
+      name: 'ya-form-61f24c73d5d1807c8980cb01',
+      title: 'Анкета обратной связи для экспертов',
+      pageName: 'feedback-experts',
+    },
+  ],
+}
+
 export {
   RESIZE_DEBOUNCE,
   SCROLL_THROTTLE,
@@ -60,4 +79,5 @@ export {
   PAGES,
   PAGE_PATHS_WITH_LOADING,
   GET_OPACITY_COLORS,
+  YANDEX_FORMS,
 }
