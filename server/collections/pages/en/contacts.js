@@ -45,7 +45,7 @@ module.exports = {
   reference: {
     title: 'The management center of the Priority 2030 program',
     content: `<p>The Federal state autonomous scientific institution ‘Sociocenter’ is subordinate to the Ministry of science and higher education of the Russian Federation.</p><p>It provides organizational, technical, informational, methodological, expert and analytical support to the Priority 2030 program in accordance with the decree of the Government of the Russian Federation No. 729, May 13, 2021.</p>
-      <p>Address: 5 building 4, Potapovsky lane, Moscow, Russia, 101000 </br> Acting Director: Boris Filippov
+      <p>Address: 127015, Moscow, st. B. Novodmitrovskaya, 23, building 3, floor 7 </br> Acting Director: Boris Filippov
 
 </p>`,
   },
