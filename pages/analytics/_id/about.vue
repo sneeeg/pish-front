@@ -79,10 +79,10 @@ export default {
           id: 'about',
           text: this.lang['analytics.about'],
         },
-        // {
-        //   id: 'program',
-        //   text: this.lang['analytics.program'],
-        // },
+        {
+          id: 'program',
+          text: this.lang['analytics.program'],
+        },
         {
           id: 'indicators',
           text: this.lang['analytics.indicators'],
