@@ -65,6 +65,12 @@ const YANDEX_FORMS = {
       title: 'Анкета обратной связи для экспертов',
       pageName: 'feedback-experts',
     },
+    {
+      src: 'https://forms.yandex.ru/cloud/620dda5d6bdda40f11173f0c/?iframe=1',
+      name: 'ya-form-620dda5d6bdda40f11173f0c',
+      title: 'Анкета обратной связи для участников стратегической сессии',
+      pageName: 'feedback-project-participants',
+    },
   ],
 }
 
