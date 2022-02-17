@@ -34,17 +34,31 @@ export default {
   },
   mixins: [pageHead, pageDefault],
 
-  asyncData({ route, error }) {
-    const page = YANDEX_FORMS.items.find(
-      (item) => item.pageName === route.params.name
-    )
+  asyncData({ route, error, $api }) {
+    let page
 
-    if (!page) {
-      error({ statusCode: 404, message: 'Page not found.' })
-    }
+    try {
+      const { data, errors } = $api.forms.getBySlug(route.params.name)
 
-    return {
-      page,
+      if (!data || errors?.length) {
+        throw new Error('Page not found')
+      }
+
+      page = data
+
+      return {
+        page,
+      }
+    } catch (e) {
+      page = YANDEX_FORMS.items.find((item) => item.slug === route.params.name)
+
+      if (!page) {
+        error({ statusCode: 404, message: 'Page not found.' })
+      }
+
+      return {
+        page,
+      }
     }
   },
 

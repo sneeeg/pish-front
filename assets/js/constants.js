@@ -57,19 +57,19 @@ const YANDEX_FORMS = {
       src: 'https://forms.yandex.ru/cloud/61f237c18140b677042b3ca1/?iframe=1',
       name: 'ya-form-61f237c18140b677042b3ca1',
       title: 'Анкета обратной связи для участников',
-      pageName: 'feedback-participants',
+      slug: 'feedback-participants',
     },
     {
       src: 'https://forms.yandex.ru/cloud/61f24c73d5d1807c8980cb01/?iframe=1',
       name: 'ya-form-61f24c73d5d1807c8980cb01',
       title: 'Анкета обратной связи для экспертов',
-      pageName: 'feedback-experts',
+      slug: 'feedback-experts',
     },
     {
       src: 'https://forms.yandex.ru/cloud/620dda5d6bdda40f11173f0c/?iframe=1',
       name: 'ya-form-620dda5d6bdda40f11173f0c',
       title: 'Анкета обратной связи для участников стратегической сессии',
-      pageName: 'feedback-project-participants',
+      slug: 'feedback-project-participants',
     },
   ],
 }
