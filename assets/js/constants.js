@@ -71,6 +71,13 @@ const YANDEX_FORMS = {
       title: 'Анкета обратной связи для участников стратегической сессии',
       slug: 'feedback-project-participants',
     },
+    {
+      src: 'https://forms.yandex.ru/u/620fe3529c18c667fe0adeb8/?iframe=1',
+      name: 'ya-form-620fe3529c18c667fe0adeb8',
+      title:
+        'Анкета обратной связи для участников аналитической сессии «Поступление в вуз онлайн»: сквозной аудит»',
+      slug: 'feedback-session',
+    },
   ],
 }
 

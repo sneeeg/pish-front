@@ -134,11 +134,11 @@ export default {
     }
 
     @include --tablet {
-      padding: 4px;
-      background-color: #fff;
-      border-radius: 50%;
       right: -1rem;
       bottom: 1rem;
+      padding: 4px;
+      border-radius: 50%;
+      background-color: #fff;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
