@@ -9,9 +9,9 @@
         <div class="yandex-form__item">
           <iframe
             ref="iframe"
-            :src="page.src"
+            :src="`https://forms.yandex.ru/cloud/${page.id}/?iframe=1`"
             frameborder="0"
-            :name="page.name"
+            :name="`ya-form-${page.id}`"
             width="650"
           ></iframe>
         </div>

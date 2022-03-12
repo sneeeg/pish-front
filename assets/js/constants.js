@@ -54,36 +54,37 @@ const YANDEX_FORMS = {
 
   items: [
     {
-      src: 'https://forms.yandex.ru/cloud/61f237c18140b677042b3ca1/?iframe=1',
-      name: 'ya-form-61f237c18140b677042b3ca1',
+      id: '61f237c18140b677042b3ca1',
       title: 'Анкета обратной связи для участников',
       slug: 'feedback-participants',
     },
     {
-      src: 'https://forms.yandex.ru/cloud/61f24c73d5d1807c8980cb01/?iframe=1',
-      name: 'ya-form-61f24c73d5d1807c8980cb01',
+      id: '61f24c73d5d1807c8980cb01',
       title: 'Анкета обратной связи для экспертов',
       slug: 'feedback-experts',
     },
     {
-      src: 'https://forms.yandex.ru/cloud/620dda5d6bdda40f11173f0c/?iframe=1',
-      name: 'ya-form-620dda5d6bdda40f11173f0c',
+      id: '620dda5d6bdda40f11173f0c',
       title: 'Анкета обратной связи для участников стратегической сессии',
       slug: 'feedback-project-participants',
     },
     {
-      src: 'https://forms.yandex.ru/u/620fe3529c18c667fe0adeb8/?iframe=1',
-      name: 'ya-form-620fe3529c18c667fe0adeb8',
+      id: '620fe3529c18c667fe0adeb8',
       title:
         'Анкета обратной связи для участников аналитической сессии "Поступление в вуз онлайн: сквозной аудит"',
       slug: 'feedback-session',
     },
     {
-      src: 'https://forms.yandex.ru/u/622b04cafa75504373623653/?iframe=1',
-      name: 'ya-form-622b04cafa75504373623653',
+      id: '622b04cafa75504373623653',
       title:
         'Приемная кампания с применением функционала суперсервиса "Поступление в вуз онлайн"',
       slug: 'feedback-superservice',
+    },
+    {
+      id: '622cce8cca41aa645d21d280',
+      title:
+        'Анкета обратной связи для участников аналитической сессии "Поступление в вуз онлайн" (1-ый день)',
+      slug: 'feedback-analytics-session',
     },
   ],
 }
