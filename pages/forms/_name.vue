@@ -34,11 +34,11 @@ export default {
   },
   mixins: [pageHead, pageDefault],
 
-  asyncData({ route, error, $api }) {
+  async asyncData({ route, error, $api }) {
     let page
 
     try {
-      const { data, errors } = $api.forms.getBySlug(route.params.name)
+      const { data, errors } = await $api.forms.getBySlug(route.params.name)
 
       if (!data || errors?.length) {
         throw new Error('Page not found')
