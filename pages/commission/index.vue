@@ -43,10 +43,10 @@ import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import PersonCard from '~/components/PersonCard'
-import ArrowLink from '~/components/controls/ArrowLink'
+import ArrowLink from '~/components/Controls/ArrowLink'
 
 export default {
-  name: 'Commission',
+  name: 'Index',
   components: { Section, PersonCard, ArrowLink },
   mixins: [pageDataFetch, pageHead, pageDefault],
   data() {
