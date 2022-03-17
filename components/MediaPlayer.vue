@@ -30,6 +30,10 @@ export default {
       type: Object,
       required: true,
     },
+    rutube: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -47,7 +51,9 @@ export default {
       iframeEl.allow =
         'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
       iframeEl.allowFullscreen = true
-      iframeEl.src = `https://www.youtube-nocookie.com/embed/${this.videoId}?autoplay=1`
+      iframeEl.src = this.rutube
+        ? `https://rutube.ru/play/embed/${this.videoId}`
+        : `https://www.youtube-nocookie.com/embed/${this.videoId}?autoplay=1`
       this.$refs.player.append(iframeEl)
     },
   },

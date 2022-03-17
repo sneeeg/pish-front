@@ -12,7 +12,7 @@ module.exports = {
       src: '/i/about/cover.jpg',
       alt: 'Приоритет 2030: Лидерами становятся',
     },
-    code: 'rhITU3Tcjmg',
+    code: 'c87a45001a1de64146e9e0ad4ae631a2',
   },
   tasks: {
     title: 'Задачи программы',
