@@ -35,20 +35,9 @@ export default {
       new Blockquote(el, this.$refs.HTMLContent)
     })
 
-    const $tables = this.$refs.HTMLContent.querySelectorAll('table')
+    this.$utils.wrapTable(this.$refs.HTMLContent)
+
     const $docLinks = this.$refs.HTMLContent.querySelectorAll('a.doc[title]')
-    const wrapper = document.createElement('section')
-    const parentWith = this.$refs.HTMLContent.offsetWidth
-
-    $tables.forEach((el) => {
-      const tableWidth = el.scrollWidth
-
-      if (parentWith < tableWidth) {
-        el.parentNode.insertBefore(wrapper, el)
-        wrapper.classList.add('table-scroll-wrap')
-        wrapper.appendChild(el)
-      }
-    })
 
     this.showDocInfo = this.showDocInfo.bind(this)
     $docLinks.forEach((link) => {
