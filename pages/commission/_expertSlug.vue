@@ -24,6 +24,25 @@
             class="expert-detail-hero__description"
             v-html="page.description"
           ></p>
+
+          <div
+            v-if="page.indexes && page.indexes.length"
+            class="expert-detail-hero__indexes"
+          >
+            <component
+              :is="href ? 'SmartLink' : 'div'"
+              v-for="({ text, href, icon }, index) in page.indexes"
+              :key="index"
+              :to="href || false"
+              class="expert-detail-index"
+            >
+              <div v-if="icon" class="expert-detail-index__icon">
+                <img :src="icon" :alt="text" />
+              </div>
+
+              <div class="expert-detail-index__text">{{ text }}</div>
+            </component>
+          </div>
         </div>
       </div>
     </Section>
@@ -36,8 +55,17 @@
       <UniversitiesTable :items="page.universities" />
     </Section>
 
+    <Section v-if="page.opinion" is-layout>
+      <Quote
+        :content="page.opinion"
+        :name="page.name"
+        :cite="lang['commission.cite']"
+      />
+    </Section>
+
     <Section
       v-if="page.biographyItems && page.biographyItems.length"
+      :background="page.opinion"
       :title="lang['commission.biography']"
     >
       <div class="expert-detail__biography">
@@ -79,16 +107,20 @@ import Section from '~/components/layout/Section'
 import UniversitiesTable from '~/components/UniversitiesTable'
 import Expandable from '~/components/Expandable'
 import HTMLContent from '~/components/utils/HTMLContent'
+import SmartLink from '~/components/utils/SmartLink'
+import Quote from '~/components/Quote'
 
 export default {
   name: 'ExpertSlug',
 
   components: {
+    Quote,
     HTMLContent,
     Expandable,
     UniversitiesTable,
     Breadcrumbs,
     Section,
+    SmartLink,
   },
 
   mixins: [pageHead, pageDefault],
@@ -152,9 +184,9 @@ export default {
 
   &__img {
     @include box(60.7rem);
+    flex-shrink: 0;
 
     margin-right: 3.2rem;
-    flex-shrink: 0;
 
     @include --tablet {
       @include box(40.2rem);
@@ -197,6 +229,66 @@ export default {
       margin-top: 1.8rem;
     }
   }
+
+  &__indexes {
+    @include flexGap(2.4rem);
+
+    padding-top: 4rem;
+
+    @include --mobile {
+      @include flexGap(1.6rem);
+
+      padding-top: 3.2rem;
+    }
+
+    > * {
+      flex: 1 1 30%;
+      max-width: calc(100% / 3 - 2.4rem);
+
+      @include --mobile {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.expert-detail-index {
+  @include text-button-small;
+
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  text-transform: none;
+
+  &__icon {
+    @include box(2.4rem);
+    margin-right: 1.2rem;
+    filter: grayscale(1);
+    transition: filter 0.3s ease;
+
+    img {
+      @include box(100%);
+
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  &__text {
+    color: $color_dark_grey;
+    transition: color 0.3s ease;
+  }
+
+  @include hover {
+    .expert-detail-index__icon {
+      filter: grayscale(0);
+    }
+
+    .expert-detail-index__text {
+      color: $color_accent;
+    }
+  }
 }
 
 .expert-detail-expand {
@@ -227,15 +319,15 @@ export default {
 
   &__icon {
     position: absolute;
+    top: 1.7rem - 1.4rem / 2;
+    left: 0;
     width: 2.8rem;
     height: 1.4rem;
-    left: 0;
-    top: 1.7rem - 1.4rem / 2;
 
     @include --mobile {
+      top: 1.4rem - 1rem / 2;
       width: 2rem;
       height: 1rem;
-      top: 1.4rem - 1rem / 2;
     }
   }
 
