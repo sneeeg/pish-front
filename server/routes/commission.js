@@ -1,12 +1,8 @@
 import { getResponse } from '~/server/utils'
-import commissionExpert from '~/server/collections/commission-expert'
+import member from '~/server/collections/member'
 
 export default (pretender) => {
-  pretender.get('/api/commission/expert', () => {
-    return [
-      200,
-      { 'Content-Type': 'application/json' },
-      getResponse(commissionExpert),
-    ]
+  pretender.get('/api/v0/priority/:type/:slug', () => {
+    return [200, { 'Content-Type': 'application/json' }, getResponse(member)]
   })
 }

@@ -37,7 +37,7 @@
               class="expert-detail-index"
             >
               <div v-if="icon" class="expert-detail-index__icon">
-                <img :src="icon" :alt="text" />
+                <img :src="`/i/indexes/${icon}.png`" :alt="text" />
               </div>
 
               <div class="expert-detail-index__text">{{ text }}</div>
@@ -127,8 +127,9 @@ export default {
 
   async asyncData({ $api, route, error }) {
     try {
-      const { data: page, errors } = await $api.commission.getExpertBySlug(
-        route.params.expertSlug || ''
+      const { data: page, errors } = await $api.members.getMemberBySlug(
+        'expert',
+        route.params.slug
       )
 
       if (!page || errors?.length) {

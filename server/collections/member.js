@@ -10,27 +10,27 @@ export default {
     {
       text: 'Scopus ID',
       href: '/234',
-      icon: '/i/scopus.png',
+      icon: 'scopus',
     },
     {
       text: 'Orcid ID',
       href: '',
-      icon: '/i/scopus.png',
+      icon: 'orcid',
     },
     {
       text: 'Researcher ID',
       href: '/',
-      icon: '/i/scopus.png',
+      icon: 'researcher',
     },
     {
       text: 'Elibrary ID',
       href: '/',
-      icon: '/i/scopus.png',
+      icon: 'elibrary',
     },
     {
       text: 'Scopus ID',
       href: '/234',
-      icon: '/i/scopus.png',
+      icon: 'researchGate',
     },
   ],
   universities: [
