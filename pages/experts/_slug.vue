@@ -65,7 +65,7 @@
 
     <Section
       v-if="page.biographyItems && page.biographyItems.length"
-      :background="page.opinion"
+      :background="!!page.opinion"
       :title="lang['commission.biography']"
     >
       <div class="expert-detail__biography">
