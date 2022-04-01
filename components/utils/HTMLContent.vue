@@ -43,6 +43,19 @@ export default {
     $docLinks.forEach((link) => {
       link.addEventListener('click', this.showDocInfo)
     })
+
+    this.$refs.HTMLContent.querySelectorAll('.snippet-years').forEach(
+      (snippet) => {
+        snippet.querySelectorAll('dd').forEach((dd) => {
+          const dt = dd.previousElementSibling
+
+          if (dt?.innerHTML) return
+
+          snippet.removeChild(dt)
+          dd.classList.add('_empty')
+        })
+      }
+    )
   },
   methods: {
     ...mapMutations('default', ['changePopupState']),

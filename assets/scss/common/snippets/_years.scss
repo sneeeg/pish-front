@@ -1,4 +1,6 @@
 .snippet-years {
+  @include p;
+
   dt {
     font-weight: 500;
   }
@@ -15,7 +17,7 @@
     dt {
       float: left;
       clear: both;
-      width: 6.4rem;
+      width: 10.4rem;
       margin: 0;
       padding-bottom: 2.4rem;
 
@@ -25,8 +27,12 @@
     }
 
     dd {
-      margin: 0 0 0 6.4rem;
+      margin: 0 0 0 10.4rem;
       padding: 0 0 2.4rem;
+
+      &._empty {
+        margin: 0;
+      }
     }
   }
 }

@@ -308,10 +308,6 @@ export default {
   &__title,
   &__content {
     padding-left: 4.4rem;
-
-    @include --mobile {
-      padding-left: 3.6rem;
-    }
   }
 
   &__head {
@@ -334,10 +330,24 @@ export default {
 
   &__title {
     @include text-subtitle;
+
+    text-align: left;
+
+    @include --mobile {
+      padding-left: 3.6rem;
+    }
   }
 
   &__content {
     padding-top: 2.4rem;
+
+    @include --tablet {
+      padding-left: 0;
+    }
+
+    @include --mobile {
+      padding-top: 2rem;
+    }
   }
 }
 </style>
