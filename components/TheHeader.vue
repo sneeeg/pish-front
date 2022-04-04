@@ -52,10 +52,7 @@
           { _en: $i18n.locale === 'en' },
         ]"
       >
-        <img
-          :src="$i18n.locale === 'ru' ? '/i/logo.svg' : '/i/logo-en.svg'"
-          :alt="$store.state.default.settings.siteName"
-        />
+        <img :src="getLogo" :alt="$store.state.default.settings.siteName" />
       </SmartLink>
 
       <nav class="header__nav">
@@ -97,6 +94,18 @@ export default {
     ...mapState('responsive', ['window']),
     hasBackground() {
       return this.$store.state.scroll.y > 50
+    },
+
+    getLogo() {
+      const isEn = this.$i18n.locale === 'en'
+
+      if (isEn) return '/i/logo-en.svg'
+
+      const isDV = this.$route.path.includes('/dvo')
+
+      if (isDV) return '/i/logo-dv.svg'
+
+      return '/i/logo.svg'
     },
   },
   methods: {
@@ -204,7 +213,8 @@ export default {
 
       img {
         width: 100%;
-        height: 100%;
+
+        object-position: contain;
       }
 
       &._en {

@@ -21,7 +21,11 @@
 
       <div v-if="showLegendValue" class="small-chart-legend__value">
         <span>
-          {{ item.value }}
+          {{
+            showPercent
+              ? item.value
+              : new Intl.NumberFormat('ru-RU').format(item.value)
+          }}
         </span>
 
         {{ item.postfix }}

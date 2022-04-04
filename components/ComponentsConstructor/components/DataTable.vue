@@ -74,7 +74,6 @@ export default {
         }
 
         span {
-          white-space: nowrap;
           text-transform: uppercase;
         }
       }

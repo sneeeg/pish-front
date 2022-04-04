@@ -14,5 +14,8 @@
   "organizationParticipation": "Участие университета",
   "hasParticipation": "Участвовал",
   "hasNoParticipation": "Не участвовал",
-  "value": "Значение"
+  "value": "Значение",
+  "biography": "Краткая биография",
+  "applied": "Дата назначения",
+  "universityRector": "Ректор университета"
 }

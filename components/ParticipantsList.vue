@@ -20,6 +20,11 @@ export default {
       type: Array,
       required: true,
     },
+
+    dv: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     ...mapState('default', ['lang']),
@@ -27,8 +32,10 @@ export default {
       return this.items.reduce((acc, item) => {
         acc.push({
           label: item.name,
-          text: `${item.region} ${this.lang['analytics.region']} , ${item.location}`,
-          to: `/analytics/${item.id}/about`,
+          text: this.dv
+            ? ''
+            : `${item.region} ${this.lang['analytics.region']} , ${item.location}`,
+          to: this.dv ? `/dvo/${item.id}/about` : `/analytics/${item.id}/about`,
         })
 
         return acc

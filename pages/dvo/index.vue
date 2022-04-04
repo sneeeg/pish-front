@@ -6,20 +6,6 @@
       <h1 class="analytics__title _visually-h2">{{ page.pageTitle }}</h1>
 
       <HTMLContent class="analytics__description" :html="page.description" />
-
-      <div v-if="data.files && !!data.files.length" class="analytics-files">
-        <div class="analytics-files__title">
-          {{ lang['base.files'] }}
-        </div>
-
-        <div class="analytics-files__items">
-          <File
-            v-for="(file, index) in data.files"
-            :key="index"
-            v-bind="file"
-          />
-        </div>
-      </div>
     </Section>
 
     <Section small-head background :title="page.participants.title">
@@ -33,12 +19,25 @@
       </template>
 
       <template #default>
-        <ParticipantsFilter ref="filter" :items="data.participants" />
+        <ParticipantsFilter ref="filter" dv :items="data.participants" />
       </template>
     </Section>
 
-    <Section small-head :title="page.summary.title">
+    <Section v-if="page.summary" small-head :title="page.summary.title">
       <Statistics no-sections :sections="page.summary.sections"></Statistics>
+    </Section>
+
+    <Section
+      v-if="page.education"
+      background
+      small-head
+      :title="page.education.title"
+    >
+      <Statistics
+        no-sections
+        has-border
+        :sections="page.education.sections"
+      ></Statistics>
     </Section>
   </div>
 </template>
@@ -47,10 +46,8 @@
 import { mapState } from 'vuex'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
-import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import Section from '~/components/layout/Section'
 import Loader from '~/components/Loader'
-import File from '~/components/controls/File'
 import Btn from '~/components/controls/Btn'
 import ParticipantsFilter from '~/components/ParticipantsFilter'
 
@@ -70,12 +67,23 @@ export default {
     HTMLContent,
     ParticipantsFilter,
     Btn,
-    File,
     Loader,
     Section,
     Statistics,
   },
-  mixins: [pageDataFetch, pageHead, pageDefault],
+  mixins: [pageHead, pageDefault],
+
+  async asyncData({ $api }) {
+    const apiMethod = $api.pages.dvo
+
+    const page = await apiMethod().then(({ data }) => data)
+
+    if (!page) {
+      throw new Error('Page not found')
+    }
+
+    return { page }
+  },
   data() {
     return {
       isLoading: true,
@@ -83,10 +91,11 @@ export default {
       summary: null,
     }
   },
+
   async fetch() {
     this.isLoading = true
 
-    const [{ data }] = await Promise.all([this.$api.analytics.get()])
+    const [{ data }] = await Promise.all([this.$api.analytics.get('dvo')])
 
     data.participants.forEach((participant) => {
       participant.group = GROUPS[+participant.group - 1]

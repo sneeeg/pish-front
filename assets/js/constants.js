@@ -16,6 +16,7 @@ const COLORS = [
   '#3B57AF',
   '#6C6E75',
   '#B3B2B2',
+  '#e2e2e2',
 ]
 
 const GET_OPACITY_COLORS = (alpha = 0.5) =>
@@ -42,11 +43,13 @@ const PAGES = [
   'council',
   'questionnaire',
   'analytics',
+  'dvo',
 ]
 
 const PAGE_PATHS_WITH_LOADING = [
   '/analytics/:id/program',
   '/analytics/:id/about',
+  '/dvo/:id/about',
 ]
 
 const YANDEX_FORMS = {

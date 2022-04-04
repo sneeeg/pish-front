@@ -1,8 +1,8 @@
 export default ($axios) => ({
   /* Getting analytics */
-  get() {
+  get(type = 'priority') {
     return process.env.NODE_ENV === 'production'
-      ? $axios.$get('https://lk.priority2030.ru/api/v0/priority/list', {
+      ? $axios.$get(`https://lk.priority2030.ru/api/v0/${type}/list`, {
           mode: 'cors',
         })
       : $axios.$get('/api/analytics')

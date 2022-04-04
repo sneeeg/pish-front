@@ -3,7 +3,7 @@
     v-if="indicator"
     :class="[
       'controller-indicator',
-      { _fluid: ['groups'].includes(indicator.type) },
+      { _fluid: ['groups', 'banner'].includes(indicator.type) },
     ]"
   >
     <SmallLineChart
@@ -36,6 +36,7 @@
       v-bind="indicator"
     ></Content>
     <Groups v-else-if="indicator.type === 'groups'" v-bind="indicator"></Groups>
+    <Banner v-else-if="indicator.type === 'banner'" v-bind="indicator"></Banner>
   </div>
   <Loader v-else />
 </template>
@@ -49,6 +50,7 @@ import Loader from '~/components/Loader'
 import SmallRadarChart from '~/components/small-charts/SmallRadarChart'
 import Content from '~/components/ComponentsConstructor/components/Content'
 import Groups from '~/components/ComponentsConstructor/components/Groups'
+import Banner from '~/components/ComponentsConstructor/components/Banner'
 
 export default {
   name: 'SmallChartController',
@@ -62,6 +64,7 @@ export default {
     SmallRadarChart,
     Content,
     Groups,
+    Banner,
   },
   props: {
     indicator: {

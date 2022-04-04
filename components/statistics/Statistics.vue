@@ -7,7 +7,7 @@
         :key="sectionIndex"
         :small-head="!noSections"
         :title="!noSections ? section.name : false"
-        :background="!noSections ? !!(sectionIndex % 2) : false"
+        :background="!noSections ? isBackground(sectionIndex) : false"
       >
         <div v-if="noSections && section.name" class="statistics__title">
           {{ section.name }}
@@ -32,6 +32,7 @@
                       item.props.singleCard &&
                       (!item.props.horizontal || window.isMobileSize),
                     _title: item.props.title,
+                    _hasBorder: item.props.singleCard && hasBorder,
                   },
                 ]"
               >
@@ -49,7 +50,7 @@
                     :reverse="itm.reverse"
                     :no-card-appearance="item.props.singleCard"
                     :class="['statistics__card', { _fluid: itm.fluid }]"
-                    :has-border="!!(sectionIndex % 2)"
+                    :has-border="hasBorder || isBackground(sectionIndex)"
                     :faint="item.props.faint"
                     :title="itm.label"
                     :list="{ icon: itm.icon, items: [{ label: itm.text }] }"
@@ -66,7 +67,9 @@
                 :show-legend-value="
                   !item.indicator || item.indicator.type !== 'bar-group'
                 "
-                :has-border="!noSections ? !!(sectionIndex % 2) : false"
+                :has-border="
+                  !noSections ? isBackground(sectionIndex) : hasBorder
+                "
                 :title="item.props.title"
                 :subtitle="item.props.subtitle"
                 :indicator="item.indicator"
@@ -113,6 +116,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    hasBorder: {
+      type: Boolean,
+      default: false,
+    },
+    backgroundReverse: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
@@ -120,6 +131,10 @@ export default {
   },
 
   methods: {
+    isBackground(sectionIndex) {
+      return this.backgroundReverse ? !(sectionIndex % 2) : !!(sectionIndex % 2)
+    },
+
     processItems(row) {
       return row.reduce((acc, item) => {
         const props = {}
@@ -135,6 +150,11 @@ export default {
 
             case 'Content':
               props.indicator.type = 'content'
+
+              break
+
+            case 'Banner':
+              props.indicator.type = 'banner'
 
               break
 
@@ -237,6 +257,10 @@ export default {
     &._singleCard {
       padding: 2.4rem;
       background: #fff;
+    }
+
+    &._hasBorder {
+      border: 1px solid #e1e4e8;
     }
   }
 

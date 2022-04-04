@@ -1,5 +1,5 @@
 <template>
-  <div class="program-participation">
+  <div :class="['program-participation', { _padding: padding }]">
     <VuetifyTable :headers="headers" :items="items">
       <template #value="{ value }">
         <div class="program-participation__chip">
@@ -25,6 +25,13 @@ export default {
   name: 'ProgramParticipation',
 
   components: { VuetifyTable, Chip },
+
+  props: {
+    padding: {
+      type: Boolean,
+      default: false,
+    },
+  },
 
   computed: {
     ...mapState('default', ['lang']),
@@ -52,6 +59,16 @@ export default {
 
 <style lang="scss">
 .program-participation {
+  background-color: #ffffff;
+
+  &._padding {
+    padding: 2.4rem;
+
+    @include --mobile {
+      padding: 1.6rem;
+    }
+  }
+
   &__chip {
     display: flex;
     justify-content: flex-end;

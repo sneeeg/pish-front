@@ -1,7 +1,7 @@
 <template>
   <div
     :style="{ background: !window.isMobileSize ? background : 'transparent' }"
-    class="person-card-lg"
+    :class="['person-card-lg', { _outlined: outlined }]"
   >
     <div v-if="photoUrl" class="person-card-lg__photo">
       <img :src="photoUrl" :alt="name" />
@@ -11,6 +11,8 @@
       <div class="person-card-lg__name _visually-h3">{{ name }}</div>
 
       <p v-if="text" class="person-card-lg__text">{{ text }}</p>
+
+      <p v-if="subText" class="person-card-lg__sub-text" v-html="subText"></p>
     </div>
   </div>
 </template>
@@ -33,9 +35,17 @@ export default {
       type: String,
       default: '',
     },
+    subText: {
+      type: String,
+      default: '',
+    },
     photoUrl: {
       type: String,
       required: true,
+    },
+    outlined: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -47,7 +57,12 @@ export default {
 <style lang="scss">
 .person-card-lg {
   display: flex;
-  width: 100%;
+
+  &._outlined {
+    @include --from-mobile {
+      border: 1px solid #e1e4e8;
+    }
+  }
 
   @include --mobile {
     flex-direction: column;
@@ -61,6 +76,7 @@ export default {
     img {
       @include box(100%);
 
+      display: block;
       object-fit: cover;
     }
 
@@ -92,6 +108,14 @@ export default {
 
     @include --mobile {
       margin-top: 0.6rem;
+    }
+  }
+
+  &__sub-text {
+    margin: 4.8rem 0 0;
+
+    @include --mobile {
+      margin-top: 2.4rem;
     }
   }
 }

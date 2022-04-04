@@ -23,10 +23,14 @@
     <div v-if="hasChart" class="statistics-card__chart">
       <SmallChartController :indicator="indicator"></SmallChartController>
       <SmallChartLegend
-        v-if="!['data-table', 'content', 'groups'].includes(indicator.type)"
+        v-if="
+          !['data-table', 'content', 'groups', 'banner'].includes(
+            indicator.type
+          )
+        "
         :items="indicator.items"
         :indicator-type="indicator.type"
-        :style="{ flex: indicator.type === 'radar' ? '1' : '0' }"
+        :style="{ flex: '1' }"
         class="statistics-card__legend"
         :show-percent="indicator.showPercent"
         :show-legend-value="showLegendValue"

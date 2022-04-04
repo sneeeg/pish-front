@@ -8,8 +8,8 @@
         v-model="filter[key]"
         multiple
         grey-arrow
-        :disabled="key === 'location' && !filter.region.length"
-        :options="key === 'location' ? locations : options[key]"
+        :disabled="!dv && key === 'location' && !filter.region.length"
+        :options="!dv && key === 'location' ? locations : options[key]"
         :placeholder="filterPlaceholders[key]"
         @input="
           activateFilter($event, key), getOptions(true), filterLocation(key)
@@ -17,13 +17,14 @@
       />
     </div>
 
-    <div v-if="window.isDesktopSize" class="participants-filter-map">
+    <div v-if="window.isDesktopSize && !dv" class="participants-filter-map">
       <GraphicMap :regions="regions" />
     </div>
 
     <Divider class="participants-filter__divider" />
 
     <ParticipantsList
+      :dv="dv"
       :items="selectedItems"
       class="participants-filter__list"
     />
@@ -44,30 +45,41 @@ export default {
       type: Array,
       required: true,
     },
+
+    dv: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
-      filter: {
-        region: [],
-        location: [],
-        group: [],
-        founder: [],
-        direction: [],
-      },
-      options: {
-        region: [],
-        location: [],
-        group: [],
-        founder: [],
-        direction: [],
-      },
-      selectableOptions: {
-        region: [],
-        location: [],
-        group: [],
-        founder: [],
-        direction: [],
-      },
+      filter: this.dv
+        ? { location: [], founder: [] }
+        : {
+            region: [],
+            location: [],
+            group: [],
+            founder: [],
+            direction: [],
+          },
+      options: this.dv
+        ? { location: [], founder: [] }
+        : {
+            region: [],
+            location: [],
+            group: [],
+            founder: [],
+            direction: [],
+          },
+      selectableOptions: this.dv
+        ? { location: [], founder: [] }
+        : {
+            region: [],
+            location: [],
+            group: [],
+            founder: [],
+            direction: [],
+          },
       filterPlaceholders: {},
       activeFilters: [],
     }
@@ -164,13 +176,15 @@ export default {
     },
 
     resetFilter() {
-      this.filter = {
-        region: [],
-        location: [],
-        group: [],
-        founder: [],
-        direction: [],
-      }
+      this.filter = this.dv
+        ? { location: [], founder: [] }
+        : {
+            region: [],
+            location: [],
+            group: [],
+            founder: [],
+            direction: [],
+          }
 
       this.getOptions(true)
       this.activeFilters = []

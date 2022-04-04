@@ -19,10 +19,6 @@ export default {
 
   components: { Statistics, ProgramParticipation, Section },
 
-  asyncData({ route }) {
-    console.log(route)
-  },
-
   computed: {
     ...mapState('default', ['lang']),
     ...mapState('organization', { organization: 'data' }),
