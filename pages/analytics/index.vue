@@ -22,7 +22,12 @@
       </div>
     </Section>
 
-    <Section small-head background :title="page.participants.title">
+    <Section
+      :style="{ zIndex: 2 }"
+      small-head
+      background
+      :title="page.participants.title"
+    >
       <template #head>
         <Btn
           :text="lang['base.resetFilter']"

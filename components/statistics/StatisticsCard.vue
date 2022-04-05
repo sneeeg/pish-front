@@ -14,7 +14,7 @@
     ]"
   >
     <div v-if="title || subtitle" class="statistics-card__header">
-      <p>{{ title }}</p>
+      <p v-html="title"></p>
       <span v-if="subtitle" class="statistics-card__subtitle">{{
         subtitle
       }}</span>

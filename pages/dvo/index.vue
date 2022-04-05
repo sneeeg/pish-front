@@ -8,7 +8,12 @@
       <HTMLContent class="analytics__description" :html="page.description" />
     </Section>
 
-    <Section small-head background :title="page.participants.title">
+    <Section
+      small-head
+      background
+      :title="page.participants.title"
+      :style="{ zIndex: 2 }"
+    >
       <template #head>
         <Btn
           :text="lang['base.resetFilter']"

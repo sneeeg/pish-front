@@ -7,14 +7,14 @@
 
     <div class="chart-banner__content">
       <div class="chart-banner__title">
-        У 4 университетов* поиск информации на сайте занимает<br />
+        У 4 университетов* поиск информации на&nbsp;сайте&nbsp;занимает<br />
         <strong>не более 26 секунд</strong>
       </div>
 
       <p class="chart-banner__text">
         По статистике, если студент ищет информацию
         <strong>более 26 секунд</strong>, вероятность того, что он бросит поиск,
-        составляет <strong>87%</strong>
+        составляет <strong>87&thinsp;%</strong>
       </p>
     </div>
   </div>
