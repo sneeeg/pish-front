@@ -1,4 +1,5 @@
 export default {
+  slug: 'example',
   name: 'Волков Андрей Евгеньевич',
   position: 'Заместитель председателя комиссии',
   description:

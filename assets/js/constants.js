@@ -42,6 +42,7 @@ const PAGES = [
   'council',
   'questionnaire',
   'analytics',
+  'experts',
 ]
 
 const PAGE_PATHS_WITH_LOADING = [
