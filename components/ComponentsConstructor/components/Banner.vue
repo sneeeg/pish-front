@@ -30,18 +30,18 @@ export default {
 .chart-banner {
   position: relative;
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
 
   &__background {
     @include box(100%);
 
     position: absolute;
+    right: -2.4rem;
+    bottom: -2.4rem;
     background-repeat: no-repeat;
     background-position: bottom right;
     background-size: contain;
-    right: -2.4rem;
-    bottom: -2.4rem;
 
     @include --mobile {
       display: none;
@@ -49,11 +49,11 @@ export default {
   }
 
   &__content {
+    z-index: 1;
     display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: space-between;
-    z-index: 1;
     max-width: 30rem;
 
     @include --mobile {
@@ -69,8 +69,8 @@ export default {
     strong {
       display: block;
       margin-top: 0.6rem;
-      font-weight: 700;
       color: $color_accent;
+      font-weight: 700;
     }
   }
 

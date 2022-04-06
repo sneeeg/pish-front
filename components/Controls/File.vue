@@ -1,14 +1,20 @@
 <template>
-  <div class="file">
-    <a class="file__link hover-opacity" href="" download :aria-label="text">
+  <a
+    class="file hover-opacity"
+    :href="href"
+    target="_blank"
+    rel="noopener"
+    :aria-label="text"
+  >
+    <div class="file__link">
       <SvgIcon name="download"></SvgIcon>
-    </a>
+    </div>
 
     <div v-if="text" class="file__text">
       <div class="file__name">{{ text }}</div>
       <div v-if="_size" class="file__size">{{ _size }}.</div>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -45,6 +51,7 @@ export default {
 <style lang="scss">
 .file {
   display: flex;
+  align-items: center;
 
   &__link {
     @include box(3.2rem);
@@ -64,14 +71,13 @@ export default {
     margin-left: 1.2rem;
 
     > * {
-      &:last-child {
+      &:not(:first-child) {
         margin-top: 0.5rem;
       }
     }
   }
 
   &__name {
-    width: 13rem;
     color: $color_dark_grey;
     font-weight: 600;
     line-height: 1;

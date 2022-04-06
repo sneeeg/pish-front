@@ -7,11 +7,21 @@
 
       <p class="organization-head__text">{{ organization.name }}</p>
 
-      <ExternalLink
-        class="organization-head__link"
-        :text="lang['analytics.website']"
-        :to="organization.link"
-      />
+      <div class="organization-head__links">
+        <File
+          v-if="organization.file"
+          class="organization-head__file"
+          text="Справка об университете"
+          :href="organization.file.href"
+        >
+        </File>
+
+        <ExternalLink
+          class="organization-head__link"
+          :text="lang['analytics.website']"
+          :to="organization.link"
+        />
+      </div>
     </div>
 
     <div
@@ -30,10 +40,11 @@
 <script>
 import { mapState } from 'vuex'
 import ExternalLink from '~/components/ExternalLink'
+import File from '~/components/controls/File'
 
 export default {
   name: 'OrganizationHead',
-  components: { ExternalLink },
+  components: { ExternalLink, File },
   computed: {
     ...mapState('organization', { organization: 'data' }),
     ...mapState('default', ['lang']),
@@ -82,11 +93,19 @@ export default {
     }
   }
 
-  &__link {
+  &__links {
     margin-top: 4rem;
 
     @include --mobile {
       margin-top: 3.2rem;
+    }
+  }
+
+  &__file {
+    margin-bottom: 3.2rem;
+
+    @include --mobile {
+      margin-bottom: 2.4rem;
     }
   }
 

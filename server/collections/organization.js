@@ -15,6 +15,10 @@ export default {
   rectorPhoto: '/i/analytics/rector.jpg',
   programLink: '/fadfsad.pdf',
   projects: [],
+  file: {
+    text: 'Файл',
+    href: 'https://lk.ptiority2030.ru/upload/eventFiles/9c6/0f26oahsnk41cbfstupov1m685qcmpd0.pdf',
+  },
   program,
 
   programsList: [
