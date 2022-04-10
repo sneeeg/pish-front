@@ -6,7 +6,7 @@
       :class="{ _active: isLocalExpanded }"
       @click="isLocalExpanded = !isLocalExpanded"
     >
-      <slot name="title"></slot>
+      <slot name="title" :is-active="isLocalExpanded"></slot>
     </button>
 
     <div class="expandable__content-wrap">

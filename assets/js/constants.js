@@ -44,6 +44,7 @@ const PAGES = [
   'questionnaire',
   'analytics',
   'dvo',
+  'experts',
 ]
 
 const PAGE_PATHS_WITH_LOADING = [

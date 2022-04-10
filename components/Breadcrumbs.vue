@@ -17,7 +17,7 @@
           :to="!force ? to || '' : false"
           :href="force ? to || '' : false"
         >
-          {{ text }}
+          {{ getItemText(text) }}
         </component>
         <meta itemprop="position" :content="index" />
       </li>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import SmartLink from '~/components/utils/SmartLink'
 
 export default {
@@ -35,6 +36,18 @@ export default {
     items: {
       type: Array,
       required: true,
+    },
+  },
+
+  computed: {
+    ...mapState('responsive', ['window']),
+  },
+
+  methods: {
+    getItemText(text) {
+      if (!this.window.isMobileSize) return text
+
+      return text.length > 44 ? text.slice(0, 44) + '...' : text
     },
   },
 }
@@ -48,12 +61,10 @@ export default {
   text-transform: none;
 
   &__list {
-    display: inline-flex;
-    flex-flow: row wrap;
-    margin-bottom: -0.6rem;
+    @include flexGap(0px, 0.6rem);
 
     li {
-      margin-bottom: 0.6rem;
+      white-space: nowrap;
       vertical-align: middle;
 
       a {

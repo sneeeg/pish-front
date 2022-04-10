@@ -35,25 +35,27 @@ export default {
       new Blockquote(el, this.$refs.HTMLContent)
     })
 
-    const $tables = this.$refs.HTMLContent.querySelectorAll('table')
+    this.$utils.wrapTable(this.$refs.HTMLContent)
+
     const $docLinks = this.$refs.HTMLContent.querySelectorAll('a.doc[title]')
-    const wrapper = document.createElement('section')
-    const parentWith = this.$refs.HTMLContent.offsetWidth
-
-    $tables.forEach((el) => {
-      const tableWidth = el.scrollWidth
-
-      if (parentWith < tableWidth) {
-        el.parentNode.insertBefore(wrapper, el)
-        wrapper.classList.add('table-scroll-wrap')
-        wrapper.appendChild(el)
-      }
-    })
 
     this.showDocInfo = this.showDocInfo.bind(this)
     $docLinks.forEach((link) => {
       link.addEventListener('click', this.showDocInfo)
     })
+
+    this.$refs.HTMLContent.querySelectorAll('.snippet-years').forEach(
+      (snippet) => {
+        snippet.querySelectorAll('dd').forEach((dd) => {
+          const dt = dd.previousElementSibling
+
+          if (dt?.innerHTML) return
+
+          snippet.removeChild(dt)
+          dd.classList.add('_empty')
+        })
+      }
+    )
   },
   methods: {
     ...mapMutations('default', ['changePopupState']),

@@ -6,27 +6,14 @@
     <Section>
       <h1 class="commission__title _visually-h2">{{ page.pageTitle }}</h1>
 
-      <div v-if="mainMember" class="commission-main-member">
-        <div class="commission-main-member__avatar">
-          <img :src="mainMember.image" :alt="mainMember.name" />
-        </div>
-
-        <div class="commission-main-member__text">
-          <h2>{{ mainMember.name }}</h2>
-
-          <p v-html="mainMember.description"></p>
-        </div>
-      </div>
-
-      <div
-        v-if="page.commissionMembers && page.commissionMembers.length"
-        class="commission-members"
-      >
+      <div v-if="members.length" class="commission-members">
         <PersonCard
-          v-for="(member, index) in page.commissionMembers"
+          v-for="(member, index) in members"
           :key="index"
+          :tag="member.slug ? 'smart-link' : 'div'"
+          :to="{ name: 'experts-slug', params: { slug: member.slug } }"
           class="commission-members__item"
-          :avatar="{ src: member.image, alt: member.name }"
+          :avatar="{ src: member.picture, alt: member.name }"
           :name="member.name"
           :description="member.description"
           vertical
@@ -38,41 +25,34 @@
 
 <script>
 import { mapState } from 'vuex'
-import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import PersonCard from '~/components/PersonCard'
-import ArrowLink from '~/components/controls/ArrowLink'
+import ArrowLink from '~/components/Controls/ArrowLink'
 
 export default {
-  name: 'Commission',
+  name: 'Index',
   components: { Section, PersonCard, ArrowLink },
-  mixins: [pageDataFetch, pageHead, pageDefault],
-  data() {
-    return {
-      mainMember: null,
-    }
-  },
-  computed: {
-    ...mapState('default', ['lang']),
-  },
-  created() {
-    if (process.env.NODE_ENV !== 'production') {
-      this.page.commissionMembers = this.$utils.fillEmptyArray(
-        {
-          image: '/i/commission/example.jpg',
-          name: 'Фальков Валерий Николаевич',
-          description:
-            'Министр науки и высшего образования Российской Федерации,председеталь комиссии программы Приоритет 2030',
-        },
-        20
-      )
+  mixins: [pageHead, pageDefault],
+
+  async asyncData({ $api }) {
+    const apiMethod = $api.pages.experts
+
+    if (!apiMethod) return { page: {} }
+
+    const page = await apiMethod().then(({ data }) => data)
+    const { data: members } = await $api.members.getList('experts')
+
+    if (!page || !members) {
+      throw new Error('Page not found')
     }
 
-    if (this.page.commissionMembers.length) {
-      this.mainMember = this.page.commissionMembers.splice(0, 1)[0]
-    }
+    return { page, members }
+  },
+
+  computed: {
+    ...mapState('default', ['lang']),
   },
 }
 </script>

@@ -1,0 +1,38 @@
+.snippet-years {
+  @include p;
+
+  dt {
+    font-weight: 500;
+  }
+
+  dd {
+    padding: 1.6rem 0 2.4rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  @include --from-mobile {
+    dt {
+      float: left;
+      clear: both;
+      width: 10.4rem;
+      margin: 0;
+      padding-bottom: 2.4rem;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+
+    dd {
+      margin: 0 0 0 10.4rem;
+      padding: 0 0 2.4rem;
+
+      &._empty {
+        margin: 0;
+      }
+    }
+  }
+}

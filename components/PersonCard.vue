@@ -1,9 +1,12 @@
 <template>
-  <div
+  <component
+    :is="tag"
     :class="[
       'person-card',
       { _vertical: vertical || window.isMobileSize, _grey: grey },
     ]"
+    v-bind="$attrs"
+    v-on="$listeners"
   >
     <div v-if="avatar" class="person-card__avatar">
       <img :src="avatar.src" :alt="avatar.alt" />
@@ -14,14 +17,20 @@
 
       <p class="person-card__description" v-html="description"></p>
     </div>
-  </div>
+  </component>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'PersonCard',
+
+  components: { SmartLink },
+
+  inheritAttrs: false,
+
   props: {
     avatar: {
       type: Object,
@@ -42,6 +51,10 @@ export default {
     grey: {
       type: Boolean,
       default: false,
+    },
+    tag: {
+      type: String,
+      default: 'div',
     },
   },
   computed: {
