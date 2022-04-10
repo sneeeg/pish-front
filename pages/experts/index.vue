@@ -10,7 +10,7 @@
         <PersonCard
           v-for="(member, index) in members"
           :key="index"
-          tag="smart-link"
+          :tag="member.slug ? 'smart-link' : 'div'"
           :to="{ name: 'experts-slug', params: { slug: member.slug } }"
           class="commission-members__item"
           :avatar="{ src: member.picture, alt: member.name }"

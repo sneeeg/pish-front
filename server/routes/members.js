@@ -8,7 +8,7 @@ export default (pretender) => {
     return [200, { 'Content-Type': 'application/json' }, getResponse(member)]
   })
 
-  pretender.get('/api/v0/priority/:type', () => {
+  pretender.get('/api/v0/priority/expert/list', () => {
     const result = []
 
     for (let i = 0; i < 12; i++) {

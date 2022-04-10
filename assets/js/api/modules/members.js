@@ -7,6 +7,8 @@ export default ($axios) => ({
   },
 
   getList(type) {
-    return $axios.$get(`${baseBath}/api/v0/priority/${type}`)
+    return $axios.$get(`${baseBath}/api/v0/priority/expert/list`, {
+      params: { type },
+    })
   },
 })
