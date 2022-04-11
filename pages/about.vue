@@ -50,10 +50,7 @@
 
     <Section
       v-if="
-        $i18n.locale !== 'en' &&
-        page.commissionMembers &&
-        page.commissionMembers.items &&
-        page.commissionMembers.items.length
+        $i18n.locale !== 'en' && commissionMembers && commissionMembers.length
       "
       to="/commission"
       :arrow-text="lang['base.allList']"
@@ -61,12 +58,14 @@
     >
       <div class="persons-list">
         <PersonCard
-          v-for="(member, index) in page.commissionMembers.items"
+          v-for="(member, index) in commissionMembers"
           :key="index"
+          :tag="member.slug ? 'smart-link' : 'div'"
+          :to="{ name: 'commission-slug', params: { slug: member.slug } }"
           class="persons-list__item"
-          :avatar="{ src: member.image, alt: member.name }"
+          :avatar="{ src: member.picture, alt: member.name }"
           :name="member.name"
-          :description="member.description"
+          :description="member.description || member.position"
         />
       </div>
     </Section>
@@ -123,7 +122,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
@@ -153,11 +151,31 @@ export default {
     TheHistory,
     TheStages,
   },
-  mixins: [pageDataFetch, pageHead, pageDefault],
+  mixins: [pageHead, pageDefault],
+
+  async asyncData({ $api }) {
+    const apiMethod = $api.pages.about
+
+    if (!apiMethod) return { page: {} }
+
+    const page = await apiMethod().then(({ data }) => data)
+    const { data: members } = await $api.members.getList('comision')
+
+    if (!page || !members) {
+      throw new Error('Page not found')
+    }
+
+    return { page, members }
+  },
+
   computed: {
     ...mapState('default', ['lang']),
     isDev() {
       return process.env.NODE_ENV === 'development'
+    },
+
+    commissionMembers() {
+      return this.members.slice(0, 1)
     },
   },
   created() {

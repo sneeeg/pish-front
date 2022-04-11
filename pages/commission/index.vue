@@ -6,9 +6,14 @@
     <Section>
       <h1 class="commission__title _visually-h2">{{ page.pageTitle }}</h1>
 
-      <div v-if="mainMember" class="commission-main-member">
+      <component
+        :is="mainMember.slug ? 'smart-link' : 'div'"
+        v-if="mainMember"
+        class="commission-main-member"
+        :to="{ name: 'commission-slug', params: { slug: mainMember.slug } }"
+      >
         <div class="commission-main-member__avatar">
-          <img :src="mainMember.image" :alt="mainMember.name" />
+          <img :src="mainMember.picture" :alt="mainMember.name" />
         </div>
 
         <div class="commission-main-member__text">
@@ -16,19 +21,18 @@
 
           <p v-html="mainMember.description"></p>
         </div>
-      </div>
+      </component>
 
-      <div
-        v-if="page.commissionMembers && page.commissionMembers.length"
-        class="commission-members"
-      >
+      <div v-if="members.length" class="commission-members">
         <PersonCard
-          v-for="(member, index) in page.commissionMembers"
+          v-for="(member, index) in _members"
           :key="index"
+          :tag="member.slug ? 'smart-link' : 'div'"
+          :to="{ name: 'commission-slug', params: { slug: member.slug } }"
           class="commission-members__item"
-          :avatar="{ src: member.image, alt: member.name }"
+          :avatar="{ src: member.picture, alt: member.name }"
           :name="member.name"
-          :description="member.description"
+          :description="member.description || member.position"
           vertical
         />
       </div>
@@ -38,41 +42,43 @@
 
 <script>
 import { mapState } from 'vuex'
-import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
 import PersonCard from '~/components/PersonCard'
 import ArrowLink from '~/components/Controls/ArrowLink'
+import SmartLink from '~/components/utils/SmartLink'
 
 export default {
   name: 'Index',
-  components: { Section, PersonCard, ArrowLink },
-  mixins: [pageDataFetch, pageHead, pageDefault],
-  data() {
-    return {
-      mainMember: null,
-    }
-  },
-  computed: {
-    ...mapState('default', ['lang']),
-  },
-  created() {
-    if (process.env.NODE_ENV !== 'production') {
-      this.page.commissionMembers = this.$utils.fillEmptyArray(
-        {
-          image: '/i/commission/example.jpg',
-          name: 'Фальков Валерий Николаевич',
-          description:
-            'Министр науки и высшего образования Российской Федерации,председеталь комиссии программы Приоритет 2030',
-        },
-        20
-      )
+  components: { Section, PersonCard, ArrowLink, SmartLink },
+  mixins: [pageHead, pageDefault],
+
+  async asyncData({ $api }) {
+    const apiMethod = $api.pages.commission
+
+    if (!apiMethod) return { page: {} }
+
+    const page = await apiMethod().then(({ data }) => data)
+    const { data: members } = await $api.members.getList('comision')
+
+    if (!page || !members) {
+      throw new Error('Page not found')
     }
 
-    if (this.page.commissionMembers.length) {
-      this.mainMember = this.page.commissionMembers.splice(0, 1)[0]
-    }
+    return { page, members }
+  },
+
+  computed: {
+    ...mapState('default', ['lang']),
+
+    _members() {
+      return this.members.slice(1)
+    },
+
+    mainMember() {
+      return this.members.slice(0, 1)?.[0] || null
+    },
   },
 }
 </script>

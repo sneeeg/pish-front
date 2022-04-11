@@ -15,7 +15,7 @@
           class="commission-members__item"
           :avatar="{ src: member.picture, alt: member.name }"
           :name="member.name"
-          :description="member.description"
+          :description="member.description || member.position"
           vertical
         />
       </div>
