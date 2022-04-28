@@ -42,6 +42,22 @@ module.exports = {
         href: '/about#steps',
       },
     ],
+    slides: [
+      {
+        src: '/i/main-first-diag.png',
+        alt: 'diag',
+        title: 'Улучшаем образование в регионах',
+        description:
+          'Статистика программы, данные об участниках <br> и проведенные мероприятия',
+      },
+      {
+        src: '/i/main-first-diag.png',
+        alt: 'diag',
+        title: 'Улучшаем образование в регионах',
+        description:
+          'Статистика программы, данные об участниках и проведенные мероприятия',
+      },
+    ],
   },
   ads: [
     {

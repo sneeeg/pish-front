@@ -1,5 +1,7 @@
 <template>
   <div>
+    <MainFirstScreen2 :slides="page.firstScreen.slides" />
+
     <MainFirstScreen
       :title="page.firstScreen.title"
       :subtitle="page.firstScreen.subtitle"
@@ -36,9 +38,11 @@ import Posts from '~/components/Posts'
 import PagesSection from '~/components/PagesSection'
 // import TheHistory from '~/components/TheHistory'
 import MainFirstScreen from '~/components/MainFirstScreen'
+import MainFirstScreen2 from '~/components/MainFirstScreen2'
 
 export default {
   components: {
+    MainFirstScreen2,
     MainFirstScreen,
     PagesSection,
     Posts,
