@@ -1,19 +1,7 @@
 <template>
   <div>
-    <MainFirstScreen
-      :title="page.firstScreen.title"
-      :subtitle="page.firstScreen.subtitle"
-      :main-cell="page.firstScreen.mainCell"
-      :cells="page.firstScreen.cells"
-    />
-
-    <Section background is-layout>
-      <Quotes :quotes="page.quotes" />
-    </Section>
-
-    <Section v-if="false">
-      <PagesSection :pages="page.links" />
-    </Section>
+    <MainFirstScreen2 :slides="page.firstScreen.slides" />
+    <MainCells :cells="page.cells" class="_background" />
 
     <Section to="/news" :arrow-text="lang['news.all']" :title="page.newsTitle">
       <Posts />
@@ -31,19 +19,17 @@ import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
-import Quotes from '~/components/Quotes'
 import Posts from '~/components/Posts'
-import PagesSection from '~/components/PagesSection'
 // import TheHistory from '~/components/TheHistory'
-import MainFirstScreen from '~/components/MainFirstScreen'
+import MainFirstScreen2 from '~/components/MainFirstScreen2'
+import MainCells from '~/components/new/MainCells'
 
 export default {
   components: {
-    MainFirstScreen,
-    PagesSection,
+    MainFirstScreen2,
+    MainCells,
     Posts,
     Section,
-    Quotes,
     // TheHistory,
   },
   mixins: [pageDataFetch, pageHead, pageDefault],

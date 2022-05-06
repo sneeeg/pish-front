@@ -40,7 +40,7 @@ export default new Pretender(function () {
   }
 
   this.unhandledRequest = function (verb, path, request) {
-    if (path.indexOf('/api/') !== 0) {
+    if (path.indexOf('/api') !== 0) {
       request.passthrough() // <-- A native, sent xhr is returned
     }
   }

@@ -29,6 +29,7 @@ const GET_OPACITY_COLORS = (alpha = 0.5) =>
 
 const PAGES = [
   'main',
+  'new',
   'about',
   'news',
   'participation',
