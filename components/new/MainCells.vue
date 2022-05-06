@@ -1,38 +1,30 @@
 <template>
   <Section>
-    <div class="main-first-screen__content">
-      <SmartLink
-        v-for="cell in cells"
-        :key="cell.id"
-        :to="cell.href"
-        :class="[
-          'main-first-screen-cell',
-          '_sub',
-          'hover-opacity',
-          { '_main-cell': cell.isMain },
-        ]"
-      >
-        <div
-          v-if="!cell.counter && cell.icon"
-          class="main-first-screen-cell__icon"
+    <div class="main-cells">
+      <div class="main-cells__wrapper">
+        <SmartLink
+          v-for="cell in cells"
+          :key="cell.id"
+          :to="cell.href"
+          :class="[
+            'main-cell',
+            '_sub',
+            'hover-opacity',
+            { '_main-cell': cell.isMain },
+          ]"
         >
-          <SvgIcon :name="cell.icon" />
-        </div>
+          <div class="main-cell__icon">
+            <SvgIcon :name="cell.icon" />
+          </div>
 
-        <div
-          class="main-first-screen-cell__title _visually-h4"
-          v-html="cell.text"
-        ></div>
+          <div class="main-cell__title _visually-h4" v-html="cell.text"></div>
 
-        <p>{{ cell.description }}</p>
+          <p>{{ cell.description }}</p>
 
-        <ArrowLink
-          class="main-first-screen-cell__link"
-          :text="lang['base.more']"
-          is-div
-        >
-        </ArrowLink>
-      </SmartLink>
+          <ArrowLink class="main-cell__link" :text="lang['base.more']" is-div>
+          </ArrowLink>
+        </SmartLink>
+      </div>
     </div>
   </Section>
 </template>
@@ -59,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss">
-.main-first-screen {
+.main-cells {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,55 +83,16 @@ export default {
   }
 }
 
-.main-first-screen-head {
-  @include flexGap(3rem);
-
-  > * {
-    flex: 1 1 40%;
-
-    @include --tablet {
-      flex: 1 1 100%;
-    }
-  }
-
-  &__logo {
-    img {
-      width: 48rem;
-      height: 9.2rem;
-
-      @include --tablet {
-        width: 36rem;
-        height: 7rem;
-      }
-
-      @include --mobile {
-        width: 26rem;
-        height: 5rem;
-      }
-    }
-  }
-
-  &__content {
-    @include h4;
-
-    @include --mobile {
-      @include h5;
-    }
-
-    > * {
-      display: block;
-    }
-
-    span {
-      margin-top: 2.4rem;
-    }
-  }
+.main-cells__wrapper {
+  display: flex;
+  gap: 24px;
 }
 
-.main-first-screen-cell {
+.main-cell {
   position: relative;
   display: flex;
   flex-direction: column;
+  border: 1px solid $color_grey_border;
   background-color: $color_white;
 
   &__title,
@@ -149,7 +102,9 @@ export default {
   }
 
   &__title {
-    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 500;
 
     ._sub & {
       margin-top: 3rem;
@@ -194,27 +149,11 @@ export default {
   }
 
   &__icon {
-    width: 3.7rem;
-    height: 3.7rem;
+    width: 4.7rem;
+    height: 4.7rem;
 
     svg {
       @include box(100%);
-    }
-  }
-}
-
-.main-first-screen-cells {
-  @include flexGap(3rem);
-
-  > * {
-    flex: 1 1 40%;
-
-    &._main-cell {
-      flex: 1 1 100%;
-    }
-
-    @include --mobile {
-      flex: 1 1 100%;
     }
   }
 }
