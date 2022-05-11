@@ -6,23 +6,19 @@
           v-for="cell in cells"
           :key="cell.id"
           :to="cell.href"
-          :class="[
-            'main-cell',
-            '_sub',
-            'hover-opacity',
-            { '_main-cell': cell.isMain },
-          ]"
+          :class="['main-cell', '_sub', 'hover-opacity']"
         >
-          <div class="main-cell__icon">
-            <SvgIcon :name="cell.icon" />
+          <div>
+            <div class="main-cell__icon">
+              <SvgIcon :name="cell.icon" />
+            </div>
+
+            <div class="main-cell__title _visually-h4" v-html="cell.text"></div>
+
+            <p class="main-cell__description">{{ cell.description }}</p>
           </div>
 
-          <div class="main-cell__title _visually-h4" v-html="cell.text"></div>
-
-          <p>{{ cell.description }}</p>
-
-          <ArrowLink class="main-cell__link" :text="lang['base.more']" is-div>
-          </ArrowLink>
+          <ArrowLink :text="lang['base.more']" is-div> </ArrowLink>
         </SmartLink>
       </div>
     </div>
@@ -55,92 +51,48 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - 32.3rem);
-
-  &._IE {
-    height: auto;
-  }
-
-  @include --tablet {
-    justify-content: flex-end;
-    min-height: calc(100vh - 31.1rem);
-  }
-
-  @include --mobile {
-    min-height: calc(100vh - 24.7rem);
-  }
-
-  &__content {
-    @include flexGap(4rem);
-
-    > * {
-      flex: 1 1 40%;
-
-      @include --tablet {
-        flex: 1 1 100%;
-      }
-    }
-  }
 }
 
 .main-cells__wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
 }
 
 .main-cell {
-  position: relative;
   display: flex;
+  flex-basis: 310px;
   flex-direction: column;
+  flex-grow: 1;
   border: 1px solid $color_grey_border;
   background-color: $color_white;
 
-  &__title,
-  &__link {
-    position: relative;
-    z-index: 1;
+  @include --desktop {
+    flex-basis: 292px;
   }
 
   &__title {
+    margin-top: 2rem;
+    margin-bottom: 1.4rem;
+    font-weight: 500;
     font-size: 18px;
     line-height: 23px;
-    font-weight: 500;
-
-    ._sub & {
-      margin-top: 3rem;
-      margin-bottom: 1.4rem;
-
-      @include --mobile {
-        min-height: auto;
-        margin-top: 3.2rem;
-        margin-bottom: 2.4rem;
-      }
-    }
-
-    ._main & {
-      margin-bottom: 4rem;
-
-      @include --mobile {
-        margin-bottom: 3.2rem;
-      }
-    }
   }
 
-  &._main {
-    justify-content: flex-end;
-    height: 58.6rem;
-    padding: 3.2rem;
-    background-color: transparent;
+  &__description {
+    color: $color_dark_grey;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
 
     @include --mobile {
-      height: 40rem;
-      padding: 2.4rem;
+      margin-bottom: 1.2rem;
     }
   }
 
   &._sub {
     justify-content: space-between;
-    height: 27.8rem;
+    height: 26.2rem;
     padding: 2.4rem;
 
     @include --mobile {

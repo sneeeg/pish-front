@@ -82,7 +82,6 @@ export default {
   },
   data() {
     return {
-      localCells: [],
       currentSlide: 0,
       sliderInstance: null,
     }
@@ -119,6 +118,10 @@ export default {
 .main-first {
   position: relative;
 
+  @include --mobile {
+    min-height: 400px;
+  }
+
   &__item {
     display: flex;
     align-items: center;
@@ -148,6 +151,10 @@ export default {
 
   &__image {
     margin-right: 100px;
+
+    @include --mobile {
+      display: none;
+    }
   }
 }
 
