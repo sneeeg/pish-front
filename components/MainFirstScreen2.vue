@@ -13,7 +13,6 @@
               class="main-first__item-description"
               :html="slide.description"
             />
-            <Btn class="main-first__item-btn" :text="lang['base.more']" />
           </div>
           <div class="main-first__image">
             <img
@@ -25,6 +24,7 @@
       </div>
 
       <div class="slider__footer">
+        <Btn class="main-first__item-btn" :text="lang['base.more']" />
         <div class="slider-controls">
           <a
             href=""
@@ -118,8 +118,12 @@ export default {
 .main-first {
   position: relative;
 
+  @include --tablet {
+    min-height: 440px;
+  }
+
   @include --mobile {
-    min-height: 400px;
+    min-height: 386px;
   }
 
   &__item {
@@ -139,10 +143,6 @@ export default {
       color: $color_dark_grey;
       line-height: 27px;
     }
-
-    &-btn {
-      margin-top: 80px;
-    }
   }
 
   &__text-block {
@@ -151,6 +151,10 @@ export default {
 
   &__image {
     margin-right: 100px;
+
+    @include --tablet {
+      margin-right: 0;
+    }
 
     @include --mobile {
       display: none;
@@ -167,8 +171,12 @@ export default {
 
   &__footer {
     position: absolute;
-    right: 0;
     bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 }
 

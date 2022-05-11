@@ -2,6 +2,7 @@
   <div>
     <MainFirstScreen2 :slides="page.firstScreen.slides" />
     <MainCells :cells="page.cells" class="_background" />
+    <MainPrograms :programs="page.programs" class="_background" />
 
     <Section to="/news" :arrow-text="lang['news.all']" :title="page.newsTitle">
       <Posts />
@@ -23,9 +24,11 @@ import Posts from '~/components/Posts'
 // import TheHistory from '~/components/TheHistory'
 import MainFirstScreen2 from '~/components/MainFirstScreen2'
 import MainCells from '~/components/new/MainCells'
+import MainPrograms from '~/components/new/MainPrograms'
 
 export default {
   components: {
+    MainPrograms,
     MainFirstScreen2,
     MainCells,
     Posts,

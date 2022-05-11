@@ -9,32 +9,6 @@ module.exports = {
   ogVk: '', // Opengraph vk
   ogFb: '', // Opengraph fb
   firstScreen: {
-    cells: [
-      {
-        icon: 'council',
-        text: 'Совет',
-        counter: false,
-        href: '/council',
-      },
-      {
-        icon: 'commission',
-        text: 'Комиссия',
-        counter: false,
-        href: '/commission',
-      },
-      {
-        icon: 'build',
-        text: 'Аналитика программы',
-        counter: false,
-        href: '/analytics',
-      },
-      {
-        icon: 'user',
-        text: 'Этапы отбора в&nbsp;2021&nbsp;году',
-        counter: false,
-        href: '/about#steps',
-      },
-    ],
     slides: [
       {
         src: '/i/main-first-diag.png',
@@ -57,29 +31,46 @@ module.exports = {
       icon: 'council',
       text: 'Совет',
       description: 'Совет по поддержке программ развития',
-      counter: false,
       href: '/council',
     },
     {
       icon: 'commission',
       text: 'Комиссия',
       description: 'Комиссия Минобрнауки РФ по отбору в программу',
-      counter: false,
       href: '/commission',
     },
     {
       icon: 'build',
       text: 'Аналитика',
       description: 'Статистические данные о ходе программы',
-      counter: false,
       href: '/analytics',
     },
     {
       icon: 'user',
       text: 'Этапы отбора',
       description: 'Помощь для университетов в 2022 году',
-      counter: false,
       href: '/about#steps',
+    },
+  ],
+  programs: [
+    {
+      title: 'Программы развития дальневосточных вузов',
+      description:
+        'Открыт второй этап рассмотрения заявок на получение дотаций для вузов. В этапе принимают участия вузы из следующих регионов',
+      image: 'program-image',
+      href: '#',
+    },
+    {
+      title: 'Программы развития дальневосточных вузов',
+      description:
+        'Открыт второй этап рассмотрения заявок на получение дотаций для вузов. В этапе принимают участия вузы из следующих регионов',
+      href: '#',
+    },
+    {
+      title: 'Программы развития дальневосточных вузов',
+      description:
+        'Открыт второй этап рассмотрения заявок на получение дотаций для вузов. В этапе принимают участия вузы из следующих регионов',
+      href: '#',
     },
   ],
   newsTitle: 'Новости',
