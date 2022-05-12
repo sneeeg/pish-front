@@ -4,7 +4,12 @@
     :aria-label="text"
     :class="[
       'btn',
-      { _disabled: disabled || loading, _small: small, _grey: grey },
+      {
+        _disabled: disabled || loading,
+        _small: small,
+        _grey: grey,
+        _white: white,
+      },
     ]"
   >
     <SvgIcon
@@ -24,7 +29,10 @@
     v-else
     :to="to"
     :aria-label="text"
-    :class="['btn', { _disabled: disabled, _small: small, _grey: grey }]"
+    :class="[
+      'btn',
+      { _disabled: disabled, _small: small, _grey: grey, _white: white },
+    ]"
   >
     <SvgIcon v-if="icon" class="btn__icon" :name="icon" />
     <span class="btn__text">{{ text }}</span>
@@ -76,6 +84,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    white: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 </script>
@@ -111,6 +123,11 @@ export default {
   &._grey {
     font-weight: 500;
     background-color: $color_grey_text;
+  }
+
+  &._white {
+    color: $color_accent !important;
+    background-color: $color_white;
   }
 
   &::before {
