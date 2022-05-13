@@ -57,14 +57,22 @@ export default {
 .main-program {
   &__content {
     padding: 4rem;
+
+    @include --tablet {
+      padding: 2.4rem;
+    }
   }
 
   &._main {
     display: flex;
+    flex-basis: auto;
     justify-content: space-between;
-    flex-basis: 100%;
     max-height: 387px;
     background: $color_accent;
+
+    @include --tablet {
+      max-height: unset;
+    }
 
     .main-program__content {
       max-width: 50%;
@@ -80,18 +88,22 @@ export default {
       font-weight: 500;
       font-size: 32px;
       line-height: 35px;
+
+      @include --tablet {
+        font-size: 28px;
+      }
     }
 
     .main-program__description {
       margin-top: 32px;
-      line-height: 27px;
       color: $color_white;
+      line-height: 27px;
     }
 
     .main-program__btn {
       margin-top: 80px;
-      background-color: $color_white;
       color: $color_accent !important;
+      background-color: $color_white;
 
       &::before {
         background-color: rgba($color_accent, 0.1);
@@ -112,19 +124,23 @@ export default {
       font-weight: 500;
       font-size: 18px;
       line-height: 23px;
+
+      @include --tablet {
+        font-size: 22px;
+      }
     }
 
     .main-program__description {
       margin-top: 19px;
-      line-height: 24px;
       color: $color_dark_grey;
+      line-height: 24px;
     }
 
     .main-program__btn {
       margin-top: 50px;
-      background-color: transparent;
-      color: $color_accent !important;
       border: 1px solid $color_accent;
+      color: $color_accent !important;
+      background-color: transparent;
 
       &::before {
         background-color: rgba($color_accent, 0.1);
