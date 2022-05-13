@@ -16,7 +16,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import pageDataFetch from '~/assets/js/vue-mixins/page-data-fetch'
+import pageDataFetchV2 from '~/assets/js/vue-mixins/page-data-fetch-v2'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
 import Section from '~/components/layout/Section'
@@ -35,7 +35,8 @@ export default {
     Section,
     // TheHistory,
   },
-  mixins: [pageDataFetch, pageHead, pageDefault],
+
+  mixins: [pageDataFetchV2, pageHead, pageDefault],
   computed: {
     ...mapState('default', ['lang']),
   },
