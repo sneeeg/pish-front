@@ -1,11 +1,12 @@
 <template>
-  <div class="tabs">
+  <div class="events">
+    <!--    <Tabs class="events__tabs" :sections="sections" />-->
     <ul v-if="!window.isMobileSize" class="tabs__list">
       <li
-        v-for="({ id, title }, index) in items"
+        v-for="{ id, title } in sections"
         :key="id"
         :class="['tabs__item', { _selected: id === currentTabID }]"
-        @click="toggleTab(id, index)"
+        @click="toggleTab(id)"
       >
         {{ title }}
       </li>
@@ -13,7 +14,7 @@
     <CustomSelect
       v-else
       :value="currentTabID"
-      :items="items"
+      :items="sections"
       class="tabs__select"
       @input="toggleTab"
     />
@@ -23,21 +24,21 @@
           v-for="content in contents"
           :key="content.id"
           class="tabs__content-item"
-          v-html="content"
-        ></li>
+        >
+          <h4>{{ content.title }}</h4>
+        </li>
       </ul>
     </transition>
   </div>
 </template>
 
 <script>
-import gsap from 'gsap'
 import { mapState } from 'vuex'
-
+import gsap from 'gsap'
 import CustomSelect from '~/components/controls/CustomSelect'
 
 export default {
-  name: 'Tabs',
+  name: 'MainEvents',
   components: { CustomSelect },
   props: {
     sections: {
@@ -45,34 +46,25 @@ export default {
       required: true,
     },
   },
-  data() {
-    const items = this.sections.map((section, i) => ({
-      ...section,
-      id: `${section.title + ' #' + i}`,
-    }))
-    return {
-      currentTabID: items[1].id,
-      items,
-      tabsContentHeight: null,
-      heightAnimation: null,
-      animationIsOver: true,
-    }
-  },
+  data: () => ({
+    currentTabID: 2,
+    tabsContentHeight: null,
+    heightAnimation: null,
+    animationIsOver: true,
+  }),
   computed: {
     contents() {
-      return this.items.find((item) => item.id === this.currentTabID)?.items
+      return this.sections.find((item) => item.id === this.currentTabID)?.body
     },
+    ...mapState('default', ['lang']),
     ...mapState('responsive', ['window']),
   },
   mounted() {
     this.tabsContentHeight = this.$refs.content.scrollHeight
-
-    // this.toggleTab(this.items[0].id, 0)
   },
   methods: {
-    toggleTab(id, index) {
+    toggleTab(id) {
       this.currentTabID = id
-      this.$emit('change', index)
     },
     appearContent(el, done) {
       gsap.to(el, {
@@ -141,7 +133,6 @@ export default {
 .tabs {
   &__list {
     display: flex;
-    justify-content: space-between;
     margin-bottom: 4.3rem;
     border-bottom: 1px solid $color_grey_border;
 
@@ -156,16 +147,16 @@ export default {
 
   &__item {
     position: relative;
-    flex: 1 1 40%;
-    padding: 3px 2.4rem;
-    font-weight: bold;
+    font-size: 12px;
+    padding: 16px 0;
     text-align: center;
     cursor: pointer;
+    text-transform: uppercase;
     opacity: 0.3;
     transition: all 300ms ease;
 
-    &:nth-child(2) {
-      order: -1;
+    &:not(:first-child) {
+      margin-left: 24px;
     }
 
     @include --tablet {

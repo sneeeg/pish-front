@@ -4,6 +4,14 @@
     <MainCells :cells="page.cells" class="_background" />
     <MainPrograms :programs="page.programs" class="_background" />
 
+    <Section
+      to="/calendar"
+      :arrow-text="lang['events.all']"
+      :title="page.eventsTitle"
+    >
+      <MainEvents :sections="page.events" />
+    </Section>
+
     <Section to="/news" :arrow-text="lang['news.all']" :title="page.newsTitle">
       <Posts :posts="page.posts" />
     </Section>
@@ -24,9 +32,11 @@ import Posts from '~/components/new/Posts'
 import MainFirstScreen2 from '~/components/MainFirstScreen2'
 import MainCells from '~/components/new/MainCells'
 import MainPrograms from '~/components/new/MainPrograms'
+import MainEvents from '~/components/new/MainEvents'
 
 export default {
   components: {
+    MainEvents,
     MainPrograms,
     MainFirstScreen2,
     MainCells,
