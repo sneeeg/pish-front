@@ -5,7 +5,7 @@
     <MainPrograms :programs="page.programs" class="_background" />
 
     <Section to="/news" :arrow-text="lang['news.all']" :title="page.newsTitle">
-      <Posts />
+      <Posts :posts="page.posts" />
     </Section>
 
     <!--    <Section :title="page.history.title">-->
@@ -19,9 +19,8 @@ import { mapState } from 'vuex'
 import pageDataFetchV2 from '~/assets/js/vue-mixins/page-data-fetch-v2'
 import pageDefault from '~/assets/js/vue-mixins/page-default'
 import pageHead from '~/assets/js/vue-mixins/page-head'
-import Section from '~/components/layout/Section'
-import Posts from '~/components/Posts'
-// import TheHistory from '~/components/TheHistory'
+import Section from '~/components/layout/new/Section'
+import Posts from '~/components/new/Posts'
 import MainFirstScreen2 from '~/components/MainFirstScreen2'
 import MainCells from '~/components/new/MainCells'
 import MainPrograms from '~/components/new/MainPrograms'
@@ -33,7 +32,6 @@ export default {
     MainCells,
     Posts,
     Section,
-    // TheHistory,
   },
 
   mixins: [pageDataFetchV2, pageHead, pageDefault],

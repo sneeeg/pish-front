@@ -10,12 +10,6 @@
       </SmartLink>
       <div class="post-preview__content">
         <div v-if="!hideHead" class="post-preview-head">
-          <template v-if="post.category && post.category.text">
-            <span class="post-preview-head__category">{{
-              post.category.text
-            }}</span>
-            <span class="post-preview-head__separator"> / </span>
-          </template>
           <span class="post-preview-head__date">{{
             $dayjs(post.activeFrom).format($constants.POST_DATE_FORMAT)
           }}</span>
@@ -32,12 +26,6 @@
             >
           </li>
         </ul>
-        <ArrowLink
-          :to="linkObject"
-          :text="lang['base.more']"
-          class="post-preview__link"
-        >
-        </ArrowLink>
       </div>
     </template>
     <SkeletonLoader v-else />
@@ -47,11 +35,11 @@
 <script>
 import { mapState } from 'vuex'
 import SmartLink from '~/components/utils/SmartLink'
-import ArrowLink from '~/components/controls/ArrowLink'
 import SkeletonLoader from '~/components/utils/SkeletonLoader'
+
 export default {
   name: 'PostPreview',
-  components: { SkeletonLoader, ArrowLink, SmartLink },
+  components: { SkeletonLoader, SmartLink },
   props: {
     post: {
       type: Object,
@@ -98,14 +86,15 @@ export default {
   @include skeletonContainer;
   display: flex;
   flex-direction: column;
-  min-height: 52rem;
+  min-height: 22.7rem;
   background-color: $color_white;
 
   &__tags {
-    @include flexGap(2px);
-    @include text-button;
-    padding-bottom: 3.8rem;
+    @include flexGap(4px);
     color: #6b6b74;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
 
     @include --mobile {
       padding-bottom: 2.4rem;
@@ -131,14 +120,14 @@ export default {
   }
 
   @include --mobile {
-    min-height: 30rem;
+    min-height: auto;
   }
 
   &__image {
     display: block;
     flex-shrink: 0;
     width: 100%;
-    height: 32rem;
+    height: 22.2rem;
     transition: filter 0.3s ease;
 
     @include --tablet {
@@ -160,23 +149,25 @@ export default {
   }
 
   &__content {
-    @include padding-card;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    padding: 24px;
   }
 
   &__title {
     display: block;
-    flex-grow: 1;
+    min-height: 69px;
     margin: 2.4rem 0;
-    line-height: 2.7rem;
+    font-weight: 500;
+    line-height: 2.3rem;
 
     span {
       display: block;
     }
 
     @include --mobile {
+      min-height: auto;
       margin-top: 1.6rem;
       line-height: 2.2rem;
     }
@@ -188,14 +179,10 @@ export default {
 }
 
 .post-preview-head {
-  @include text-button-small;
-
-  &__separator {
-    color: $color_accent;
-  }
-
   &__date {
     color: $color_grey_text;
+    font-size: 14px;
+    line-height: 18px;
   }
 }
 </style>

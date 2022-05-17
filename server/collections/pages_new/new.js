@@ -96,4 +96,41 @@ module.exports = {
       icon: 'page-pie',
     },
   ],
+  posts: [
+    {
+      id: 1,
+      slug: 'horoshaia_novost',
+      tags: ['приоритет 2030', 'консорциум', 'партнерство', 'регионы'],
+      activeFrom: '2020-12-09T16:09:53+00:00',
+      title:
+        'ЧГУ им. А. А. Кадырова и ВГЛТУ им. Г. Ф. Морозова рассчитают потенциал карбонового полигона',
+      previewPicture: {
+        src: '/i/posts/example-1.png',
+        alt: 'test',
+      },
+    },
+    {
+      id: 2,
+      slug: 'horoshaia_novost',
+      tags: ['участники программы', 'регионы', 'технологии'],
+      activeFrom: '2020-12-09T16:09:53+00:00',
+      title: 'Изобретение поможет уменьшить количество мусора в Арктике',
+      previewPicture: {
+        src: '/i/posts/example-2.png',
+        alt: 'test',
+      },
+    },
+    {
+      id: 3,
+      slug: 'horoshaia_novost',
+      tags: ['приоритет 2030', 'лидерство', 'участники программы'],
+      activeFrom: '2020-12-09T16:09:53+00:00',
+      title:
+        'Образование с перспективой развития в университетах регионов России',
+      previewPicture: {
+        src: '/i/posts/example-3.png',
+        alt: 'test',
+      },
+    },
+  ],
 }
