@@ -144,11 +144,19 @@ module.exports = {
       title: 'Заседания',
       body: [
         {
-          title:
-            'Заседание, посвященное программе, название которого в 2 строки',
+          title: 'Заседание, посвященное программе',
           status: 1,
-          date: '22',
-          month: 'Марта',
+          date: '2022-05-18',
+          timeStart: '15-00',
+          timeEnd: '17-00',
+          city: 'г. Москва, Брюсов пер., д.21',
+          tags: ['заседание', 'минобрнауки'],
+        },
+        {
+          title:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus minus molestiae nesciunt ratione saepe veritatis.',
+          status: 2,
+          date: '2022-05-19',
           timeStart: '15-00',
           timeEnd: '17-00',
           city: 'г. Москва, Брюсов пер., д.21',
@@ -157,20 +165,8 @@ module.exports = {
         {
           title:
             'Заседание, посвященное программе, название которого в 2 строки',
-          status: 1,
-          date: '22',
-          month: 'Марта',
-          timeStart: '15-00',
-          timeEnd: '17-00',
-          city: 'г. Москва, Брюсов пер., д.21',
-          tags: ['заседание', 'минобрнауки'],
-        },
-        {
-          title:
-            'Заседание, посвященное программе, название которого в 2 строки',
-          status: 1,
-          date: '22',
-          month: 'Марта',
+          status: 3,
+          date: '2022-04-23',
           timeStart: '15-00',
           timeEnd: '17-00',
           city: 'г. Москва, Брюсов пер., д.21',
@@ -181,6 +177,37 @@ module.exports = {
     {
       id: 3,
       title: 'Совещания',
+      body: [
+        {
+          title: 'Заседание, посвященное программе',
+          status: 1,
+          date: '2022-05-18',
+          timeStart: '15-00',
+          timeEnd: '17-00',
+          city: 'г. Москва, Брюсов пер., д.21',
+          tags: ['заседание', 'минобрнауки'],
+        },
+        {
+          title:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus minus molestiae nesciunt ratione saepe veritatis.',
+          status: 2,
+          date: '2022-05-19',
+          timeStart: '15-00',
+          timeEnd: '17-00',
+          city: 'г. Москва, Брюсов пер., д.21',
+          tags: ['заседание', 'минобрнауки'],
+        },
+        {
+          title:
+            'Заседание, посвященное программе, название которого в 2 строки',
+          status: 3,
+          date: '2022-04-23',
+          timeStart: '15-00',
+          timeEnd: '17-00',
+          city: 'г. Москва, Брюсов пер., д.21',
+          tags: ['заседание', 'минобрнауки'],
+        },
+      ],
     },
   ],
 }

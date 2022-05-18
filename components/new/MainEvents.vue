@@ -19,15 +19,47 @@
       @input="toggleTab"
     />
     <transition mode="out-in" :css="false" @enter="enter" @leave="leave">
-      <ul ref="content" :key="currentTabID" class="tabs__content-list">
-        <li
-          v-for="content in contents"
-          :key="content.id"
-          class="tabs__content-item"
-        >
-          <h4>{{ content.title }}</h4>
-        </li>
-      </ul>
+      <div ref="content" :key="currentTabID" class="events__content">
+        <div v-for="content in contents" :key="content.id" class="events__card">
+          <div>
+            <h1>
+              {{ $dayjs(new Date(content.date)).format('D') }}
+            </h1>
+            <p>
+              {{ $dayjs(new Date(content.date)).format('MMMM') }}
+            </p>
+            <h4 class="events__card-title">
+              {{ content.title }}
+            </h4>
+            <p v-if="content.status === 1" class="events__card-status _success">
+              идет сейчас
+            </p>
+            <p v-if="content.status === 2" class="events__card-status _ready">
+              начнется завтра
+            </p>
+            <p v-if="content.status === 3" class="events__card-status _cancel">
+              прошло
+            </p>
+          </div>
+          <div>
+            <div class="events__card-time">
+              <div class="time-item">
+                <SvgIcon name="clock" />
+                <p>{{ content.timeStart + ' - ' + content.timeEnd }}</p>
+              </div>
+              <div class="time-item">
+                <SvgIcon name="map-pin" />
+                <p>{{ content.city }}</p>
+              </div>
+            </div>
+            <div class="events__card-tags">
+              <p v-for="tag in content.tags" :key="tag" class="tags-item">
+                {{ '#' + tag }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </transition>
   </div>
 </template>
@@ -130,6 +162,92 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.events {
+  &__content {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 397px;
+    min-height: 347px;
+    padding: 24px;
+    background: $color_white;
+
+    &-title {
+      margin-top: 24px;
+      font-size: 18px;
+      line-height: 23px;
+    }
+
+    &-status {
+      display: flex;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 18px;
+
+      &::before {
+        display: block;
+        width: 7px;
+        height: 7px;
+        margin-right: 8px;
+        border-radius: 100%;
+        background: currentColor;
+        transition: 0.5s ease-in-out;
+        content: '';
+        pointer-events: none;
+      }
+
+      &._success {
+        color: $color_status_success;
+      }
+
+      &._ready {
+        color: $color_status_ready;
+      }
+
+      &._cancel {
+        color: $color_status_cancel;
+      }
+    }
+
+    &-time {
+      margin-top: 24px;
+
+      .time-item {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        line-height: 24px;
+
+        &:not(:first-child) {
+          margin-top: 8px;
+        }
+
+        svg {
+          @include box(2rem);
+          margin-right: 12px;
+        }
+      }
+    }
+
+    &-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+      color: #6b6b74;
+      font-weight: 500;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+    }
+  }
+}
+
 .tabs {
   &__list {
     display: flex;
@@ -147,11 +265,11 @@ export default {
 
   &__item {
     position: relative;
-    font-size: 12px;
     padding: 16px 0;
+    font-size: 12px;
     text-align: center;
-    cursor: pointer;
     text-transform: uppercase;
+    cursor: pointer;
     opacity: 0.3;
     transition: all 300ms ease;
 
