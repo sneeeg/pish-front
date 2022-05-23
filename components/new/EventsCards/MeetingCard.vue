@@ -1,25 +1,25 @@
 <template>
-  <div class="events__card">
-    <div>
-      <h1>
+  <div class="events-card">
+    <div class="events-card__header">
+      <h1 class="card-header__date">
         {{ $dayjs(new Date(date)).format('D') }}
       </h1>
-      <p>
+      <p class="card-header__month">
         {{ $dayjs(new Date(date)).format('MMMM') }}
       </p>
-      <h4 class="events__card-title">
+      <h4 class="card-header__title">
         {{ title }}
       </h4>
-      <p v-if="status === 1" class="events__card-status _success">
+      <p v-if="status === 1" class="card-header__status _success">
         идет сейчас
       </p>
-      <p v-if="status === 2" class="events__card-status _ready">
+      <p v-if="status === 2" class="card-header__status _ready">
         начнется завтра
       </p>
-      <p v-if="status === 3" class="events__card-status _cancel">прошло</p>
+      <p v-if="status === 3" class="card-header__status _cancel">прошло</p>
     </div>
-    <div>
-      <div class="events__card-time">
+    <div class="events-card__footer">
+      <div class="card-footer__time">
         <div class="time-item">
           <SvgIcon name="clock" />
           <p>{{ timeStart + ' - ' + timeEnd }}</p>
@@ -29,7 +29,7 @@
           <p>{{ city }}</p>
         </div>
       </div>
-      <div class="events__card-tags">
+      <div class="card-footer__tags">
         <p v-for="tag in tags" :key="tag" class="tags-item">
           {{ '#' + tag }}
         </p>
@@ -75,83 +75,98 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.events {
-  &__card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 397px;
-    min-height: 347px;
-    padding: 24px;
-    background: $color_white;
+.events-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 397px;
+  min-height: 347px;
+  padding: 24px;
+  background: $color_white;
 
-    &-title {
-      margin-top: 24px;
-      font-size: 18px;
-      line-height: 23px;
-    }
-
-    &-status {
-      display: flex;
-      align-items: center;
-      margin-top: 8px;
-      font-size: 14px;
-      line-height: 18px;
-
-      &::before {
-        display: block;
-        width: 7px;
-        height: 7px;
-        margin-right: 8px;
-        border-radius: 100%;
-        background: currentColor;
-        transition: 0.5s ease-in-out;
-        content: '';
-        pointer-events: none;
+  &__header {
+    .card-header {
+      &__date {
+        @include banner;
+        font-weight: 400;
       }
 
-      &._success {
-        color: $color_status_success;
+      &__month {
+        @include text-small;
+        color: $color_grey_text;
       }
 
-      &._ready {
-        color: $color_status_ready;
+      &__title {
+        @include h4;
+        margin-top: 24px;
+        font-weight: 500;
       }
 
-      &._cancel {
-        color: $color_status_cancel;
-      }
-    }
-
-    &-time {
-      margin-top: 24px;
-
-      .time-item {
+      &__status {
+        @include text-small;
         display: flex;
         align-items: center;
-        font-size: 16px;
-        line-height: 24px;
+        margin-top: 8px;
 
-        &:not(:first-child) {
-          margin-top: 8px;
+        &::before {
+          display: block;
+          width: 7px;
+          height: 7px;
+          margin-right: 8px;
+          border-radius: 100%;
+          background: currentColor;
+          transition: 0.5s ease-in-out;
+          content: '';
+          pointer-events: none;
         }
 
-        svg {
-          @include box(2rem);
-          margin-right: 12px;
+        &._success {
+          color: $color_status_success;
+        }
+
+        &._ready {
+          color: $color_status_ready;
+        }
+
+        &._cancel {
+          color: $color_status_cancel;
         }
       }
     }
+  }
 
-    &-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 32px;
-      color: #6b6b74;
-      font-weight: 500;
-      font-size: 1.2rem;
-      line-height: 1.6rem;
+  &__footer {
+    .card-footer {
+      &__time {
+        margin-top: 24px;
+
+        .time-item {
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+          line-height: 24px;
+
+          &:not(:first-child) {
+            margin-top: 8px;
+          }
+
+          svg {
+            @include box(2rem);
+            margin-right: 12px;
+          }
+        }
+      }
+
+      &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 32px;
+        color: #6b6b74;
+        font-weight: 500;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+      }
     }
   }
 }
