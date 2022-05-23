@@ -25,8 +25,11 @@
             v-for="content in contents"
             :key="content.id"
             :title="content.title"
-            :date="content.date"
+            :date-start="content.dateStart"
+            :date-end="content.dateEnd"
+            :logo="content.logo"
             :status="content.status"
+            :city="content.city"
           />
         </div>
         <div v-else class="events__content">
@@ -36,7 +39,7 @@
             :title="content.title"
             :date="content.date"
             :status="content.status"
-            :time-tart="content.timeStart"
+            :time-start="content.timeStart"
             :time-end="content.timeEnd"
             :city="content.city"
             :tags="content.tags"

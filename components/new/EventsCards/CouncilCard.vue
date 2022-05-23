@@ -1,22 +1,34 @@
 <template>
   <div class="events__card">
     <div>
-      <h1>
-        {{ $dayjs(new Date(date)).format('D') }}
-      </h1>
-      <p>
-        {{ $dayjs(new Date(date)).format('MMMM') }}
-      </p>
-      <h4 class="events__card-title">
-        {{ title }}
-      </h4>
-      <p v-if="status === 1" class="events__card-status _success">
-        идет сейчас
-      </p>
-      <p v-if="status === 2" class="events__card-status _ready">
-        начнется завтра
-      </p>
-      <p v-if="status === 3" class="events__card-status _cancel">прошло</p>
+      <div class="events__card-header">
+        <div>
+          <h1 class="card-header__date">
+            {{
+              $dayjs(new Date(dateStart)).format('D') +
+              '-' +
+              $dayjs(new Date(dateEnd)).format('D')
+            }}
+          </h1>
+          <p class="card-header__month">
+            {{ $dayjs(new Date(dateStart)).format('MMMM') }}
+          </p>
+        </div>
+        <p v-if="status === 1" class="card-header__status _success">
+          сейчас здесь
+        </p>
+      </div>
+      <div class="events__card-body">
+        <div class="card-body__logo">
+          <img :src="logo" alt="logo" />
+        </div>
+        <div>
+          <h4 class="card-body__title">
+            {{ title }}
+          </h4>
+          <p class="card-body__city">{{ city }}</p>
+        </div>
+      </div>
     </div>
     <div class="events__card-footer">
       <div class="card-footer__logo">
@@ -35,7 +47,19 @@ export default {
       type: String,
       default: '',
     },
-    date: {
+    dateStart: {
+      type: String,
+      default: '',
+    },
+    dateEnd: {
+      type: String,
+      default: '',
+    },
+    logo: {
+      type: String,
+      default: '',
+    },
+    city: {
       type: String,
       default: '',
     },
@@ -58,56 +82,96 @@ export default {
     padding: 24px;
     background: $color_white;
 
-    &-title {
-      margin-top: 24px;
-      font-size: 18px;
-      line-height: 23px;
+    &-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      .card-header {
+        &__date {
+          @include banner;
+          font-weight: 400;
+        }
+
+        &__month {
+          @include text-small;
+          color: $color_grey_text;
+        }
+
+        &__status {
+          @include text-small;
+          display: flex;
+          align-items: center;
+
+          &::before {
+            display: block;
+            width: 7px;
+            height: 7px;
+            margin-right: 8px;
+            border-radius: 100%;
+            background: currentColor;
+            transition: 0.5s ease-in-out;
+            content: '';
+            pointer-events: none;
+          }
+
+          &._success {
+            color: $color_status_success;
+          }
+        }
+      }
     }
 
-    &-status {
+    &-body {
       display: flex;
-      align-items: center;
-      margin-top: 8px;
-      font-size: 14px;
-      line-height: 18px;
+      align-items: flex-start;
+      margin-top: 24px;
 
-      &::before {
-        display: block;
-        width: 7px;
-        height: 7px;
-        margin-right: 8px;
-        border-radius: 100%;
-        background: currentColor;
-        transition: 0.5s ease-in-out;
-        content: '';
-        pointer-events: none;
-      }
+      .card-body {
+        &__logo {
+          min-width: 24px;
+          min-height: 24px;
+          margin-right: 16px;
 
-      &._success {
-        color: $color_status_success;
-      }
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
 
-      &._ready {
-        color: $color_status_ready;
-      }
+        &__title {
+          @include h4;
+          font-weight: 500;
+        }
 
-      &._cancel {
-        color: $color_status_cancel;
+        &__city {
+          margin-top: 4px;
+          color: $color_grey_text;
+          font-size: 1.2rem;
+        }
       }
     }
 
     &-footer {
       display: flex;
       align-items: center;
+      margin-top: 1.2rem;
 
-      .card-footer__logo {
-        width: 42px;
-        height: 42px;
-        border-radius: 100%;
-        overflow: hidden;
+      .card-footer {
+        &__logo {
+          width: 42px;
+          height: 42px;
+          border-radius: 100%;
+          overflow: hidden;
 
-        img {
-          width: 100%;
+          img {
+            width: 100%;
+          }
+        }
+
+        &__name {
+          @include text-small;
+          margin-left: 16px;
         }
       }
     }
