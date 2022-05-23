@@ -95,6 +95,11 @@ module.exports = {
       icon: 'page-pie',
     },
   ],
+  sectionTitles: {
+    members: 'Участники',
+    events: 'Мероприятия',
+    news: 'Новости',
+  },
   newsTitle: 'Новости',
   posts: [
     {
@@ -146,6 +151,8 @@ module.exports = {
           dateEnd: '2022-05-30',
           logo: '/i/new/events/logo-1.png',
           city: 'г. Москва',
+          avatar: 'i/commission/example.jpg',
+          council: 'Волков Андрей Евгеньевич',
         },
         {
           title:
@@ -155,6 +162,8 @@ module.exports = {
           dateEnd: '2022-05-22',
           logo: '/i/new/events/logo-2.png',
           city: 'г. Санкт-Петербург',
+          avatar: 'i/commission/example.jpg',
+          council: 'Афанасьев Дмитрий Владимирович',
         },
         {
           title:
@@ -164,6 +173,8 @@ module.exports = {
           dateEnd: '2022-06-17',
           logo: '/i/new/events/logo-3.png',
           city: 'г. Москва',
+          avatar: 'i/commission/example.jpg',
+          council: 'Омельчук Андрей Владимирович',
         },
       ],
     },
@@ -207,33 +218,33 @@ module.exports = {
       title: 'Совещания',
       body: [
         {
-          title: 'Заседание, посвященное программе',
+          title: 'Совещание, посвященное программе',
           status: 1,
-          date: '2022-05-18',
+          date: '2022-06-15',
           timeStart: '15:00',
           timeEnd: '17:00',
           city: 'г. Москва, Брюсов пер., д.21',
-          tags: ['заседание', 'минобрнауки'],
+          tags: ['совещание', 'минобрнауки'],
         },
         {
           title:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus minus molestiae nesciunt ratione saepe veritatis.',
           status: 2,
-          date: '2022-05-19',
+          date: '2022-05-20',
           timeStart: '15:00',
           timeEnd: '17:00',
           city: 'г. Москва, Брюсов пер., д.21',
-          tags: ['заседание', 'минобрнауки'],
+          tags: ['совещание', 'минобрнауки'],
         },
         {
           title:
-            'Заседание, посвященное программе, название которого в 2 строки',
+            'Совещание, посвященное программе, название которого в 2 строки',
           status: 3,
-          date: '2022-04-23',
+          date: '2022-05-23',
           timeStart: '15:00',
           timeEnd: '17:00',
           city: 'г. Москва, Брюсов пер., д.21',
-          tags: ['заседание', 'минобрнауки'],
+          tags: ['совещание', 'минобрнауки'],
         },
       ],
     },

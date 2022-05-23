@@ -30,6 +30,8 @@
             :logo="content.logo"
             :status="content.status"
             :city="content.city"
+            :avatar="content.avatar"
+            :council="content.council"
           />
         </div>
         <div v-else class="events__content">

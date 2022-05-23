@@ -7,12 +7,25 @@
     <Section
       to="/calendar"
       :arrow-text="lang['events.all']"
-      :title="page.eventsTitle"
+      :title="page.sectionTitles.events"
     >
       <MainEvents :sections="page.events" />
     </Section>
 
-    <Section to="/news" :arrow-text="lang['news.all']" :title="page.newsTitle">
+    <Section
+      to="/news"
+      :arrow-text="lang['news.all']"
+      :title="page.sectionTitles.members"
+      class="_background"
+    >
+      <div></div>
+    </Section>
+
+    <Section
+      to="/news"
+      :arrow-text="lang['news.all']"
+      :title="page.sectionTitles.news"
+    >
       <Posts :posts="page.posts" />
     </Section>
 

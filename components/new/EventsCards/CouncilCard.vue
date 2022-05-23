@@ -32,9 +32,9 @@
     </div>
     <div class="events-card__footer">
       <div class="card-footer__logo">
-        <img src="/i/commission/example.jpg" alt="avatar" />
+        <img :src="avatar" alt="avatar" />
       </div>
-      <p class="card-footer__name">Волков Андрей Евгеньевич</p>
+      <p class="card-footer__name">{{ council }}</p>
     </div>
   </div>
 </template>
@@ -66,6 +66,14 @@ export default {
     status: {
       type: Number,
       default: null,
+    },
+    avatar: {
+      type: String,
+      default: '',
+    },
+    council: {
+      type: String,
+      default: '',
     },
   },
 }
