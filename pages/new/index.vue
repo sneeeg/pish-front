@@ -14,11 +14,11 @@
 
     <Section
       to="/news"
-      :arrow-text="lang['news.all']"
+      :arrow-text="lang['members.all']"
       :title="page.sectionTitles.members"
       class="_background"
     >
-      <div></div>
+      <MainMembers :sections="page.members" />
     </Section>
 
     <Section
@@ -46,9 +46,11 @@ import MainFirstScreen2 from '~/components/MainFirstScreen2'
 import MainCells from '~/components/new/MainCells'
 import MainPrograms from '~/components/new/MainPrograms'
 import MainEvents from '~/components/new/MainEvents'
+import MainMembers from '~/components/new/MainMembers'
 
 export default {
   components: {
+    MainMembers,
     MainEvents,
     MainPrograms,
     MainFirstScreen2,

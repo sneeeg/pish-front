@@ -1,5 +1,6 @@
 <template>
-  <div class="events">
+  <Loader v-if="isLoading" />
+  <div v-else-if="data" class="members">
     <ul v-if="!window.isMobileSize" class="tabs__list">
       <li
         v-for="{ id, title } in sections"
@@ -19,33 +20,7 @@
     />
     <transition mode="out-in" :css="false" @enter="enter" @leave="leave">
       <div ref="content" :key="currentTabID">
-        <div v-if="currentTabID === 1" class="events__content">
-          <CouncilCard
-            v-for="content in contents"
-            :key="content.id"
-            :title="content.title"
-            :date-start="content.dateStart"
-            :date-end="content.dateEnd"
-            :logo="content.logo"
-            :status="content.status"
-            :city="content.city"
-            :avatar="content.avatar"
-            :council="content.council"
-          />
-        </div>
-        <div v-else class="events__content">
-          <MeetingCard
-            v-for="content in contents"
-            :key="content.id"
-            :title="content.title"
-            :date="content.date"
-            :status="content.status"
-            :time-start="content.timeStart"
-            :time-end="content.timeEnd"
-            :city="content.city"
-            :tags="content.tags"
-          />
-        </div>
+        <MapFounders :items="data.participants" />
       </div>
     </transition>
   </div>
@@ -55,12 +30,19 @@
 import { mapState } from 'vuex'
 import gsap from 'gsap'
 import CustomSelect from '~/components/controls/CustomSelect'
-import MeetingCard from '~/components/new/EventsCards/MeetingCard'
-import CouncilCard from '~/components/new/EventsCards/CouncilCard'
+import Loader from '~/components/Loader'
+import MapFounders from '~/components/new/MembersMap/MapFounders'
+
+const GROUPS = [
+  'Группа 1 - участники программы (основной трек)',
+  'Группа 2 - университеты творческой направленности',
+  'Группа 3 - кандидаты на участие в программе',
+  'Группа 4 - участники программы (реорганизация)',
+]
 
 export default {
-  name: 'MainEvents',
-  components: { CouncilCard, MeetingCard, CustomSelect },
+  name: 'MainMembers',
+  components: { Loader, MapFounders, CustomSelect },
   props: {
     sections: {
       type: Array,
@@ -68,20 +50,43 @@ export default {
     },
   },
   data: () => ({
-    currentTabID: 2,
+    currentTabID: 1,
     tabsContentHeight: null,
     heightAnimation: null,
     animationIsOver: true,
+    isLoading: true,
+    data: null,
   }),
+  async fetch() {
+    this.isLoading = true
+
+    const [{ data }] = await Promise.all([this.$api.analytics.get()])
+
+    data.participants.forEach((participant) => {
+      participant.group = GROUPS[+participant.group - 1]
+      participant.direction = []
+
+      if (participant.isBase) {
+        participant.direction.push('Базовая часть')
+      }
+
+      if (participant.special) {
+        participant.direction.push(participant.special)
+      }
+    })
+
+    this.data = data
+
+    this.isLoading = false
+
+    this.tabsContentHeight = this.$refs.content.scrollHeight
+  },
   computed: {
     contents() {
       return this.sections.find((item) => item.id === this.currentTabID)?.body
     },
     ...mapState('default', ['lang']),
     ...mapState('responsive', ['window']),
-  },
-  mounted() {
-    this.tabsContentHeight = this.$refs.content.scrollHeight
   },
   methods: {
     toggleTab(id) {
@@ -151,7 +156,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.events {
+.members {
   &__content {
     display: flex;
     gap: 24px;
@@ -177,6 +182,7 @@ export default {
     position: relative;
     padding: 16px 0;
     font-size: 12px;
+    font-weight: 500;
     text-align: center;
     text-transform: uppercase;
     cursor: pointer;
@@ -206,6 +212,7 @@ export default {
 
     &._selected {
       opacity: 1;
+      color: $color_red;
 
       &::after {
         background-color: $color_red;

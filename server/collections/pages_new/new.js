@@ -100,7 +100,6 @@ module.exports = {
     events: 'Мероприятия',
     news: 'Новости',
   },
-  newsTitle: 'Новости',
   posts: [
     {
       id: 1,
@@ -138,7 +137,6 @@ module.exports = {
       },
     },
   ],
-  eventsTitle: 'Мероприятия',
   events: [
     {
       id: 1,
@@ -245,6 +243,81 @@ module.exports = {
           timeEnd: '17:00',
           city: 'г. Москва, Брюсов пер., д.21',
           tags: ['совещание', 'минобрнауки'],
+        },
+      ],
+    },
+  ],
+  members: [
+    {
+      id: 1,
+      title: 'По регионам',
+      body: [
+        {
+          title: 'Уральский Федеральный Университет им. Б. Ельцина',
+          status: 1,
+          dateStart: '2022-05-22',
+          dateEnd: '2022-05-30',
+          logo: '/i/new/events/logo-1.png',
+          city: 'г. Москва',
+          avatar: 'i/commission/example.jpg',
+          council: 'Волков Андрей Евгеньевич',
+        },
+        {
+          title:
+            'Санкт-Петербургский национальный исследовательский университет информационных технологий, механики и оптики',
+          status: 0,
+          dateStart: '2022-05-19',
+          dateEnd: '2022-05-22',
+          logo: '/i/new/events/logo-2.png',
+          city: 'г. Санкт-Петербург',
+          avatar: 'i/commission/example.jpg',
+          council: 'Афанасьев Дмитрий Владимирович',
+        },
+        {
+          title:
+            'Национальный исследовательский ядерный университет (Московский инженерно-физический институт)',
+          status: 0,
+          dateStart: '2022-06-10',
+          dateEnd: '2022-06-17',
+          logo: '/i/new/events/logo-3.png',
+          city: 'г. Москва',
+          avatar: 'i/commission/example.jpg',
+          council: 'Омельчук Андрей Владимирович',
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: 'По учредителям',
+      body: [
+        {
+          title: 'Заседание, посвященное программе',
+          status: 1,
+          date: '2022-05-18',
+          timeStart: '15:00',
+          timeEnd: '17:00',
+          city: 'г. Москва, Брюсов пер., д.21',
+          tags: ['заседание', 'минобрнауки'],
+        },
+        {
+          title:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus minus molestiae nesciunt ratione saepe veritatis.',
+          status: 2,
+          date: '2022-05-19',
+          timeStart: '15:00',
+          timeEnd: '17:00',
+          city: 'г. Москва, Брюсов пер., д.21',
+          tags: ['заседание', 'минобрнауки'],
+        },
+        {
+          title:
+            'Заседание, посвященное программе, название которого в 2 строки',
+          status: 3,
+          date: '2022-04-23',
+          timeStart: '15:00',
+          timeEnd: '17:00',
+          city: 'г. Москва, Брюсов пер., д.21',
+          tags: ['заседание', 'минобрнауки'],
         },
       ],
     },
