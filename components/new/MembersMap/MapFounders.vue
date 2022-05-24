@@ -1,34 +1,15 @@
 <template>
-  <div class="participants-filter">
-    <div class="participants-filter__filters">
-      <SearchSelect
-        v-for="(value, key) in filter"
-        :key="key"
-        :ref="key"
-        v-model="filter[key]"
-        multiple
-        grey-arrow
-        :options="options[key]"
-        :placeholder="filterPlaceholders[key]"
-        @input="
-          activateFilter($event, key), getOptions(true), filterLocation(key)
-        "
-      />
-    </div>
-
-    <div v-if="window.isDesktopSize && !dv" class="participants-filter-map">
-      <GraphicMap :regions="regions" />
-    </div>
+  <div v-if="window.isDesktopSize && !dv" class="participants-filter-map">
+    <GraphicMap :regions="regions" class="members__map" />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import SearchSelect from '~/components/controls/SearchSelect'
 import GraphicMap from '~/components/GraphicMap'
 export default {
   name: 'MapFounders',
-  components: { GraphicMap, SearchSelect },
+  components: { GraphicMap },
   props: {
     items: {
       type: Array,
@@ -174,33 +155,15 @@ export default {
 </script>
 
 <style lang="scss">
-.participants-filter {
-  &__filters {
-    @include flexGap(1.6rem);
+.members__map {
+  .graphic-map {
+    width: 100%;
 
-    > * {
-      flex: 1 1 30%;
-      max-width: calc(100% / 3 - 2.8rem);
-
-      @include --tablet {
-        flex: 1 1 100%;
-        max-width: 100%;
+    &__content {
+      svg {
+        width: 876px;
       }
     }
   }
-
-  &__divider,
-  &__list {
-    margin-top: 5.6rem;
-
-    @include --mobile {
-      margin-top: 4.2rem;
-    }
-  }
-}
-
-.graphic-map {
-  width: 100%;
-  margin-top: 4rem;
 }
 </style>

@@ -223,7 +223,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .participants-filter {
   &__filters {
     @include flexGap(1.6rem);
