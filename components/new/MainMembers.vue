@@ -79,8 +79,8 @@ export default {
     .content {
       &__list {
         @include scrollbar;
-        overflow: auto;
         max-height: 511px;
+        overflow: auto;
 
         .list-item {
           &:not(:first-child) {

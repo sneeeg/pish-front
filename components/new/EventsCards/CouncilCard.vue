@@ -84,10 +84,14 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 397px;
+  width: 30%;
   min-height: 347px;
   padding: 24px;
   background: $color_white;
+
+  &:not(:first-child) {
+    margin-left: 24px;
+  }
 
   &__header {
     display: flex;

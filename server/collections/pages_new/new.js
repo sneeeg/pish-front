@@ -174,6 +174,28 @@ module.exports = {
           avatar: 'i/commission/example.jpg',
           council: 'Омельчук Андрей Владимирович',
         },
+        {
+          title:
+            'Национальный исследовательский ядерный университет (Московский инженерно-физический институт)',
+          status: 0,
+          dateStart: '2022-06-10',
+          dateEnd: '2022-06-17',
+          logo: '/i/new/events/logo-3.png',
+          city: 'г. Москва',
+          avatar: 'i/commission/example.jpg',
+          council: 'Омельчук Андрей Владимирович',
+        },
+        {
+          title:
+            'Национальный исследовательский ядерный университет (Московский инженерно-физический институт)',
+          status: 0,
+          dateStart: '2022-06-10',
+          dateEnd: '2022-06-17',
+          logo: '/i/new/events/logo-3.png',
+          city: 'г. Москва',
+          avatar: 'i/commission/example.jpg',
+          council: 'Омельчук Андрей Владимирович',
+        },
       ],
     },
     {
@@ -209,6 +231,26 @@ module.exports = {
           city: 'г. Москва, Брюсов пер., д.21',
           tags: ['заседание', 'минобрнауки'],
         },
+        {
+          title:
+            'Заседание, посвященное программе, название которого в 2 строки',
+          status: 3,
+          date: '2022-04-23',
+          timeStart: '15:00',
+          timeEnd: '17:00',
+          city: 'г. Москва, Брюсов пер., д.21',
+          tags: ['заседание', 'минобрнауки'],
+        },
+        {
+          title:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus minus molestiae nesciunt ratione saepe veritatis.',
+          status: 2,
+          date: '2022-05-19',
+          timeStart: '15:00',
+          timeEnd: '17:00',
+          city: 'г. Москва, Брюсов пер., д.21',
+          tags: ['заседание', 'минобрнауки'],
+        },
       ],
     },
     {
@@ -229,6 +271,16 @@ module.exports = {
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus minus molestiae nesciunt ratione saepe veritatis.',
           status: 2,
           date: '2022-05-20',
+          timeStart: '15:00',
+          timeEnd: '17:00',
+          city: 'г. Москва, Брюсов пер., д.21',
+          tags: ['совещание', 'минобрнауки'],
+        },
+        {
+          title:
+            'Совещание, посвященное программе, название которого в 2 строки',
+          status: 3,
+          date: '2022-05-23',
           timeStart: '15:00',
           timeEnd: '17:00',
           city: 'г. Москва, Брюсов пер., д.21',

@@ -17,50 +17,50 @@
       class="tabs__select"
       @input="toggleTab"
     />
-    <transition mode="out-in" :css="false" @enter="enter" @leave="leave">
-      <div ref="content" :key="currentTabID">
-        <div v-if="currentTabID === 1" class="events__content">
-          <CouncilCard
-            v-for="content in contents"
-            :key="content.id"
-            :title="content.title"
-            :date-start="content.dateStart"
-            :date-end="content.dateEnd"
-            :logo="content.logo"
-            :status="content.status"
-            :city="content.city"
-            :avatar="content.avatar"
-            :council="content.council"
-          />
-        </div>
-        <div v-else class="events__content">
-          <MeetingCard
-            v-for="content in contents"
-            :key="content.id"
-            :title="content.title"
-            :date="content.date"
-            :status="content.status"
-            :time-start="content.timeStart"
-            :time-end="content.timeEnd"
-            :city="content.city"
-            :tags="content.tags"
-          />
-        </div>
+    <div ref="content" :key="currentTabID">
+      <div v-if="currentTabID === 1" ref="contentItems" class="events__content">
+        <CouncilCard
+          v-for="content in contents"
+          :key="content.id"
+          :title="content.title"
+          :date-start="content.dateStart"
+          :date-end="content.dateEnd"
+          :logo="content.logo"
+          :status="content.status"
+          :city="content.city"
+          :avatar="content.avatar"
+          :council="content.council"
+        />
       </div>
-    </transition>
+      <div v-else ref="contentItems" class="events__content">
+        <MeetingCard
+          v-for="content in contents"
+          :key="content.id"
+          :title="content.title"
+          :date="content.date"
+          :status="content.status"
+          :time-start="content.timeStart"
+          :time-end="content.timeEnd"
+          :city="content.city"
+          :tags="content.tags"
+        />
+      </div>
+    </div>
+    <SliderControls v-if="sliderInstance" :slider-instance="sliderInstance" />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import gsap from 'gsap'
 import CustomSelect from '~/components/controls/CustomSelect'
+import Slider from '~/assets/js/modules/slider'
+import SliderControls from '~/components/SliderControls'
 import MeetingCard from '~/components/new/EventsCards/MeetingCard'
 import CouncilCard from '~/components/new/EventsCards/CouncilCard'
 
 export default {
   name: 'MainEvents',
-  components: { CouncilCard, MeetingCard, CustomSelect },
+  components: { CouncilCard, CustomSelect, MeetingCard, SliderControls },
   props: {
     sections: {
       type: Array,
@@ -69,95 +69,40 @@ export default {
   },
   data: () => ({
     currentTabID: 2,
-    tabsContentHeight: null,
-    heightAnimation: null,
-    animationIsOver: true,
+    sliderInstance: null,
   }),
   computed: {
+    ...mapState('responsive', ['window', 'device']),
     contents() {
       return this.sections.find((item) => item.id === this.currentTabID)?.body
     },
-    ...mapState('default', ['lang']),
-    ...mapState('responsive', ['window']),
   },
   mounted() {
-    this.tabsContentHeight = this.$refs.content.scrollHeight
+    this.createSlider()
   },
   methods: {
+    createSlider() {
+      this.sliderInstance?.flickity?.destroy()
+      this.sliderInstance = null
+      this.sliderInstance = new Slider(this.$refs.contentItems, {
+        groupCells: this.window.isDesktopSize
+          ? 3
+          : this.window.isMobileSize
+          ? false
+          : 2,
+        draggable: this.device.isAdaptive,
+      })
+      this.$forceUpdate()
+    },
     toggleTab(id) {
       this.currentTabID = id
-    },
-    appearContent(el, done) {
-      gsap.to(el, {
-        opacity: 1,
-        duration: 0.15,
-        ease: 'power1.out',
-        onComplete: () => {
-          this.animationIsOver = true
-          done()
-        },
-      })
-    },
-    enter(el, done) {
-      this.animationIsOver = false
-      gsap.set(el, {
-        opacity: 0,
-        willChange: 'transform',
-      })
-      if (this.tabsContentHeight !== el.scrollHeight) {
-        gsap.set(el, {
-          height: this.tabsContentHeight,
-        })
-        this.heightAnimation = gsap.to(el, {
-          height: 'auto',
-          duration: 0.45,
-          delay: 0.15,
-          ease: 'power1.out',
-          onComplete: () => {
-            this.appearContent(el, done)
-          },
-        })
-      } else {
-        this.appearContent(el, done)
-      }
-    },
-    leave(el, done) {
-      if (this.heightAnimation !== null) {
-        this.heightAnimation.kill()
-      }
-      this.tabsContentHeight =
-        el.style.height !== 'auto' && el.style.height !== ''
-          ? el.style.height
-          : el.scrollHeight
-      if (this.animationIsOver) {
-        gsap.fromTo(
-          el,
-          {
-            opacity: 1,
-          },
-          {
-            opacity: 0,
-            duration: 0.15,
-            ease: 'power1.out',
-            onComplete: done,
-          }
-        )
-      } else {
-        done()
-      }
+      setTimeout(() => this.createSlider())
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.events {
-  &__content {
-    display: flex;
-    gap: 24px;
-  }
-}
-
 .tabs {
   &__list {
     display: flex;
