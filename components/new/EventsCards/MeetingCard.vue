@@ -79,13 +79,13 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 32%;
+  width: 32.1%;
   min-height: 347px;
   padding: 24px;
   background: $color_white;
 
-  &:not(:first-child) {
-    margin-left: 24px;
+  &:not(:last-child) {
+    margin-right: 1.9%;
   }
 
   &__header {
