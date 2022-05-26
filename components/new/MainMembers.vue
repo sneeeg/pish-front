@@ -5,6 +5,7 @@
         <div class="members__content">
           <div class="content__list">
             <SearchSelect />
+            <p>121 университет</p>
             <ul class="list">
               <li v-for="index in 20" :key="index" class="list-item">
                 <div class="list-item__logo">
@@ -20,6 +21,20 @@
             </ul>
           </div>
           <div class="content__map">
+            <div class="map__header">
+              <div class="header__item">
+                <h4 class="header__value">121</h4>
+                <p class="header__title">Университет</p>
+              </div>
+              <div class="header__item">
+                <h4 class="header__value">46</h4>
+                <p class="header__title">Регионов</p>
+              </div>
+              <div class="header__item">
+                <h4 class="header__value">64%</h4>
+                <p class="header__title">Доля региональных университетов</p>
+              </div>
+            </div>
             <MapFounders v-if="data" :items="data.participants" />
           </div>
         </div>
@@ -88,10 +103,12 @@ export default {
     .content {
       &__list {
         padding-right: 10px;
+        border-right: 1px solid $color_grey_border;
 
         .list {
           @include scrollbar;
-          max-height: 511px;
+          max-height: 550px;
+          margin-top: 24px;
           overflow: auto;
         }
 
@@ -109,6 +126,34 @@ export default {
               color: $color_grey_text;
               font-size: 1.2rem;
               line-height: 1.5rem;
+            }
+          }
+        }
+      }
+
+      &__map {
+        margin-left: 48px;
+
+        .map__header {
+          display: flex;
+          justify-content: space-between;
+
+          .header {
+            &__item {
+              display: flex;
+              flex: 292px;
+              align-items: center;
+            }
+
+            &__value {
+              font-size: 4.6rem;
+              font-weight: 700;
+              line-height: 48px;
+            }
+
+            &__title {
+              margin-left: 12px;
+              color: $color_grey_text;
             }
           }
         }
