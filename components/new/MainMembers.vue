@@ -4,10 +4,18 @@
       <template #tabs__content>
         <div class="members__content">
           <div class="content__list">
-            <ul>
+            <SearchSelect />
+            <ul class="list">
               <li v-for="index in 20" :key="index" class="list-item">
-                <p>НИУ ВШЭ {{ index }}</p>
-                <span>Центральный федеральный округ, г.Москва</span>
+                <div class="list-item__logo">
+                  <img src="i/new/members/logo-1.png" alt="logo" />
+                </div>
+                <div class="list-item__title">
+                  <p>НИУ ВШЭ {{ index }}</p>
+                  <span class="description"
+                    >Центральный федеральный округ, г.Москва</span
+                  >
+                </div>
               </li>
             </ul>
           </div>
@@ -24,6 +32,7 @@
 import { mapState } from 'vuex'
 import MapFounders from '~/components/new/MembersMap/MapFounders'
 import Tabs from '~/components/new/Tabs'
+import SearchSelect from '~/components/Controls/SearchSelect'
 
 const GROUPS = [
   'Группа 1 - участники программы (основной трек)',
@@ -34,7 +43,7 @@ const GROUPS = [
 
 export default {
   name: 'MainMembers',
-  components: { Tabs, MapFounders },
+  components: { SearchSelect, Tabs, MapFounders },
   props: {
     sections: {
       type: Array,
@@ -78,13 +87,29 @@ export default {
 
     .content {
       &__list {
-        @include scrollbar;
-        max-height: 511px;
-        overflow: auto;
+        padding-right: 10px;
+
+        .list {
+          @include scrollbar;
+          max-height: 511px;
+          overflow: auto;
+        }
 
         .list-item {
           &:not(:first-child) {
             margin-top: 24px;
+          }
+
+          &__title {
+            @include p;
+            margin-left: 24px;
+
+            .description {
+              margin-top: 4px;
+              color: $color_grey_text;
+              font-size: 1.2rem;
+              line-height: 1.5rem;
+            }
           }
         }
       }
