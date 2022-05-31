@@ -46,7 +46,12 @@
         />
       </div>
     </div>
-    <SliderControls v-if="sliderInstance" :slider-instance="sliderInstance" />
+
+    <SliderControls
+      v-if="sliderInstance"
+      :key="sliderInstance"
+      :slider-instance="sliderInstance"
+    />
   </div>
 </template>
 
@@ -91,6 +96,7 @@ export default {
           ? false
           : 2,
         draggable: this.device.isAdaptive,
+        pageDots: false,
       })
       this.$forceUpdate()
     },

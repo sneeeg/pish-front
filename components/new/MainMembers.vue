@@ -146,8 +146,8 @@ export default {
             }
 
             &__value {
-              font-size: 4.6rem;
               font-weight: 700;
+              font-size: 4.6rem;
               line-height: 48px;
             }
 
