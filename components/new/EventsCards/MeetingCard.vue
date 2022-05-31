@@ -80,7 +80,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   width: 32.1%;
-  min-height: 347px;
+  min-height: 400px;
   padding: 24px;
   background: $color_white;
 

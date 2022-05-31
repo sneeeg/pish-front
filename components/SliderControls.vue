@@ -5,7 +5,7 @@
       :disabled="!slideIndex"
       @click.native="changeSlide(slideIndex - 1)"
     />
-    <div class="slider-controls-component-dots">
+    <!--    <div class="slider-controls-component-dots">
       <button
         v-for="(btn, index) in total"
         :key="btn.id"
@@ -17,7 +17,7 @@
         ]"
         @click="changeSlide(index)"
       ></button>
-    </div>
+    </div>-->
     <ControlBtn
       class="slider-controls-component__btn"
       :disabled="slideIndex === total - 1"
@@ -65,6 +65,10 @@ export default {
 .slider-controls-component {
   display: flex;
   align-items: center;
+
+  &__btn:not(:first-child) {
+    margin-left: 12px;
+  }
 }
 
 .slider-controls-component-dots {

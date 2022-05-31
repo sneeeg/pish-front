@@ -51,6 +51,7 @@
       v-if="sliderInstance"
       :key="sliderInstance"
       :slider-instance="sliderInstance"
+      class="tabs__slider-controls"
     />
   </div>
 </template>
@@ -223,6 +224,16 @@ export default {
     &::after {
       display: none;
       content: 'flickity';
+    }
+  }
+
+  &__slider-controls {
+    position: absolute;
+    right: 0;
+    margin-top: 25px;
+
+    .slider-controls-component-dots {
+      display: none;
     }
   }
 
