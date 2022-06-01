@@ -84,6 +84,11 @@ export default {
   padding: 24px;
   background: $color_white;
 
+  @include --mobile {
+    width: 100%;
+    min-height: 420px;
+  }
+
   &:not(:last-child) {
     margin-right: 1.9%;
   }

@@ -161,7 +161,7 @@ export default {
 
     &__content {
       svg {
-        width: 876px;
+        width: 80rem;
       }
     }
   }

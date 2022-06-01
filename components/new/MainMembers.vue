@@ -105,6 +105,12 @@ export default {
         padding-right: 10px;
         border-right: 1px solid $color_grey_border;
 
+        @include --tablet {
+          width: 100%;
+          padding-right: 0;
+          border: none;
+        }
+
         .list {
           @include scrollbar;
           max-height: 550px;
@@ -113,6 +119,10 @@ export default {
         }
 
         .list-item {
+          @include --tablet {
+            width: 100%;
+          }
+
           &:not(:first-child) {
             margin-top: 24px;
           }
@@ -133,6 +143,10 @@ export default {
 
       &__map {
         margin-left: 48px;
+
+        @include --tablet {
+          display: none;
+        }
 
         .map__header {
           display: flex;
