@@ -1,15 +1,56 @@
 <template>
-  <div v-if="window.isDesktopSize && !dv" class="participants-filter-map">
-    <GraphicMap :regions="regions" class="members__map" />
+  <div class="members__content">
+    <div class="content__list">
+      <SearchSelect
+        v-for="(value, key) in filter"
+        :key="key"
+        :ref="key"
+        v-model="filter[key]"
+        multiple
+        :placeholder="filterPlaceholders[key]"
+        :options="options[key]"
+        @input="activateFilter($event, key), getOptions(true)"
+      />
+      <p>{{ items.length }} университет</p>
+      <ul class="list">
+        <li v-for="item in items" :key="item" class="list-item">
+          <div class="list-item__logo">
+            <img :src="item.logo" alt="logo" />
+          </div>
+          <div class="list-item__title">
+            <p>{{ item.shortName }}</p>
+            <p class="description">{{ item.region }}, г.{{ item.city }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content__map">
+      <div class="map__header">
+        <div class="header__item">
+          <h4 class="header__value">{{ items.length }}</h4>
+          <p class="header__title">университет</p>
+        </div>
+        <div class="header__item">
+          <h4 class="header__value">46</h4>
+          <p class="header__title">Регионов</p>
+        </div>
+        <div class="header__item">
+          <h4 class="header__value">64%</h4>
+          <p class="header__title">Доля региональных университетов</p>
+        </div>
+      </div>
+      <GraphicMap :regions="regions" class="members__map" />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import SearchSelect from '~/components/controls/SearchSelect'
 import GraphicMap from '~/components/GraphicMap'
 export default {
   name: 'MapFounders',
-  components: { GraphicMap },
+  components: { GraphicMap, SearchSelect },
   props: {
     items: {
       type: Array,
@@ -100,26 +141,13 @@ export default {
   },
   created() {
     this.filterPlaceholders = {
-      region: 'Федеральный округ',
-      location: 'Субъект РФ',
-      group: 'Группа критериев',
-      founder: 'Учредитель организации',
-      direction: 'Направление гранта',
+      region: 'Регион',
     }
 
     this.getOptions()
     this.getOptions(true)
   },
   methods: {
-    filterLocation(filterName) {
-      if (filterName !== 'region') return
-
-      this.filter.location = this.filter.location.filter(
-        (item) =>
-          this.filter.region.length &&
-          this.selectableOptions.location.includes(item)
-      )
-    },
     activateFilter(e, filterName) {
       const index = this.activeFilters.findIndex((item) => item === filterName)
 
@@ -155,13 +183,97 @@ export default {
 </script>
 
 <style lang="scss">
-.members__map {
-  .graphic-map {
-    width: 100%;
+.members {
+  &__content {
+    display: flex;
 
-    &__content {
-      svg {
-        width: 80rem;
+    .content {
+      &__list {
+        width: 316px;
+        padding-right: 10px;
+        border-right: 1px solid $color_grey_border;
+
+        @include --tablet {
+          width: 100%;
+          padding-right: 0;
+          border: none;
+        }
+
+        .list {
+          @include scrollbar;
+          align-items: flex-start;
+          max-height: 550px;
+          margin-top: 24px;
+          overflow: auto;
+        }
+
+        .list-item {
+          align-items: center;
+
+          @include --tablet {
+            width: 100%;
+          }
+
+          &:not(:first-child) {
+            margin-top: 24px;
+          }
+
+          &__title {
+            @include p;
+            margin-left: 24px;
+
+            .description {
+              margin-top: 4px;
+              color: $color_grey_text;
+              font-size: 1.2rem;
+              line-height: 1.5rem;
+            }
+          }
+        }
+      }
+
+      &__map {
+        margin-left: 48px;
+
+        @include --tablet {
+          display: none;
+        }
+
+        .map__header {
+          display: flex;
+          justify-content: space-between;
+
+          .header {
+            &__item {
+              display: flex;
+              flex: 292px;
+              align-items: center;
+            }
+
+            &__value {
+              font-weight: 700;
+              font-size: 4.6rem;
+              line-height: 48px;
+            }
+
+            &__title {
+              margin-left: 12px;
+              color: $color_grey_text;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__map {
+    .graphic-map {
+      width: 100%;
+
+      &__content {
+        svg {
+          width: 80rem;
+        }
       }
     }
   }
