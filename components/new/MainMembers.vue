@@ -2,20 +2,25 @@
   <div class="members">
     <Tabs :sections="sections">
       <template #tabs__content>
-        <div class="members__content">
+        <div v-if="mapData" class="members__content">
           <div class="content__list">
-            <SearchSelect />
-            <p>121 университет</p>
+            <SearchSelect
+              multiple
+              :placeholder="filterPlaceholders.region"
+              :options="['Южный', 'Северо-Западный']"
+              @input="activateFilter($event, 'region')"
+            />
+            <p>{{ mapData.length }} университет</p>
             <ul class="list">
-              <li v-for="index in 20" :key="index" class="list-item">
+              <li v-for="item in mapData" :key="item" class="list-item">
                 <div class="list-item__logo">
                   <img src="i/new/members/logo-1.png" alt="logo" />
                 </div>
                 <div class="list-item__title">
-                  <p>НИУ ВШЭ {{ index }}</p>
-                  <span class="description"
-                    >Центральный федеральный округ, г.Москва</span
-                  >
+                  <p>{{ item.shortName }}</p>
+                  <p class="description">
+                    {{ item.region }}, г.{{ item.city }}
+                  </p>
                 </div>
               </li>
             </ul>
@@ -23,8 +28,8 @@
           <div class="content__map">
             <div class="map__header">
               <div class="header__item">
-                <h4 class="header__value">121</h4>
-                <p class="header__title">Университет</p>
+                <h4 class="header__value">{{ mapData.length }}</h4>
+                <p class="header__title">университет</p>
               </div>
               <div class="header__item">
                 <h4 class="header__value">46</h4>
@@ -35,7 +40,7 @@
                 <p class="header__title">Доля региональных университетов</p>
               </div>
             </div>
-            <MapFounders v-if="data" :items="data.participants" />
+            <MapFounders :items="mapData" />
           </div>
         </div>
       </template>
@@ -49,13 +54,6 @@ import MapFounders from '~/components/new/MembersMap/MapFounders'
 import Tabs from '~/components/new/Tabs'
 import SearchSelect from '~/components/Controls/SearchSelect'
 
-const GROUPS = [
-  'Группа 1 - участники программы (основной трек)',
-  'Группа 2 - университеты творческой направленности',
-  'Группа 3 - кандидаты на участие в программе',
-  'Группа 4 - участники программы (реорганизация)',
-]
-
 export default {
   name: 'MainMembers',
   components: { SearchSelect, Tabs, MapFounders },
@@ -66,31 +64,57 @@ export default {
     },
   },
   data: () => ({
-    data: null,
+    mapData: null,
+    filterPlaceholders: {},
+    selectableOptions: { region: [] },
+    activeFilters: [],
   }),
   async fetch() {
     this.isLoading = true
 
     const [{ data }] = await Promise.all([this.$api.analytics.get()])
-
-    data.participants.forEach((participant) => {
-      participant.group = GROUPS[+participant.group - 1]
-      participant.direction = []
-
-      if (participant.isBase) {
-        participant.direction.push('Базовая часть')
-      }
-
-      if (participant.special) {
-        participant.direction.push(participant.special)
-      }
-    })
-
-    this.data = data
+    this.mapData = data.participants_new
   },
   computed: {
     ...mapState('default', ['lang']),
     ...mapState('responsive', ['window']),
+  },
+  created() {
+    this.filterPlaceholders = {
+      region: 'Регион',
+      founder: 'Учредитель организации',
+    }
+  },
+  methods: {
+    activateFilter(e, filterName) {
+      const index = this.activeFilters.findIndex((item) => item === filterName)
+      if (!e.length && index !== -1) {
+        this.activeFilters.splice(index, 1)
+      } else if (index === -1) {
+        this.activeFilters.push(filterName)
+      }
+    },
+    getOptions(selectable = false) {
+      Object.keys(this.selectableOptions).forEach((filterName) => {
+        const itemsArr = !selectable ? this.items : this.selectedItems
+        const result = itemsArr.reduce((acc, item) => {
+          if (typeof item[filterName] === 'object') {
+            acc = acc.concat(item[filterName])
+          } else {
+            acc.push(item[filterName])
+          }
+
+          return acc
+        }, [])
+
+        this[selectable ? 'selectableOptions' : 'options'][filterName] = [
+          ...new Set(result),
+        ]
+      })
+    },
+    isOptionSelectable(filterName) {
+      return (option) => this.selectableOptions[filterName].includes(option)
+    },
   },
 }
 </script>
@@ -102,6 +126,7 @@ export default {
 
     .content {
       &__list {
+        width: 316px;
         padding-right: 10px;
         border-right: 1px solid $color_grey_border;
 
@@ -113,12 +138,15 @@ export default {
 
         .list {
           @include scrollbar;
+          align-items: flex-start;
           max-height: 550px;
           margin-top: 24px;
           overflow: auto;
         }
 
         .list-item {
+          align-items: center;
+
           @include --tablet {
             width: 100%;
           }
