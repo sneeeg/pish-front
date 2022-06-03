@@ -1,38 +1,35 @@
 <template>
-  <Section>
-    <div class="main-cells">
-      <div class="main-cells__wrapper">
-        <SmartLink
-          v-for="cell in cells"
-          :key="cell.id"
-          :to="cell.href"
-          :class="['main-cell', '_sub', 'hover-opacity']"
-        >
-          <div>
-            <div class="main-cell__icon">
-              <SvgIcon :name="cell.icon" />
-            </div>
-
-            <div class="main-cell__title _visually-h4" v-html="cell.text"></div>
-
-            <p class="main-cell__description">{{ cell.description }}</p>
+  <div class="main-cells">
+    <div class="main-cells__wrapper">
+      <SmartLink
+        v-for="cell in cells"
+        :key="cell.id"
+        :to="cell.href"
+        :class="['main-cell', '_sub', 'hover-opacity']"
+      >
+        <div class="main-cel__body">
+          <div class="main-cell__icon">
+            <SvgIcon :name="cell.icon" />
           </div>
 
-          <ArrowLink :text="lang['base.more']" is-div> </ArrowLink>
-        </SmartLink>
-      </div>
+          <div class="main-cell__title _visually-h4" v-html="cell.text"></div>
+
+          <p class="main-cell__description">{{ cell.description }}</p>
+        </div>
+
+        <ArrowLink :text="lang['base.more']" is-div> </ArrowLink>
+      </SmartLink>
     </div>
-  </Section>
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import Section from '~/components/layout/Section'
 import SmartLink from '~/components/utils/SmartLink'
 import ArrowLink from '~/components/controls/ArrowLink'
 export default {
   name: 'MainCells',
-  components: { ArrowLink, SmartLink, Section },
+  components: { ArrowLink, SmartLink },
   props: {
     cells: {
       type: Array,
@@ -61,14 +58,17 @@ export default {
 
 .main-cell {
   display: flex;
-  flex-basis: 310px;
+  flex-basis: 48%;
   flex-direction: column;
-  flex-grow: 1;
   border: 1px solid $color_grey_border;
   background-color: $color_white;
 
   @include --desktop {
     flex-basis: 292px;
+  }
+
+  @include --mobile {
+    flex-basis: 100%;
   }
 
   &__title {
@@ -92,7 +92,7 @@ export default {
 
   &._sub {
     justify-content: space-between;
-    height: 26.2rem;
+    min-height: 26.2rem;
     padding: 2.4rem;
 
     @include --mobile {

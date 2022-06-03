@@ -1,8 +1,14 @@
 <template>
   <div>
-    <MainFirstScreen2 :slides="page.firstScreen.slides" />
-    <MainCells :cells="page.cells" class="_background" />
-    <MainPrograms :programs="page.programs" class="_background" />
+    <Section>
+      <MainFirstScreen2 :slides="page.firstScreen.slides" />
+    </Section>
+    <Section background>
+      <MainCells :cells="page.cells" />
+    </Section>
+    <Section background>
+      <MainPrograms :programs="page.programs" />
+    </Section>
 
     <Section
       to="/calendar"
@@ -16,7 +22,7 @@
       to="/news"
       :arrow-text="lang['members.all']"
       :title="page.sectionTitles.members"
-      class="_background"
+      background
     >
       <MainMembers :sections="page.members" />
     </Section>

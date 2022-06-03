@@ -1,79 +1,76 @@
 <template>
-  <Section>
-    <div v-if="slides && slides.length" class="main-first">
-      <div ref="sliderItems" class="main-first__items">
-        <div
-          v-for="(slide, index) in slides"
-          :key="index"
-          class="main-first__item"
-        >
-          <div class="main-first__text-block">
-            <h1 class="main-first__item-title">{{ slide.title }}</h1>
-            <HTMLContent
-              class="main-first__item-description"
-              :html="slide.description"
-            />
-          </div>
-          <div class="main-first__image">
-            <img
-              :src="slide.src"
-              :alt="slide.alt || lang['base.alt'] || 'Приоритет 2030'"
-            />
-          </div>
+  <div v-if="slides && slides.length" class="main-first">
+    <div ref="sliderItems" class="main-first__items">
+      <div
+        v-for="(slide, index) in slides"
+        :key="index"
+        class="main-first__item"
+      >
+        <div class="main-first__text-block">
+          <h1 class="main-first__item-title">{{ slide.title }}</h1>
+          <HTMLContent
+            class="main-first__item-description"
+            :html="slide.description"
+          />
         </div>
-      </div>
-
-      <div class="slider__footer">
-        <Btn class="main-first__item-btn" :text="lang['base.more']" />
-        <div class="slider-controls">
-          <a
-            href=""
-            :class="[
-              'slider-controls__btn',
-              '_prev',
-              'hover-opacity',
-              { _disabled: !currentSlide },
-            ]"
-            @click.prevent="changeSlide('previous')"
-          >
-            <SvgIcon name="arrow-left" />
-          </a>
-
-          <div class="slider-controls__counter">
-            <div>
-              <span>{{ currentSlide + 1 }}</span> /
-            </div>
-            <div>{{ slides.length }}</div>
-          </div>
-
-          <a
-            href=""
-            :class="[
-              'slider-controls__btn',
-              '_next',
-              'hover-opacity',
-              { _disabled: currentSlide === slides.length - 1 },
-            ]"
-            @click.prevent="changeSlide('next')"
-          >
-            <SvgIcon name="arrow-right" />
-          </a>
+        <div class="main-first__image">
+          <img
+            :src="slide.src"
+            :alt="slide.alt || lang['base.alt'] || 'Приоритет 2030'"
+          />
         </div>
       </div>
     </div>
-  </Section>
+
+    <div class="slider__footer">
+      <Btn class="main-first__item-btn" :text="lang['base.more']" />
+      <div class="slider-controls">
+        <a
+          href=""
+          :class="[
+            'slider-controls__btn',
+            '_prev',
+            'hover-opacity',
+            { _disabled: !currentSlide },
+          ]"
+          @click.prevent="changeSlide('previous')"
+        >
+          <SvgIcon name="arrow-left" />
+        </a>
+
+        <div class="slider-controls__counter">
+          <div>
+            <span>{{ currentSlide + 1 }}</span> /
+          </div>
+          <div>{{ slides.length }}</div>
+        </div>
+
+        <a
+          href=""
+          :class="[
+            'slider-controls__btn',
+            '_next',
+            'hover-opacity',
+            { _disabled: currentSlide === slides.length - 1 },
+          ]"
+          @click.prevent="changeSlide('next')"
+        >
+          <SvgIcon name="arrow-right" />
+        </a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import Section from '~/components/layout/Section'
 import Slider from '~/assets/js/modules/slider'
 import Btn from '~/components/controls/Btn'
 import HTMLContent from '~/components/utils/HTMLContent'
 
 export default {
   name: 'MainFirstScreen2',
-  components: { Section, Btn, HTMLContent },
+  components: { Btn, HTMLContent },
   props: {
     slides: {
       type: Array,

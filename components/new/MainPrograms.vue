@@ -1,37 +1,34 @@
 <template>
-  <Section>
-    <div class="main-programs">
-      <div class="main-programs__wrapper">
-        <div
-          v-for="program in programs"
-          :key="program.id"
-          :class="['main-program', program.image ? '_main' : '_sub']"
-        >
-          <div class="main-program__content">
-            <div class="main-program__title" v-html="program.title"></div>
-            <p class="main-program__description">{{ program.description }}</p>
-            <Btn
-              class="main-program__btn"
-              :text="lang['base.more']"
-              :to="program.href"
-            />
-          </div>
-          <div v-if="!!program.image" class="main-program__image">
-            <img :src="program.image" alt="image" />
-          </div>
+  <div class="main-programs">
+    <div class="main-programs__wrapper">
+      <div
+        v-for="program in programs"
+        :key="program.id"
+        :class="['main-program', program.image ? '_main' : '_sub']"
+      >
+        <div class="main-program__content">
+          <div class="main-program__title" v-html="program.title"></div>
+          <p class="main-program__description">{{ program.description }}</p>
+          <Btn
+            class="main-program__btn"
+            :text="lang['base.more']"
+            :to="program.href"
+          />
+        </div>
+        <div v-if="!!program.image" class="main-program__image">
+          <img :src="program.image" alt="image" />
         </div>
       </div>
     </div>
-  </Section>
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import Section from '~/components/layout/Section'
 import Btn from '~/components/controls/Btn'
 export default {
   name: 'MainPrograms',
-  components: { Btn, Section },
+  components: { Btn },
   props: {
     programs: {
       type: Array,
