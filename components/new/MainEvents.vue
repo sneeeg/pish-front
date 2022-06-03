@@ -95,8 +95,11 @@ export default {
           ? 3
           : this.window.isMobileSize
           ? false
+          : this.window.isTabletSize
+          ? 2.3
           : 2,
         draggable: this.device.isAdaptive,
+        adaptiveHeight: true,
         pageDots: false,
       })
       this.$forceUpdate()

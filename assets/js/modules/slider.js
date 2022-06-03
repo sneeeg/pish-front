@@ -10,6 +10,7 @@ export default class Slider {
     prevNextButtons: false,
     pageDots: false,
     cellAlign: 'left',
+    adaptiveHeight: false,
   }
 
   static _defaultUI = {

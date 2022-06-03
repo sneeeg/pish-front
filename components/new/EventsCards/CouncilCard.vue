@@ -89,6 +89,12 @@ export default {
   padding: 24px;
   background: $color_white;
 
+  @include --tablet {
+    width: 42%;
+    height: 100%;
+    min-height: 430px;
+  }
+
   @include --mobile {
     width: 100%;
     min-height: 420px;
