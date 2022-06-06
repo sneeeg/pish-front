@@ -2,6 +2,7 @@
   <div v-if="mapData" class="members">
     <Tabs :sections="sections">
       <template #tabs__content>
+        <MapRegions :items="mapData" />
         <MapFounders :items="mapData" />
       </template>
     </Tabs>
@@ -12,10 +13,11 @@
 import { mapState } from 'vuex'
 import MapFounders from '~/components/new/MembersMap/MapFounders'
 import Tabs from '~/components/new/Tabs'
+import MapRegions from '~/components/new/MembersMap/MapRegions'
 
 export default {
   name: 'MainMembers',
-  components: { Tabs, MapFounders },
+  components: { MapRegions, Tabs, MapFounders },
   props: {
     sections: {
       type: Array,

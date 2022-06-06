@@ -1,33 +1,51 @@
 <template>
-  <div class="participants-filter">
-    <div class="participants-filter__filters">
+  <div class="members__content">
+    <div class="content__list">
       <SearchSelect
         v-for="(value, key) in filter"
         :key="key"
         :ref="key"
         v-model="filter[key]"
         multiple
-        grey-arrow
-        :disabled="!dv && key === 'location' && !filter.region.length"
-        :options="!dv && key === 'location' ? locations : options[key]"
         :placeholder="filterPlaceholders[key]"
-        @input="
-          activateFilter($event, key), getOptions(true), filterLocation(key)
-        "
+        :options="options[key]"
+        @input="activateFilter($event, key), getOptions(true)"
       />
+      <p>
+        {{ selectedItems.length }}
+        {{ numUniversities(selectedItems.length) }}
+      </p>
+      <ul class="list">
+        <li v-for="item in selectedItems" :key="item" class="list-item">
+          <div class="list-item__logo">
+            <img :src="item.logo" alt="logo" />
+          </div>
+          <div class="list-item__title">
+            <p>{{ item.shortName }}</p>
+            <p class="description">{{ item.region }}, г.{{ item.city }}</p>
+          </div>
+        </li>
+      </ul>
     </div>
-
-    <div v-if="window.isDesktopSize && !dv" class="participants-filter-map">
-      <GraphicMap :regions="regions" />
+    <div class="content__map">
+      <div class="map__header">
+        <div class="header__item">
+          <h4 class="header__value">{{ items.length }}</h4>
+          <p class="header__title">
+            {{ numUniversities(items.length) }}
+          </p>
+        </div>
+        <div class="header__item">
+          <h4 class="header__value">46</h4>
+          <p class="header__title">Регионов</p>
+        </div>
+        <div class="header__item">
+          <h4 class="header__value">64%</h4>
+          <p class="header__title">Доля региональных университетов</p>
+        </div>
+      </div>
+      <GraphicMap :regions="regions" class="members__map" />
     </div>
-
-    <Divider class="participants-filter__divider" />
-
-    <ParticipantsList
-      :dv="dv"
-      :items="selectedItems"
-      class="participants-filter__list"
-    />
   </div>
 </template>
 
@@ -35,11 +53,9 @@
 import { mapState } from 'vuex'
 import SearchSelect from '~/components/controls/SearchSelect'
 import GraphicMap from '~/components/GraphicMap'
-import Divider from '~/components/Divider'
-import ParticipantsList from '~/components/ParticipantsList'
 export default {
   name: 'MapRegions',
-  components: { ParticipantsList, Divider, GraphicMap, SearchSelect },
+  components: { GraphicMap, SearchSelect },
   props: {
     items: {
       type: Array,
@@ -53,35 +69,12 @@ export default {
   },
   data() {
     return {
-      filter: this.dv
-        ? { location: [], founder: [] }
-        : {
-            region: [],
-            location: [],
-            group: [],
-            founder: [],
-            direction: [],
-          },
-      options: this.dv
-        ? { location: [], founder: [] }
-        : {
-            region: [],
-            location: [],
-            group: [],
-            founder: [],
-            direction: [],
-          },
-      selectableOptions: this.dv
-        ? { location: [], founder: [] }
-        : {
-            region: [],
-            location: [],
-            group: [],
-            founder: [],
-            direction: [],
-          },
+      filter: { region: [] },
+      options: { region: [] },
+      selectableOptions: { region: [] },
       filterPlaceholders: {},
       activeFilters: [],
+      numWords: ['университет', 'университета', 'университетов'],
     }
   },
   computed: {
@@ -154,41 +147,13 @@ export default {
   },
   created() {
     this.filterPlaceholders = {
-      region: 'Федеральный округ',
-      location: 'Субъект РФ',
-      group: 'Группа критериев',
-      founder: 'Учредитель организации',
-      direction: 'Направление гранта',
+      region: 'Регион',
     }
 
     this.getOptions()
     this.getOptions(true)
   },
   methods: {
-    filterLocation(filterName) {
-      if (filterName !== 'region') return
-
-      this.filter.location = this.filter.location.filter(
-        (item) =>
-          this.filter.region.length &&
-          this.selectableOptions.location.includes(item)
-      )
-    },
-
-    resetFilter() {
-      this.filter = this.dv
-        ? { location: [], founder: [] }
-        : {
-            region: [],
-            location: [],
-            group: [],
-            founder: [],
-            direction: [],
-          }
-
-      this.getOptions(true)
-      this.activeFilters = []
-    },
     activateFilter(e, filterName) {
       const index = this.activeFilters.findIndex((item) => item === filterName)
 
@@ -219,38 +184,114 @@ export default {
     isOptionSelectable(filterName) {
       return (option) => this.selectableOptions[filterName].includes(option)
     },
+    numUniversities(num) {
+      const cases = [2, 0, 1, 1, 1, 2]
+      const word =
+        this.numWords[
+          num % 100 > 4 && num % 100 < 20
+            ? 2
+            : cases[num % 10 < 5 ? num % 10 : 5]
+        ]
+      return `${word}`
+    },
   },
 }
 </script>
 
 <style lang="scss">
-.participants-filter {
-  &__filters {
-    @include flexGap(1.6rem);
+.members {
+  &__content {
+    display: flex;
 
-    > * {
-      flex: 1 1 30%;
-      max-width: calc(100% / 3 - 2.8rem);
+    .content {
+      &__list {
+        width: 316px;
+        padding-right: 10px;
+        border-right: 1px solid $color_grey_border;
 
-      @include --tablet {
-        flex: 1 1 100%;
-        max-width: 100%;
+        @include --tablet {
+          width: 100%;
+          padding-right: 0;
+          border: none;
+        }
+
+        .list {
+          @include scrollbar;
+          align-items: flex-start;
+          max-height: 550px;
+          margin-top: 24px;
+          overflow: auto;
+        }
+
+        .list-item {
+          align-items: center;
+
+          @include --tablet {
+            width: 100%;
+          }
+
+          &:not(:first-child) {
+            margin-top: 24px;
+          }
+
+          &__title {
+            @include p;
+            margin-left: 24px;
+
+            .description {
+              margin-top: 4px;
+              color: $color_grey_text;
+              font-size: 1.2rem;
+              line-height: 1.5rem;
+            }
+          }
+        }
+      }
+
+      &__map {
+        margin-left: 48px;
+
+        @include --tablet {
+          display: none;
+        }
+
+        .map__header {
+          display: flex;
+          justify-content: space-between;
+
+          .header {
+            &__item {
+              display: flex;
+              flex: 292px;
+              align-items: center;
+            }
+
+            &__value {
+              font-weight: 700;
+              font-size: 4.6rem;
+              line-height: 48px;
+            }
+
+            &__title {
+              margin-left: 12px;
+              color: $color_grey_text;
+            }
+          }
+        }
       }
     }
   }
 
-  &__divider,
-  &__list {
-    margin-top: 5.6rem;
+  &__map {
+    .graphic-map {
+      width: 100%;
 
-    @include --mobile {
-      margin-top: 4.2rem;
+      &__content {
+        svg {
+          width: 80rem;
+        }
+      }
     }
   }
-}
-
-.graphic-map {
-  width: 100%;
-  margin-top: 4rem;
 }
 </style>

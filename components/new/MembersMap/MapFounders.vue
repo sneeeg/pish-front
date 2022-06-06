@@ -11,9 +11,12 @@
         :options="options[key]"
         @input="activateFilter($event, key), getOptions(true)"
       />
-      <p>{{ items.length }} университет</p>
+      <p>
+        {{ selectedItems.length }}
+        {{ numUniversities(selectedItems.length) }}
+      </p>
       <ul class="list">
-        <li v-for="item in items" :key="item" class="list-item">
+        <li v-for="item in selectedItems" :key="item" class="list-item">
           <div class="list-item__logo">
             <img :src="item.logo" alt="logo" />
           </div>
@@ -28,7 +31,9 @@
       <div class="map__header">
         <div class="header__item">
           <h4 class="header__value">{{ items.length }}</h4>
-          <p class="header__title">университет</p>
+          <p class="header__title">
+            {{ numUniversities(items.length) }}
+          </p>
         </div>
         <div class="header__item">
           <h4 class="header__value">46</h4>
@@ -64,11 +69,12 @@ export default {
   },
   data() {
     return {
-      filter: { region: [] },
-      options: { region: [] },
-      selectableOptions: { region: [] },
+      filter: { founder: [] },
+      options: { founder: [] },
+      selectableOptions: { founder: [] },
       filterPlaceholders: {},
       activeFilters: [],
+      numWords: ['университет', 'университета', 'университетов'],
     }
   },
   computed: {
@@ -78,7 +84,7 @@ export default {
       return [
         ...new Set(
           this.items.reduce((acc, item) => {
-            if (this.filter.region.includes(item.region)) {
+            if (this.filter.founder.includes(item.founder)) {
               acc.push(item.location)
             }
 
@@ -141,7 +147,7 @@ export default {
   },
   created() {
     this.filterPlaceholders = {
-      region: 'Регион',
+      founder: 'Учредитель организации',
     }
 
     this.getOptions()
@@ -177,6 +183,16 @@ export default {
     },
     isOptionSelectable(filterName) {
       return (option) => this.selectableOptions[filterName].includes(option)
+    },
+    numUniversities(num) {
+      const cases = [2, 0, 1, 1, 1, 2]
+      const word =
+        this.numWords[
+          num % 100 > 4 && num % 100 < 20
+            ? 2
+            : cases[num % 10 < 5 ? num % 10 : 5]
+        ]
+      return `${word}`
     },
   },
 }
