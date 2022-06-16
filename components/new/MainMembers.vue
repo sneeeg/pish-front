@@ -1,23 +1,41 @@
 <template>
   <div v-if="mapData" class="members">
-    <Tabs :sections="sections">
-      <template #tabs__content>
+    <ul v-if="!window.isMobileSize" class="tabs__list">
+      <li
+        v-for="{ id, title } in sections"
+        :key="id"
+        :class="['tabs__item', { _selected: id === currentTabID }]"
+        @click="toggleTab(id)"
+      >
+        {{ title }}
+      </li>
+    </ul>
+    <CustomSelect
+      v-else
+      :value="currentTabID"
+      :items="sections"
+      class="tabs__select"
+      @input="toggleTab"
+    />
+    <div ref="content" :key="currentTabID">
+      <div v-if="currentTabID === 1" ref="contentItems" class="events__content">
         <MapRegions :items="mapData" />
+      </div>
+      <div v-else ref="contentItems" class="events__content">
         <MapFounders :items="mapData" />
-      </template>
-    </Tabs>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import MapFounders from '~/components/new/MembersMap/MapFounders'
-import Tabs from '~/components/new/Tabs'
 import MapRegions from '~/components/new/MembersMap/MapRegions'
 
 export default {
   name: 'MainMembers',
-  components: { MapRegions, Tabs, MapFounders },
+  components: { MapRegions, MapFounders },
   props: {
     sections: {
       type: Array,
@@ -26,6 +44,7 @@ export default {
   },
   data: () => ({
     mapData: null,
+    currentTabID: 1,
   }),
   async fetch() {
     const [{ data }] = await Promise.all([this.$api.analytics.get()])
@@ -34,6 +53,12 @@ export default {
   computed: {
     ...mapState('default', ['lang']),
     ...mapState('responsive', ['window']),
+  },
+  methods: {
+    toggleTab(id) {
+      this.currentTabID = id
+      setTimeout(() => this.createSlider())
+    },
   },
 }
 </script>
